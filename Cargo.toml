@@ -4,7 +4,7 @@ version = "0.1.0"
 edition = "2018"
 
 [workspace]
-members = ["cobul_base", "cobul_custom", "cobul_fa", "cobul_test"]
+members = ["cobul_base", "cobul_custom", "cobul_fa", "cobul_test", "fa_scraper"]
 
 [dependencies]
 cobul_base = { path = "cobul_base" }
