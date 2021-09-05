@@ -1,0 +1,20 @@
+[package]
+name = "cobul"
+version = "0.1.0"
+edition = "2018"
+
+[workspace]
+members = ["cobul_base", "cobul_custom", "cobul_fa"]
+
+[dependencies]
+cobul_base = { path = "cobul_base" }
+cobul_custom = { path = "cobul_custom", optional = true }
+cobul_fa = { path = "cobul_fa", optional = true }
+
+[features]
+custom = ["cobul_custom"]
+fa = ["cobul_fa"]
+
+
+
+

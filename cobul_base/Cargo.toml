@@ -1,0 +1,15 @@
+[package]
+name = "cobul"
+version = "0.1.0"
+authors = ["thomas <thomas@dooms.eu>"]
+edition = "2018"
+description = "bulma components for yew"
+repository = "https://github.com/Funkymaniac/pixelguesser"
+license = "GNU GPLv3"
+
+[dependencies]
+yew = { git = "https://github.com/yewstack/yew.git", rev = "4e974dad9282eb765738394b8ee6c6a7d9baa2d9" }
+yew-router = { git = "https://github.com/yewstack/yew.git", rev = "4e974dad9282eb765738394b8ee6c6a7d9baa2d9" }
+
+strum = { version = "0.21", features = ["derive"] }
+derive_more = "0.99.16"

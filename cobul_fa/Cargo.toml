@@ -1,0 +1,10 @@
+[package]
+name = "dot_fa"
+version = "0.1.0"
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+derive_more = "0.99.16"
+yew = { git = "https://github.com/yewstack/yew.git", rev = "4e974dad9282eb765738394b8ee6c6a7d9baa2d9" }
