@@ -1,5 +1,5 @@
-use yew::prelude::*;
 use crate::properties::Size;
+use yew::prelude::*;
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {
@@ -23,7 +23,7 @@ pub struct Props {
 /// [https://bulma.io/documentation/elements/delete/](https://bulma.io/documentation/elements/delete/)
 #[function_component(Delete)]
 pub fn delete(props: &Props) -> Html {
-    let classes = classes!("delete", &props.extra);
+    let classes = classes!("delete", &props.extra, props.size);
     let onclick = props.onclick.reform(|_| ());
 
     html! {

@@ -1,6 +1,6 @@
 use yew::prelude::*;
 
-use pbs::properties::ColumnSize;
+use cobul_base::properties::ColumnSize;
 
 #[derive(Clone, Debug, Copy, PartialEq)]
 pub enum SidebarAlignment {

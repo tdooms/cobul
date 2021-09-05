@@ -1,6 +1,6 @@
 use yew::prelude::*;
 
-use pbs::properties::Color;
+use cobul_base::properties::Color;
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {

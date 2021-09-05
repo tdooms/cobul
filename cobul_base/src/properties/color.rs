@@ -13,6 +13,10 @@ pub enum Color {
     Dark,
     #[display(fmt = "black")]
     Black,
+    #[display(fmt = "text")]
+    Text,
+    #[display(fmt = "ghost")]
+    Ghost,
     #[display(fmt = "primary")]
     Primary,
     #[display(fmt = "link")]

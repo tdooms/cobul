@@ -1,8 +1,8 @@
 use derive_more::Display;
 use yew::Classes;
 
+
 /// Common size classes.
-/// TODO: are-* sizes for buttons https://bulma.io/documentation/elements/button/#sizes
 #[derive(Clone, Debug, Display, PartialEq, Copy)]
 #[display(fmt = "is-{}")]
 pub enum Size {
@@ -25,6 +25,25 @@ impl Default for Size {
 impl Into<Classes> for Size {
     fn into(self) -> Classes {
         Classes::from(self.to_string())
+    }
+}
+
+#[derive(Clone, Debug, Display, PartialEq, Copy)]
+#[display(fmt = "are-{}")]
+pub enum ButtonsSize {
+    #[display(fmt = "small")]
+    Small,
+    #[display(fmt = "normal")]
+    Normal,
+    #[display(fmt = "medium")]
+    Medium,
+    #[display(fmt = "large")]
+    Large,
+}
+
+impl Default for ButtonsSize {
+    fn default() -> Self {
+        ButtonsSize::Normal
     }
 }
 

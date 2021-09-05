@@ -1,6 +1,6 @@
 use yew::prelude::*;
 
-use crate::properties::{Addons, Alignment};
+use crate::properties::{Addons, Alignment, ButtonsSize};
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {
@@ -15,6 +15,9 @@ pub struct Props {
 
     #[prop_or_default]
     pub addons: Addons,
+
+    #[prop_or_default]
+    pub size: ButtonsSize,
 }
 
 /// TODO
