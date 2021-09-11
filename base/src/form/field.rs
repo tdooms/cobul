@@ -1,6 +1,6 @@
 use yew::prelude::*;
 
-use crate::props::{Addons, Grouped, GroupedMultiline};
+use crate::props::{Addons, AddonsAlignment, Grouped, GroupedMultiline};
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {
@@ -18,6 +18,9 @@ pub struct Props {
 
     #[prop_or_default]
     pub addons: Addons,
+
+    #[prop_or_default]
+    pub alignment: AddonsAlignment,
 }
 
 #[function_component(Field)]
@@ -28,6 +31,7 @@ pub fn field(props: &Props) -> Html {
         props.multiline,
         props.addons,
         props.grouped,
+        props.alignment
     );
 
     html! {

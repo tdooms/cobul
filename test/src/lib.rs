@@ -1,8 +1,18 @@
+use derive_more::Display;
+use strum::EnumIter;
 use wasm_bindgen::prelude::*;
 use yew::prelude::*;
 
 use cobul::props::{Color, ColumnOffset, ColumnSize, Size, TextColor};
 use cobul::*;
+
+#[derive(Display, Clone, Copy, EnumIter, PartialEq)]
+pub enum SelectEnum {
+    #[display(fmt = "Select dropdown")]
+    SelectDropdown,
+    #[display(fmt = "With options")]
+    WithOptions,
+}
 
 pub struct Main {}
 
@@ -50,7 +60,9 @@ impl Component for Main {
             <Block>
                 {"This text is within a "}
                 <strong>{"second block"}</strong>
-                {". Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis. "}
+                {". Lorem ipsum dolor sit amet, consectetur adipiscing elit. \
+                Aenean efficitur sit amet massa fringilla egestas. \
+                Nullam condimentum luctus turpis. "}
             </Block>
             <Block>
                 {"This text is within a "}
@@ -108,9 +120,14 @@ impl Component for Main {
             <Content>
                 <h1>{"Hello World"}</h1>
                 <p>
-                    {"Lorem ipsum"} <sup><a>{"[1]"}</a></sup> {" dolor sit amet, consectetur adipiscing elit. Nulla accumsan, metus "}
-                    {"ultrices eleifend gravida, nulla nunc varius lectus, nec rutrum justo nibh eu lectus. Ut vulputate "}
-                    {"semper dui. Fusce erat odio, sollicitudin vel erat vel, interdum mattis neque. Sub"}<sub>{"script"}</sub> {" works as well!"}
+                    {"Lorem ipsum"} <sup><a>{"[1]"}</a></sup>
+                    {" dolor sit amet, consectetur adipiscing elit. Nulla accumsan, \
+                    metus ultrices eleifend gravida, nulla nunc varius lectus, \
+                    nec rutrum justo nibh eu lectus. Ut vulputate semper dui. \
+                    Fusce erat odio, sollicitudin vel erat vel, \
+                    interdum mattis neque. Sub"}
+                    <sub>{"script"}</sub>
+                    {" works as well!"}
                 </p>
             </Content>
 
@@ -157,7 +174,51 @@ impl Component for Main {
 
             // TODO: continue from image
 
+            <Field>
+                <Label> {"Name"} </Label>
+                <Control>
+                    <Input placeholder="Text input" oninput={Callback::noop()}/>
+                </Control>
+            </Field>
 
+            <Field>
+                <Label> {"Username"} </Label>
+                <Control right="fas fa-user" left="fas fa-check">
+                    <Input color={Color::Success} placeholder="Text input" value="bulma" oninput={Callback::noop()}/>
+                    <Help color={Color::Success}> {"This username is available"} </Help>
+                </Control>
+            </Field>
+
+            <Field>
+                <Label> {"Email"} </Label>
+                <Control right="fas fa-envelope" left="fas fa-exclamation-triangle">
+                    <Input color={Color::Danger} placeholder="Text input" value="bulma" oninput={Callback::noop()}/>
+                    <Help color={Color::Danger}> {"This email is invalid"} </Help>
+                </Control>
+            </Field>
+
+            <Field>
+                <Label> {"Subject"} </Label>
+                <Control>
+                    <Select<SelectEnum> selected={SelectEnum::SelectDropdown} onselect={Callback::noop()}/>
+                </Control>
+            </Field>
+
+            <Field>
+                <Label> {"Message"} </Label>
+                <Control>
+                    <Textarea placeholder="Textarea" oninput={Callback::noop()}/>
+                </Control>
+            </Field>
+
+            <Field grouped=true>
+                <Control>
+                    <Button color={Color::Link}> {"Submit"} </Button>
+                </Control>
+                <Control>
+                    <Button color={Color::Link} light=true> {"Cancel"} </Button>
+                </Control>
+            </Field>
 
             </Column>
             </Columns>

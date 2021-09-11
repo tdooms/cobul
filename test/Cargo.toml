@@ -1,5 +1,5 @@
 [package]
-name = "cobul_test"
+name = "test"
 version = "0.1.0"
 edition = "2018"
 
@@ -9,4 +9,6 @@ crate-type = ["cdylib", "rlib"]
 [dependencies]
 cobul = { path = "..", features = ["custom"] }
 wasm-bindgen = "0.2"
+derive_more = "0.99.16"
+strum = { version = "0.21", features = ["derive"] }
 yew = { git = "https://github.com/yewstack/yew.git", rev = "4e974dad9282eb765738394b8ee6c6a7d9baa2d9" }

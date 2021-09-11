@@ -1,1 +1,1 @@
-~/.cargo/bin/miniserve ./static
+~/.cargo/bin/miniserve --port 6788 ./static
