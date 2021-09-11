@@ -5,19 +5,19 @@ use crate::props::{Color, Size};
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {
     #[prop_or_default]
-    children: Children,
+    pub children: Children,
 
     #[prop_or_default]
-    header: Option<Html>,
+    pub header: Option<Html>,
 
     #[prop_or_default]
-    ondelete: Option<Callback<()>>,
+    pub ondelete: Option<Callback<()>>,
 
     #[prop_or_default]
-    color: Option<Color>,
+    pub color: Option<Color>,
 
     #[prop_or_default]
-    size: Size,
+    pub size: Size,
 }
 
 #[function_component(Message)]
