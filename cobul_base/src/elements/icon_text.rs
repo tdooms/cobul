@@ -1,6 +1,6 @@
 use yew::prelude::*;
 
-use crate::props::{Size, TextColor};
+use crate::props::TextColor;
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {

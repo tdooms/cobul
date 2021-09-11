@@ -16,7 +16,7 @@ impl Component for Main {
         Self {}
     }
 
-    fn view(&self, ctx: &Context<Self>) -> Html {
+    fn view(&self, _: &Context<Self>) -> Html {
         const TONE_COLORS: [(Color, &str); 6] = [
             (Color::White, "White"),
             (Color::Link, "Link"),
@@ -115,7 +115,7 @@ impl Component for Main {
             </Content>
 
             <Block>
-            { for SIZES.iter().map(|(s, n)| html!{ <Delete size={s.clone()} onclick={Callback::noop()}/> })}
+            { for SIZES.iter().map(|(s, _)| html!{ <Delete size={s.clone()} onclick={Callback::noop()}/> })}
             </Block>
 
             <Block>
