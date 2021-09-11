@@ -1,6 +1,6 @@
 pub use alignment::*;
 pub use color::*;
-pub use common::*;
+pub(crate) use common::*;
 pub use offset::*;
 pub use other::*;
 pub use size::*;
