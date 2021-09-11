@@ -4,17 +4,12 @@ version = "0.1.0"
 edition = "2018"
 
 [workspace]
-members = ["cobul_base", "cobul_custom", "cobul_fa", "cobul_test", "fa_scraper"]
+members = ["base", "custom", "fa", "test", "fa_scraper"]
 
 [dependencies]
-cobul_base = { path = "cobul_base" }
-cobul_custom = { path = "cobul_custom", optional = true }
-cobul_fa = { path = "cobul_fa", optional = true }
-
-[features]
-custom = ["cobul_custom"]
-fa = ["cobul_fa"]
-
+base = { path = "base" }
+custom = { path = "custom", optional = true }
+fa = { path = "fa", optional = true }
 
 
 

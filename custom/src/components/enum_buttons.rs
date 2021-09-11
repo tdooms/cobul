@@ -1,8 +1,8 @@
 use strum::IntoEnumIterator;
 use yew::prelude::*;
 
-use cobul_base::elements::{Button, Buttons};
-use cobul_base::props::{Alignment, Color};
+use base::elements::{Button, Buttons};
+use base::props::{Alignment, Color};
 
 #[derive(Clone, Properties, PartialEq)]
 pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static> {

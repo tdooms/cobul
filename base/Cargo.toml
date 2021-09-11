@@ -1,10 +1,10 @@
 [package]
-name = "cobul_base"
+name = "base"
 version = "0.1.0"
 authors = ["thomas <thomas@dooms.eu>"]
 edition = "2018"
-description = "bulma components for yew"
-repository = "https://github.com/Funkymaniac/pixelguesser"
+description = "Bulma components for Yew"
+repository = "https://github.com/tdooms/cobul"
 license = "GNU GPLv3"
 
 [dependencies]
