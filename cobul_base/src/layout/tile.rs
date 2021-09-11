@@ -1,6 +1,6 @@
 use yew::prelude::*;
 
-use crate::properties::{TileCtx, TileSize, Vertical};
+use crate::props::{TileCtx, TileSize, Vertical};
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {

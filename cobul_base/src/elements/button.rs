@@ -1,6 +1,9 @@
 use yew::prelude::*;
 
-use crate::properties::{Color, Disabled, Fullwidth, Hidden, Inverted, Light, Loading, Outlined, Rounded, Selected, Size, Hovered, Focused, Active, Static};
+use crate::props::{
+    Active, Color, Disabled, Focused, Fullwidth, Hidden, Hovered, Inverted, Light, Loading,
+    Outlined, Rounded, Selected, Size, Static,
+};
 
 #[derive(Properties, Clone, PartialEq)]
 pub struct Props {

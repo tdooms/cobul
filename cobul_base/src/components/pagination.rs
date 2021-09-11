@@ -6,7 +6,7 @@
 // #[cfg(feature = "router")]
 // pub use router::PaginationItemRouter;
 //
-// use crate::properties::{Alignment, classify, Size};
+// use crate::props::{Alignment, classify, Size};
 //
 // #[derive(Clone, Debug, Properties, PartialEq)]
 // pub struct PaginationProps {

@@ -2,12 +2,6 @@ use yew::prelude::*;
 
 use cobul_base::properties::ColumnSize;
 
-#[derive(Clone, Debug, Copy, PartialEq)]
-pub enum SidebarAlignment {
-    Right,
-    Left,
-}
-
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {
     #[prop_or_default]
@@ -30,7 +24,10 @@ pub struct Props {
 
 #[function_component(Sidebar)]
 pub fn sidebar(props: &Props) -> Html {
-    let footer_class = props.footer.as_ref().map(|_| "is-flex is-flex-direction-column is-justify-content-space-between");
+    let footer_class = props
+        .footer
+        .as_ref()
+        .map(|_| "is-flex is-flex-direction-column is-justify-content-space-between");
 
     let classes = classes!("column", &props.extra, props.size, footer_class);
 
@@ -39,7 +36,10 @@ pub fn sidebar(props: &Props) -> Html {
         SidebarAlignment::Left => "10px 0px 10px 1px #eeeeee",
     };
 
-    let overflow = props.overflow.then(|| "overflow-y:auto").unwrap_or_default();
+    let overflow = props
+        .overflow
+        .then(|| "overflow-y:auto")
+        .unwrap_or_default();
     let style = format!("box-shadow:{};height:100vh;{}", shadow, overflow);
 
     let inner = match &props.footer {
@@ -50,7 +50,7 @@ pub fn sidebar(props: &Props) -> Html {
                 { html.clone() }
             </>
         },
-        None => html! { { for props.children.iter() } }
+        None => html! { { for props.children.iter() } },
     };
 
     html! {

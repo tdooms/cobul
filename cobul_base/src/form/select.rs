@@ -1,4 +1,4 @@
-use crate::properties::{Color, Focused, Hovered, Loading, Rounded, Size};
+use crate::props::{Color, Focused, Hovered, Loading, Rounded, Size};
 use strum::IntoEnumIterator;
 use yew::prelude::*;
 
@@ -34,8 +34,14 @@ pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static> {
 pub fn select<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static>(
     props: &Props<T>,
 ) -> Html {
-    let classes =
-        classes!("select", &props.extra, props.color, props.size, props.rounded, props.loading);
+    let classes = classes!(
+        "select",
+        &props.extra,
+        props.color,
+        props.size,
+        props.rounded,
+        props.loading
+    );
 
     let view_option = |variant: T| {
         let selected = std::mem::discriminant(&variant) == std::mem::discriminant(&props.selected);

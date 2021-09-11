@@ -1,6 +1,6 @@
 use yew::prelude::*;
 
-use crate::properties::{Alignment, Separator, Size};
+use crate::props::{Alignment, Separator, Size};
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {
@@ -25,8 +25,13 @@ pub struct Props {
 /// [https://bulma.io/documentation/components/breadcrumb/](https://bulma.io/documentation/components/breadcrumb/)
 #[function_component(Breadcrumb)]
 pub fn breadcrumb(props: &Props) -> Html {
-    let classes =
-        classes!("breadcrumb", props.size, props.alignment, props.separator, &props.extra);
+    let classes = classes!(
+        "breadcrumb",
+        props.size,
+        props.alignment,
+        props.separator,
+        &props.extra
+    );
 
     html! {
         <nav class={classes} aria-label="breadcrumbs">

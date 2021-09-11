@@ -7,6 +7,6 @@ edition = "2018"
 crate-type = ["cdylib", "rlib"]
 
 [dependencies]
-cobul_base = { path = "../cobul_base" }
+cobul = { path = ".." }
 wasm-bindgen = "0.2"
 yew = { git = "https://github.com/yewstack/yew.git", rev = "4e974dad9282eb765738394b8ee6c6a7d9baa2d9" }

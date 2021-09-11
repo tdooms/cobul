@@ -1,17 +1,14 @@
-pub use cobul_base;
+pub use cobul_base::{components::*, elements::*, form::*, layout::*};
 
 #[cfg(feature = "custom")]
-pub use cobul_custom;
+pub use cobul_custom::{components::*, extensions::*};
 
 #[cfg(feature = "fa")]
-pub use cobul_fa;
+pub use cobul_fa::Icons;
 
-pub mod prelude {
-    pub use cobul_base::prelude::*;
+pub mod props {
+    pub use cobul_base::props::*;
 
     #[cfg(feature = "custom")]
-    pub use cobul_custom::*;
-
-    #[cfg(feature = "fa")]
-    pub use cobul_fa::Icons;
+    pub use cobul_custom::props::*;
 }

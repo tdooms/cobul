@@ -2,7 +2,7 @@ use yew::prelude::*;
 use yew::web_sys;
 use yew::web_sys::HtmlInputElement;
 
-use crate::properties::{Alignment, Boxed, Color, Fullwidth, Size};
+use crate::props::{Alignment, Boxed, Color, Fullwidth, Size};
 
 #[derive(Properties, Clone, PartialEq)]
 pub struct Props {
@@ -50,7 +50,10 @@ pub fn file(props: &Props) -> Html {
     );
 
     let onchange = props.onupload.reform(|e: Event| {
-        let files = e.target_unchecked_into::<HtmlInputElement>().files().unwrap();
+        let files = e
+            .target_unchecked_into::<HtmlInputElement>()
+            .files()
+            .unwrap();
         (0..files.length()).filter_map(|i| files.get(i)).collect()
     });
 

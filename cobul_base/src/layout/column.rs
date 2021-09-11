@@ -1,6 +1,6 @@
 use yew::prelude::*;
 
-use crate::properties::{ColumnOffset, ColumnSize};
+use crate::props::{ColumnOffset, ColumnSize};
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {

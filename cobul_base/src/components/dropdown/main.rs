@@ -1,4 +1,4 @@
-use crate::properties::Hoverable;
+use crate::props::Hoverable;
 use yew::prelude::*;
 
 // TODO: custom trigger without font awesome

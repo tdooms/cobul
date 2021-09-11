@@ -1,6 +1,6 @@
 use yew::prelude::*;
 
-use crate::properties::HeaderSize;
+use crate::props::HeaderSize;
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {

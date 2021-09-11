@@ -1,6 +1,6 @@
 use yew::prelude::*;
 
-use crate::properties::SectionSize;
+use crate::props::SectionSize;
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {

@@ -1,6 +1,6 @@
 use yew::prelude::*;
 
-use crate::properties::{Light, Rounded, Size};
+use crate::props::{Light, Rounded, Size};
 
 // The turn into delete button is intentionally skipped
 #[derive(Clone, Debug, Properties, PartialEq)]

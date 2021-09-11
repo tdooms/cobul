@@ -1,6 +1,6 @@
 use yew::prelude::*;
 
-use crate::properties::{Color, Size};
+use crate::props::{Color, Size};
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {
@@ -34,7 +34,7 @@ pub fn message(props: &Props) -> Html {
             </div>
         },
         (Some(html), None) => html! {<div class="message-header"> {html} </div> },
-        (None, None) => html! {}
+        (None, None) => html! {},
     };
 
     html! {

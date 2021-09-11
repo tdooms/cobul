@@ -2,7 +2,7 @@ use strum::IntoEnumIterator;
 use yew::prelude::*;
 
 use cobul_base::elements::{Button, Buttons};
-use cobul_base::properties::{Alignment, Color};
+use cobul_base::props::{Alignment, Color};
 
 #[derive(Clone, Properties, PartialEq)]
 pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static> {
@@ -22,8 +22,8 @@ pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static> {
     pub onclick: Callback<T>,
 }
 
-#[function_component(KvButtons)]
-pub fn kv_buttons<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static>(
+#[function_component(EnumButtons)]
+pub fn enum_buttons<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static>(
     props: &Props<T>,
 ) -> Html {
     let button_map = |variant: T| {

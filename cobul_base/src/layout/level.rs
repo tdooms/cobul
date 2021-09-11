@@ -1,6 +1,6 @@
 use yew::prelude::*;
 
-use crate::properties::{Mobile, TextCentered};
+use crate::props::{Mobile, TextCentered};
 use crate::utils::enclose;
 
 #[derive(Clone, Debug, Properties, PartialEq)]

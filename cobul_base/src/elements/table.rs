@@ -1,6 +1,6 @@
 use yew::prelude::*;
 
-use crate::properties::{Bordered, Fullwidth, Hoverable, Narrow, Striped};
+use crate::props::{Bordered, Fullwidth, Hoverable, Narrow, Striped};
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {

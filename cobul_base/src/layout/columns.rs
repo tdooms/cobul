@@ -1,6 +1,6 @@
 use yew::prelude::*;
 
-use crate::properties::{Centered, Gapless, Multiline, VCentered, Breakpoint};
+use crate::props::{Breakpoint, Centered, Gapless, Multiline, VCentered};
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {
@@ -28,7 +28,6 @@ pub struct Props {
 
     #[prop_or_default]
     pub breakpoint: Option<Breakpoint>,
-
     // TODO: experimental https://bulma.io/documentation/columns/gap/#breakpoint-based-column-gaps
 }
 

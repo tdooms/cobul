@@ -1,4 +1,4 @@
-use crate::properties::Active;
+use crate::props::Active;
 use yew::prelude::*;
 
 // TODO: this can only be: control, input, button, panel-icon

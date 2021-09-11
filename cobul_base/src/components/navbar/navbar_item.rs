@@ -1,6 +1,6 @@
 use yew::prelude::*;
 
-use crate::properties::{Dropdown, Hoverable};
+use crate::props::{Dropdown, Hoverable};
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {

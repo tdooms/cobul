@@ -1,7 +1,7 @@
 use strum::IntoEnumIterator;
 use yew::prelude::*;
 
-use crate::properties::{Color, Focused, Hovered, Size};
+use crate::props::{Color, Focused, Hovered, Size};
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static> {
@@ -30,7 +30,13 @@ pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static> {
 pub fn multiple_select<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static>(
     props: &Props<T>,
 ) -> Html {
-    let classes = classes!("select", "is-multiple", &props.extra, props.color, props.size);
+    let classes = classes!(
+        "select",
+        "is-multiple",
+        &props.extra,
+        props.color,
+        props.size
+    );
 
     let view_option = |variant: T| {
         let position = props

@@ -1,6 +1,6 @@
 use yew::prelude::*;
 
-use crate::properties::ContainerSize;
+use crate::props::ContainerSize;
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {

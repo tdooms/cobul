@@ -1,4 +1,4 @@
-use crate::properties::Color;
+use crate::props::Color;
 use crate::utils::enclose_with_tag;
 use yew::prelude::*;
 

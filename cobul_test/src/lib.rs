@@ -1,8 +1,8 @@
 use wasm_bindgen::prelude::*;
 use yew::prelude::*;
 
-use cobul_base::prelude::*;
-use cobul_base::properties::{Color, ColumnOffset, ColumnSize, Size, TextColor};
+use cobul::props::{Color, ColumnOffset, ColumnSize, Size, TextColor};
+use cobul::*;
 
 pub struct Main {}
 

@@ -3225,3 +3225,9 @@ pub enum Icons {
     #[display(fmt = "fab fa-zhihu")]
     Zhihu,
 }
+
+impl IntoPropValue<Icons> for String {
+    fn into_prop_value(self) -> String {
+        self.to_string()
+    }
+}

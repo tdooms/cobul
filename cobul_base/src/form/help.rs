@@ -1,6 +1,6 @@
 use yew::prelude::*;
 
-use crate::properties::Color;
+use crate::props::Color;
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {

@@ -1,6 +1,6 @@
 use yew::prelude::*;
 
-use crate::properties::Expanded;
+use crate::props::Expanded;
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {

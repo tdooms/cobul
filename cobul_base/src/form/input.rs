@@ -1,7 +1,7 @@
 use yew::prelude::*;
 use yew::web_sys::HtmlInputElement;
 
-use crate::properties::{Color, InputType, Loading, Rounded, Size, Static};
+use crate::props::{Color, InputType, Loading, Rounded, Size, Static};
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {
@@ -61,8 +61,9 @@ pub fn input(props: &Props) -> Html {
         props.r#static,
     );
 
-    let oninput =
-        props.oninput.reform(|e: InputEvent| e.target_unchecked_into::<HtmlInputElement>().value());
+    let oninput = props
+        .oninput
+        .reform(|e: InputEvent| e.target_unchecked_into::<HtmlInputElement>().value());
 
     html! {
         <input

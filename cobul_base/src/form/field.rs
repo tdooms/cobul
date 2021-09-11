@@ -1,6 +1,6 @@
 use yew::prelude::*;
 
-use crate::properties::{Addons, Grouped, GroupedMultiline};
+use crate::props::{Addons, Grouped, GroupedMultiline};
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {
@@ -22,7 +22,13 @@ pub struct Props {
 
 #[function_component(Field)]
 pub fn field(props: &Props) -> Html {
-    let classes = classes!("field", &props.extra, props.multiline, props.addons, props.grouped,);
+    let classes = classes!(
+        "field",
+        &props.extra,
+        props.multiline,
+        props.addons,
+        props.grouped,
+    );
 
     html! {
         <div class={classes}>

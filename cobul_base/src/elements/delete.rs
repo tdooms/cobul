@@ -1,4 +1,4 @@
-use crate::properties::Size;
+use crate::props::Size;
 use yew::prelude::*;
 
 #[derive(Clone, Debug, Properties, PartialEq)]

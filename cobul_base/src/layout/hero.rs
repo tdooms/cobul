@@ -1,6 +1,6 @@
 use yew::prelude::*;
 
-use crate::properties::{Color, HeroSize};
+use crate::props::{Color, HeroSize};
 use crate::utils::enclose;
 
 #[derive(Clone, Debug, Properties, PartialEq)]
