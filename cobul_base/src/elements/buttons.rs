@@ -20,7 +20,6 @@ pub struct Props {
     pub size: ButtonsSize,
 }
 
-/// TODO
 /// [https://bulma.io/documentation/elements/button/#list-of-buttons](https://bulma.io/documentation/elements/button/#list-of-buttons)
 #[function_component(Buttons)]
 pub fn buttons(props: &Props) -> Html {

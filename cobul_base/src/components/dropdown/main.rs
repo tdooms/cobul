@@ -44,7 +44,7 @@ impl Component for Dropdown {
         html! {
             <div class={classes}>
                 <div class="dropdown-trigger">
-                    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu3">
+                    <button class="button" aria-haspopup="true">
                         <span> {ctx.props().text.clone()} </span>
                         <span class="icon is-small"> <i class="fas fa-angle-down" aria-hidden="true"></i> </span>
                     </button>
