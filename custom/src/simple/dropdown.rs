@@ -4,11 +4,6 @@ use base::elements::Icon;
 use base::form::{Help, Label};
 use base::props::Color;
 
-pub enum DropdownElement {
-    Item(String),
-    Divider
-}
-
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {
     #[prop_or_default]
@@ -32,6 +27,7 @@ pub struct Props {
     pub icon_left: Option<String>,
 }
 
-#[function_component(SimpleField)]
+#[function_component(SimpleDropdown)]
 pub fn simple_dropdown(props: &Props) -> Html {
+    html!{}
 }

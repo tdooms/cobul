@@ -1,7 +1,7 @@
 pub use base::{components::*, elements::*, form::*, layout::*};
 
 #[cfg(feature = "custom")]
-pub use custom::{components::*, extensions::*};
+pub use custom::{components::*, extensions::*, simple::*};
 
 #[cfg(feature = "fa")]
 pub use fa::Icons;
