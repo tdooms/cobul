@@ -136,7 +136,7 @@ impl Component for Main {
             </Block>
 
             <Block>
-            <Icon icon={"fas fa-home"}/>
+            <Icon icon={Icons::Plus}/>
             </Block>
 
             <Block>
