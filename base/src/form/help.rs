@@ -13,6 +13,7 @@ pub struct Props {
     pub color: Option<Color>,
 }
 
+/// [https://bulma.io/documentation/form/general/](https://bulma.io/documentation/form/general/)
 #[function_component(Help)]
 pub fn help(props: &Props) -> Html {
     let classes = classes!("help", &props.extra, props.color);

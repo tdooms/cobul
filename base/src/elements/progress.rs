@@ -6,10 +6,10 @@ use crate::props::{Color, Size};
 pub struct Props {
     #[prop_or_default]
     pub extra: String,
-    /// The maximum amount of progress; the 100% value.
+
     #[prop_or_else(|| 1.0)]
     pub max: f32,
-    /// The amount of progress which has been made.
+
     #[prop_or_default]
     pub value: Option<f32>,
 
@@ -20,8 +20,6 @@ pub struct Props {
     pub size: Size,
 }
 
-/// A native HTML progress bar.
-///
 /// [https://bulma.io/documentation/elements/progress/](https://bulma.io/documentation/elements/progress/)
 #[function_component(Progress)]
 pub fn progress(props: &Props) -> Html {

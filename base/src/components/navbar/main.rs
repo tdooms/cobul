@@ -21,6 +21,7 @@ pub struct Props {
     pub onclick: Callback<()>,
 }
 
+/// [https://bulma.io/documentation/components/navbar/](https://bulma.io/documentation/components/navbar/)
 #[function_component(Navbar)]
 pub fn navbar(props: &Props) -> Html {
     let classes = classes!("navbar-burger", props.active);

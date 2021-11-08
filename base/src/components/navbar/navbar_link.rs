@@ -7,6 +7,7 @@ pub struct Props<T: Routable + PartialEq + 'static> {
     route: T,
 }
 
+/// [https://bulma.io/documentation/components/navbar/](https://bulma.io/documentation/components/navbar/)
 #[function_component(NavbarLink)]
 pub fn navbar_link<T: Routable + PartialEq + 'static>(props: &Props<T>) -> Html {
     html! {

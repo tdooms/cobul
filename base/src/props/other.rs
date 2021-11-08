@@ -37,7 +37,6 @@ pub enum Breakpoint {
 }
 
 /// The 4 allowed types for an input component.
-///
 /// https://bulma.io/documentation/form/input/
 #[derive(Clone, Debug, Display, PartialEq, Copy)]
 pub enum InputType {

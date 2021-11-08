@@ -24,6 +24,7 @@ pub struct Props {
     pub mobile: Mobile,
 }
 
+/// [https://bulma.io/documentation/layout/level/](https://bulma.io/documentation/layout/level/)
 #[function_component(Level)]
 pub fn level(props: &Props) -> Html {
     let classes = classes!("level", &props.extra, props.centered, props.mobile);

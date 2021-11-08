@@ -33,6 +33,7 @@ pub struct Props {
     pub onupload: Callback<Vec<web_sys::File>>,
 }
 
+/// [https://bulma.io/documentation/form/file/](https://bulma.io/documentation/form/file/)
 #[function_component(File)]
 pub fn file(props: &Props) -> Html {
     let maybe_file = || match &props.filename {

@@ -16,6 +16,7 @@ pub struct Props {
     pub color: Option<Color>,
 }
 
+/// [https://bulma.io/documentation/components/panel/](https://bulma.io/documentation/components/panel/)
 #[function_component(Panel)]
 pub fn panel(props: &Props) -> Html {
     let classes = classes!("panel", &props.extra, props.color);

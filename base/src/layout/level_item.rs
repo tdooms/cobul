@@ -9,6 +9,7 @@ pub struct Props {
     pub extra: String,
 }
 
+/// [https://bulma.io/documentation/layout/level/](https://bulma.io/documentation/layout/level/)
 #[function_component(LevelItem)]
 pub fn level_item(props: &Props) -> Html {
     let classes = classes!("level-item", &props.extra);

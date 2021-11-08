@@ -19,7 +19,6 @@ pub struct Props {
     pub light: Light,
 }
 
-/// Bold notification blocks, to alert your users of something.
 /// [https://bulma.io/documentation/elements/notification/](https://bulma.io/documentation/elements/notification/)
 #[function_component(Notification)]
 pub fn notification(props: &Props) -> Html {

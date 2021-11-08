@@ -14,6 +14,7 @@ pub struct Props {
     pub children: Children,
 }
 
+/// [https://bulma.io/documentation/elements/icon/](https://bulma.io/documentation/elements/icon/)
 #[function_component(IconText)]
 pub fn icon_text(props: &Props) -> Html {
     let classes = classes!("icon-text", &props.extra, props.color);

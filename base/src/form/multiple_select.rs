@@ -26,6 +26,7 @@ pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static> {
     pub onselect: Callback<Vec<T>>,
 }
 
+/// [https://bulma.io/documentation/form/select/](https://bulma.io/documentation/form/select/)
 #[function_component(MultipleSelect)]
 pub fn multiple_select<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static>(
     props: &Props<T>,

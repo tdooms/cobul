@@ -11,6 +11,7 @@ pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static> {
     pub onclick: Callback<T>,
 }
 
+/// [https://bulma.io/documentation/components/panel/](https://bulma.io/documentation/components/panel/)
 #[function_component(PanelTabs)]
 pub fn panel_tabs<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static>(props: &Props<T>) -> Html {
     let button_map = |variant: T| {

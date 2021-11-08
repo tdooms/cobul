@@ -14,6 +14,7 @@ pub struct Props {
     pub active: Active,
 }
 
+/// [https://bulma.io/documentation/components/panel/](https://bulma.io/documentation/components/panel/)
 #[function_component(PanelBlock)]
 pub fn panel_block(props: &Props) -> Html {
     let classes = classes!("panel-block", &props.extra, props.active);

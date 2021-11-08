@@ -62,7 +62,6 @@ pub struct Props {
     pub extra: String,
 }
 
-/// A generic button
 /// [https://bulma.io/documentation/elements/button/](https://bulma.io/documentation/elements/button/)
 #[function_component(Button)]
 pub fn button(props: &Props) -> Html {

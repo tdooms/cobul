@@ -5,59 +5,45 @@ use crate::props::{Color, FixedSize, Loading, Size, Static};
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {
-    /// The `name` attribute for this form element.
     #[prop_or_default]
     pub name: Option<String>,
 
-    /// The controlled value of this form element.
     #[prop_or_default]
     pub value: Option<String>,
 
-    /// The callback to be used for propagating changes to this element's value.
     pub oninput: Callback<String>,
 
     #[prop_or_default]
     pub extra: String,
 
-    /// The placeholder value for this component.
     #[prop_or_default]
     pub placeholder: String,
 
-    /// The number of rows to which this component will be locked.
     #[prop_or_default]
     pub rows: Option<u32>,
 
-    /// The size of this component.
     #[prop_or_default]
     pub size: Size,
 
-    /// The size of this component.
     #[prop_or_default]
     pub color: Option<Color>,
 
-    /// Fix the size of this component.
     #[prop_or_default]
     pub fixed: FixedSize,
 
-    /// Display a loading spinner within this component.
     #[prop_or_default]
     pub loading: Loading,
 
-    /// Disable this component.
     #[prop_or_default]
     pub disabled: bool,
 
-    /// Make this component read-only.
     #[prop_or_default]
     pub readonly: bool,
 
-    /// Make this component static.
     #[prop_or_default]
     pub r#static: Static,
 }
 
-/// A multiline textarea component.
-///
 /// [https://bulma.io/documentation/form/textarea/](https://bulma.io/documentation/form/textarea/)
 #[function_component(Textarea)]
 pub fn textarea(props: &Props) -> Html {

@@ -13,6 +13,7 @@ pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static> {
     pub checked: Option<T>,
 }
 
+/// [https://bulma.io/documentation/form/radio/](https://bulma.io/documentation/form/radio/)
 #[function_component(Radio)]
 pub fn radio<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static>(
     props: &Props<T>,

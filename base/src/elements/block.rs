@@ -9,6 +9,7 @@ pub struct Props {
     pub extra: String,
 }
 
+/// [https://bulma.io/documentation/elements/block/](https://bulma.io/documentation/elements/block/)
 #[function_component(Block)]
 pub fn block(props: &Props) -> Html {
     let classes = classes!("block", &props.extra);

@@ -10,19 +10,15 @@ pub struct Props {
     #[prop_or_default]
     pub extra: String,
 
-    /// Align child columns vertically.
     #[prop_or_default]
     pub vcentered: VCentered,
 
-    /// Allow for multiline rows.
     #[prop_or_default]
     pub multiline: Multiline,
 
-    /// Center all child columns within their row.
     #[prop_or_default]
     pub centered: Centered,
 
-    /// Remove the gaps between columns.
     #[prop_or_default]
     pub gapless: Gapless,
 
@@ -31,7 +27,6 @@ pub struct Props {
     // TODO: experimental https://bulma.io/documentation/columns/gap/#breakpoint-based-column-gaps
 }
 
-/// The container for a set of responsive columns.
 /// [https://bulma.io/documentation/columns/](https://bulma.io/documentation/columns/)
 #[function_component(Columns)]
 pub fn columns(props: &Props) -> Html {

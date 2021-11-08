@@ -12,6 +12,7 @@ pub struct Props<T: Routable + PartialEq + 'static> {
     route: T,
 }
 
+/// [// https://bulma.io/documentation/components/dropdown/](// https://bulma.io/documentation/components/dropdown/)
 #[function_component(DropdownItem)]
 pub fn dropdown_item<T: Routable + PartialEq + 'static>(props: &Props<T>) -> Html {
     let classes = classes!("dropdown-item", &props.extra);

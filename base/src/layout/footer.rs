@@ -8,8 +8,6 @@ pub struct Props {
     pub extra: String,
 }
 
-/// A simple responsive footer which can include anything.
-///
 /// [https://bulma.io/documentation/layout/footer/](https://bulma.io/documentation/layout/footer/)
 #[function_component(Footer)]
 pub fn footer(props: &Props) -> Html {

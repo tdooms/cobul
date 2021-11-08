@@ -14,8 +14,6 @@ pub struct Props {
     pub size: Option<ContainerSize>,
 }
 
-/// A simple container to center your content horizontally.
-///
 /// [https://bulma.io/documentation/layout/container/](https://bulma.io/documentation/layout/container/)
 #[function_component(Container)]
 pub fn container(props: &Props) -> Html {

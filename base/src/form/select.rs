@@ -30,6 +30,7 @@ pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static> {
     pub onselect: Callback<T>,
 }
 
+/// [https://bulma.io/documentation/form/select/](https://bulma.io/documentation/form/select/)
 #[function_component(Select)]
 pub fn select<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static>(
     props: &Props<T>,

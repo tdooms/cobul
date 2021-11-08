@@ -17,7 +17,6 @@ pub struct Props {
     pub offset: Option<ColumnOffset>,
 }
 
-/// A flexbox-based responsive column.
 /// [https://bulma.io/documentation/columns/](https://bulma.io/documentation/columns/)
 #[function_component(Column)]
 pub fn column(props: &Props) -> Html {

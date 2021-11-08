@@ -23,6 +23,7 @@ pub struct Props {
     pub left_tag: String,
 }
 
+/// [https://bulma.io/documentation/layout/media-object/](https://bulma.io/documentation/layout/media-object/)
 #[function_component(Media)]
 pub fn media(props: &Props) -> Html {
     let classes = classes!("media", &props.extra);

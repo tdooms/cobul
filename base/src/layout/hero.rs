@@ -5,7 +5,6 @@ use crate::utils::enclose;
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {
-    /// Extra classes for the hero container.
     #[prop_or_default]
     pub extra: String,
 
@@ -25,8 +24,6 @@ pub struct Props {
     pub footer: Option<Html>,
 }
 
-/// An imposing hero banner to showcase something.
-///
 /// [https://bulma.io/documentation/layout/hero/](https://bulma.io/documentation/layout/hero/)
 #[function_component(Hero)]
 pub fn hero(props: &Props) -> Html {

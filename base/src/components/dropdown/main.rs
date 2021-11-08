@@ -22,6 +22,7 @@ pub struct Props {
     pub text: String,
 }
 
+/// [// https://bulma.io/documentation/components/dropdown/](// https://bulma.io/documentation/components/dropdown/)
 #[function_component(Dropdown)]
 pub fn dropdown(props: &Props) -> Html {
     let classes = classes!(

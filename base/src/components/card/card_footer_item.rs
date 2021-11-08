@@ -1,6 +1,5 @@
 use yew::prelude::*;
 
-// https://bulma.io/documentation/components/card/
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {
     #[prop_or_default]
@@ -10,6 +9,7 @@ pub struct Props {
     pub extra: String,
 }
 
+/// [// https://bulma.io/documentation/components/card/](// https://bulma.io/documentation/components/card/)
 #[function_component(CardFooterItem)]
 pub fn card(props: &Props) -> Html {
     html! {

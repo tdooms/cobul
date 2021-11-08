@@ -23,6 +23,7 @@ pub struct Props {
     pub alignment: AddonsAlignment,
 }
 
+/// [https://bulma.io/documentation/form/general/](https://bulma.io/documentation/form/general/)
 #[function_component(Field)]
 pub fn field(props: &Props) -> Html {
     let classes = classes!(

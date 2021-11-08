@@ -19,6 +19,7 @@ pub struct Props {
     pub active: Active,
 }
 
+/// [https://bulma.io/documentation/components/modal/](https://bulma.io/documentation/components/modal/)
 #[function_component(ModalCard)]
 pub fn modal_card(props: &Props) -> Html {
     let classes = classes!("modal", &props.extra, props.active);

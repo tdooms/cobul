@@ -4,7 +4,6 @@ use yew::virtual_dom::VChild;
 use crate::elements::Image;
 use crate::utils::enclose;
 
-// https://bulma.io/documentation/components/card/
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {
     #[prop_or_default]
@@ -23,6 +22,7 @@ pub struct Props {
     pub fullheight: bool,
 }
 
+/// [// https://bulma.io/documentation/components/card/](// https://bulma.io/documentation/components/card/)
 #[function_component(Card)]
 pub fn card(props: &Props) -> Html {
     let style = "height:100%;display:flex;flex-direction:column";

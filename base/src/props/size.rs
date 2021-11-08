@@ -48,7 +48,6 @@ impl Default for ButtonsSize {
 }
 
 /// Available placeholder sizes for figures.
-///
 /// https://bulma.io/documentation/elements/image/
 #[derive(Clone, Debug, Display, PartialEq, Copy)]
 #[display(fmt = "is-{}")]
@@ -108,7 +107,6 @@ impl Into<Classes> for ImageSize {
 }
 
 /// The six sizes available for titles & subtitles.
-///
 /// https://bulma.io/documentation/elements/title/#sizes
 #[derive(Clone, Debug, Display, PartialEq, Copy)]
 #[display(fmt = "is-{}")]
@@ -243,7 +241,6 @@ impl Into<Classes> for ColumnSize {
 }
 
 /// Tile size modifiers.
-///
 /// https://bulma.io/documentation/layout/tiles/#modifiers
 #[derive(Clone, Debug, Display, PartialEq, Copy)]
 #[display(fmt = "is-{}")]
@@ -281,7 +278,6 @@ impl Into<Classes> for TileSize {
 }
 
 /// The 6 sizes available for heros.
-///
 /// [https://bulma.io/documentation/layout/hero/#sizes](https://bulma.io/documentation/layout/hero/#sizes)
 /// [https://bulma.io/documentation/layout/hero/#fullheight-with-navbar](https://bulma.io/documentation/layout/hero/#fullheight-with-navbar)
 #[derive(Clone, Debug, Display, PartialEq, Copy)]

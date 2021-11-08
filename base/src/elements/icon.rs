@@ -9,10 +9,9 @@ pub struct Props {
     #[prop_or_default]
     pub extra: String,
 
-    /// The click handler to use for this component.
     #[prop_or_else(Callback::noop)]
     pub onclick: Callback<()>,
-    /// The size of this component; to help prevent page "jumps" during load.
+
     #[prop_or_default]
     pub size: Size,
 
@@ -20,7 +19,6 @@ pub struct Props {
     pub color: Option<TextColor>,
 }
 
-/// A container for any type of icon font.
 /// [https://bulma.io/documentation/elements/icon/](https://bulma.io/documentation/elements/icon/)
 #[function_component(Icon)]
 pub fn icon(props: &Props) -> Html {
