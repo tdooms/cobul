@@ -7,3 +7,4 @@ edition = "2018"
 
 [dependencies]
 derive_more = "0.99.16"
+yew = { git = "https://github.com/yewstack/yew.git", rev = "4e974dad9282eb765738394b8ee6c6a7d9baa2d9" }

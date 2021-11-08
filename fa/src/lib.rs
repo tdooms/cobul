@@ -1,4 +1,5 @@
 use derive_more::Display;
+use yew::html::IntoPropValue;
 
 #[derive(Debug, Clone, Copy, Display)]
 pub enum Icons {
@@ -3226,7 +3227,7 @@ pub enum Icons {
     Zhihu,
 }
 
-impl IntoPropValue<Icons> for String {
+impl IntoPropValue<String> for Icons {
     fn into_prop_value(self) -> String {
         self.to_string()
     }
