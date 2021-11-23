@@ -16,6 +16,9 @@ pub struct Props {
     pub label: Option<String>,
 
     #[prop_or_default]
+    pub optional: bool,
+
+    #[prop_or_default]
     pub help: Option<String>,
 
     #[prop_or_default]
@@ -31,15 +34,14 @@ pub struct Props {
 #[function_component(SimpleField)]
 pub fn simple_field(props: &Props) -> Html {
     let help = match &props.help {
-        Some(help) => {
-            html! { <Help color={props.help_color}> {help.clone()} </Help> }
-        }
+        Some(help) => html! { <Help color={props.help_color}> {help.clone()} </Help> },
         None => html! {},
     };
 
-    let label = match &props.label {
-        Some(label) => html! {<Label> {label.clone()} </Label>},
-        None => html! {},
+    let label = match (&props.label, props.optional) {
+        (Some(label), true) => html! {<Label> {label.clone()} {"-"} <i>{"Optional"}</i></Label>},
+        (Some(label), false) => html! {<Label> {label.clone()} </Label>},
+        _ => html! {},
     };
 
     let right = match &props.icon_right {
