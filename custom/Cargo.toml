@@ -9,6 +9,7 @@ edition = "2018"
 base = { path = "../base" }
 
 yew = "0.19.3"
+web-sys = "0.3"
 
 strum = { version = "0.21", features = ["derive"] }
 derive_more = "0.99.16"

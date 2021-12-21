@@ -3,7 +3,6 @@ use std::ops::Range;
 
 use num::{FromPrimitive, ToPrimitive};
 use yew::prelude::*;
-use yew::web_sys::HtmlInputElement;
 
 // maybe use num crate to define the trait bounds
 #[derive(Clone, PartialEq, Properties)]
@@ -34,7 +33,7 @@ pub fn slider<T: PartialEq + Clone + Display + FromPrimitive + ToPrimitive + 'st
     let step = ((end - start) / (steps as f64)).to_string();
 
     let oninput = props.onchange.reform(|e: InputEvent| {
-        T::from_f64(e.target_unchecked_into::<HtmlInputElement>().value_as_number()).unwrap()
+        T::from_f64(e.target_unchecked_into::<web_sys::HtmlInputElement>().value_as_number()).unwrap()
     });
 
     html! {
