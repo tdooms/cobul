@@ -8,8 +8,9 @@ repository = "https://github.com/tdooms/cobul"
 license = "GNU GPLv3"
 
 [dependencies]
-yew = { git = "https://github.com/yewstack/yew.git", rev = "4e974dad9282eb765738394b8ee6c6a7d9baa2d9" }
-yew-router = { git = "https://github.com/yewstack/yew.git", rev = "4e974dad9282eb765738394b8ee6c6a7d9baa2d9" }
+yew = "0.19.3"
+yew-router = "0.16"
+web-sys = "0.3"
 
 strum = { version = "0.21", features = ["derive"] }
 derive_more = "0.99.16"

@@ -1,5 +1,4 @@
 use yew::prelude::*;
-use yew::web_sys::HtmlInputElement;
 
 use crate::props::{Color, FixedSize, Loading, Size, Static};
 
@@ -58,7 +57,7 @@ pub fn textarea(props: &Props) -> Html {
     );
     let oninput = props
         .oninput
-        .reform(|e: InputEvent| e.target_unchecked_into::<HtmlInputElement>().value());
+        .reform(|e: InputEvent| e.target_unchecked_into::<web_sys::HtmlInputElement>().value());
 
     html! {
         <textarea

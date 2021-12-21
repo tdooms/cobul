@@ -17,7 +17,7 @@ pub struct Props<T: Routable + PartialEq + 'static> {
 pub fn dropdown_item<T: Routable + PartialEq + 'static>(props: &Props<T>) -> Html {
     let classes = classes!("dropdown-item", &props.extra);
     html! {
-        <Link<T> classes={classes} route={props.route.clone()}>
+        <Link<T> classes={classes} to={props.route.clone()}>
             { for props.children.iter() }
         </Link<T>>
     }
