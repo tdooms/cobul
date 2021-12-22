@@ -1,7 +1,5 @@
 use yew::prelude::*;
 
-use base::elements::Icon;
-use base::form::{Help, Label};
 use base::props::Color;
 
 #[derive(Clone, Debug, Properties, PartialEq)]
@@ -28,6 +26,6 @@ pub struct Props {
 }
 
 #[function_component(SimpleDropdown)]
-pub fn simple_dropdown(props: &Props) -> Html {
+pub fn simple_dropdown(_: &Props) -> Html {
     html!{}
 }

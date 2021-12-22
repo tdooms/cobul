@@ -1,7 +1,10 @@
+mod form;
+
 use derive_more::Display;
 use strum::EnumIter;
 use wasm_bindgen::prelude::*;
 use yew::prelude::*;
+use form::TestForm;
 
 use cobul::props::{Color, ColumnOffset, ColumnSize, Size, TextColor};
 use cobul::*;
@@ -54,6 +57,7 @@ impl Component for Main {
         html! {
             <Columns>
             <Column offset={ColumnOffset::Is2} size={ColumnSize::Is6}>
+            <TestForm/>
             <Block>
                 {"This text is within a "} <strong>{"block"}</strong>{"."}
             </Block>

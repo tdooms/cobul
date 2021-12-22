@@ -6,6 +6,9 @@ pub use custom::{components::*, extensions::*, simple::*};
 #[cfg(feature = "fa")]
 pub use fa::Icons;
 
+#[cfg(feature = "forms")]
+pub use forms::Form;
+
 pub mod props {
     pub use base::props::*;
 
