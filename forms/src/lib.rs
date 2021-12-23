@@ -3,12 +3,12 @@ use std::collections::HashMap;
 use validator::{Validate, ValidationError};
 
 #[derive(Properties, PartialEq, Clone)]
-pub struct Form<T: 'static + Validate + PartialEq + Clone, C: 'static + PartialEq> {
-    pub inner: T,
-    pub callback: Callback<C>
+pub struct Form<Ty: 'static + Validate + PartialEq + Clone, Call: 'static + PartialEq> {
+    pub inner: Ty,
+    pub callback: Callback<Call>
 }
 
-impl<T: 'static + Validate + PartialEq + Clone, C: 'static + PartialEq> Form<T, C> {
+impl<Ty: 'static + Validate + PartialEq + Clone, Call: 'static + PartialEq> Form<Ty, Call> {
     // FIXME: this is far from efficient but I guess it works
     // A few allocations every mouseclick is not terrible.
     pub fn errors(&self) -> HashMap<String, String> {
@@ -28,11 +28,11 @@ impl<T: 'static + Validate + PartialEq + Clone, C: 'static + PartialEq> Form<T, 
         errors.into_iter().filter_map(map).collect()
     }
 
-    pub fn values(&self) -> T {
+    pub fn values(&self) -> Ty {
         self.inner.clone()
     }
 
-    pub fn field<P>(&self, func: impl Fn(P, &mut T) + 'static, variant: impl Fn(T) -> C + 'static) -> Callback<P> {
+    pub fn field<Field>(&self, func: impl Fn(Field, &mut Ty) + 'static, variant: impl Fn(Ty) -> Call + 'static) -> Callback<Field> {
         let cloned = self.inner.clone();
         self.callback.reform(move |p| {
             let mut inner = cloned.clone();
@@ -41,7 +41,7 @@ impl<T: 'static + Validate + PartialEq + Clone, C: 'static + PartialEq> Form<T, 
         })
     }
 
-    pub fn callback(&self, variant: impl Fn(T) -> C + 'static) -> Callback<()> {
+    pub fn callback(&self, variant: impl Fn(Ty) -> Call + 'static) -> Callback<()> {
         let cloned = self.inner.clone();
         self.callback.reform(move |_| variant(cloned.clone()))
     }
