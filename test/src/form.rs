@@ -28,7 +28,7 @@ pub enum Msg {
 
 #[function_component(SignupForm)]
 pub fn signup(props: &Form<Signup, Msg>) -> Html {
-    let Signup { mail, site, username } = props.values();
+    let Signup { mail, site, username } = props.inner();
     let errors = props.errors();
 
     html! {
