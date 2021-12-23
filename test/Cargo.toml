@@ -12,4 +12,4 @@ wasm-bindgen = "0.2"
 derive_more = "0.99.16"
 strum = { version = "0.21", features = ["derive"] }
 yew = "0.19.3"
-validator = { version = "0.12", features = ["derive"] }
+validator = { version = "0.14", features = ["derive"] }

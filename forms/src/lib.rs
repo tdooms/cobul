@@ -32,12 +32,21 @@ impl<Ty: 'static + Validate + PartialEq + Clone, Call: 'static + PartialEq> Form
         self.inner.clone()
     }
 
-    pub fn field<Field>(&self, func: impl Fn(Field, &mut Ty) + 'static, variant: impl Fn(Ty) -> Call + 'static) -> Callback<Field> {
+    // pub fn field<Field>(&self, func: impl Fn(Field, &mut Ty) + 'static, variant: impl Fn(Ty) -> Call + 'static) -> Callback<Field> {
+    //     let cloned = self.inner.clone();
+    //     self.callback.reform(move |p| {
+    //         let mut inner = cloned.clone();
+    //         func(p, &mut inner);
+    //         variant(inner)
+    //     })
+    // }
+
+    pub fn field<Field>(&self, extract: impl Fn(&mut Ty) -> &mut Field + 'static, callback: impl Fn(Ty) -> Call + 'static)-> Callback<Field>{
         let cloned = self.inner.clone();
-        self.callback.reform(move |p| {
+        self.callback.reform(move |field| {
             let mut inner = cloned.clone();
-            func(p, &mut inner);
-            variant(inner)
+            *extract(&mut inner) = field;
+            callback(inner)
         })
     }
 

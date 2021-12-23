@@ -15,8 +15,8 @@ pub struct Signup {
     #[validate(length(min = 1))]
     pub username: String,
 
-    #[validate(range(min = 18, max = 20, message = "age must be between 18 and 20"))]
-    pub age: u32,
+    // #[validate(range(min = 18, max = 20, message = "age must be between 18 and 20"))]
+    // pub age: u32,
 }
 
 #[derive(Clone, Debug, PartialEq)]
@@ -28,25 +28,21 @@ pub enum Msg {
 
 #[function_component(SignupForm)]
 pub fn signup(props: &Form<Signup, Msg>) -> Html {
-    let Signup { mail, site, username, age } = props.values();
+    let Signup { mail, site, username } = props.values();
     let errors = props.errors();
 
     html! {
         <>
         <SimpleField label="mail" help_color={Color::Danger} help={errors.get("mail").cloned()}>
-            <Input oninput={props.field(|v, x| x.mail = v, Msg::Change)} value={mail}/>
+            <Input oninput={props.field(|x| &mut x.mail, Msg::Change)} value={mail}/>
         </SimpleField>
 
         <SimpleField label="site" help_color={Color::Danger} help={errors.get("site").cloned()}>
-            <Input oninput={props.field(|v, x| x.site = v, Msg::Change)} value={site}/>
+            <Input oninput={props.field(|x| &mut x.site, Msg::Change)} value={site}/>
         </SimpleField>
 
         <SimpleField label="username" help_color={Color::Danger} help={errors.get("username").cloned()}>
-            <Input oninput={props.field(|v, x| x.username = v, Msg::Change)} value={username}/>
-        </SimpleField>
-
-        <SimpleField label="age" help_color={Color::Danger} help={errors.get("age").cloned()}>
-            <Input oninput={props.field(|v: String, x| x.age = v.parse().unwrap_or_default(), Msg::Change)} value={age.to_string()}/>
+            <Input oninput={props.field(|x| &mut x.username, Msg::Change)} value={username}/>
         </SimpleField>
 
         <Buttons>
@@ -75,7 +71,7 @@ impl Component for TestForm {
             mail: "thomas@dooms.eu".to_owned(),
             site: "https://www.youtube.com".to_owned(),
             username: "dumos".to_owned(),
-            age: 19,
+            // age: 19,
         };
 
         // let second = Signup {
