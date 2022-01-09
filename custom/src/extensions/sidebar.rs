@@ -47,7 +47,7 @@ pub fn sidebar(props: &Props) -> Html {
         Some(html) => html! {
             <>
                 { for props.children.iter() }
-                <div style="margin-left:auto" />
+                <div style="margin-bottom:auto" />
                 <hr />
                 { html.clone() }
             </>
