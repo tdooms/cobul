@@ -41,6 +41,15 @@ impl<Ty: 'static + Validate + PartialEq + Clone> Form<Ty> {
         })
     }
 
+    pub fn change<Field>(&self, func: impl Fn(&mut Ty, Field) + 'static) -> Callback<Field> {
+        let cloned = self.inner.clone();
+        self.onchange.reform(move |field| {
+            let mut inner = cloned.clone();
+            func(&mut inner, field);
+            inner
+        })
+    }
+
     pub fn submit(&self) -> Callback<()> {
         let cloned = self.inner.clone();
         self.onsubmit.reform(move |_| cloned.clone())

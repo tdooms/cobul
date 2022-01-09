@@ -13,8 +13,8 @@ pub struct Signup {
 
     #[validate(length(min = 1))]
     pub username: String,
-    // #[validate(range(min = 18, max = 20, message = "age must be between 18 and 20"))]
-    // pub age: u32,
+    #[validate(range(min = 18, max = 20, message = "age must be between 18 and 20"))]
+    pub age: u32,
 }
 
 #[function_component(SignupForm)]
@@ -23,6 +23,7 @@ pub fn signup(props: &Form<Signup>) -> Html {
         mail,
         site,
         username,
+        age
     } = props.inner();
     let errors = props.errors();
 
@@ -38,6 +39,10 @@ pub fn signup(props: &Form<Signup>) -> Html {
 
         <SimpleField label="username" help_color={Color::Danger} help={errors.get("username").cloned()}>
             <Input oninput={props.field(|x| &mut x.username)} value={username}/>
+        </SimpleField>
+
+        <SimpleField label="age" help_color={Color::Danger} help={errors.get("age").cloned()}>
+            <Input oninput={props.change(|x, f: String| x.age = f.parse::<u32>().unwrap_or_default())} value={age.to_string()}/>
         </SimpleField>
 
         <Buttons>
@@ -59,7 +64,7 @@ pub fn form_tester() -> Html {
         mail: "thomas@dooms.eu".to_owned(),
         site: "https://www.youtube.com".to_owned(),
         username: "dumos".to_owned(),
-        // age: 19,
+        age: 19,
     });
 
     let onchange = {
