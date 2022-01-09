@@ -28,7 +28,7 @@ pub fn sidebar(props: &Props) -> Html {
     let footer_class = props
         .footer
         .as_ref()
-        .map(|_| "is-flex is-flex-direction-column is-justify-content-space-between");
+        .map(|_| "is-flex is-flex-direction-column");
 
     let classes = classes!("column", &props.extra, props.size, footer_class);
 
@@ -47,6 +47,7 @@ pub fn sidebar(props: &Props) -> Html {
         Some(html) => html! {
             <>
                 { for props.children.iter() }
+                <div style="margin-left:auto" />
                 <hr />
                 { html.clone() }
             </>
