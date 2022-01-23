@@ -64,3 +64,5 @@ bool_prop!(TextCentered, "has-text-centered");
 bool_prop!(Mobile, "is-mobile");
 bool_prop!(Hovered, "is-hovered");
 bool_prop!(Focused, "is-focused");
+bool_prop!(Up, "is-up");
+bool_prop!(Right, "is-right");
