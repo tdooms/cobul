@@ -14,7 +14,7 @@
 //     #[prop_or_default]
 //     pub children: Children,
 //     #[prop_or_default]
-//     pub extra: String,
+//     pub class: Classes,
 //     /// The size of this component.
 //     #[prop_or_default]
 //     pub size: Option<Size>,

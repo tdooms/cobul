@@ -7,7 +7,7 @@ use base::props::{Alignment, Color, Size};
 #[derive(Clone, Properties, PartialEq)]
 pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static> {
     #[prop_or_default]
-    pub extra: String,
+    pub class: Classes,
 
     #[prop_or_default]
     pub alignment: Alignment,
@@ -26,7 +26,14 @@ pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static> {
 pub fn enum_buttons<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static>(
     props: &Props<T>,
 ) -> Html {
-    let Props{extra, alignment, size, color, value, onclick} = &props;
+    let Props {
+        extra,
+        alignment,
+        size,
+        color,
+        value,
+        onclick,
+    } = &props;
     let button_map = |variant: T| {
         let selected = value == &variant;
         let color = selected.then(|| color);

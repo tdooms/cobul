@@ -8,7 +8,7 @@ pub struct Props {
     pub children: Children,
 
     #[prop_or_default]
-    pub extra: String,
+    pub class: Classes,
 
     #[prop_or_default]
     pub alignment: Option<Alignment>,
@@ -29,13 +29,12 @@ pub struct Props {
     pub fullwidth: Fullwidth,
 }
 
-
 /// [https://bulma.io/documentation/components/tabs/](https://bulma.io/documentation/components/tabs/)
 #[function_component(Tabs)]
 pub fn tabs(props: &Props) -> Html {
     let classes = classes!(
         "tabs",
-        &props.extra,
+        props.class.clone(),
         props.size,
         props.boxed,
         props.toggle,

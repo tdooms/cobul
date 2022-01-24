@@ -1,4 +1,4 @@
-use crate::props::{Hoverable, Active, Up, Right};
+use crate::props::{Active, Hoverable, Right, Up};
 use yew::prelude::*;
 
 #[derive(Clone, Debug, Properties, PartialEq)]
@@ -9,7 +9,7 @@ pub struct Props {
     pub trigger: Html,
 
     #[prop_or_default]
-    pub extra: String,
+    pub class: Classes,
 
     #[prop_or_default]
     pub up: Up,
@@ -32,7 +32,7 @@ pub struct Props {
 pub fn dropdown(props: &Props) -> Html {
     let classes = classes!(
         "dropdown",
-        &props.extra,
+        props.class.clone(),
         props.hoverable,
         props.active,
         props.up,

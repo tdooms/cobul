@@ -13,7 +13,7 @@ pub struct Props {
     pub oninput: Callback<String>,
 
     #[prop_or_default]
-    pub extra: String,
+    pub class: Classes,
 
     #[prop_or_default]
     pub placeholder: String,
@@ -48,16 +48,17 @@ pub struct Props {
 pub fn textarea(props: &Props) -> Html {
     let classes = classes!(
         "textarea",
-        &props.extra,
+        props.class.clone(),
         props.color,
         props.size,
         props.loading,
         props.r#static,
         props.fixed
     );
-    let oninput = props
-        .oninput
-        .reform(|e: InputEvent| e.target_unchecked_into::<web_sys::HtmlInputElement>().value());
+    let oninput = props.oninput.reform(|e: InputEvent| {
+        e.target_unchecked_into::<web_sys::HtmlInputElement>()
+            .value()
+    });
 
     html! {
         <textarea

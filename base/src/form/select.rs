@@ -5,7 +5,7 @@ use yew::prelude::*;
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static> {
     #[prop_or_default]
-    pub extra: String,
+    pub class: Classes,
 
     #[prop_or_default]
     pub color: Option<Color>,
@@ -37,7 +37,7 @@ pub fn select<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static>(
 ) -> Html {
     let classes = classes!(
         "select",
-        &props.extra,
+        props.class.clone(),
         props.color,
         props.size,
         props.rounded,

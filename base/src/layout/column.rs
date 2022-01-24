@@ -8,7 +8,7 @@ pub struct Props {
     pub children: Children,
 
     #[prop_or_default]
-    pub extra: String,
+    pub class: Classes,
 
     #[prop_or_default]
     pub size: Option<ColumnSize>,
@@ -20,7 +20,7 @@ pub struct Props {
 /// [https://bulma.io/documentation/columns/](https://bulma.io/documentation/columns/)
 #[function_component(Column)]
 pub fn column(props: &Props) -> Html {
-    let classes = classes!("column", &props.extra, props.size, props.offset);
+    let classes = classes!("column", props.class.clone(), props.size, props.offset);
 
     html! {
         <div class={classes}>

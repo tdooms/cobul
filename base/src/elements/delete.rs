@@ -7,7 +7,7 @@ pub struct Props {
     pub children: Children,
 
     #[prop_or_default]
-    pub extra: String,
+    pub class: Classes,
 
     #[prop_or_default]
     pub size: Size,
@@ -21,7 +21,7 @@ pub struct Props {
 /// [https://bulma.io/documentation/elements/delete/](https://bulma.io/documentation/elements/delete/)
 #[function_component(Delete)]
 pub fn delete(props: &Props) -> Html {
-    let classes = classes!("delete", &props.extra, props.size);
+    let classes = classes!("delete", props.class.clone(), props.size);
     let onclick = props.onclick.reform(|_| ());
 
     html! {

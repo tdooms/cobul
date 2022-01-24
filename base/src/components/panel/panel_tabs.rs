@@ -1,10 +1,10 @@
-use yew::prelude::*;
 use strum::IntoEnumIterator;
+use yew::prelude::*;
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static> {
     #[prop_or_default]
-    pub extra: String,
+    pub class: Classes,
 
     pub value: T,
 
@@ -13,7 +13,9 @@ pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static> {
 
 /// [https://bulma.io/documentation/components/panel/](https://bulma.io/documentation/components/panel/)
 #[function_component(PanelTabs)]
-pub fn panel_tabs<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static>(props: &Props<T>) -> Html {
+pub fn panel_tabs<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static>(
+    props: &Props<T>,
+) -> Html {
     let button_map = |variant: T| {
         let active = props.value == variant;
         let onclick = props.onclick.reform(move |_| variant);
@@ -26,7 +28,7 @@ pub fn panel_tabs<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static>(p
     };
 
     html! {
-        <div class={classes!("panel-tabs", &props.extra)}>
+        <div class={classes!("panel-tabs", props.class.clone())}>
             { for T::iter().map(button_map) }
         </div>
     }

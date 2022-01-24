@@ -7,7 +7,7 @@ pub struct Props {
     #[prop_or_default]
     pub children: Children,
     #[prop_or_default]
-    pub extra: String,
+    pub class: Classes,
 
     #[prop_or_default]
     pub heading: Option<Html>,
@@ -19,7 +19,7 @@ pub struct Props {
 /// [https://bulma.io/documentation/components/panel/](https://bulma.io/documentation/components/panel/)
 #[function_component(Panel)]
 pub fn panel(props: &Props) -> Html {
-    let classes = classes!("panel", &props.extra, props.color);
+    let classes = classes!("panel", props.class.clone(), props.color);
     html! {
         <nav class={classes}>
             { enclose_with_tag("p", "panel-heading", props.heading.clone()) }

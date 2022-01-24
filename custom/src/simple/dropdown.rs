@@ -8,7 +8,7 @@ pub struct Props {
     pub children: Children,
 
     #[prop_or_default]
-    pub extra: String,
+    pub class: Classes,
 
     pub text: String,
 
@@ -27,5 +27,5 @@ pub struct Props {
 
 #[function_component(SimpleDropdown)]
 pub fn simple_dropdown(_: &Props) -> Html {
-    html!{}
+    html! {}
 }

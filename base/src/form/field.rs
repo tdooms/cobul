@@ -8,7 +8,7 @@ pub struct Props {
     pub children: Children,
 
     #[prop_or_default]
-    pub extra: String,
+    pub class: Classes,
 
     #[prop_or_default]
     pub grouped: Grouped,
@@ -28,7 +28,7 @@ pub struct Props {
 pub fn field(props: &Props) -> Html {
     let classes = classes!(
         "field",
-        &props.extra,
+        props.class.clone(),
         props.multiline,
         props.addons,
         props.grouped,

@@ -1,5 +1,5 @@
-use yew::prelude::*;
 use web_sys;
+use yew::prelude::*;
 
 use crate::props::{Alignment, Boxed, Color, Fullwidth, Size};
 
@@ -27,7 +27,7 @@ pub struct Props {
     pub alignment: Alignment,
 
     #[prop_or_default]
-    pub extra: String,
+    pub class: Classes,
 
     pub onupload: Callback<Vec<web_sys::File>>,
 }
@@ -46,7 +46,7 @@ pub fn file(props: &Props) -> Html {
         props.boxed,
         props.fullwidth,
         props.alignment,
-        &props.extra
+        props.class.clone()
     );
 
     let onchange = props.onupload.reform(|e: Event| {

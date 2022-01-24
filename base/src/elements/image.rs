@@ -5,7 +5,7 @@ use crate::props::{ImageSize, Rounded};
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {
     #[prop_or_default]
-    pub extra: String,
+    pub class: Classes,
 
     #[prop_or_default]
     pub size: Option<ImageSize>,
@@ -20,7 +20,7 @@ pub struct Props {
 /// [https://bulma.io/documentation/elements/image/](https://bulma.io/documentation/elements/image/)
 #[function_component(Image)]
 pub fn image(props: &Props) -> Html {
-    let classes = classes!("image", &props.extra, props.size);
+    let classes = classes!("image", props.class.clone(), props.size);
 
     html! {
         <figure class={classes}>

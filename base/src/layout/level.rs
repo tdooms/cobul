@@ -9,7 +9,7 @@ pub struct Props {
     pub children: Children,
 
     #[prop_or_default]
-    pub extra: String,
+    pub class: Classes,
 
     #[prop_or_default]
     pub left: Option<Html>,
@@ -27,7 +27,7 @@ pub struct Props {
 /// [https://bulma.io/documentation/layout/level/](https://bulma.io/documentation/layout/level/)
 #[function_component(Level)]
 pub fn level(props: &Props) -> Html {
-    let classes = classes!("level", &props.extra, props.centered, props.mobile);
+    let classes = classes!("level", props.class.clone(), props.centered, props.mobile);
     html! {
         <div class={classes}>
             { enclose("media-left", props.left.clone()) }

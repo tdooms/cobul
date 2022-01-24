@@ -8,7 +8,7 @@ pub struct Props {
     pub children: Children,
 
     #[prop_or_default]
-    pub extra: String,
+    pub class: Classes,
 
     #[prop_or_default]
     pub addons: Addons,
@@ -17,7 +17,7 @@ pub struct Props {
 /// [https://bulma.io/documentation/elements/tag/](https://bulma.io/documentation/elements/tag/)
 #[function_component(Tags)]
 pub fn tags(props: &Props) -> Html {
-    let classes = classes!("tags", &props.extra, props.addons);
+    let classes = classes!("tags", props.class.clone(), props.addons);
 
     html! {
         <div class={classes}>

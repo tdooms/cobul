@@ -8,7 +8,7 @@ pub struct Props {
     pub children: Children,
 
     #[prop_or_default]
-    pub extra: String,
+    pub class: Classes,
 
     #[prop_or_else(|| "div".into())]
     pub tag: String,
@@ -28,7 +28,7 @@ pub struct Props {
 pub fn control(props: &Props) -> Html {
     let classes = classes!(
         "control",
-        &props.extra,
+        props.class.clone(),
         props.expanded,
         props.right.as_ref().map(|_| "has-icons-right"),
         props.left.as_ref().map(|_| "has-icons-left")

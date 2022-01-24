@@ -4,12 +4,11 @@ use crate::props::{Alignment, Separator, Size};
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {
-
     #[prop_or_default]
     pub children: Children,
 
     #[prop_or_default]
-    pub extra: String,
+    pub class: Classes,
 
     #[prop_or_default]
     pub size: Option<Size>,
@@ -21,7 +20,6 @@ pub struct Props {
     pub separator: Option<Separator>,
 }
 
-
 /// [https://bulma.io/documentation/components/breadcrumb/](https://bulma.io/documentation/components/breadcrumb/)
 #[function_component(Breadcrumb)]
 pub fn breadcrumb(props: &Props) -> Html {
@@ -30,7 +28,7 @@ pub fn breadcrumb(props: &Props) -> Html {
         props.size,
         props.alignment,
         props.separator,
-        &props.extra
+        props.class.clone()
     );
 
     html! {

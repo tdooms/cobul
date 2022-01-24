@@ -5,7 +5,7 @@ use crate::props::{Color, Size};
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {
     #[prop_or_default]
-    pub extra: String,
+    pub class: Classes,
 
     #[prop_or_else(|| 1.0)]
     pub max: f32,
@@ -23,7 +23,7 @@ pub struct Props {
 /// [https://bulma.io/documentation/elements/progress/](https://bulma.io/documentation/elements/progress/)
 #[function_component(Progress)]
 pub fn progress(props: &Props) -> Html {
-    let classes = classes!("progress", &props.extra, props.size, props.color);
+    let classes = classes!("progress", props.class.clone(), props.size, props.color);
 
     let max = props.max.to_string();
     let value = props.value.as_ref().map(ToString::to_string);

@@ -8,7 +8,7 @@ pub struct Props {
     pub children: Children,
 
     #[prop_or_default]
-    pub extra: String,
+    pub class: Classes,
 
     #[prop_or_default]
     pub size: Option<HeaderSize>,
@@ -18,7 +18,7 @@ pub struct Props {
 #[function_component(Subtitle)]
 pub fn subtitle(props: &Props) -> Html {
     let size = props.size.unwrap_or(HeaderSize::Is5);
-    let classes = classes!("subtitle", &props.extra, size);
+    let classes = classes!("subtitle", props.class.clone(), size);
 
     html! {
         <p class={classes}>

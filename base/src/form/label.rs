@@ -5,13 +5,13 @@ pub struct Props {
     #[prop_or_default]
     pub children: Children,
     #[prop_or_default]
-    pub extra: String,
+    pub class: Classes,
 }
 
 /// [https://bulma.io/documentation/form/general/](https://bulma.io/documentation/form/general/)
 #[function_component(Label)]
 pub fn label(props: &Props) -> Html {
-    let classes = classes!("label", &props.extra);
+    let classes = classes!("label", props.class.clone());
 
     html! {
         <div class={classes}>

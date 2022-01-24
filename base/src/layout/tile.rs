@@ -8,7 +8,7 @@ pub struct Props {
     pub children: Children,
 
     #[prop_or_default]
-    pub extra: String,
+    pub class: Classes,
 
     #[prop_or_else(|| "div".into())]
     pub tag: String,
@@ -26,7 +26,13 @@ pub struct Props {
 /// [https://bulma.io/documentation/layout/tiles/](https://bulma.io/documentation/layout/tiles/)
 #[function_component(Tile)]
 pub fn tile(props: &Props) -> Html {
-    let classes = classes!("tile", &props.extra, props.ctx, props.size, props.vertical);
+    let classes = classes!(
+        "tile",
+        props.class.clone(),
+        props.ctx,
+        props.size,
+        props.vertical
+    );
 
     html! {
         <@{ props.tag.clone() } class={classes}>

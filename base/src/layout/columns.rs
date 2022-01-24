@@ -8,7 +8,7 @@ pub struct Props {
     pub children: Children,
 
     #[prop_or_default]
-    pub extra: String,
+    pub class: Classes,
 
     #[prop_or_default]
     pub vcentered: VCentered,
@@ -32,7 +32,7 @@ pub struct Props {
 pub fn columns(props: &Props) -> Html {
     let classes = classes!(
         "columns",
-        &props.extra,
+        props.class.clone(),
         props.vcentered,
         props.multiline,
         props.centered,

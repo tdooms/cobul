@@ -10,7 +10,7 @@ pub struct Props {
     pub children: Children,
 
     #[prop_or_default]
-    pub extra: String,
+    pub class: Classes,
 
     #[prop_or_default]
     pub label: Option<String>,
@@ -45,12 +45,12 @@ pub fn simple_field(props: &Props) -> Html {
     };
 
     let right = match &props.icon_right {
-        Some(right) => html! {<Icon icon={right.clone()} extra="is-right"/>},
+        Some(right) => html! {<Icon icon={right.clone()} class="is-right"/>},
         None => html! {},
     };
 
     let left = match &props.icon_left {
-        Some(left) => html! {<Icon icon={left.clone()} extra="is-left"/>},
+        Some(left) => html! {<Icon icon={left.clone()} class="is-left"/>},
         None => html! {},
     };
 
@@ -61,7 +61,7 @@ pub fn simple_field(props: &Props) -> Html {
     );
 
     html! {
-        <div class={classes!("field", props.extra.clone())}>
+        <div class={classes!("field", props.class.clone())}>
             { label }
             <div class={control_classes}>
                 { right }

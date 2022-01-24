@@ -59,7 +59,7 @@ pub struct Props {
     pub r#static: Static,
 
     #[prop_or_default]
-    pub extra: String,
+    pub class: Classes,
 }
 
 /// [https://bulma.io/documentation/elements/button/](https://bulma.io/documentation/elements/button/)
@@ -81,7 +81,7 @@ pub fn button(props: &Props) -> Html {
         props.focussed,
         props.active,
         props.r#static,
-        &props.extra
+        props.class.clone()
     );
 
     let onclick = props.onclick.reform(|_| ());

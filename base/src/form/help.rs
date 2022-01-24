@@ -7,7 +7,7 @@ pub struct Props {
     #[prop_or_default]
     pub children: Children,
     #[prop_or_default]
-    pub extra: String,
+    pub class: Classes,
 
     #[prop_or_default]
     pub color: Option<Color>,
@@ -16,7 +16,7 @@ pub struct Props {
 /// [https://bulma.io/documentation/form/general/](https://bulma.io/documentation/form/general/)
 #[function_component(Help)]
 pub fn help(props: &Props) -> Html {
-    let classes = classes!("help", &props.extra, props.color);
+    let classes = classes!("help", props.class.clone(), props.color);
 
     html! {
         <div class={classes}>

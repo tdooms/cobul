@@ -8,7 +8,7 @@ pub struct Props {
     pub children: Children,
 
     #[prop_or_default]
-    pub extra: String,
+    pub class: Classes,
 
     #[prop_or_default]
     pub alignment: Alignment,
@@ -23,7 +23,12 @@ pub struct Props {
 /// [https://bulma.io/documentation/elements/button/#list-of-buttons](https://bulma.io/documentation/elements/button/#list-of-buttons)
 #[function_component(Buttons)]
 pub fn buttons(props: &Props) -> Html {
-    let classes = classes!("buttons", &props.extra, props.alignment, props.addons);
+    let classes = classes!(
+        "buttons",
+        props.class.clone(),
+        props.alignment,
+        props.addons
+    );
 
     html! {
         <div class={classes}>

@@ -13,7 +13,7 @@ pub struct Props {
     pub footer: Option<Html>,
 
     #[prop_or_default]
-    pub extra: String,
+    pub class: Classes,
 
     #[prop_or_default]
     pub active: Active,
@@ -22,7 +22,7 @@ pub struct Props {
 /// [https://bulma.io/documentation/components/modal/](https://bulma.io/documentation/components/modal/)
 #[function_component(ModalCard)]
 pub fn modal_card(props: &Props) -> Html {
-    let classes = classes!("modal", &props.extra, props.active);
+    let classes = classes!("modal", props.class.clone(), props.active);
 
     let footer = match &props.footer {
         Some(html) => html.clone(),

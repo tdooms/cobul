@@ -7,7 +7,7 @@ pub struct Props {
     #[prop_or_default]
     pub children: Children,
     #[prop_or_default]
-    pub extra: String,
+    pub class: Classes,
 
     #[prop_or_default]
     pub bordered: Bordered,
@@ -33,7 +33,7 @@ pub struct Props {
 pub fn table(props: &Props) -> html {
     let classes = classes!(
         "table",
-        &props.extra,
+        props.class.clone(),
         props.bordered,
         props.striped,
         props.narrow,

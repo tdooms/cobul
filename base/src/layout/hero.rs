@@ -6,7 +6,7 @@ use crate::utils::enclose;
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {
     #[prop_or_default]
-    pub extra: String,
+    pub class: Classes,
 
     #[prop_or_default]
     pub color: Option<Color>,
@@ -27,7 +27,7 @@ pub struct Props {
 /// [https://bulma.io/documentation/layout/hero/](https://bulma.io/documentation/layout/hero/)
 #[function_component(Hero)]
 pub fn hero(props: &Props) -> Html {
-    let classes = classes!("hero", props.size, props.color, &props.extra);
+    let classes = classes!("hero", props.size, props.color, props.class.clone());
 
     html! {
         <section class={classes}>

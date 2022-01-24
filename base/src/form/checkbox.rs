@@ -12,7 +12,7 @@ pub struct Props {
     pub children: Children,
 
     #[prop_or_default]
-    pub extra: String,
+    pub class: Classes,
 
     #[prop_or_default]
     pub disabled: bool,
@@ -21,7 +21,7 @@ pub struct Props {
 /// [https://bulma.io/documentation/form/checkbox/](https://bulma.io/documentation/form/checkbox/)
 #[function_component(Checkbox)]
 pub fn checkbox(props: &Props) -> Html {
-    let classes = classes!("checkbox", &props.extra);
+    let classes = classes!("checkbox", props.class.clone());
 
     let copied = !props.checked;
     let onchange = props.onchange.reform(move |_| copied);

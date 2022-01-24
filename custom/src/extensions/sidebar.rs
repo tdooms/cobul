@@ -8,7 +8,7 @@ pub struct Props {
     #[prop_or_default]
     pub children: Children,
     #[prop_or_default]
-    pub extra: String,
+    pub class: Classes,
 
     #[prop_or(SidebarAlignment::Right)]
     pub alignment: SidebarAlignment,
@@ -30,7 +30,7 @@ pub fn sidebar(props: &Props) -> Html {
         .as_ref()
         .map(|_| "is-flex is-flex-direction-column");
 
-    let classes = classes!("column", &props.extra, props.size, footer_class);
+    let classes = classes!("column", props.class.clone(), props.size, footer_class);
 
     let shadow = match props.alignment {
         SidebarAlignment::Right => "-10px 0px 10px 1px #eeeeee",

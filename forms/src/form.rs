@@ -1,6 +1,6 @@
 use crate::util::validate_fields;
 use std::collections::HashMap;
-use validator::{Validate, ValidationError};
+use validator::Validate;
 use yew::{Callback, Properties};
 
 #[derive(Properties, PartialEq, Clone)]

@@ -6,7 +6,7 @@ use crate::props::{Color, Focused, Hovered, Size};
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static> {
     #[prop_or_default]
-    pub extra: String,
+    pub class: Classes,
 
     #[prop_or_default]
     pub color: Option<Color>,
@@ -34,7 +34,7 @@ pub fn multiple_select<T: IntoEnumIterator + ToString + Copy + PartialEq + 'stat
     let classes = classes!(
         "select",
         "is-multiple",
-        &props.extra,
+        props.class.clone(),
         props.color,
         props.size
     );

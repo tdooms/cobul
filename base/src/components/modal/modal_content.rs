@@ -8,7 +8,7 @@ pub struct Props {
     pub children: Children,
 
     #[prop_or_default]
-    pub extra: String,
+    pub class: Classes,
 
     #[prop_or_default]
     pub active: Active,
@@ -17,7 +17,7 @@ pub struct Props {
 /// [https://bulma.io/documentation/components/modal/](https://bulma.io/documentation/components/modal/)
 #[function_component(ModalContent)]
 pub fn modal_content(props: &Props) -> Html {
-    let classes = classes!("modal", &props.extra, props.active);
+    let classes = classes!("modal", props.class.clone(), props.active);
 
     html! {
         <div class={classes}>

@@ -5,7 +5,7 @@ use crate::props::TextColor;
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {
     #[prop_or_default]
-    pub extra: String,
+    pub class: Classes,
 
     #[prop_or_default]
     pub color: Option<TextColor>,
@@ -17,6 +17,6 @@ pub struct Props {
 /// [https://bulma.io/documentation/elements/icon/](https://bulma.io/documentation/elements/icon/)
 #[function_component(IconText)]
 pub fn icon_text(props: &Props) -> Html {
-    let classes = classes!("icon-text", &props.extra, props.color);
+    let classes = classes!("icon-text", props.class.clone(), props.color);
     html! {<span class={classes}> { for props.children.iter() } </span>}
 }

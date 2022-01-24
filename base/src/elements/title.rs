@@ -8,7 +8,7 @@ pub struct Props {
     pub children: Children,
 
     #[prop_or_default]
-    pub extra: String,
+    pub class: Classes,
 
     #[prop_or_default]
     pub spaced: Spaced,
@@ -21,7 +21,7 @@ pub struct Props {
 #[function_component(Title)]
 pub fn title(props: &Props) -> Html {
     let size = props.size.unwrap_or(HeaderSize::Is3);
-    let classes = classes!("title", &props.extra, size, props.spaced);
+    let classes = classes!("title", props.class.clone(), size, props.spaced);
 
     html! {
         <p class={classes}>

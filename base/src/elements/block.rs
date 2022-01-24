@@ -6,13 +6,13 @@ pub struct Props {
     pub children: Children,
 
     #[prop_or_default]
-    pub extra: String,
+    pub class: Classes,
 }
 
 /// [https://bulma.io/documentation/elements/block/](https://bulma.io/documentation/elements/block/)
 #[function_component(Block)]
 pub fn block(props: &Props) -> Html {
-    let classes = classes!("block", &props.extra);
+    let classes = classes!("block", props.class.clone());
     html! {
         <div class={classes}>
             { for props.children.iter() }

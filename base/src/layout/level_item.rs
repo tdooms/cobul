@@ -6,13 +6,13 @@ pub struct Props {
     pub children: Children,
 
     #[prop_or_default]
-    pub extra: String,
+    pub class: Classes,
 }
 
 /// [https://bulma.io/documentation/layout/level/](https://bulma.io/documentation/layout/level/)
 #[function_component(LevelItem)]
 pub fn level_item(props: &Props) -> Html {
-    let classes = classes!("level-item", &props.extra);
+    let classes = classes!("level-item", props.class.clone());
     html! {
         <div class={classes}>
             { for props.children.iter() }

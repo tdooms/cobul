@@ -8,7 +8,7 @@ pub struct Props {
     pub children: Children,
 
     #[prop_or_default]
-    pub extra: String,
+    pub class: Classes,
 
     #[prop_or_default]
     pub size: Option<ContainerSize>,
@@ -17,7 +17,7 @@ pub struct Props {
 /// [https://bulma.io/documentation/layout/container/](https://bulma.io/documentation/layout/container/)
 #[function_component(Container)]
 pub fn container(props: &Props) -> Html {
-    let classes = classes!("container", &props.extra, props.size);
+    let classes = classes!("container", props.class.clone(), props.size);
 
     html! {
         <div class={classes}>

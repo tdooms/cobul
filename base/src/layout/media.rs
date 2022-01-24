@@ -8,7 +8,7 @@ pub struct Props {
     pub children: Children,
 
     #[prop_or_default]
-    pub extra: String,
+    pub class: Classes,
 
     #[prop_or_default]
     pub right: Option<Html>,
@@ -26,7 +26,7 @@ pub struct Props {
 /// [https://bulma.io/documentation/layout/media-object/](https://bulma.io/documentation/layout/media-object/)
 #[function_component(Media)]
 pub fn media(props: &Props) -> Html {
-    let classes = classes!("media", &props.extra);
+    let classes = classes!("media", props.class.clone());
     html! {
         <div class={classes}>
             { enclose_with_tag(props.left_tag.clone(), "media-left", props.left.clone()) }

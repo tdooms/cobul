@@ -10,7 +10,7 @@ pub struct Props {
     pub children: Children,
 
     #[prop_or_default]
-    pub extra: String,
+    pub class: Classes,
 
     #[prop_or_default]
     pub color: Option<Color>,
@@ -22,7 +22,12 @@ pub struct Props {
 /// [https://bulma.io/documentation/elements/notification/](https://bulma.io/documentation/elements/notification/)
 #[function_component(Notification)]
 pub fn notification(props: &Props) -> Html {
-    let classes = classes!("notification", &props.extra, props.color, props.light);
+    let classes = classes!(
+        "notification",
+        props.class.clone(),
+        props.color,
+        props.light
+    );
     let onclick = props.onclick.reform(|_| ());
 
     html! {
