@@ -27,7 +27,7 @@ pub fn enum_buttons<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static>
     props: &Props<T>,
 ) -> Html {
     let Props {
-        extra,
+        class,
         alignment,
         size,
         color,
@@ -47,7 +47,7 @@ pub fn enum_buttons<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static>
     };
 
     html! {
-        <Buttons addons=true alignment={*alignment}>
+        <Buttons addons=true alignment={*alignment} class={class.clone()}>
             { for T::iter().map(button_map) }
         </Buttons>
     }
