@@ -19,7 +19,7 @@ pub fn dropdown_item(props: &Props) -> Html {
     let classes = classes!("dropdown-item", props.class.clone());
 
     html! {
-        <a classes={classes} onclick={props.onclick.reform(|_|())}>
+        <a class={classes} onclick={props.onclick.reform(|_|())}>
             { for props.children.iter() }
         </a>
     }
