@@ -8,6 +8,7 @@ pub use label::*;
 pub use radio::*;
 pub use select::*;
 pub use textarea::*;
+pub use typed_input::*;
 
 mod checkbox;
 mod control;
@@ -16,7 +17,8 @@ mod file;
 mod help;
 mod input;
 mod label;
+mod multiple_select;
 mod radio;
 mod select;
 mod textarea;
-mod multiple_select;
+mod typed_input;

@@ -1,5 +1,6 @@
 use cobul::props::Color;
 use cobul::*;
+use std::collections::HashMap;
 use validator::Validate;
 use yew::*;
 
@@ -18,31 +19,31 @@ pub struct Signup {
 }
 
 #[function_component(SignupForm)]
-pub fn signup(props: &Form<Signup>) -> Html {
+pub fn signup(form: &Form<Signup>) -> Html {
     let Signup {
         mail,
         site,
         username,
-        age
-    } = props.inner();
-    let errors = props.errors();
+        age,
+    } = form.inner();
+    let errors = form.errors();
 
     html! {
         <>
         <SimpleField label="mail" help_color={Color::Danger} help={errors.get("mail").cloned()}>
-            <Input oninput={props.field(|x| &mut x.mail)} value={mail}/>
+            <Input oninput={form.field(|x| &mut x.mail)} value={mail}/>
         </SimpleField>
 
         <SimpleField label="site" help_color={Color::Danger} help={errors.get("site").cloned()}>
-            <Input oninput={props.field(|x| &mut x.site)} value={site}/>
+            <Input oninput={form.field(|x| &mut x.site)} value={site}/>
         </SimpleField>
 
         <SimpleField label="username" help_color={Color::Danger} help={errors.get("username").cloned()}>
-            <Input oninput={props.field(|x| &mut x.username)} value={username}/>
+            <Input oninput={form.field(|x| &mut x.username)} value={username}/>
         </SimpleField>
 
         <SimpleField label="age" help_color={Color::Danger} help={errors.get("age").cloned()}>
-            <Input oninput={props.change(|x, f: String| x.age = f.parse::<u32>().unwrap_or_default())} value={age.to_string()}/>
+            <TypedInput<u32> oninput={form.field(|x| &mut x.age)} value={age}/>
         </SimpleField>
 
         <Buttons>

@@ -1,4 +1,5 @@
 use crate::util::validate_fields;
+use std::cell::RefCell;
 use std::collections::HashMap;
 use validator::Validate;
 use yew::{Callback, Properties};
@@ -29,7 +30,7 @@ impl<Ty: 'static + Validate + PartialEq + Clone> Form<Ty> {
         self.inner.clone()
     }
 
-    pub fn field<Field>(
+    pub fn onfield<Field>(
         &self,
         extract: impl Fn(&mut Ty) -> &mut Field + 'static,
     ) -> Callback<Field> {
@@ -41,7 +42,7 @@ impl<Ty: 'static + Validate + PartialEq + Clone> Form<Ty> {
         })
     }
 
-    pub fn change<Field>(&self, func: impl Fn(&mut Ty, Field) + 'static) -> Callback<Field> {
+    pub fn onchange<Field>(&self, func: impl Fn(&mut Ty, Field) + 'static) -> Callback<Field> {
         let cloned = self.inner.clone();
         self.onchange.reform(move |field| {
             let mut inner = cloned.clone();
@@ -50,17 +51,17 @@ impl<Ty: 'static + Validate + PartialEq + Clone> Form<Ty> {
         })
     }
 
-    pub fn submit(&self) -> Callback<()> {
+    pub fn onsubmit(&self) -> Callback<()> {
         let cloned = self.inner.clone();
         self.onsubmit.reform(move |_| cloned.clone())
     }
 
-    pub fn cancel(&self) -> Callback<()> {
+    pub fn oncancel(&self) -> Callback<()> {
         let cloned = self.inner.clone();
         self.oncancel.reform(move |_| cloned.clone())
     }
 
-    pub fn reset(&self) -> Callback<()> {
+    pub fn onreset(&self) -> Callback<()> {
         let cloned = self.inner.clone();
         self.onreset.reform(move |_| cloned.clone())
     }

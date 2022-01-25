@@ -2,23 +2,25 @@ use yew::prelude::*;
 use yew_router::prelude::*;
 
 #[derive(Clone, Debug, Properties, PartialEq)]
-pub struct Props<T: Routable + PartialEq + 'static> {
+pub struct Props {
     #[prop_or_default]
     pub children: Children,
 
     #[prop_or_default]
     pub class: Classes,
 
-    route: T,
+    #[prop_or_default]
+    pub onclick: Callback<()>,
 }
 
 /// [// https://bulma.io/documentation/components/dropdown/](// https://bulma.io/documentation/components/dropdown/)
 #[function_component(DropdownItem)]
-pub fn dropdown_item<T: Routable + PartialEq + 'static>(props: &Props<T>) -> Html {
+pub fn dropdown_item(props: &Props) -> Html {
     let classes = classes!("dropdown-item", props.class.clone());
+
     html! {
-        <Link<T> classes={classes} to={props.route.clone()}>
+        <a classes={classes} onclick={props.onclick.reform(|_|())}>
             { for props.children.iter() }
-        </Link<T>>
+        </a>
     }
 }
