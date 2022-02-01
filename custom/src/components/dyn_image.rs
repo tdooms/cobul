@@ -8,6 +8,7 @@ pub struct Props {
     #[prop_or(100)]
     pub height: u32,
 
+    #[prop_or_default]
     pub class: Classes,
 }
 
