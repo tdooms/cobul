@@ -39,7 +39,7 @@ pub fn sidebar(props: &Props) -> Html {
 
     let overflow = props
         .overflow
-        .then(|| "overflow-y:auto")
+        .then(|| "overflow-y:auto;scrollbar-width:thin")
         .unwrap_or_default();
     let style = format!("box-shadow:{};height:100vh;{}", shadow, overflow);
 
