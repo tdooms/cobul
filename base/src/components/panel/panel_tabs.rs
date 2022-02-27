@@ -13,9 +13,10 @@ pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static> {
 
 /// [https://bulma.io/documentation/components/panel/](https://bulma.io/documentation/components/panel/)
 #[function_component(PanelTabs)]
-pub fn panel_tabs<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static>(
-    props: &Props<T>,
-) -> Html {
+pub fn panel_tabs<T>(props: &Props<T>) -> Html
+where
+    T: IntoEnumIterator + ToString + Copy + PartialEq + 'static,
+{
     let button_map = |variant: T| {
         let active = props.value == variant;
         let onclick = props.onclick.reform(move |_| variant);

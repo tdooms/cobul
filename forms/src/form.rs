@@ -1,5 +1,4 @@
 use crate::util::validate_fields;
-use std::cell::RefCell;
 use std::collections::HashMap;
 use validator::Validate;
 use yew::{Callback, Properties};

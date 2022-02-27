@@ -19,21 +19,36 @@ pub struct Props<T: PartialEq + Clone + Display + FromPrimitive + ToPrimitive + 
 }
 
 #[function_component(Slider)]
-pub fn slider<T: PartialEq + Clone + Display + FromPrimitive + ToPrimitive + 'static>(
-    props: &Props<T>,
-) -> Html {
-    let Props { value, range, steps, postfix, .. } = props.clone();
+pub fn slider<T>(props: &Props<T>) -> Html
+where
+    T: PartialEq + Clone + Display + FromPrimitive + ToPrimitive + 'static,
+{
+    let Props {
+        value,
+        range,
+        steps,
+        postfix,
+        ..
+    } = props.clone();
     let (start, end) = (range.start.to_f64().unwrap(), range.end.to_f64().unwrap());
 
     let percent = 100.0 * (value.to_f64().unwrap() - start) / (end - start);
-    let style = format!("position:absolute;left:calc({}% + {}px)", percent, 12.0 - 0.23 * percent);
+    let style = format!(
+        "position:absolute;left:calc({}% + {}px)",
+        percent,
+        12.0 - 0.23 * percent
+    );
 
     let min = start.to_string();
     let max = end.to_string();
     let step = ((end - start) / (steps as f64)).to_string();
 
     let oninput = props.onchange.reform(|e: InputEvent| {
-        T::from_f64(e.target_unchecked_into::<web_sys::HtmlInputElement>().value_as_number()).unwrap()
+        T::from_f64(
+            e.target_unchecked_into::<web_sys::HtmlInputElement>()
+                .value_as_number(),
+        )
+        .unwrap()
     });
 
     html! {

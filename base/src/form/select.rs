@@ -1,6 +1,7 @@
-use crate::props::{Color, Focused, Hovered, Loading, Rounded, Size};
 use strum::IntoEnumIterator;
 use yew::prelude::*;
+
+use crate::props::{Color, Focused, Hovered, Loading, Rounded, Size};
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static> {
@@ -32,9 +33,10 @@ pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static> {
 
 /// [https://bulma.io/documentation/form/select/](https://bulma.io/documentation/form/select/)
 #[function_component(Select)]
-pub fn select<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static>(
-    props: &Props<T>,
-) -> Html {
+pub fn select<T>(props: &Props<T>) -> Html
+where
+    T: IntoEnumIterator + ToString + Copy + PartialEq + 'static,
+{
     let classes = classes!(
         "select",
         props.class.clone(),

@@ -1,7 +1,8 @@
+use std::str::FromStr;
+
 use yew::prelude::*;
 
 use crate::props::{Color, InputType, Loading, Rounded, Size, Static};
-use std::str::FromStr;
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props<T: FromStr + ToString + PartialEq + 'static> {
@@ -46,7 +47,10 @@ pub struct Props<T: FromStr + ToString + PartialEq + 'static> {
 
 /// [https://bulma.io/documentation/form/input/](https://bulma.io/documentation/form/input/)
 #[function_component(TypedInput)]
-pub fn typed_input<T: FromStr + ToString + PartialEq + 'static>(props: &Props<T>) -> Html {
+pub fn typed_input<T>(props: &Props<T>) -> Html
+where
+    T: FromStr + ToString + PartialEq + 'static,
+{
     let classes = classes!(
         "input",
         props.class.clone(),

@@ -7,9 +7,10 @@ edition = "2018"
 crate-type = ["cdylib", "rlib"]
 
 [dependencies]
+yew = { git = "https://github.com/yewstack/yew.git", rev = "36058d455ce8d068416527836a9aa18afa7b7dee" }
 cobul = { path = "..", features = ["custom", "fa", "forms"] }
+
 wasm-bindgen = "0.2"
 derive_more = "0.99.16"
 strum = { version = "0.21", features = ["derive"] }
-yew = "0.19.3"
 validator = { version = "0.14", features = ["derive"] }

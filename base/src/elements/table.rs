@@ -30,7 +30,7 @@ pub struct Props {
 
 /// [https://bulma.io/documentation/elements/table/](https://bulma.io/documentation/elements/table/)
 #[function_component(Table)]
-pub fn table(props: &Props) -> html {
+pub fn table(props: &Props) -> Html {
     let classes = classes!(
         "table",
         props.class.clone(),

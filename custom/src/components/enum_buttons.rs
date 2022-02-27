@@ -23,9 +23,10 @@ pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static> {
 }
 
 #[function_component(EnumButtons)]
-pub fn enum_buttons<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static>(
-    props: &Props<T>,
-) -> Html {
+pub fn enum_buttons<T>(props: &Props<T>) -> Html
+where
+    T: IntoEnumIterator + ToString + Copy + PartialEq + 'static,
+{
     let Props {
         class,
         alignment,

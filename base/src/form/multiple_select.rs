@@ -28,9 +28,10 @@ pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static> {
 
 /// [https://bulma.io/documentation/form/select/](https://bulma.io/documentation/form/select/)
 #[function_component(MultipleSelect)]
-pub fn multiple_select<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static>(
-    props: &Props<T>,
-) -> Html {
+pub fn multiple_select<T>(props: &Props<T>) -> Html
+where
+    T: IntoEnumIterator + ToString + Copy + PartialEq + 'static,
+{
     let classes = classes!(
         "select",
         "is-multiple",

@@ -1,6 +1,5 @@
 use cobul::props::Color;
 use cobul::*;
-use std::collections::HashMap;
 use validator::Validate;
 use yew::*;
 
@@ -31,25 +30,25 @@ pub fn signup(form: &Form<Signup>) -> Html {
     html! {
         <>
         <SimpleField label="mail" help_color={Color::Danger} help={errors.get("mail").cloned()}>
-            <Input oninput={form.field(|x| &mut x.mail)} value={mail}/>
+            <Input oninput={form.onfield(|x| &mut x.mail)} value={mail}/>
         </SimpleField>
 
         <SimpleField label="site" help_color={Color::Danger} help={errors.get("site").cloned()}>
-            <Input oninput={form.field(|x| &mut x.site)} value={site}/>
+            <Input oninput={form.onfield(|x| &mut x.site)} value={site}/>
         </SimpleField>
 
         <SimpleField label="username" help_color={Color::Danger} help={errors.get("username").cloned()}>
-            <Input oninput={form.field(|x| &mut x.username)} value={username}/>
+            <Input oninput={form.onfield(|x| &mut x.username)} value={username}/>
         </SimpleField>
 
         <SimpleField label="age" help_color={Color::Danger} help={errors.get("age").cloned()}>
-            <TypedInput<u32> oninput={form.field(|x| &mut x.age)} value={age}/>
+            <TypedInput<u32> oninput={form.onfield(|x| &mut x.age)} value={age}/>
         </SimpleField>
 
         <Buttons>
-            <Button onclick={props.submit()} color={Color::Primary}> {"Submit"} </Button>
-            <Button onclick={props.cancel()} color={Color::Danger}> {"Cancel"} </Button>
-            <Button onclick={props.reset()} color={Color::Warning}> {"Reset"} </Button>
+            <Button onclick={form.onsubmit()} color={Color::Primary}> {"Submit"} </Button>
+            <Button onclick={form.oncancel()} color={Color::Danger}> {"Cancel"} </Button>
+            <Button onclick={form.onreset()} color={Color::Warning}> {"Reset"} </Button>
         </Buttons>
 
         <p> {format!("{:?}", errors)} </p>
