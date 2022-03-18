@@ -37,7 +37,6 @@ bool_prop!(Outlined, "is-outlined");
 bool_prop!(Inverted, "is-inverted");
 bool_prop!(Light, "is-light");
 bool_prop!(Loading, "is-loading");
-bool_prop!(Disabled, "is-disabled");
 bool_prop!(Selected, "is-selected");
 bool_prop!(Addons, "has-addons");
 bool_prop!(Bordered, "is-bordered");

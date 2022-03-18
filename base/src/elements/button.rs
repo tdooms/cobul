@@ -1,8 +1,8 @@
 use yew::prelude::*;
 
 use crate::props::{
-    Active, Color, Disabled, Focused, Fullwidth, Hidden, Hovered, Inverted, Light, Loading,
-    Outlined, Rounded, Selected, Size, Static,
+    Active, Color, Focused, Fullwidth, Hidden, Hovered, Inverted, Light, Loading, Outlined,
+    Rounded, Selected, Size, Static,
 };
 
 #[derive(Properties, Clone, PartialEq)]
@@ -35,7 +35,7 @@ pub struct Props {
     pub loading: Loading,
 
     #[prop_or_default]
-    pub disabled: Disabled,
+    pub disabled: bool,
 
     #[prop_or_default]
     pub fullwidth: Fullwidth,
@@ -86,8 +86,9 @@ pub fn button(props: &Props) -> Html {
 
     let onclick = props.onclick.reform(|_| ());
 
+    // let disabled = props.disabled.then(|| "disabled");
     html! {
-        <button class={classes} onclick={onclick}>
+        <button class={classes} {onclick} disabled={props.disabled}>
             { for props.children.iter() }
         </button>
     }

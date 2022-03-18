@@ -1,0 +1,10 @@
+[package]
+name = "util"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+yew = { git = "https://github.com/yewstack/yew.git", rev = "36058d455ce8d068416527836a9aa18afa7b7dee" }
+log = "0.4"

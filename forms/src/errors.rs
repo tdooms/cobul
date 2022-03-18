@@ -1,6 +1,6 @@
 use std::collections::HashMap;
 use validator::{Validate, ValidationError};
-use yew::{hook, use_state, Callback, UseStateHandle};
+use yew::{hook, use_state, UseStateHandle};
 
 #[derive(PartialEq, Clone)]
 pub struct UseErrorHandle {
@@ -21,6 +21,18 @@ impl UseErrorHandle {
     pub fn get(&self, key: &str) -> Option<String> {
         let state = (*self.state).clone();
         state.get(key).or(self.map.get(key)).cloned()
+    }
+
+    pub fn is_empty(&self) -> bool {
+        self.state.is_empty() && self.map.is_empty()
+    }
+
+    pub fn all(&self) -> HashMap<String, String> {
+        (*self.state)
+            .clone()
+            .into_iter()
+            .chain(self.map.clone())
+            .collect()
     }
 }
 

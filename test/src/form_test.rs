@@ -1,8 +1,8 @@
 use validator::Validate;
 use yew::*;
 
-use cobul::*;
 use cobul::props::Color;
+use cobul::*;
 
 #[derive(Debug, Clone, Validate, PartialEq)]
 pub struct Signup {
@@ -26,7 +26,12 @@ pub struct Props {
 #[function_component(SignupForm)]
 pub fn signup(props: &Props) -> Html {
     let (form, signup) = use_form(&props.signup, FormActions::default());
-    let Signup { mail, site, username, age } = signup;
+    let Signup {
+        mail,
+        site,
+        username,
+        age,
+    } = signup;
 
     html! {
         <>
@@ -43,13 +48,16 @@ pub fn signup(props: &Props) -> Html {
         </SimpleField>
 
         <SimpleField label="age" help_color={Color::Danger} help={form.error("age")}>
-            <TypedInput<u32> oninput={form.field(|x| &mut x.age)}} value={age}/>
+            <TypedInput<u32> oninput={form.maybe_field(|x| &mut x.age, "age", |_| "must be integer".into())} value={age}/>
         </SimpleField>
 
         <Buttons>
-            <Button onclick={form.submit()} color={Color::Primary}> {"Submit"} </Button>
+            <Button disabled={!form.can_submit()} onclick={form.submit()} color={Color::Primary}> {"Submit"} </Button>
             <Button onclick={form.cancel()} color={Color::Danger}> {"Cancel"} </Button>
         </Buttons>
+        {format!("{:?}", form.errors())}
+        {!form.can_submit()}
+        <br/>
         </>
     }
 }

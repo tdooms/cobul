@@ -1,12 +1,12 @@
 use std::future::Future;
 
 use validator::Validate;
-use yew::virtual_dom::ListenerKind::onsubmit;
 use yew::{hook, Callback, UseStateHandle};
 
 use util::use_value_state;
 
 use crate::errors::{use_errors, UseErrorHandle};
+use std::collections::HashMap;
 
 #[derive(PartialEq, Clone)]
 pub struct FormActions<T> {
@@ -53,6 +53,14 @@ impl<T: Clone + Validate + 'static> UseFormHandle<T> {
 
     pub fn error(&self, key: &str) -> Option<String> {
         self.errors.get(key)
+    }
+
+    pub fn errors(&self) -> HashMap<String, String> {
+        self.errors.all()
+    }
+
+    pub fn can_submit(&self) -> bool {
+        self.errors.is_empty()
     }
 
     pub fn field<F>(&self, extract: impl Fn(&mut T) -> &mut F + 'static) -> Callback<F> {
@@ -108,7 +116,7 @@ impl<T: Clone + Validate + 'static> UseFormHandle<T> {
         let Self {
             state,
             actions: FormActions { onchange, .. },
-            errors,
+            ..
         } = self.clone();
 
         Callback::from(move |f| {
