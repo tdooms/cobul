@@ -25,7 +25,7 @@ pub struct Props {
 
 #[function_component(SignupForm)]
 pub fn signup(props: &Props) -> Html {
-    let (form, signup) = use_form(&props.signup, FormActions::default());
+    let (form, signup) = use_form(&props.signup, Actions::new());
     let Signup {
         mail,
         site,
