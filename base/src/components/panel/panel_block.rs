@@ -1,5 +1,6 @@
-use crate::props::Active;
 use yew::prelude::*;
+
+use crate::props::Active;
 
 // TODO: this can only be: control, input, button, panel-icon
 #[derive(Clone, Debug, Properties, PartialEq)]

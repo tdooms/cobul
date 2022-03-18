@@ -21,7 +21,6 @@ pub struct Props {
 }
 
 /// [https://bulma.io/documentation/components/message/](https://bulma.io/documentation/components/message/)
-
 #[function_component(Message)]
 pub fn message(props: &Props) -> Html {
     let header = match (props.header.clone(), props.ondelete.clone()) {

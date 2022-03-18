@@ -1,4 +1,5 @@
 use yew::prelude::*;
+
 use crate::props::Active;
 
 #[derive(Clone, Debug, Properties, PartialEq)]
@@ -35,7 +36,7 @@ pub fn navbar(props: &Props) -> Html {
                 <span aria-hidden="true"></span>
             </a>
         },
-        false => html! {}
+        false => html! {},
     };
 
     html! {

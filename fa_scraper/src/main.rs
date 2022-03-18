@@ -32,8 +32,15 @@ fn shorten_style(style: &str) -> Option<(&str, &str)> {
 fn write_style(writer: &mut impl Write, style: &str, name: &str, multiple: bool) {
     if let Some((style, suffix)) = shorten_style(style) {
         let append = multiple.then(|| suffix).unwrap_or_default();
-        writer.write_fmt(format_args!("\t#[display(fmt = \"{} fa-{}\")]\n", style, name));
-        writer.write_fmt(format_args!("\t{}{},\n", name.to_case(Case::Pascal), append));
+        writer.write_fmt(format_args!(
+            "\t#[display(fmt = \"{} fa-{}\")]\n",
+            style, name
+        ));
+        writer.write_fmt(format_args!(
+            "\t{}{},\n",
+            name.to_case(Case::Pascal),
+            append
+        ));
     }
 }
 

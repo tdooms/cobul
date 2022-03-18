@@ -1,7 +1,6 @@
 use derive_more::Display;
 use yew::Classes;
 
-
 /// Common size classes.
 #[derive(Clone, Debug, Display, PartialEq, Copy)]
 #[display(fmt = "is-{}")]

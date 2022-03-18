@@ -1,3 +1,3 @@
-mod common;
-
 pub use common::*;
+
+mod common;

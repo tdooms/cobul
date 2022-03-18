@@ -33,7 +33,7 @@ pub enum Breakpoint {
     #[display(fmt = "widescreen")]
     Widescreen,
     #[display(fmt = "fullhd")]
-    FullHD
+    FullHD,
 }
 
 /// The 4 allowed types for an input component.

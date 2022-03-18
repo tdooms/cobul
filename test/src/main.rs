@@ -1,12 +1,12 @@
-mod form_test;
-
 use derive_more::Display;
-use form_test::FormTester;
 use strum::EnumIter;
 use yew::prelude::*;
 
 use cobul::props::{Color, ColumnOffset, ColumnSize, Size, TextColor};
 use cobul::*;
+use form_test::FormTester;
+
+mod form_test;
 
 #[derive(Display, Clone, Copy, EnumIter, PartialEq)]
 pub enum SelectEnum {
@@ -15,7 +15,6 @@ pub enum SelectEnum {
     #[display(fmt = "With options")]
     WithOptions,
 }
-
 
 #[function_component(Main)]
 fn main() -> Html {

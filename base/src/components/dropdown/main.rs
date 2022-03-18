@@ -1,5 +1,6 @@
-use crate::props::{Active, Hoverable, Right, Up};
 use yew::prelude::*;
+
+use crate::props::{Active, Hoverable, Right, Up};
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {

@@ -7,7 +7,7 @@ edition = "2021"
 
 [dependencies]
 yew = { git = "https://github.com/yewstack/yew.git", rev = "36058d455ce8d068416527836a9aa18afa7b7dee" }
-util = { path = "../util" }
+hooks = { path = "../hooks" }
 
 validator = { version = "0.14", features = ["derive"] }
 wasm-bindgen-futures = "0.4"
