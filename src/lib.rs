@@ -7,11 +7,10 @@ pub use custom::{components::*, extensions::*, simple::*};
 pub use fa::Icons;
 
 #[cfg(feature = "forms")]
-pub use forms::Form;
+pub use forms::{FormActions, use_form, UseFormHandle};
 
 pub mod props {
     pub use base::props::*;
-
     #[cfg(feature = "custom")]
     pub use custom::props::*;
 }

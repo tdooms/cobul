@@ -1,14 +1,15 @@
-use cobul::props::Color;
-use cobul::*;
 use validator::Validate;
 use yew::*;
 
+use cobul::*;
+use cobul::props::Color;
+
 #[derive(Debug, Clone, Validate, PartialEq)]
 pub struct Signup {
-    #[validate(email(message = "must be valid email"))]
+    #[validate(email(message = "must be a valid email"))]
     pub mail: String,
 
-    #[validate(url(message = "string must be valid site"))]
+    #[validate(url(message = "string must be a valid site"))]
     pub site: String,
 
     #[validate(length(min = 1))]
@@ -17,41 +18,38 @@ pub struct Signup {
     pub age: u32,
 }
 
+#[derive(Properties, PartialEq)]
+pub struct Props {
+    signup: Signup,
+}
+
 #[function_component(SignupForm)]
-pub fn signup(form: &Form<Signup>) -> Html {
-    let Signup {
-        mail,
-        site,
-        username,
-        age,
-    } = form.inner();
-    let errors = form.errors();
+pub fn signup(props: &Props) -> Html {
+    let (form, signup) = use_form(&props.signup, FormActions::default());
+    let Signup { mail, site, username, age } = signup;
 
     html! {
         <>
-        <SimpleField label="mail" help_color={Color::Danger} help={errors.get("mail").cloned()}>
-            <Input oninput={form.onfield(|x| &mut x.mail)} value={mail}/>
+        <SimpleField label="mail" help_color={Color::Danger} help={form.error("mail")}>
+            <Input oninput={form.field(|x| &mut x.mail)} value={mail}/>
         </SimpleField>
 
-        <SimpleField label="site" help_color={Color::Danger} help={errors.get("site").cloned()}>
-            <Input oninput={form.onfield(|x| &mut x.site)} value={site}/>
+        <SimpleField label="site" help_color={Color::Danger} help={form.error("site")}>
+            <Input oninput={form.field(|x| &mut x.site)} value={site}/>
         </SimpleField>
 
-        <SimpleField label="username" help_color={Color::Danger} help={errors.get("username").cloned()}>
-            <Input oninput={form.onfield(|x| &mut x.username)} value={username}/>
+        <SimpleField label="username" help_color={Color::Danger} help={form.error("username")}>
+            <Input oninput={form.field(|x| &mut x.username)} value={username}/>
         </SimpleField>
 
-        <SimpleField label="age" help_color={Color::Danger} help={errors.get("age").cloned()}>
-            <TypedInput<u32> oninput={form.onfield(|x| &mut x.age)} value={age}/>
+        <SimpleField label="age" help_color={Color::Danger} help={form.error("age")}>
+            <TypedInput<u32> oninput={form.field(|x| &mut x.age)}} value={age}/>
         </SimpleField>
 
         <Buttons>
-            <Button onclick={form.onsubmit()} color={Color::Primary}> {"Submit"} </Button>
-            <Button onclick={form.oncancel()} color={Color::Danger}> {"Cancel"} </Button>
-            <Button onclick={form.onreset()} color={Color::Warning}> {"Reset"} </Button>
+            <Button onclick={form.submit()} color={Color::Primary}> {"Submit"} </Button>
+            <Button onclick={form.cancel()} color={Color::Danger}> {"Cancel"} </Button>
         </Buttons>
-
-        <p> {format!("{:?}", errors)} </p>
         </>
     }
 }
@@ -60,21 +58,30 @@ pub fn signup(form: &Form<Signup>) -> Html {
 
 #[function_component(FormTester)]
 pub fn form_tester() -> Html {
-    let state = use_state(|| Signup {
+    let state = use_state(|| false);
+    let checked = (*state).clone();
+
+    let signup1 = Signup {
         mail: "thomas@dooms.eu".to_owned(),
         site: "https://www.youtube.com".to_owned(),
         username: "dumos".to_owned(),
         age: 19,
-    });
-
-    let onchange = {
-        let state = state.clone();
-        Callback::from(move |signup| state.set(signup))
     };
+
+    let signup2 = Signup {
+        mail: "silky@way.com".to_owned(),
+        site: "https://www.pixelguesser.com".to_owned(),
+        username: "wuvve".to_owned(),
+        age: 20,
+    };
+
+    let signup = if checked { signup1 } else { signup2 };
+    let onchange = Callback::from(move |b| state.set(b));
 
     html! {
         <Container>
-            <SignupForm inner={(*state).clone()} onchange={onchange}/>
+            <SignupForm {signup}/>
+            <Checkbox name={"checkbox"} {checked} {onchange} />
         </Container>
     }
 }

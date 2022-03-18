@@ -7,6 +7,7 @@ use crate::props::{Color, InputType, Loading, Rounded, Size, Static};
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props<T: FromStr + ToString + PartialEq + 'static> {
     pub oninput: Callback<T>,
+    pub onerror: Callback<()>,
 
     #[prop_or_default]
     pub name: Option<String>,
@@ -51,6 +52,8 @@ pub fn typed_input<T>(props: &Props<T>) -> Html
 where
     T: FromStr + ToString + PartialEq + 'static,
 {
+    let state = use_state(|| props.value.as_ref().map(ToString::to_string).unwrap_or_default());
+
     let classes = classes!(
         "input",
         props.class.clone(),
@@ -61,23 +64,25 @@ where
         props.r#static,
     );
 
-    let cloned = props.oninput.clone();
+    let oninput = props.oninput.clone();
+    let onerror = props.onerror.clone();
 
-    let oninput = Callback::from(move |e: InputEvent| {
-        let str = e
-            .target_unchecked_into::<web_sys::HtmlInputElement>()
-            .value();
+    let state_clone = state.clone();
+    let cb = move |e: InputEvent| {
+        let str = e.target_unchecked_into::<web_sys::HtmlInputElement>().value();
+
         match T::from_str(&str) {
-            Ok(value) => cloned.emit(value),
-            Err(_) => {}
+            Ok(value) => oninput.emit(value),
+            Err(_) => onerror.emit(())
         }
-    });
+        state_clone.set(str);
+    };
 
     html! {
         <input
             name={props.name.clone()}
-            value={props.value.as_ref().map(ToString::to_string)}
-            oninput={oninput}
+            value={(*state).clone()}
+            oninput={Callback::from(cb)}
             class={classes}
             type={props.r#type.to_string()}
             placeholder={props.placeholder.clone()}
