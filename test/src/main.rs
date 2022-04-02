@@ -16,8 +16,8 @@ pub enum SelectEnum {
     WithOptions,
 }
 
-#[function_component(Main)]
-fn main() -> Html {
+#[function_component(App)]
+fn app() -> Html {
     const TONE_COLORS: [(Color, &str); 6] = [
         (Color::White, "White"),
         (Color::Link, "Link"),
@@ -219,5 +219,5 @@ fn main() -> Html {
 
 fn main() {
     wasm_logger::init(wasm_logger::Config::default());
-    yew::start_app::<Main>();
+    yew::Renderer::<App>::new().render();
 }

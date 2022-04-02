@@ -1,8 +1,5 @@
-use yew::prelude::*;
-use yew::virtual_dom::VChild;
-
-use crate::elements::Image;
 use crate::utils::enclose;
+use yew::prelude::*;
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {
@@ -10,7 +7,7 @@ pub struct Props {
     pub header: Option<Html>,
 
     #[prop_or_default]
-    pub image: Option<VChild<Image>>,
+    pub image: Option<Html>,
 
     #[prop_or_default]
     pub children: Children,
