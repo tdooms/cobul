@@ -16,6 +16,28 @@ pub enum SelectEnum {
     WithOptions,
 }
 
+#[derive(Debug, Clone, PartialEq, Copy, EnumIter, Display)]
+pub enum TestEnum {
+    #[display(fmt = "Option 1")]
+    Option1,
+    #[display(fmt = "Option 2")]
+    Option2,
+    #[display(fmt = "Option 3")]
+    Option3,
+}
+
+#[function_component(DropdownTester)]
+pub fn dropdown_tester() -> Html {
+    let state = use_state(|| TestEnum::Option1);
+    let value = *state;
+
+    let onchange = Callback::from(move |x| state.set(x));
+
+    html! {
+        <EnumDropdown<TestEnum> {value} {onchange}/>
+    }
+}
+
 #[function_component(App)]
 fn app() -> Html {
     const TONE_COLORS: [(Color, &str); 6] = [
@@ -45,7 +67,10 @@ fn app() -> Html {
     html! {
         <Columns>
         <Column offset={ColumnOffset::Is2} size={ColumnSize::Is6}>
+
         <FormTester/>
+        <DropdownTester/>
+
         <Block>
             {"This text is within a "} <strong>{"block"}</strong>{"."}
         </Block>
