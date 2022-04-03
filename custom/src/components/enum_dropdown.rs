@@ -49,7 +49,11 @@ where
         let active = &variant == value;
         let onclick = onchange.reform(move |_| variant);
 
-        html! {<DropdownItem {onclick} {active}> {variant.to_string()} </DropdownItem>}
+        html! {
+            <DropdownItem class={classes!(*size)} {onclick} {active}>
+                {variant.to_string()}
+            </DropdownItem>
+        }
     };
 
     html! {
