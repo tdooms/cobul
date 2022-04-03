@@ -13,5 +13,5 @@ yew = { git = "https://github.com/yewstack/yew.git", rev = "421b4e1f608e6d648dcf
 hooks = { path = "../hooks" }
 
 web-sys = "0.3"
-strum = { version = "0.21", features = ["derive"] }
+strum = { version = "0.24", features = ["derive"] }
 derive_more = "*"
