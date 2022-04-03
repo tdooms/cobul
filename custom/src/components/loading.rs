@@ -13,7 +13,7 @@ pub fn loading(props: &Props) -> Html {
     let classes = classes!("progress", props.color);
 
     html! {
-        <section class="section is-fullheight">
+        <section class="section is-fullheight p-0 m-0">
             <div class="columns is-centered is-desktop is-vcentered" style="height:100vh">
                 <div class="column is-half">
                     <progress class={classes}></progress>
