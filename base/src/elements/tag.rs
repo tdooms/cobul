@@ -1,6 +1,6 @@
 use yew::prelude::*;
 
-use crate::props::{Light, Rounded, Size};
+use crate::props::{Color, Delete, Light, Rounded, Size};
 
 /// The turn into delete button is intentionally skipped,
 /// use the delete element for that functionality
@@ -8,17 +8,25 @@ use crate::props::{Light, Rounded, Size};
 pub struct Props {
     #[prop_or_default]
     pub children: Children,
+
     #[prop_or_default]
     pub class: Classes,
 
     #[prop_or_default]
     pub light: Light,
 
+    #[prop_or_default]
+    pub color: Option<Color>,
+
+    #[prop_or_default]
+    pub delete: Delete,
+
     #[prop_or_else(|| "span".into())]
     pub tag: String,
 
     #[prop_or_default]
     pub onclick: Option<Callback<()>>,
+    // TODO: how to incorporate this? Use this onclick as the ondelete?
 
     #[prop_or_default]
     pub rounded: Rounded,
@@ -39,6 +47,8 @@ pub fn tag(props: &Props) -> Html {
         props.size,
         props.rounded,
         props.light,
+        props.color,
+        props.delete
     );
 
     html! {
