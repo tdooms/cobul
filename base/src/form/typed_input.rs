@@ -45,6 +45,9 @@ pub struct Props<T: FromStr + ToString + PartialEq + 'static> {
 
     #[prop_or_default]
     pub r#static: Static,
+
+    #[prop_or_default]
+    pub style: String,
 }
 
 /// [https://bulma.io/documentation/form/input/](https://bulma.io/documentation/form/input/)
@@ -88,6 +91,7 @@ where
             name={props.name.clone()}
             value={(*state).clone()}
             oninput={Callback::from(cb)}
+            style={props.style.clone()}
             class={classes}
             type={props.r#type.to_string()}
             placeholder={props.placeholder.clone()}

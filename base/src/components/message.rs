@@ -18,6 +18,9 @@ pub struct Props {
 
     #[prop_or_default]
     pub size: Size,
+
+    #[prop_or_default]
+    pub style: String,
 }
 
 /// [https://bulma.io/documentation/components/message/](https://bulma.io/documentation/components/message/)
@@ -39,7 +42,7 @@ pub fn message(props: &Props) -> Html {
     };
 
     html! {
-        <article class={classes!("message", props.color, props.size)}>
+        <article style={props.style.clone()} class={classes!("message", props.color, props.size)}>
             { header }
             <div class="message-body">
                 { for props.children.iter() }

@@ -15,6 +15,9 @@ pub struct Props {
 
     #[prop_or_default]
     pub size: Option<HeaderSize>,
+
+    #[prop_or_default]
+    pub style: String,
 }
 
 /// [https://bulma.io/documentation/elements/title/](https://bulma.io/documentation/elements/title/)
@@ -24,7 +27,7 @@ pub fn title(props: &Props) -> Html {
     let classes = classes!("title", props.class.clone(), size, props.spaced);
 
     html! {
-        <p class={classes}>
+        <p style={props.style.clone()} class={classes}>
             { for props.children.iter() }
         </p>
     }

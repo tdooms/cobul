@@ -9,6 +9,9 @@ pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static> {
     pub value: T,
 
     pub onclick: Callback<T>,
+
+    #[prop_or_default]
+    pub style: String,
 }
 
 /// [https://bulma.io/documentation/components/panel/](https://bulma.io/documentation/components/panel/)
@@ -29,7 +32,7 @@ where
     };
 
     html! {
-        <div class={classes!("panel-tabs", props.class.clone())}>
+        <div style={props.style.clone()} class={classes!("panel-tabs", props.class.clone())}>
             { for T::iter().map(button_map) }
         </div>
     }

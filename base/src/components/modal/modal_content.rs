@@ -12,6 +12,9 @@ pub struct Props {
 
     #[prop_or_default]
     pub active: Active,
+
+    #[prop_or_default]
+    pub style: String,
 }
 
 /// [https://bulma.io/documentation/components/modal/](https://bulma.io/documentation/components/modal/)
@@ -20,7 +23,7 @@ pub fn modal_content(props: &Props) -> Html {
     let classes = classes!("modal", props.class.clone(), props.active);
 
     html! {
-        <div class={classes}>
+        <div style={props.style.clone()} class={classes}>
             <div class="modal-background"></div>
             <div class="modal-content">
                 { for props.children.iter() }

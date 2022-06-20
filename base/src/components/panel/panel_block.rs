@@ -13,6 +13,9 @@ pub struct Props {
 
     #[prop_or_default]
     pub active: Active,
+
+    #[prop_or_default]
+    pub style: String,
 }
 
 /// [https://bulma.io/documentation/components/panel/](https://bulma.io/documentation/components/panel/)
@@ -20,7 +23,7 @@ pub struct Props {
 pub fn panel_block(props: &Props) -> Html {
     let classes = classes!("panel-block", props.class.clone(), props.active);
     html! {
-        <nav class={classes}>
+        <nav style={props.style.clone()} class={classes}>
             { for props.children.iter() }
         </nav>
     }

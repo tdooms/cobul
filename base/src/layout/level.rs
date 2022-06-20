@@ -22,6 +22,9 @@ pub struct Props {
 
     #[prop_or_default]
     pub mobile: Mobile,
+
+    #[prop_or_default]
+    pub style: String,
 }
 
 /// [https://bulma.io/documentation/layout/level/](https://bulma.io/documentation/layout/level/)
@@ -29,7 +32,7 @@ pub struct Props {
 pub fn level(props: &Props) -> Html {
     let classes = classes!("level", props.class.clone(), props.centered, props.mobile);
     html! {
-        <div class={classes}>
+        <div style={props.style.clone()} class={classes}>
             { enclose("media-left", props.left.clone()) }
             { for props.children.iter() }
             { enclose("media-right", props.right.clone()) }

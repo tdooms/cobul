@@ -41,6 +41,9 @@ pub struct Props {
 
     #[prop_or_default]
     pub r#static: Static,
+
+    #[prop_or_default]
+    pub style: String,
 }
 
 /// [https://bulma.io/documentation/form/textarea/](https://bulma.io/documentation/form/textarea/)
@@ -65,6 +68,7 @@ pub fn textarea(props: &Props) -> Html {
             name={props.name.clone()}
             value={props.value.clone()}
             oninput={oninput}
+            style={props.style.clone()}
             class={classes}
             rows={props.rows.as_ref().map(ToString::to_string)}
             placeholder={props.placeholder.clone()}

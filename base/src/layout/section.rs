@@ -12,6 +12,9 @@ pub struct Props {
 
     #[prop_or_default]
     pub size: Option<SectionSize>,
+
+    #[prop_or_default]
+    pub style: String,
 }
 
 /// [https://bulma.io/documentation/layout/section/](https://bulma.io/documentation/layout/section/)
@@ -20,7 +23,7 @@ pub fn section(props: &Props) -> Html {
     let classes = classes!("section", props.class.clone(), props.size);
 
     html! {
-        <section class={classes}>
+        <section style={props.style.clone()} class={classes}>
             { for props.children.iter() }
         </section>
     }

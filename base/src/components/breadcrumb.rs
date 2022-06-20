@@ -18,6 +18,9 @@ pub struct Props {
 
     #[prop_or_default]
     pub separator: Option<Separator>,
+
+    #[prop_or_default]
+    pub style: String,
 }
 
 /// [https://bulma.io/documentation/components/breadcrumb/](https://bulma.io/documentation/components/breadcrumb/)
@@ -32,7 +35,7 @@ pub fn breadcrumb(props: &Props) -> Html {
     );
 
     html! {
-        <nav class={classes} aria-label="breadcrumbs">
+        <nav style={props.style.clone()} class={classes} aria-label="breadcrumbs">
             <ul>
                 { for props.children.iter() }
             </ul>

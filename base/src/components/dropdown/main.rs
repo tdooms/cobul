@@ -26,6 +26,9 @@ pub struct Props {
 
     #[prop_or_default]
     pub active: Active,
+
+    #[prop_or_default]
+    pub style: String,
 }
 
 /// [// https://bulma.io/documentation/components/dropdown/](// https://bulma.io/documentation/components/dropdown/)
@@ -42,7 +45,7 @@ pub fn dropdown(props: &Props) -> Html {
     let onclick = props.onclick.reform(|_| ());
 
     html! {
-        <div class={classes} onclick={onclick}>
+        <div style={props.style.clone()} class={classes} onclick={onclick}>
             <div class="dropdown-trigger is-clickable">
                 { props.trigger.clone() }
             </div>

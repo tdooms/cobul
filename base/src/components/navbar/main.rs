@@ -20,6 +20,9 @@ pub struct Props {
     pub burger: bool,
 
     pub onclick: Callback<()>,
+
+    #[prop_or_default]
+    pub style: String,
 }
 
 /// [https://bulma.io/documentation/components/navbar/](https://bulma.io/documentation/components/navbar/)
@@ -40,7 +43,7 @@ pub fn navbar(props: &Props) -> Html {
     };
 
     html! {
-        <nav class="navbar" role="navigation" aria-label="main navigation">
+        <nav style={props.style.clone()} class="navbar" role="navigation" aria-label="main navigation">
             <div class="navbar-brand">
                 { props.brand.clone().unwrap_or_default() }
                 { burger }

@@ -29,6 +29,9 @@ pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static> {
     pub selected: T,
 
     pub onselect: Callback<T>,
+
+    #[prop_or_default]
+    pub style: String,
 }
 
 /// [https://bulma.io/documentation/form/select/](https://bulma.io/documentation/form/select/)
@@ -53,7 +56,7 @@ where
     };
 
     html! {
-        <div class={classes}>
+        <div style={props.style.clone()} class={classes}>
             <select class={classes!(props.hovered, props.focussed)}>
                 { for T::iter().map(view_option) }
             </select>

@@ -21,6 +21,9 @@ pub struct Props {
 
     #[prop_or_default]
     pub alignment: AddonsAlignment,
+
+    #[prop_or_default]
+    pub style: String,
 }
 
 /// [https://bulma.io/documentation/form/general/](https://bulma.io/documentation/form/general/)
@@ -36,7 +39,7 @@ pub fn field(props: &Props) -> Html {
     );
 
     html! {
-        <div class={classes}>
+        <div style={props.style.clone()} class={classes}>
             { for props.children.iter() }
         </div>
     }

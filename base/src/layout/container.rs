@@ -12,6 +12,9 @@ pub struct Props {
 
     #[prop_or_default]
     pub size: Option<ContainerSize>,
+
+    #[prop_or_default]
+    pub style: String,
 }
 
 /// [https://bulma.io/documentation/layout/container/](https://bulma.io/documentation/layout/container/)
@@ -20,7 +23,7 @@ pub fn container(props: &Props) -> Html {
     let classes = classes!("container", props.class.clone(), props.size);
 
     html! {
-        <div class={classes}>
+        <div style={props.style.clone()} class={classes}>
             { for props.children.iter() }
         </div>
     }

@@ -15,6 +15,9 @@ pub struct Props {
 
     #[prop_or_default]
     pub color: Option<Color>,
+
+    #[prop_or_default]
+    pub style: String,
 }
 
 /// [https://bulma.io/documentation/components/panel/](https://bulma.io/documentation/components/panel/)
@@ -22,7 +25,7 @@ pub struct Props {
 pub fn panel(props: &Props) -> Html {
     let classes = classes!("panel", props.class.clone(), props.color);
     html! {
-        <nav class={classes}>
+        <nav style={props.style.clone()} class={classes}>
             { enclose_with_tag("p", "panel-heading", props.heading.clone()) }
             { for props.children.iter() }
         </nav>

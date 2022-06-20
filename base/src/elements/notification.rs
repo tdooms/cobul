@@ -17,6 +17,9 @@ pub struct Props {
 
     #[prop_or_default]
     pub light: Light,
+
+    #[prop_or_default]
+    pub style: String,
 }
 
 /// [https://bulma.io/documentation/elements/notification/](https://bulma.io/documentation/elements/notification/)
@@ -31,7 +34,7 @@ pub fn notification(props: &Props) -> Html {
     let onclick = props.onclick.reform(|_| ());
 
     html! {
-        <div class={classes}>
+        <div style={props.style.clone()} class={classes}>
             <button class="delete" onclick={onclick}></button>
             { for props.children.iter() }
         </div>

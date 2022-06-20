@@ -25,6 +25,9 @@ pub struct Props {
 
     #[prop_or_default]
     pub size: Size,
+
+    #[prop_or_default]
+    pub style: String,
 }
 
 /// [https://bulma.io/documentation/elements/tag/](https://bulma.io/documentation/elements/tag/)
@@ -39,7 +42,7 @@ pub fn tag(props: &Props) -> Html {
     );
 
     html! {
-        <@{ props.tag.clone() } class={classes}>
+        <@{ props.tag.clone() } style={props.style.clone()} class={classes}>
             { for props.children.iter() }
         </@>
     }

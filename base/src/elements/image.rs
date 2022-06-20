@@ -15,6 +15,9 @@ pub struct Props {
 
     #[prop_or_default]
     pub src: Option<String>,
+
+    #[prop_or_default]
+    pub style: String,
 }
 
 /// [https://bulma.io/documentation/elements/image/](https://bulma.io/documentation/elements/image/)
@@ -23,7 +26,7 @@ pub fn image(props: &Props) -> Html {
     let classes = classes!("image", props.class.clone(), props.size);
 
     html! {
-        <figure class={classes}>
+        <figure style={props.style.clone()} class={classes}>
             <img class={ classes!(props.rounded) } src={ props.src.clone() } />
         </figure>
     }

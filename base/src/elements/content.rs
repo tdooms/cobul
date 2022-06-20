@@ -10,6 +10,9 @@ pub struct Props {
 
     #[prop_or_else(|| "div".into())]
     pub tag: String,
+
+    #[prop_or_default]
+    pub style: String,
 }
 
 /// [https://bulma.io/documentation/elements/content/](https://bulma.io/documentation/elements/content/)
@@ -17,7 +20,7 @@ pub struct Props {
 pub fn content(props: &Props) -> Html {
     let classes = classes!("content", props.class.clone());
     html! {
-        <@{props.tag.clone()} class={classes}>
+        <@{props.tag.clone()} style={props.style.clone()} class={classes}>
             { for props.children.iter() }
         </@>
     }

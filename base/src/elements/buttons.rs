@@ -18,6 +18,9 @@ pub struct Props {
 
     #[prop_or_default]
     pub size: ButtonsSize,
+
+    #[prop_or_default]
+    pub style: String,
 }
 
 /// [https://bulma.io/documentation/elements/button/#list-of-buttons](https://bulma.io/documentation/elements/button/#list-of-buttons)
@@ -31,7 +34,7 @@ pub fn buttons(props: &Props) -> Html {
     );
 
     html! {
-        <div class={classes}>
+        <div style={props.style.clone()} class={classes}>
             { for props.children.iter() }
         </div>
     }

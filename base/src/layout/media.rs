@@ -21,6 +21,9 @@ pub struct Props {
 
     #[prop_or("div".to_owned())]
     pub left_tag: String,
+
+    #[prop_or_default]
+    pub style: String,
 }
 
 /// [https://bulma.io/documentation/layout/media-object/](https://bulma.io/documentation/layout/media-object/)
@@ -28,7 +31,7 @@ pub struct Props {
 pub fn media(props: &Props) -> Html {
     let classes = classes!("media", props.class.clone());
     html! {
-        <div class={classes}>
+        <div style={props.style.clone()} class={classes}>
             { enclose_with_tag(props.left_tag.clone(), "media-left", props.left.clone()) }
             <div class="media-content"> { for props.children.iter() } </div>
             { enclose_with_tag(props.right_tag.clone(), "media-right", props.right.clone()) }

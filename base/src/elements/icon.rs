@@ -17,6 +17,9 @@ pub struct Props {
 
     #[prop_or_default]
     pub color: Option<TextColor>,
+
+    #[prop_or_default]
+    pub style: String,
 }
 
 /// [https://bulma.io/documentation/elements/icon/](https://bulma.io/documentation/elements/icon/)
@@ -26,7 +29,7 @@ pub fn icon(props: &Props) -> Html {
     let onclick = props.onclick.reform(|_| ());
 
     html! {
-        <span class={classes} onclick={onclick}>
+        <span style={props.style.clone()} class={classes} onclick={onclick}>
             <i class={props.icon.clone()}> </i>
         </span>
     }

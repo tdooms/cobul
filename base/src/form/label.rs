@@ -6,6 +6,8 @@ pub struct Props {
     pub children: Children,
     #[prop_or_default]
     pub class: Classes,
+    #[prop_or_default]
+    pub style: String,
 }
 
 /// [https://bulma.io/documentation/form/general/](https://bulma.io/documentation/form/general/)
@@ -14,7 +16,7 @@ pub fn label(props: &Props) -> Html {
     let classes = classes!("label", props.class.clone());
 
     html! {
-        <div class={classes}>
+        <div style={props.style.clone()} class={classes}>
             { for props.children.iter() }
         </div>
     }

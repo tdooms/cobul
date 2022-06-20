@@ -30,6 +30,9 @@ pub struct Props {
     pub class: Classes,
 
     pub onupload: Callback<Vec<web_sys::File>>,
+
+    #[prop_or_default]
+    pub style: String,
 }
 
 /// [https://bulma.io/documentation/form/file/](https://bulma.io/documentation/form/file/)
@@ -58,7 +61,7 @@ pub fn file(props: &Props) -> Html {
     });
 
     html! {
-        <div class={classes}>
+        <div style={props.style.clone()} class={classes}>
             <label class="file-label">
             <input class="file-input" type="file" accept={props.accept.clone()} onchange={onchange} />
             <span class="file-cta">

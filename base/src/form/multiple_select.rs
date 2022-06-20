@@ -24,6 +24,9 @@ pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static> {
 
     #[prop_or_default]
     pub onselect: Callback<Vec<T>>,
+
+    #[prop_or_default]
+    pub style: String,
 }
 
 /// [https://bulma.io/documentation/form/select/](https://bulma.io/documentation/form/select/)
@@ -73,7 +76,7 @@ where
 
     html! {
         <div class={classes}>
-            <select multiple={true} size={T::iter().count().to_string()} class={classes!(props.hovered, props.focussed)}>
+            <select style={props.style.clone()} multiple={true} size={T::iter().count().to_string()} class={classes!(props.hovered, props.focussed)}>
                 { for T::iter().map(view_option) }
             </select>
         </div>

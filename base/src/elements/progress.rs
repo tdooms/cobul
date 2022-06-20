@@ -18,6 +18,9 @@ pub struct Props {
 
     #[prop_or_default]
     pub size: Size,
+
+    #[prop_or_default]
+    pub style: String,
 }
 
 /// [https://bulma.io/documentation/elements/progress/](https://bulma.io/documentation/elements/progress/)
@@ -29,7 +32,7 @@ pub fn progress(props: &Props) -> Html {
     let value = props.value.as_ref().map(ToString::to_string);
 
     html! {
-        <progress class={classes} max={max} value={value}>
+        <progress style={props.style.clone()} class={classes} max={max} value={value}>
             // { format!("{}%", self.props.value) }
         </progress>
     }

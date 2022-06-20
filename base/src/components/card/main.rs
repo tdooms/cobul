@@ -20,16 +20,20 @@ pub struct Props {
 
     #[prop_or_default]
     pub class: Classes,
+
+    #[prop_or_default]
+    pub style: String,
 }
 
 /// [// https://bulma.io/documentation/components/card/](// https://bulma.io/documentation/components/card/)
 #[function_component(Card)]
 pub fn card(props: &Props) -> Html {
-    let style = "height:100%;display:flex;flex-direction:column";
+    let css = "height:100%;display:flex;flex-direction:column;";
+    let style = format!("{}{}", props.fullheight.then(|| css).unwrap_or_default(), props.style);
     let classes = classes!("card", props.class.clone());
 
     html! {
-        <div class={classes} style={props.fullheight.then(|| style)}>
+        <div class={classes} {style}>
             { enclose("card-header", props.header.clone()) }
             { enclose("card-image", props.image.clone().map(Html::from)) }
             <div class="card-content" style={props.fullheight.then(|| "height:100%")}>

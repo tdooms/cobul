@@ -16,6 +16,9 @@ pub struct Props {
 
     #[prop_or_default]
     pub disabled: bool,
+
+    #[prop_or_default]
+    pub style: String,
 }
 
 /// [https://bulma.io/documentation/form/checkbox/](https://bulma.io/documentation/form/checkbox/)
@@ -27,7 +30,7 @@ pub fn checkbox(props: &Props) -> Html {
     let onchange = props.onchange.reform(move |_| copied);
 
     html! {
-        <label class={classes}>
+        <label style={props.style.clone()} class={classes}>
             <input
                 type="checkbox"
                 checked={props.checked}

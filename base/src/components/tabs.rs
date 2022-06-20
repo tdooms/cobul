@@ -27,6 +27,9 @@ pub struct Props {
 
     #[prop_or_default]
     pub fullwidth: Fullwidth,
+
+    #[prop_or_default]
+    pub style: String,
 }
 
 /// [https://bulma.io/documentation/components/tabs/](https://bulma.io/documentation/components/tabs/)
@@ -43,7 +46,7 @@ pub fn tabs(props: &Props) -> Html {
     );
 
     html! {
-        <div class={classes}>
+        <div style={props.style.clone()} class={classes}>
             <ul>
                 { for props.children.iter() }
             </ul>

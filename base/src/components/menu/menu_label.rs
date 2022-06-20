@@ -7,6 +7,9 @@ pub struct Props {
 
     #[prop_or_default]
     pub class: Classes,
+
+    #[prop_or_default]
+    pub style: String,
 }
 
 /// [https://bulma.io/documentation/components/menu/](https://bulma.io/documentation/components/menu/)
@@ -14,7 +17,7 @@ pub struct Props {
 pub fn menu_label(props: &Props) -> Html {
     let classes = classes!("menu-label", props.class.clone());
     html! {
-        <p class={classes}>
+        <p style={props.style.clone()} class={classes}>
             { for props.children.iter() }
         </p>
     }

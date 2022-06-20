@@ -41,6 +41,9 @@ pub struct Props {
 
     #[prop_or_default]
     pub r#static: Static,
+
+    #[prop_or_default]
+    pub style: String,
 }
 
 /// [https://bulma.io/documentation/form/input/](https://bulma.io/documentation/form/input/)
@@ -65,6 +68,7 @@ pub fn input(props: &Props) -> Html {
         <input
             name={props.name.clone()}
             value={props.value.clone()}
+            style={props.style.clone()}
             oninput={oninput}
             class={classes}
             type={props.r#type.to_string()}

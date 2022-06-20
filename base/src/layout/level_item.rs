@@ -7,6 +7,9 @@ pub struct Props {
 
     #[prop_or_default]
     pub class: Classes,
+
+    #[prop_or_default]
+    pub style: String,
 }
 
 /// [https://bulma.io/documentation/layout/level/](https://bulma.io/documentation/layout/level/)
@@ -14,7 +17,7 @@ pub struct Props {
 pub fn level_item(props: &Props) -> Html {
     let classes = classes!("level-item", props.class.clone());
     html! {
-        <div class={classes}>
+        <div style={props.style.clone()} class={classes}>
             { for props.children.iter() }
         </div>
     }

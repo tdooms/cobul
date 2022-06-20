@@ -21,6 +21,9 @@ pub struct Props {
 
     #[prop_or_default]
     pub left: Option<String>,
+
+    #[prop_or_default]
+    pub style: String,
 }
 
 /// [https://bulma.io/documentation/form/general/](https://bulma.io/documentation/form/general/)
@@ -45,7 +48,7 @@ pub fn control(props: &Props) -> Html {
     };
 
     html! {
-        <@{ props.tag.clone() } class={classes}>
+        <@{ props.tag.clone() } style={props.style.clone()} class={classes}>
             { for props.children.iter() }
             { map_icon(props.right.as_ref(), true) }
             { map_icon(props.left.as_ref(), false) }

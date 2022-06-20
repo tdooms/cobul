@@ -17,6 +17,9 @@ pub struct Props {
     pub tag: String,
 
     pub onclick: Callback<()>,
+
+    #[prop_or_default]
+    pub style: String,
 }
 
 /// [https://bulma.io/documentation/elements/delete/](https://bulma.io/documentation/elements/delete/)
@@ -26,7 +29,7 @@ pub fn delete(props: &Props) -> Html {
     let onclick = props.onclick.reform(|_| ());
 
     html! {
-        <@{props.tag.clone()} class={classes} onclick={onclick}>
+        <@{props.tag.clone()} style={props.style.clone()} class={classes} onclick={onclick}>
             { for props.children.iter() }
         </@>
     }

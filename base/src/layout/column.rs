@@ -15,6 +15,9 @@ pub struct Props {
 
     #[prop_or_default]
     pub offset: Option<ColumnOffset>,
+
+    #[prop_or_default]
+    pub style: String,
 }
 
 /// [https://bulma.io/documentation/columns/](https://bulma.io/documentation/columns/)
@@ -23,7 +26,7 @@ pub fn column(props: &Props) -> Html {
     let classes = classes!("column", props.class.clone(), props.size, props.offset);
 
     html! {
-        <div class={classes}>
+        <div style={props.style.clone()} class={classes}>
             { for props.children.iter() }
         </div>
     }

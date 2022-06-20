@@ -17,6 +17,9 @@ pub struct Props {
 
     #[prop_or_default]
     pub active: Active,
+
+    #[prop_or_default]
+    pub style: String,
 }
 
 /// [https://bulma.io/documentation/components/modal/](https://bulma.io/documentation/components/modal/)
@@ -30,7 +33,7 @@ pub fn modal_card(props: &Props) -> Html {
     };
 
     html! {
-        <div class={classes}>
+        <div style={props.style.clone()} class={classes}>
             <div class="modal-background"></div>
             <div class="modal-card">
                 <header class="modal-card-head">

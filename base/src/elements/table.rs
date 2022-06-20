@@ -26,6 +26,9 @@ pub struct Props {
 
     #[prop_or_default]
     pub scrollable: bool,
+
+    #[prop_or_default]
+    pub style: String,
 }
 
 /// [https://bulma.io/documentation/elements/table/](https://bulma.io/documentation/elements/table/)
@@ -42,7 +45,7 @@ pub fn table(props: &Props) -> Html {
     );
 
     let table = html! {
-        <table class={classes}>
+        <table style={props.style.clone()} class={classes}>
             { for props.children.iter() }
         </table>
     };

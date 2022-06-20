@@ -60,6 +60,9 @@ pub struct Props {
 
     #[prop_or_default]
     pub class: Classes,
+
+    #[prop_or_default]
+    pub style: String,
 }
 
 /// [https://bulma.io/documentation/elements/button/](https://bulma.io/documentation/elements/button/)
@@ -88,7 +91,7 @@ pub fn button(props: &Props) -> Html {
 
     // let disabled = props.disabled.then(|| "disabled");
     html! {
-        <button class={classes} {onclick} disabled={props.disabled}>
+        <button style={props.style.clone()} class={classes} {onclick} disabled={props.disabled}>
             { for props.children.iter() }
         </button>
     }
