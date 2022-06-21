@@ -13,7 +13,7 @@ pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static> {
     pub checked: Option<T>,
 
     #[prop_or_default]
-    pub style: String,
+    pub style: Option<String>,
 }
 
 /// [https://bulma.io/documentation/form/radio/](https://bulma.io/documentation/form/radio/)

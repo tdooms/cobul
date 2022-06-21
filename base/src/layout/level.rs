@@ -24,7 +24,7 @@ pub struct Props {
     pub mobile: Mobile,
 
     #[prop_or_default]
-    pub style: String,
+    pub style: Option<String>,
 }
 
 /// [https://bulma.io/documentation/layout/level/](https://bulma.io/documentation/layout/level/)

@@ -27,7 +27,7 @@ pub struct Props {
     // TODO: experimental https://bulma.io/documentation/columns/gap/#breakpoint-based-column-gaps
 
     #[prop_or_default]
-    pub style: String,
+    pub style: Option<String>,
 }
 
 /// [https://bulma.io/documentation/columns/](https://bulma.io/documentation/columns/)

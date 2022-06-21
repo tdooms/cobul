@@ -28,7 +28,7 @@ pub struct Props {
     pub scrollable: bool,
 
     #[prop_or_default]
-    pub style: String,
+    pub style: Option<String>,
 }
 
 /// [https://bulma.io/documentation/elements/table/](https://bulma.io/documentation/elements/table/)

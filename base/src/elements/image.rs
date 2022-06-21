@@ -17,7 +17,7 @@ pub struct Props {
     pub src: Option<String>,
 
     #[prop_or_default]
-    pub style: String,
+    pub style: Option<String>,
 }
 
 /// [https://bulma.io/documentation/elements/image/](https://bulma.io/documentation/elements/image/)

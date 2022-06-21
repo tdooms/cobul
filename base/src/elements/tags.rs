@@ -14,7 +14,7 @@ pub struct Props {
     pub addons: Addons,
 
     #[prop_or_default]
-    pub style: String,
+    pub style: Option<String>,
 }
 
 /// [https://bulma.io/documentation/elements/tag/](https://bulma.io/documentation/elements/tag/)

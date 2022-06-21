@@ -47,7 +47,7 @@ pub struct Props<T: FromStr + ToString + PartialEq + 'static> {
     pub r#static: Static,
 
     #[prop_or_default]
-    pub style: String,
+    pub style: Option<String>,
 }
 
 /// [https://bulma.io/documentation/form/input/](https://bulma.io/documentation/form/input/)

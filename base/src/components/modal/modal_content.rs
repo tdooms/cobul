@@ -14,7 +14,7 @@ pub struct Props {
     pub active: Active,
 
     #[prop_or_default]
-    pub style: String,
+    pub style: Option<String>,
 }
 
 /// [https://bulma.io/documentation/components/modal/](https://bulma.io/documentation/components/modal/)

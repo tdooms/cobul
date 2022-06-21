@@ -23,7 +23,7 @@ pub struct Props {
     pub alignment: AddonsAlignment,
 
     #[prop_or_default]
-    pub style: String,
+    pub style: Option<String>,
 }
 
 /// [https://bulma.io/documentation/form/general/](https://bulma.io/documentation/form/general/)

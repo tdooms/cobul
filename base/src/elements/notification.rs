@@ -4,7 +4,8 @@ use crate::props::{Color, Light};
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {
-    pub onclick: Callback<()>,
+    #[prop_or_default]
+    pub ondelete: Option<Callback<()>>,
 
     #[prop_or_default]
     pub children: Children,
@@ -19,7 +20,7 @@ pub struct Props {
     pub light: Light,
 
     #[prop_or_default]
-    pub style: String,
+    pub style: Option<String>,
 }
 
 /// [https://bulma.io/documentation/elements/notification/](https://bulma.io/documentation/elements/notification/)
@@ -31,11 +32,15 @@ pub fn notification(props: &Props) -> Html {
         props.color,
         props.light
     );
-    let onclick = props.onclick.reform(|_| ());
+
+    let button = match props.ondelete.clone() {
+        Some(cb) => html! {<button class="delete" onclick={cb.reform(|_| ())}></button>},
+        None => html! {}
+    };
 
     html! {
         <div style={props.style.clone()} class={classes}>
-            <button class="delete" onclick={onclick}></button>
+            { button }
             { for props.children.iter() }
         </div>
     }

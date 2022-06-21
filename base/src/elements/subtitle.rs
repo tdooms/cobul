@@ -14,7 +14,7 @@ pub struct Props {
     pub size: Option<HeaderSize>,
 
     #[prop_or_default]
-    pub style: String,
+    pub style: Option<String>,
 }
 
 /// [https://bulma.io/documentation/elements/title/](https://bulma.io/documentation/elements/title/)

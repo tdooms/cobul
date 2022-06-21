@@ -24,7 +24,7 @@ pub struct Props {
     pub footer: Option<Html>,
 
     #[prop_or_default]
-    pub style: String,
+    pub style: Option<String>,
 }
 
 /// [https://bulma.io/documentation/layout/hero/](https://bulma.io/documentation/layout/hero/)

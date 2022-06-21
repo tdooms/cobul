@@ -32,7 +32,7 @@ pub struct Props {
     pub onupload: Callback<Vec<web_sys::File>>,
 
     #[prop_or_default]
-    pub style: String,
+    pub style: Option<String>,
 }
 
 /// [https://bulma.io/documentation/form/file/](https://bulma.io/documentation/form/file/)

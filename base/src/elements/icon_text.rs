@@ -14,7 +14,7 @@ pub struct Props {
     pub children: Children,
 
     #[prop_or_default]
-    pub style: String,
+    pub style: Option<String>,
 }
 
 /// [https://bulma.io/documentation/elements/icon/](https://bulma.io/documentation/elements/icon/)

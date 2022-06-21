@@ -9,7 +9,7 @@ pub struct Props {
     pub class: Classes,
 
     #[prop_or_default]
-    pub style: String,
+    pub style: Option<String>,
 }
 
 /// [https://bulma.io/documentation/components/menu/](https://bulma.io/documentation/components/menu/)

@@ -19,7 +19,7 @@ pub struct Props {
     pub onclick: Callback<()>,
 
     #[prop_or_default]
-    pub style: String,
+    pub style: Option<String>,
 }
 
 /// [https://bulma.io/documentation/elements/delete/](https://bulma.io/documentation/elements/delete/)

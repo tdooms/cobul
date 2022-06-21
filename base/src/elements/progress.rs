@@ -20,7 +20,7 @@ pub struct Props {
     pub size: Size,
 
     #[prop_or_default]
-    pub style: String,
+    pub style: Option<String>,
 }
 
 /// [https://bulma.io/documentation/elements/progress/](https://bulma.io/documentation/elements/progress/)

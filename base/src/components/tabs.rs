@@ -29,7 +29,7 @@ pub struct Props {
     pub fullwidth: Fullwidth,
 
     #[prop_or_default]
-    pub style: String,
+    pub style: Option<String>,
 }
 
 /// [https://bulma.io/documentation/components/tabs/](https://bulma.io/documentation/components/tabs/)

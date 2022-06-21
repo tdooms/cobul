@@ -43,7 +43,7 @@ pub struct Props {
     pub r#static: Static,
 
     #[prop_or_default]
-    pub style: String,
+    pub style: Option<String>,
 }
 
 /// [https://bulma.io/documentation/form/textarea/](https://bulma.io/documentation/form/textarea/)

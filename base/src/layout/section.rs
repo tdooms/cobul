@@ -14,7 +14,7 @@ pub struct Props {
     pub size: Option<SectionSize>,
 
     #[prop_or_default]
-    pub style: String,
+    pub style: Option<String>,
 }
 
 /// [https://bulma.io/documentation/layout/section/](https://bulma.io/documentation/layout/section/)

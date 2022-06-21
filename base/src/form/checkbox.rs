@@ -18,7 +18,7 @@ pub struct Props {
     pub disabled: bool,
 
     #[prop_or_default]
-    pub style: String,
+    pub style: Option<String>,
 }
 
 /// [https://bulma.io/documentation/form/checkbox/](https://bulma.io/documentation/form/checkbox/)

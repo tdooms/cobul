@@ -19,10 +19,11 @@ pub struct Props {
     #[prop_or(true)]
     pub burger: bool,
 
+    #[prop_or_default]
     pub onclick: Callback<()>,
 
     #[prop_or_default]
-    pub style: String,
+    pub style: Option<String>,
 }
 
 /// [https://bulma.io/documentation/components/navbar/](https://bulma.io/documentation/components/navbar/)

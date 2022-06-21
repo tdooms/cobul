@@ -22,14 +22,20 @@ pub struct Props {
     pub class: Classes,
 
     #[prop_or_default]
-    pub style: String,
+    pub style: Option<String>,
 }
 
 /// [// https://bulma.io/documentation/components/card/](// https://bulma.io/documentation/components/card/)
 #[function_component(Card)]
 pub fn card(props: &Props) -> Html {
-    let css = "height:100%;display:flex;flex-direction:column;";
-    let style = format!("{}{}", props.fullheight.then(|| css).unwrap_or_default(), props.style);
+    let css = "height:100%;display:flex;flex-direction:column";
+    let style = match (props.fullheight, &props.style) {
+        (true, Some(style)) => format!("{};{}", css, style),
+        (false, Some(style)) => style.clone(),
+        (true, None) => css.to_string(),
+        (false, None) => String::new()
+    };
+
     let classes = classes!("card", props.class.clone());
 
     html! {

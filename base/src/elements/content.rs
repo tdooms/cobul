@@ -12,7 +12,7 @@ pub struct Props {
     pub tag: String,
 
     #[prop_or_default]
-    pub style: String,
+    pub style: Option<String>,
 }
 
 /// [https://bulma.io/documentation/elements/content/](https://bulma.io/documentation/elements/content/)

@@ -17,7 +17,7 @@ pub struct Props {
     pub offset: Option<ColumnOffset>,
 
     #[prop_or_default]
-    pub style: String,
+    pub style: Option<String>,
 }
 
 /// [https://bulma.io/documentation/columns/](https://bulma.io/documentation/columns/)

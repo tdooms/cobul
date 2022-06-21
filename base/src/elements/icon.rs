@@ -19,7 +19,7 @@ pub struct Props {
     pub color: Option<TextColor>,
 
     #[prop_or_default]
-    pub style: String,
+    pub style: Option<String>,
 }
 
 /// [https://bulma.io/documentation/elements/icon/](https://bulma.io/documentation/elements/icon/)
