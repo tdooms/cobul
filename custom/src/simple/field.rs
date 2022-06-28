@@ -22,9 +22,6 @@ pub struct Props {
     pub help: Option<String>,
 
     #[prop_or_default]
-    pub help_color: Option<Color>,
-
-    #[prop_or_default]
     pub icon_right: Option<String>,
 
     #[prop_or_default]
@@ -34,7 +31,7 @@ pub struct Props {
 #[function_component(SimpleField)]
 pub fn simple_field(props: &Props) -> Html {
     let help = match &props.help {
-        Some(help) => html! { <Help color={props.help_color}> {help.clone()} </Help> },
+        Some(help) => html! { <Help color={Color::Danger}> {help.clone()} </Help> },
         None => html! {},
     };
 
@@ -60,8 +57,9 @@ pub fn simple_field(props: &Props) -> Html {
         props.icon_left.as_ref().map(|_| "has-icons-left")
     );
 
+
     html! {
-        <div class={classes!("field", props.class.clone())}>
+        <div class={classes!("field", props.class.clone(), props.help.as_ref().map(|_| Color::Danger))}>
             { label }
             <div class={control_classes}>
                 { right }

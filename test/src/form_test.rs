@@ -35,19 +35,19 @@ pub fn signup(props: &Props) -> Html {
 
     html! {
         <>
-        <SimpleField label="mail" help_color={Color::Danger} help={form.error("mail")}>
+        <SimpleField label="mail" help={form.error("mail")}>
             <Input oninput={form.field(|x| &mut x.mail)} value={mail}/>
         </SimpleField>
 
-        <SimpleField label="site" help_color={Color::Danger} help={form.error("site")}>
+        <SimpleField label="site" help={form.error("site")}>
             <Input oninput={form.field(|x| &mut x.site)} value={site}/>
         </SimpleField>
 
-        <SimpleField label="username" help_color={Color::Danger} help={form.error("username")}>
+        <SimpleField label="username" help={form.error("username")}>
             <Input oninput={form.field(|x| &mut x.username)} value={username}/>
         </SimpleField>
 
-        <SimpleField label="age" help_color={Color::Danger} help={form.error("age")}>
+        <SimpleField label="age" help={form.error("age")}>
             <TypedInput<u32> oninput={form.maybe_field(|x| &mut x.age, "age", |_| "must be integer".into())} value={age}/>
         </SimpleField>
 
