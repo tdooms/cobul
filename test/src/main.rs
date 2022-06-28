@@ -2,7 +2,6 @@ use derive_more::Display;
 use strum::EnumIter;
 use yew::prelude::*;
 
-use cobul::props::{Color, ColumnOffset, ColumnSize, Size, TextColor};
 use cobul::*;
 use form_test::FormTester;
 

@@ -1,4 +1,4 @@
-pub use base::{components::*, elements::*, form::*, layout::*};
+pub use base::{components::*, elements::*, form::*, layout::*, props::*};
 #[cfg(feature = "custom")]
 pub use custom::{components::*, extensions::*, simple::*};
 #[cfg(feature = "fa")]
