@@ -59,7 +59,7 @@ pub fn simple_field(props: &Props) -> Html {
 
 
     html! {
-        <div class={classes!("field", props.class.clone(), props.help.as_ref().map(|_| Color::Danger))}>
+        <div class={classes!("field", props.class.clone())}>
             { label }
             <div class={control_classes}>
                 { right }
