@@ -89,34 +89,6 @@ impl<T: Clone + Validate + 'static> UseFormHandle<T> {
             Err(err) => errors.set(field.clone(), Some(explain(err))),
         })
     }
-
-    pub fn async_field<F: 'static, Fut>(
-        &self,
-        func: impl Fn(T, F) -> Fut + Clone + 'static,
-    ) -> Callback<F>
-    where
-        Fut: Future<Output = T>,
-    {
-        let Self {
-            state,
-            actions: Actions { onchange, .. },
-            ..
-        } = self.clone();
-
-        Callback::from(move |f| {
-            let state = state.clone();
-            let func = func.clone();
-            let onchange = onchange.clone();
-
-            wasm_bindgen_futures::spawn_local(async move {
-                let cloned = func((*state).clone(), f).await;
-                if let Some(cb) = onchange.clone() {
-                    cb.emit(cloned.clone())
-                }
-                state.set(cloned);
-            });
-        })
-    }
 }
 
 #[hook]
