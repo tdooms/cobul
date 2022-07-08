@@ -28,8 +28,8 @@ pub struct Props {
     pub icon_left: Option<String>,
 }
 
-#[function_component(SimpleField)]
-pub fn simple_field(props: &Props) -> Html {
+#[function_component(Field)]
+pub fn field(props: &Props) -> Html {
     let help = match &props.help {
         Some(help) => html! { <Help color={Color::Danger}> {help.clone()} </Help> },
         None => html! {},

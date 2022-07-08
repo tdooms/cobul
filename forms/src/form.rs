@@ -2,9 +2,7 @@ use std::collections::HashMap;
 use std::future::Future;
 
 use validator::Validate;
-use yew::{hook, Callback, UseStateHandle};
-
-use hooks::use_value_state;
+use yew::{hook, use_effect_with_deps, use_state_eq, Callback, UseStateHandle};
 
 use crate::actions::Actions;
 use crate::errors::{use_errors, UseErrorHandle};
@@ -96,7 +94,17 @@ pub fn use_form<T>(value: &T, actions: Actions<T>) -> (UseFormHandle<T>, T)
 where
     T: Clone + Validate + PartialEq + 'static,
 {
-    let state = use_value_state(value);
+    let cloned = value.clone();
+    let state = use_state_eq(move || cloned);
+
+    let cloned = state.clone();
+    use_effect_with_deps(
+        move |value| {
+            cloned.set(value.clone());
+            || ()
+        },
+        value.clone(),
+    );
 
     let cloned = (*state).clone();
     let errors = use_errors(&cloned);

@@ -1,7 +1,7 @@
 use strum::IntoEnumIterator;
 use yew::prelude::*;
 
-use base::elements::{Button, Buttons};
+use base::elements;
 use base::props::{Alignment, Color, Size};
 
 #[derive(Clone, Properties, PartialEq)]
@@ -22,8 +22,8 @@ pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static> {
     pub onclick: Callback<T>,
 }
 
-#[function_component(EnumButtons)]
-pub fn enum_buttons<T>(props: &Props<T>) -> Html
+#[function_component(Buttons)]
+pub fn buttons<T>(props: &Props<T>) -> Html
 where
     T: IntoEnumIterator + ToString + Copy + PartialEq + 'static,
 {
@@ -41,15 +41,15 @@ where
         let onclick = onclick.reform(move |_| variant);
 
         html! {
-            <Button color={color.cloned()} onclick={onclick} selected={selected} size={*size}>
+            <elements::Button color={color.cloned()} onclick={onclick} selected={selected} size={*size}>
                 { variant.to_string() }
-            </Button>
+            </elements::Button>
         }
     };
 
     html! {
-        <Buttons addons=true alignment={*alignment} class={class.clone()}>
+        <elements::Buttons addons=true alignment={*alignment} class={class.clone()}>
             { for T::iter().map(button_map) }
-        </Buttons>
+        </elements::Buttons>
     }
 }

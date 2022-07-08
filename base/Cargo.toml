@@ -10,7 +10,6 @@ license = "GNU GPLv3"
 [dependencies]
 yew-router = { git = "https://github.com/yewstack/yew.git", rev = "421b4e1f608e6d648dcf571157b081fcbd886996" }
 yew = { git = "https://github.com/yewstack/yew.git", rev = "421b4e1f608e6d648dcf571157b081fcbd886996" }
-hooks = { path = "../hooks" }
 
 web-sys = "0.3"
 strum = { version = "0.24", features = ["derive"] }

@@ -4,14 +4,16 @@ version = "0.1.0"
 edition = "2021"
 
 [workspace]
-members = ["base", "custom", "fa", "test", "fa_scraper", "forms", "hooks"]
+members = ["base", "custom", "fa", "test", "fa/scraper", "forms", "slider", "switch", "simple"]
 
 [dependencies]
 base = { path = "base" }
 custom = { path = "custom", optional = true }
-hooks = { path = "hooks", optional = true }
-fa = { path = "fa", optional = true }
+slider = { path = "slider", optional = true }
+switch = { path = "switch", optional = true }
+simple = { path = "simple", optional = true }
 forms = { path = "forms", optional = true }
+fa = { path = "fa", optional = true }
 
 
 

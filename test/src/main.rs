@@ -4,8 +4,10 @@ use yew::prelude::*;
 
 use cobul::*;
 use form_test::FormTester;
+use slider_test::SliderTester;
 
 mod form_test;
+mod slider_test;
 
 #[derive(Display, Clone, Copy, EnumIter, PartialEq)]
 pub enum SelectEnum {
@@ -33,7 +35,7 @@ pub fn dropdown_tester() -> Html {
     let onchange = Callback::from(move |x| state.set(x));
 
     html! {
-        <EnumDropdown<TestEnum> {value} {onchange}/>
+        <simple::Dropdown<TestEnum> {value} {onchange}/>
     }
 }
 
@@ -68,6 +70,7 @@ fn app() -> Html {
         <Column offset={ColumnOffset::Is2} size={ColumnSize::Is6}>
 
         <FormTester/>
+        <SliderTester/>
         <DropdownTester/>
 
         <Block>

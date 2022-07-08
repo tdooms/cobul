@@ -8,8 +8,3 @@ edition = "2021"
 [dependencies]
 base = { path = "../base" }
 yew = { git = "https://github.com/yewstack/yew.git", rev = "421b4e1f608e6d648dcf571157b081fcbd886996" }
-
-web-sys = "0.3"
-strum = { version = "0.24", features = ["derive"] }
-derive_more = "*"
-num = "0.4"

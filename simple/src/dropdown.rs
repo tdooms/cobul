@@ -1,9 +1,14 @@
 use strum::IntoEnumIterator;
 use yew::prelude::*;
 
-use base::components::{Dropdown, DropdownItem};
-use base::elements::{Button, Icon};
+use base::components;
+use base::elements;
 use base::props::{Color, Size};
+
+pub enum DropdownElement {
+    Item(String),
+    Divider,
+}
 
 // TODO: deselect when not in focus
 #[derive(Clone, Debug, Properties, PartialEq)]
@@ -19,8 +24,8 @@ pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static> {
     pub size: Size,
 }
 
-#[function_component(EnumDropdown)]
-pub fn enum_dropdown<T>(props: &Props<T>) -> Html
+#[function_component(Dropdown)]
+pub fn dropdown<T>(props: &Props<T>) -> Html
 where
     T: IntoEnumIterator + ToString + Copy + PartialEq + 'static,
 {
@@ -38,10 +43,10 @@ where
         let onclick = Callback::from(move |_| active.set(!(*active)));
 
         html! {
-            <Button {onclick} size={size.clone()}>
+            <elements::Button {onclick} size={size.clone()}>
                 <span> {value.to_string()} </span>
-                <Icon icon="fas fa-angle-down"/>
-            </Button>
+                <elements::Icon icon="fas fa-angle-down"/>
+            </elements::Button>
         }
     };
 
@@ -50,15 +55,15 @@ where
         let onclick = onchange.reform(move |_| variant);
 
         html! {
-            <DropdownItem class={classes!(*size)} {onclick} {active}>
+            <components::DropdownItem class={classes!(*size)} {onclick} {active}>
                 {variant.to_string()}
-            </DropdownItem>
+            </components::DropdownItem>
         }
     };
 
     html! {
-        <Dropdown {trigger} active={*active}>
+        <components::Dropdown {trigger} active={*active}>
             { for T::iter().map(dropdown_map) }
-        </Dropdown>
+        </components::Dropdown>
     }
 }

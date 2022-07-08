@@ -1,8 +1,7 @@
 use yew::prelude::*;
 
-use base::props::ColumnSize;
-
 use crate::props::SidebarAlignment;
+use base::props::ColumnSize;
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {

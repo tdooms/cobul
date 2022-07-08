@@ -2,8 +2,6 @@ use std::str::FromStr;
 
 use yew::prelude::*;
 
-use hooks::use_value_state;
-
 use crate::props::{Color, InputType, Loading, Rounded, Size, Static};
 
 #[derive(Clone, Debug, Properties, PartialEq)]
@@ -56,12 +54,22 @@ pub fn typed_input<T>(props: &Props<T>) -> Html
 where
     T: FromStr + ToString + PartialEq + 'static,
 {
-    let state = use_value_state(
-        &props
-            .value
-            .as_ref()
-            .map(ToString::to_string)
-            .unwrap_or_default(),
+    let value = props
+        .value
+        .as_ref()
+        .map(|x| x.to_string())
+        .unwrap_or_default();
+    let cloned = value.clone();
+
+    let state = use_state_eq(move || cloned);
+
+    let cloned = state.clone();
+    use_effect_with_deps(
+        move |value| {
+            cloned.set(value.clone());
+            || ()
+        },
+        value,
     );
 
     let classes = classes!(
