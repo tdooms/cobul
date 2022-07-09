@@ -9,7 +9,7 @@ pub use slider::Slider;
 pub use switch::Switch;
 
 pub mod simple {
-    #[cfg(feature = "custom")]
+    #[cfg(feature = "simple")]
     pub use simple::*;
 }
 
