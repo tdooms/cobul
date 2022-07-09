@@ -1,7 +1,6 @@
 use num::{FromPrimitive, ToPrimitive};
 use std::fmt::{Debug, Display};
 use std::ops::Range;
-use std::str::FromStr;
 use web_sys::{HtmlDivElement, HtmlOutputElement};
 use yew::prelude::*;
 
@@ -9,7 +8,6 @@ use base::props::{Color, Fullwidth, Size};
 
 #[derive(Clone, Debug, PartialEq)]
 pub enum LabelAlignment {
-    Left,
     Right,
     Tooltip,
 }
@@ -22,6 +20,9 @@ pub struct Props<T: PartialEq> {
     pub range: Range<T>,
 
     pub value: T,
+
+    #[prop_or("{}")]
+    pub fmt: &'static str,
 
     /// Onchange is triggered when the slider is released
     #[prop_or_default]
@@ -84,7 +85,7 @@ where
 
     let output = match props.label {
         None => "",
-        Some(LabelAlignment::Left | LabelAlignment::Right) => "has-output",
+        Some(LabelAlignment::Right) => "has-output",
         Some(LabelAlignment::Tooltip) => "has-output-tooltip",
     };
 
@@ -107,28 +108,21 @@ where
         T::from_f64(elem.value_as_number()).unwrap()
     });
 
-    let (pre, post) = match props.label {
-        Some(LabelAlignment::Left) => (
-            html! {<output for={props.id}> {props.value.clone()} </output>},
-            html! {},
-        ),
-        Some(LabelAlignment::Right) => (
-            html! {},
-            html! {<output for={props.id}> {props.value.clone()} </output>},
-        ),
-        Some(LabelAlignment::Tooltip) => (
-            html! {},
-            html! {<output style={format!("left:{offset}px")} for={props.id} ref={label}> {props.value.clone()} </output>},
-        ),
-        None => (html! {}, html! {}),
+    let formatted = props.fmt.replace("{}", &props.value.to_string());
+
+    let label = match props.label {
+        Some(LabelAlignment::Right) => html! {<output for={props.id}> {formatted} </output>},
+        Some(LabelAlignment::Tooltip) => {
+            html! {<output style={format!("left:{offset}px")} for={props.id} ref={label}> {formatted} </output>}
+        }
+        None => html! {},
     };
 
     html! {
         <div style="position:relative" ref={container} class="pt-2 m-2">
-        {pre}
         <input id={props.id} {class} step={props.step.to_string()} min={props.range.start.to_string()} max={props.range.end.to_string()}
-                disabled={props.disabled} orient={props.vertical.then(|| "vertical")} {onchange} {oninput} type="range"/>
-        {post}
+                disabled={props.disabled} orient={props.vertical.then(|| "vertical")} {onchange} {oninput} type="range" value={props.value.to_string()}/>
+        {label}
         </div>
     }
 }

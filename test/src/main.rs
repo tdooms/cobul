@@ -5,9 +5,11 @@ use yew::prelude::*;
 use cobul::*;
 use form_test::FormTester;
 use slider_test::SliderTester;
+use switch_test::SwitchTester;
 
 mod form_test;
 mod slider_test;
+mod switch_test;
 
 #[derive(Display, Clone, Copy, EnumIter, PartialEq)]
 pub enum SelectEnum {
@@ -71,6 +73,7 @@ fn app() -> Html {
 
         <FormTester/>
         <SliderTester/>
+        <SwitchTester/>
         <DropdownTester/>
 
         <Block>
