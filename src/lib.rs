@@ -4,7 +4,7 @@ pub use fa::Icons;
 #[cfg(feature = "forms")]
 pub use forms::{use_form, Actions, UseFormHandle};
 #[cfg(feature = "slider")]
-pub use slider::{LabelAlignment, Slider};
+pub use slider::Slider;
 #[cfg(feature = "switch")]
 pub use switch::Switch;
 

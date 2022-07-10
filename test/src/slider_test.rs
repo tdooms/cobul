@@ -1,8 +1,6 @@
 use cobul::Slider;
 use yew::*;
 
-use cobul::LabelAlignment;
-
 #[function_component(SliderTester)]
 pub fn slider_tester() -> Html {
     let value = use_state_eq(|| 50.0);
@@ -11,8 +9,8 @@ pub fn slider_tester() -> Html {
 
     let floats = html! {
         <>
-        <Slider<f32> id="1" oninput={oninput.clone()} range={0.0..100.0} value={*value} step=1.0 fullwidth=true label={LabelAlignment::Right} fmt="{}%"/>
-        <Slider<f32> id="2" oninput={oninput.clone()} range={0.0..50.0} value={*value} step=1.0 fullwidth=true/>
+        <Slider<f32> id="1" oninput={oninput.clone()} range={0.0..100.0} value={*value} step=1.0 fullwidth=true label=true fmt="{}%"/>
+        <Slider<f32> id="2" oninput={oninput.clone()} range={0.0..50.0} value={*value} step=1.0 fullwidth=true tooltip=true label=true/>
         <p> {value.to_string()} </p>
         </>
     };
@@ -23,8 +21,8 @@ pub fn slider_tester() -> Html {
 
     let integers = html! {
         <>
-        <Slider<u32> id="3" oninput={oninput.clone()} range={0..100} value={*value} step=1 fullwidth=true label={LabelAlignment::Tooltip}/>
-        <Slider<u32> id="4" oninput={oninput.clone()} range={0..20} value={*value} step=1 fullwidth=true label={LabelAlignment::Right} fmt="{}px"/>
+        <Slider<u32> id="3" oninput={oninput.clone()} range={0..100} value={*value} step=1 fullwidth=true tooltip=true/>
+        <Slider<u32> id="4" oninput={oninput.clone()} range={0..20} value={*value} step=1 fullwidth=true label=true fmt="{}px"/>
         <p> {value.to_string()} </p>
         </>
     };

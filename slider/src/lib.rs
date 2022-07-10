@@ -6,12 +6,6 @@ use yew::prelude::*;
 
 use base::props::{Color, Fullwidth, Size};
 
-#[derive(Clone, Debug, PartialEq)]
-pub enum LabelAlignment {
-    Right,
-    Tooltip,
-}
-
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props<T: PartialEq> {
     pub id: &'static str,
@@ -54,7 +48,10 @@ pub struct Props<T: PartialEq> {
     pub disabled: bool,
 
     #[prop_or_default]
-    pub label: Option<LabelAlignment>,
+    pub tooltip: bool,
+
+    #[prop_or_default]
+    pub label: bool,
 }
 
 /// [https://wikiki.github.io/form/slider/](https://wikiki.github.io/form/slider/)
@@ -63,6 +60,10 @@ pub fn slider<T>(props: &Props<T>) -> Html
 where
     T: PartialEq + Clone + Display + FromPrimitive + ToPrimitive + 'static,
 {
+    if props.label && props.tooltip {
+        panic!("both right label and tooltip are not supported");
+    }
+
     let width = use_state(|| 0);
     let container = use_node_ref();
     let label = use_node_ref();
@@ -81,14 +82,6 @@ where
         (container.clone(), label.clone()),
     );
 
-    let offset = *width as f64 * props.value.to_f64().unwrap() / 100.0;
-
-    let output = match props.label {
-        None => "",
-        Some(LabelAlignment::Right) => "has-output",
-        Some(LabelAlignment::Tooltip) => "has-output-tooltip",
-    };
-
     let class = classes!(
         "slider",
         props.class.clone(),
@@ -96,7 +89,8 @@ where
         props.color,
         props.fullwidth,
         props.circle.then(|| "is-circle"),
-        output
+        props.tooltip.then(|| "has-output-tooltip"),
+        props.label.then(|| "has-output"),
     );
 
     let onchange = props.onchange.reform(|e: Event| {
@@ -110,19 +104,20 @@ where
 
     let formatted = props.fmt.replace("{}", &props.value.to_string());
 
-    let label = match props.label {
-        Some(LabelAlignment::Right) => html! {<output for={props.id}> {formatted} </output>},
-        Some(LabelAlignment::Tooltip) => {
-            html! {<output style={format!("left:{offset}px")} for={props.id} ref={label}> {formatted} </output>}
-        }
-        None => html! {},
-    };
+    let (start, end, value) = (
+        props.range.start.to_f64().unwrap(),
+        props.range.end.to_f64().unwrap(),
+        props.value.to_f64().unwrap(),
+    );
+
+    let offset = *width as f64 * ((value - start) / (end - start)).clamp(0.0, 1.0);
+    let style = props.tooltip.then(|| format!("left:{offset}px"));
 
     html! {
         <div style="position:relative" ref={container} class="pt-2 m-2">
         <input id={props.id} {class} step={props.step.to_string()} min={props.range.start.to_string()} max={props.range.end.to_string()}
                 disabled={props.disabled} orient={props.vertical.then(|| "vertical")} {onchange} {oninput} type="range" value={props.value.to_string()}/>
-        {label}
+        <output {style} for={props.id} ref={label}> {formatted} </output>
         </div>
     }
 }
