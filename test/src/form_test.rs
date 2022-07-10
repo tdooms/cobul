@@ -1,7 +1,7 @@
 use validator::Validate;
 use yew::*;
 
-use cobul::props::Color;
+use cobul::Color;
 use cobul::*;
 
 #[derive(Debug, Clone, Validate, PartialEq)]
@@ -35,21 +35,21 @@ pub fn signup(props: &Props) -> Html {
 
     html! {
         <>
-        <SimpleField label="mail" help={form.error("mail")}>
+        <simple::Field label="mail" help={form.error("mail")}>
             <Input oninput={form.field(|x| &mut x.mail)} value={mail}/>
-        </SimpleField>
+        </simple::Field>
 
-        <SimpleField label="site" help={form.error("site")}>
+        <simple::Field label="site" help={form.error("site")}>
             <Input oninput={form.field(|x| &mut x.site)} value={site}/>
-        </SimpleField>
+        </simple::Field>
 
-        <SimpleField label="username" help={form.error("username")}>
+        <simple::Field label="username" help={form.error("username")}>
             <Input oninput={form.field(|x| &mut x.username)} value={username}/>
-        </SimpleField>
+        </simple::Field>
 
-        <SimpleField label="age" help={form.error("age")}>
+        <simple::Field label="age" help={form.error("age")}>
             <TypedInput<u32> oninput={form.maybe_field(|x| &mut x.age, "age", |_| "must be integer".into())} value={age}/>
-        </SimpleField>
+        </simple::Field>
 
         <Buttons>
             <Button disabled={!form.can_submit()} onclick={form.submit()} color={Color::Primary}> {"Submit"} </Button>

@@ -154,7 +154,7 @@ fn app() -> Html {
         </Content>
 
         <Block>
-        { for SIZES.iter().map(|(s, _)| html!{ <Delete size={s.clone()} onclick={Callback::noop()}/> })}
+        // { for SIZES.iter().map(|(s, _)| html!{ <Delete size={s.clone()} onclick={Callback::noop()}/> })}
         </Block>
 
         <Block>

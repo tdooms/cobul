@@ -1,7 +1,7 @@
 use cobul::Slider;
 use yew::*;
 
-use cobul::props::LabelAlignment;
+use cobul::LabelAlignment;
 
 #[function_component(SliderTester)]
 pub fn slider_tester() -> Html {
