@@ -4,7 +4,7 @@ use std::ops::Range;
 use web_sys::{HtmlDivElement, HtmlOutputElement};
 use yew::prelude::*;
 
-use base::props::{Color, Fullwidth, Size};
+use base::props::{Color, Size};
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props<T: PartialEq> {
@@ -30,7 +30,7 @@ pub struct Props<T: PartialEq> {
     pub class: Classes,
 
     #[prop_or_default]
-    pub fullwidth: Fullwidth,
+    pub fullwidth: bool,
 
     #[prop_or_default]
     pub size: Size,
@@ -87,7 +87,7 @@ where
         props.class.clone(),
         props.size,
         props.color,
-        props.fullwidth,
+        props.fullwidth.then(|| "is-fullwidth"),
         props.circle.then(|| "is-circle"),
         props.tooltip.then(|| "has-output-tooltip"),
         props.label.then(|| "has-output"),

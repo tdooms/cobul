@@ -1,4 +1,4 @@
-use base::props::{Color, Outlined, Rounded, Size};
+use base::props::{Color, Size};
 use yew::*;
 
 #[derive(Properties, Debug, PartialEq, Clone)]
@@ -22,10 +22,10 @@ pub struct Props {
     pub thin: bool,
 
     #[prop_or_default]
-    pub rounded: Rounded,
+    pub rounded: bool,
 
     #[prop_or_default]
-    pub outlined: Outlined,
+    pub outlined: bool,
 
     #[prop_or_default]
     pub disabled: bool,
@@ -43,8 +43,8 @@ pub fn switch(props: &Props) -> Html {
         props.color,
         props.size,
         props.thin.then(|| "is-thin"),
-        props.rounded,
-        props.outlined,
+        props.rounded.then(|| "is-rounded"),
+        props.outlined.then(|| "is-outlined"),
     );
 
     let checked = props.checked;
