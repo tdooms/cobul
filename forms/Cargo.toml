@@ -8,6 +8,6 @@ edition = "2021"
 [dependencies]
 yew = { git = "https://github.com/yewstack/yew.git", rev = "421b4e1f608e6d648dcf571157b081fcbd886996" }
 
-validator = { version = "0.14", features = ["derive"] }
+validator = { version = "0.15", features = ["derive"] }
 wasm-bindgen-futures = "0.4"
 log = "0.4"
