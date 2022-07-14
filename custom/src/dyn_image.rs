@@ -1,9 +1,10 @@
+use std::rc::Rc;
 use yew::prelude::*;
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {
     #[prop_or_default]
-    pub src: String,
+    pub src: Rc<String>,
 
     #[prop_or(100)]
     pub height: u32,
