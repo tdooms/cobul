@@ -6,10 +6,14 @@ use cobul::*;
 use form_test::FormTester;
 use slider_test::SliderTester;
 use switch_test::SwitchTester;
+use dropdown_test::DropdownTester;
+use tabs_tester::TabsTester;
 
 mod form_test;
 mod slider_test;
 mod switch_test;
+mod tabs_tester;
+mod dropdown_test;
 
 #[derive(Display, Clone, Copy, EnumIter, PartialEq)]
 pub enum SelectEnum {
@@ -17,28 +21,6 @@ pub enum SelectEnum {
     SelectDropdown,
     #[display(fmt = "With options")]
     WithOptions,
-}
-
-#[derive(Debug, Clone, PartialEq, Copy, EnumIter, Display)]
-pub enum TestEnum {
-    #[display(fmt = "Option 1")]
-    Option1,
-    #[display(fmt = "Option 2")]
-    Option2,
-    #[display(fmt = "Option 3")]
-    Option3,
-}
-
-#[function_component(DropdownTester)]
-pub fn dropdown_tester() -> Html {
-    let state = use_state(|| TestEnum::Option1);
-    let value = *state;
-
-    let onchange = Callback::from(move |x| state.set(x));
-
-    html! {
-        <simple::Dropdown<TestEnum> {value} {onchange}/>
-    }
 }
 
 #[function_component(App)]
@@ -71,10 +53,11 @@ fn app() -> Html {
         <Columns>
         <Column offset={ColumnOffset::Is2} size={ColumnSize::Is6}>
 
-        <FormTester/>
-        <SliderTester/>
-        <SwitchTester/>
-        <DropdownTester/>
+        // <FormTester/>
+        // <SliderTester/>
+        // <SwitchTester/>
+        <TabsTester/>
+        // <DropdownTester/>
 
         <Block>
             {"This text is within a "} <strong>{"block"}</strong>{"."}

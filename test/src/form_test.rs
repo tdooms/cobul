@@ -87,9 +87,9 @@ pub fn form_tester() -> Html {
     let onchange = Callback::from(move |b| state.set(b));
 
     html! {
-        <Container>
+        <Box>
             <SignupForm {signup}/>
             <Checkbox name={"checkbox"} {checked} {onchange} />
-        </Container>
+        </Box>
     }
 }

@@ -31,6 +31,7 @@ bool_prop!(Active, "is-active");
 bool_prop!(Rounded, "is-rounded");
 bool_prop!(Boxed, "is-boxed");
 bool_prop!(Toggle, "is-toggle");
+bool_prop!(ToggleRounded, "is-toggle-rounded");
 bool_prop!(Fullwidth, "is-fullwidth");
 bool_prop!(Hidden, "is-hidden");
 bool_prop!(Outlined, "is-outlined");

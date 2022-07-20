@@ -1,4 +1,4 @@
-use cobul::Slider;
+use cobul::{Slider, Box};
 use yew::*;
 
 #[function_component(SliderTester)]
@@ -28,9 +28,9 @@ pub fn slider_tester() -> Html {
     };
 
     html! {
-        <>
+        <Box>
         {floats}
         {integers}
-        </>
+        </Box>
     }
 }
