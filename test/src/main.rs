@@ -9,6 +9,7 @@ use loader::LoaderTester;
 use slider::SliderTester;
 use switch::SwitchTester;
 use tabs::TabsTester;
+use tooltip::TooltipTester;
 
 mod dropdown;
 mod form;
@@ -16,6 +17,7 @@ mod loader;
 mod slider;
 mod switch;
 mod tabs;
+mod tooltip;
 
 #[derive(Display, Clone, Copy, EnumIter, PartialEq)]
 pub enum SelectEnum {
@@ -60,6 +62,7 @@ fn app() -> Html {
         // <SwitchTester/>
         <TabsTester/>
         <LoaderTester/>
+        <TooltipTester/>
         // <DropdownTester/>
 
         <Block>

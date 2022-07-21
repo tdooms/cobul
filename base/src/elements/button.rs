@@ -59,6 +59,9 @@ pub struct Props {
     pub r#static: Static,
 
     #[prop_or_default]
+    pub tooltip: Option<String>,
+
+    #[prop_or_default]
     pub class: Classes,
 
     #[prop_or_default]
@@ -68,7 +71,7 @@ pub struct Props {
 /// [https://bulma.io/documentation/elements/button/](https://bulma.io/documentation/elements/button/)
 #[function_component(Button)]
 pub fn button(props: &Props) -> Html {
-    let classes = classes!(
+    let class = classes!(
         "button",
         props.hidden,
         props.outlined,
@@ -89,9 +92,15 @@ pub fn button(props: &Props) -> Html {
 
     let onclick = props.onclick.reform(|_| ());
 
-    // let disabled = props.disabled.then(|| "disabled");
+    let Props {
+        style,
+        disabled,
+        tooltip,
+        ..
+    } = props.clone();
+
     html! {
-        <button style={props.style.clone()} class={classes} {onclick} disabled={props.disabled}>
+        <button {style} {class} {onclick} {disabled} data-tooltip={tooltip}>
             { for props.children.iter() }
         </button>
     }

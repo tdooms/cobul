@@ -23,7 +23,7 @@ pub fn loader_tester() -> Html {
 
     html! {
         <Box>
-        <Button onclick={onclick(Direction::BottomToTop)} />
+        <Button onclick={onclick(Direction::BottomToTop)}> {"Loading screen"} </Button>
         {loader}
         </Box>
     }
