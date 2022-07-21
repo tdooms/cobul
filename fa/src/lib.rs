@@ -1,3233 +1,4022 @@
-use derive_more::Display;
-use yew::html::IntoPropValue;
-
-#[derive(Debug, Clone, Copy, Display)]
-pub enum Icons {
-    #[display(fmt = "fab fa-accessible-icon")]
-    AccessibleIcon,
-    #[display(fmt = "fab fa-accusoft")]
-    Accusoft,
-    #[display(fmt = "fab fa-acquisitions-incorporated")]
-    AcquisitionsIncorporated,
-    #[display(fmt = "fas fa-ad")]
-    Ad,
-    #[display(fmt = "fas fa-address-book")]
-    AddressBookSolid,
-    #[display(fmt = "far fa-address-book")]
-    AddressBookRegular,
-    #[display(fmt = "fas fa-address-card")]
-    AddressCardSolid,
-    #[display(fmt = "far fa-address-card")]
-    AddressCardRegular,
-    #[display(fmt = "fas fa-adjust")]
-    Adjust,
-    #[display(fmt = "fab fa-adn")]
-    Adn,
-    #[display(fmt = "fab fa-adversal")]
-    Adversal,
-    #[display(fmt = "fab fa-affiliatetheme")]
-    Affiliatetheme,
-    #[display(fmt = "fas fa-air-freshener")]
-    AirFreshener,
-    #[display(fmt = "fab fa-airbnb")]
-    Airbnb,
-    #[display(fmt = "fab fa-algolia")]
-    Algolia,
-    #[display(fmt = "fas fa-align-center")]
+#[derive(Clone, Copy, derive_more::Display)]
+pub enum Solid {
+    #[display(fmt = "fa-solid fa-a")]
+    A,
+    #[display(fmt = "fa-solid fa-address-book")]
+    AddressBook,
+    #[display(fmt = "fa-solid fa-address-card")]
+    AddressCard,
+    #[display(fmt = "fa-solid fa-align-center")]
     AlignCenter,
-    #[display(fmt = "fas fa-align-justify")]
+    #[display(fmt = "fa-solid fa-align-justify")]
     AlignJustify,
-    #[display(fmt = "fas fa-align-left")]
+    #[display(fmt = "fa-solid fa-align-left")]
     AlignLeft,
-    #[display(fmt = "fas fa-align-right")]
+    #[display(fmt = "fa-solid fa-align-right")]
     AlignRight,
-    #[display(fmt = "fab fa-alipay")]
-    Alipay,
-    #[display(fmt = "fas fa-allergies")]
-    Allergies,
-    #[display(fmt = "fab fa-amazon")]
-    Amazon,
-    #[display(fmt = "fab fa-amazon-pay")]
-    AmazonPay,
-    #[display(fmt = "fas fa-ambulance")]
-    Ambulance,
-    #[display(fmt = "fas fa-american-sign-language-interpreting")]
-    AmericanSignLanguageInterpreting,
-    #[display(fmt = "fab fa-amilia")]
-    Amilia,
-    #[display(fmt = "fas fa-anchor")]
+    #[display(fmt = "fa-solid fa-anchor")]
     Anchor,
-    #[display(fmt = "fab fa-android")]
-    Android,
-    #[display(fmt = "fab fa-angellist")]
-    Angellist,
-    #[display(fmt = "fas fa-angle-double-down")]
-    AngleDoubleDown,
-    #[display(fmt = "fas fa-angle-double-left")]
-    AngleDoubleLeft,
-    #[display(fmt = "fas fa-angle-double-right")]
-    AngleDoubleRight,
-    #[display(fmt = "fas fa-angle-double-up")]
-    AngleDoubleUp,
-    #[display(fmt = "fas fa-angle-down")]
+    #[display(fmt = "fa-solid fa-anchor-circle-check")]
+    AnchorCircleCheck,
+    #[display(fmt = "fa-solid fa-anchor-circle-exclamation")]
+    AnchorCircleExclamation,
+    #[display(fmt = "fa-solid fa-anchor-circle-xmark")]
+    AnchorCircleXmark,
+    #[display(fmt = "fa-solid fa-anchor-lock")]
+    AnchorLock,
+    #[display(fmt = "fa-solid fa-angle-down")]
     AngleDown,
-    #[display(fmt = "fas fa-angle-left")]
+    #[display(fmt = "fa-solid fa-angle-left")]
     AngleLeft,
-    #[display(fmt = "fas fa-angle-right")]
+    #[display(fmt = "fa-solid fa-angle-right")]
     AngleRight,
-    #[display(fmt = "fas fa-angle-up")]
+    #[display(fmt = "fa-solid fa-angle-up")]
     AngleUp,
-    #[display(fmt = "fas fa-angry")]
-    AngrySolid,
-    #[display(fmt = "far fa-angry")]
-    AngryRegular,
-    #[display(fmt = "fab fa-angrycreative")]
-    Angrycreative,
-    #[display(fmt = "fab fa-angular")]
-    Angular,
-    #[display(fmt = "fas fa-ankh")]
+    #[display(fmt = "fa-solid fa-angles-down")]
+    AnglesDown,
+    #[display(fmt = "fa-solid fa-angles-left")]
+    AnglesLeft,
+    #[display(fmt = "fa-solid fa-angles-right")]
+    AnglesRight,
+    #[display(fmt = "fa-solid fa-angles-up")]
+    AnglesUp,
+    #[display(fmt = "fa-solid fa-ankh")]
     Ankh,
-    #[display(fmt = "fab fa-app-store")]
-    AppStore,
-    #[display(fmt = "fab fa-app-store-ios")]
-    AppStoreIos,
-    #[display(fmt = "fab fa-apper")]
-    Apper,
-    #[display(fmt = "fab fa-apple")]
-    Apple,
-    #[display(fmt = "fas fa-apple-alt")]
-    AppleAlt,
-    #[display(fmt = "fab fa-apple-pay")]
-    ApplePay,
-    #[display(fmt = "fas fa-archive")]
-    Archive,
-    #[display(fmt = "fas fa-archway")]
+    #[display(fmt = "fa-solid fa-apple-whole")]
+    AppleWhole,
+    #[display(fmt = "fa-solid fa-archway")]
     Archway,
-    #[display(fmt = "fas fa-arrow-alt-circle-down")]
-    ArrowAltCircleDownSolid,
-    #[display(fmt = "far fa-arrow-alt-circle-down")]
-    ArrowAltCircleDownRegular,
-    #[display(fmt = "fas fa-arrow-alt-circle-left")]
-    ArrowAltCircleLeftSolid,
-    #[display(fmt = "far fa-arrow-alt-circle-left")]
-    ArrowAltCircleLeftRegular,
-    #[display(fmt = "fas fa-arrow-alt-circle-right")]
-    ArrowAltCircleRightSolid,
-    #[display(fmt = "far fa-arrow-alt-circle-right")]
-    ArrowAltCircleRightRegular,
-    #[display(fmt = "fas fa-arrow-alt-circle-up")]
-    ArrowAltCircleUpSolid,
-    #[display(fmt = "far fa-arrow-alt-circle-up")]
-    ArrowAltCircleUpRegular,
-    #[display(fmt = "fas fa-arrow-circle-down")]
-    ArrowCircleDown,
-    #[display(fmt = "fas fa-arrow-circle-left")]
-    ArrowCircleLeft,
-    #[display(fmt = "fas fa-arrow-circle-right")]
-    ArrowCircleRight,
-    #[display(fmt = "fas fa-arrow-circle-up")]
-    ArrowCircleUp,
-    #[display(fmt = "fas fa-arrow-down")]
+    #[display(fmt = "fa-solid fa-arrow-down")]
     ArrowDown,
-    #[display(fmt = "fas fa-arrow-left")]
+    #[display(fmt = "fa-solid fa-arrow-down-1-9")]
+    ArrowDown19,
+    #[display(fmt = "fa-solid fa-arrow-down-9-1")]
+    ArrowDown91,
+    #[display(fmt = "fa-solid fa-arrow-down-a-z")]
+    ArrowDownAZ,
+    #[display(fmt = "fa-solid fa-arrow-down-long")]
+    ArrowDownLong,
+    #[display(fmt = "fa-solid fa-arrow-down-short-wide")]
+    ArrowDownShortWide,
+    #[display(fmt = "fa-solid fa-arrow-down-up-across-line")]
+    ArrowDownUpAcrossLine,
+    #[display(fmt = "fa-solid fa-arrow-down-up-lock")]
+    ArrowDownUpLock,
+    #[display(fmt = "fa-solid fa-arrow-down-wide-short")]
+    ArrowDownWideShort,
+    #[display(fmt = "fa-solid fa-arrow-down-z-a")]
+    ArrowDownZA,
+    #[display(fmt = "fa-solid fa-arrow-left")]
     ArrowLeft,
-    #[display(fmt = "fas fa-arrow-right")]
+    #[display(fmt = "fa-solid fa-arrow-left-long")]
+    ArrowLeftLong,
+    #[display(fmt = "fa-solid fa-arrow-pointer")]
+    ArrowPointer,
+    #[display(fmt = "fa-solid fa-arrow-right")]
     ArrowRight,
-    #[display(fmt = "fas fa-arrow-up")]
+    #[display(fmt = "fa-solid fa-arrow-right-arrow-left")]
+    ArrowRightArrowLeft,
+    #[display(fmt = "fa-solid fa-arrow-right-from-bracket")]
+    ArrowRightFromBracket,
+    #[display(fmt = "fa-solid fa-arrow-right-long")]
+    ArrowRightLong,
+    #[display(fmt = "fa-solid fa-arrow-right-to-bracket")]
+    ArrowRightToBracket,
+    #[display(fmt = "fa-solid fa-arrow-right-to-city")]
+    ArrowRightToCity,
+    #[display(fmt = "fa-solid fa-arrow-rotate-left")]
+    ArrowRotateLeft,
+    #[display(fmt = "fa-solid fa-arrow-rotate-right")]
+    ArrowRotateRight,
+    #[display(fmt = "fa-solid fa-arrow-trend-down")]
+    ArrowTrendDown,
+    #[display(fmt = "fa-solid fa-arrow-trend-up")]
+    ArrowTrendUp,
+    #[display(fmt = "fa-solid fa-arrow-turn-down")]
+    ArrowTurnDown,
+    #[display(fmt = "fa-solid fa-arrow-turn-up")]
+    ArrowTurnUp,
+    #[display(fmt = "fa-solid fa-arrow-up")]
     ArrowUp,
-    #[display(fmt = "fas fa-arrows-alt")]
-    ArrowsAlt,
-    #[display(fmt = "fas fa-arrows-alt-h")]
-    ArrowsAltH,
-    #[display(fmt = "fas fa-arrows-alt-v")]
-    ArrowsAltV,
-    #[display(fmt = "fab fa-artstation")]
-    Artstation,
-    #[display(fmt = "fas fa-assistive-listening-systems")]
-    AssistiveListeningSystems,
-    #[display(fmt = "fas fa-asterisk")]
+    #[display(fmt = "fa-solid fa-arrow-up-1-9")]
+    ArrowUp19,
+    #[display(fmt = "fa-solid fa-arrow-up-9-1")]
+    ArrowUp91,
+    #[display(fmt = "fa-solid fa-arrow-up-a-z")]
+    ArrowUpAZ,
+    #[display(fmt = "fa-solid fa-arrow-up-from-bracket")]
+    ArrowUpFromBracket,
+    #[display(fmt = "fa-solid fa-arrow-up-from-ground-water")]
+    ArrowUpFromGroundWater,
+    #[display(fmt = "fa-solid fa-arrow-up-from-water-pump")]
+    ArrowUpFromWaterPump,
+    #[display(fmt = "fa-solid fa-arrow-up-long")]
+    ArrowUpLong,
+    #[display(fmt = "fa-solid fa-arrow-up-right-dots")]
+    ArrowUpRightDots,
+    #[display(fmt = "fa-solid fa-arrow-up-right-from-square")]
+    ArrowUpRightFromSquare,
+    #[display(fmt = "fa-solid fa-arrow-up-short-wide")]
+    ArrowUpShortWide,
+    #[display(fmt = "fa-solid fa-arrow-up-wide-short")]
+    ArrowUpWideShort,
+    #[display(fmt = "fa-solid fa-arrow-up-z-a")]
+    ArrowUpZA,
+    #[display(fmt = "fa-solid fa-arrows-down-to-line")]
+    ArrowsDownToLine,
+    #[display(fmt = "fa-solid fa-arrows-down-to-people")]
+    ArrowsDownToPeople,
+    #[display(fmt = "fa-solid fa-arrows-left-right")]
+    ArrowsLeftRight,
+    #[display(fmt = "fa-solid fa-arrows-left-right-to-line")]
+    ArrowsLeftRightToLine,
+    #[display(fmt = "fa-solid fa-arrows-rotate")]
+    ArrowsRotate,
+    #[display(fmt = "fa-solid fa-arrows-spin")]
+    ArrowsSpin,
+    #[display(fmt = "fa-solid fa-arrows-split-up-and-left")]
+    ArrowsSplitUpAndLeft,
+    #[display(fmt = "fa-solid fa-arrows-to-circle")]
+    ArrowsToCircle,
+    #[display(fmt = "fa-solid fa-arrows-to-dot")]
+    ArrowsToDot,
+    #[display(fmt = "fa-solid fa-arrows-to-eye")]
+    ArrowsToEye,
+    #[display(fmt = "fa-solid fa-arrows-turn-right")]
+    ArrowsTurnRight,
+    #[display(fmt = "fa-solid fa-arrows-turn-to-dots")]
+    ArrowsTurnToDots,
+    #[display(fmt = "fa-solid fa-arrows-up-down")]
+    ArrowsUpDown,
+    #[display(fmt = "fa-solid fa-arrows-up-down-left-right")]
+    ArrowsUpDownLeftRight,
+    #[display(fmt = "fa-solid fa-arrows-up-to-line")]
+    ArrowsUpToLine,
+    #[display(fmt = "fa-solid fa-asterisk")]
     Asterisk,
-    #[display(fmt = "fab fa-asymmetrik")]
-    Asymmetrik,
-    #[display(fmt = "fas fa-at")]
+    #[display(fmt = "fa-solid fa-at")]
     At,
-    #[display(fmt = "fas fa-atlas")]
-    Atlas,
-    #[display(fmt = "fab fa-atlassian")]
-    Atlassian,
-    #[display(fmt = "fas fa-atom")]
+    #[display(fmt = "fa-solid fa-atom")]
     Atom,
-    #[display(fmt = "fab fa-audible")]
-    Audible,
-    #[display(fmt = "fas fa-audio-description")]
+    #[display(fmt = "fa-solid fa-audio-description")]
     AudioDescription,
-    #[display(fmt = "fab fa-autoprefixer")]
-    Autoprefixer,
-    #[display(fmt = "fab fa-avianex")]
-    Avianex,
-    #[display(fmt = "fab fa-aviato")]
-    Aviato,
-    #[display(fmt = "fas fa-award")]
+    #[display(fmt = "fa-solid fa-austral-sign")]
+    AustralSign,
+    #[display(fmt = "fa-solid fa-award")]
     Award,
-    #[display(fmt = "fab fa-aws")]
-    Aws,
-    #[display(fmt = "fas fa-baby")]
+    #[display(fmt = "fa-solid fa-b")]
+    B,
+    #[display(fmt = "fa-solid fa-baby")]
     Baby,
-    #[display(fmt = "fas fa-baby-carriage")]
+    #[display(fmt = "fa-solid fa-baby-carriage")]
     BabyCarriage,
-    #[display(fmt = "fas fa-backspace")]
-    Backspace,
-    #[display(fmt = "fas fa-backward")]
+    #[display(fmt = "fa-solid fa-backward")]
     Backward,
-    #[display(fmt = "fas fa-bacon")]
+    #[display(fmt = "fa-solid fa-backward-fast")]
+    BackwardFast,
+    #[display(fmt = "fa-solid fa-backward-step")]
+    BackwardStep,
+    #[display(fmt = "fa-solid fa-bacon")]
     Bacon,
-    #[display(fmt = "fas fa-bacteria")]
+    #[display(fmt = "fa-solid fa-bacteria")]
     Bacteria,
-    #[display(fmt = "fas fa-bacterium")]
+    #[display(fmt = "fa-solid fa-bacterium")]
     Bacterium,
-    #[display(fmt = "fas fa-bahai")]
+    #[display(fmt = "fa-solid fa-bag-shopping")]
+    BagShopping,
+    #[display(fmt = "fa-solid fa-bahai")]
     Bahai,
-    #[display(fmt = "fas fa-balance-scale")]
-    BalanceScale,
-    #[display(fmt = "fas fa-balance-scale-left")]
-    BalanceScaleLeft,
-    #[display(fmt = "fas fa-balance-scale-right")]
-    BalanceScaleRight,
-    #[display(fmt = "fas fa-ban")]
+    #[display(fmt = "fa-solid fa-baht-sign")]
+    BahtSign,
+    #[display(fmt = "fa-solid fa-ban")]
     Ban,
-    #[display(fmt = "fas fa-band-aid")]
-    BandAid,
-    #[display(fmt = "fab fa-bandcamp")]
-    Bandcamp,
-    #[display(fmt = "fas fa-barcode")]
+    #[display(fmt = "fa-solid fa-ban-smoking")]
+    BanSmoking,
+    #[display(fmt = "fa-solid fa-bandage")]
+    Bandage,
+    #[display(fmt = "fa-solid fa-barcode")]
     Barcode,
-    #[display(fmt = "fas fa-bars")]
+    #[display(fmt = "fa-solid fa-bars")]
     Bars,
-    #[display(fmt = "fas fa-baseball-ball")]
-    BaseballBall,
-    #[display(fmt = "fas fa-basketball-ball")]
-    BasketballBall,
-    #[display(fmt = "fas fa-bath")]
+    #[display(fmt = "fa-solid fa-bars-progress")]
+    BarsProgress,
+    #[display(fmt = "fa-solid fa-bars-staggered")]
+    BarsStaggered,
+    #[display(fmt = "fa-solid fa-baseball")]
+    Baseball,
+    #[display(fmt = "fa-solid fa-baseball-bat-ball")]
+    BaseballBatBall,
+    #[display(fmt = "fa-solid fa-basket-shopping")]
+    BasketShopping,
+    #[display(fmt = "fa-solid fa-basketball")]
+    Basketball,
+    #[display(fmt = "fa-solid fa-bath")]
     Bath,
-    #[display(fmt = "fas fa-battery-empty")]
+    #[display(fmt = "fa-solid fa-battery-empty")]
     BatteryEmpty,
-    #[display(fmt = "fas fa-battery-full")]
+    #[display(fmt = "fa-solid fa-battery-full")]
     BatteryFull,
-    #[display(fmt = "fas fa-battery-half")]
+    #[display(fmt = "fa-solid fa-battery-half")]
     BatteryHalf,
-    #[display(fmt = "fas fa-battery-quarter")]
+    #[display(fmt = "fa-solid fa-battery-quarter")]
     BatteryQuarter,
-    #[display(fmt = "fas fa-battery-three-quarters")]
+    #[display(fmt = "fa-solid fa-battery-three-quarters")]
     BatteryThreeQuarters,
-    #[display(fmt = "fab fa-battle-net")]
-    BattleNet,
-    #[display(fmt = "fas fa-bed")]
+    #[display(fmt = "fa-solid fa-bed")]
     Bed,
-    #[display(fmt = "fas fa-beer")]
-    Beer,
-    #[display(fmt = "fab fa-behance")]
-    Behance,
-    #[display(fmt = "fab fa-behance-square")]
-    BehanceSquare,
-    #[display(fmt = "fas fa-bell")]
-    BellSolid,
-    #[display(fmt = "far fa-bell")]
-    BellRegular,
-    #[display(fmt = "fas fa-bell-slash")]
-    BellSlashSolid,
-    #[display(fmt = "far fa-bell-slash")]
-    BellSlashRegular,
-    #[display(fmt = "fas fa-bezier-curve")]
+    #[display(fmt = "fa-solid fa-bed-pulse")]
+    BedPulse,
+    #[display(fmt = "fa-solid fa-beer-mug-empty")]
+    BeerMugEmpty,
+    #[display(fmt = "fa-solid fa-bell")]
+    Bell,
+    #[display(fmt = "fa-solid fa-bell-concierge")]
+    BellConcierge,
+    #[display(fmt = "fa-solid fa-bell-slash")]
+    BellSlash,
+    #[display(fmt = "fa-solid fa-bezier-curve")]
     BezierCurve,
-    #[display(fmt = "fas fa-bible")]
-    Bible,
-    #[display(fmt = "fas fa-bicycle")]
+    #[display(fmt = "fa-solid fa-bicycle")]
     Bicycle,
-    #[display(fmt = "fas fa-biking")]
-    Biking,
-    #[display(fmt = "fab fa-bimobject")]
-    Bimobject,
-    #[display(fmt = "fas fa-binoculars")]
+    #[display(fmt = "fa-solid fa-binoculars")]
     Binoculars,
-    #[display(fmt = "fas fa-biohazard")]
+    #[display(fmt = "fa-solid fa-biohazard")]
     Biohazard,
-    #[display(fmt = "fas fa-birthday-cake")]
-    BirthdayCake,
-    #[display(fmt = "fab fa-bitbucket")]
-    Bitbucket,
-    #[display(fmt = "fab fa-bitcoin")]
-    Bitcoin,
-    #[display(fmt = "fab fa-bity")]
-    Bity,
-    #[display(fmt = "fab fa-black-tie")]
-    BlackTie,
-    #[display(fmt = "fab fa-blackberry")]
-    Blackberry,
-    #[display(fmt = "fas fa-blender")]
+    #[display(fmt = "fa-solid fa-bitcoin-sign")]
+    BitcoinSign,
+    #[display(fmt = "fa-solid fa-blender")]
     Blender,
-    #[display(fmt = "fas fa-blender-phone")]
+    #[display(fmt = "fa-solid fa-blender-phone")]
     BlenderPhone,
-    #[display(fmt = "fas fa-blind")]
-    Blind,
-    #[display(fmt = "fas fa-blog")]
+    #[display(fmt = "fa-solid fa-blog")]
     Blog,
-    #[display(fmt = "fab fa-blogger")]
-    Blogger,
-    #[display(fmt = "fab fa-blogger-b")]
-    BloggerB,
-    #[display(fmt = "fab fa-bluetooth")]
-    Bluetooth,
-    #[display(fmt = "fab fa-bluetooth-b")]
-    BluetoothB,
-    #[display(fmt = "fas fa-bold")]
+    #[display(fmt = "fa-solid fa-bold")]
     Bold,
-    #[display(fmt = "fas fa-bolt")]
+    #[display(fmt = "fa-solid fa-bolt")]
     Bolt,
-    #[display(fmt = "fas fa-bomb")]
+    #[display(fmt = "fa-solid fa-bolt-lightning")]
+    BoltLightning,
+    #[display(fmt = "fa-solid fa-bomb")]
     Bomb,
-    #[display(fmt = "fas fa-bone")]
+    #[display(fmt = "fa-solid fa-bone")]
     Bone,
-    #[display(fmt = "fas fa-bong")]
+    #[display(fmt = "fa-solid fa-bong")]
     Bong,
-    #[display(fmt = "fas fa-book")]
+    #[display(fmt = "fa-solid fa-book")]
     Book,
-    #[display(fmt = "fas fa-book-dead")]
-    BookDead,
-    #[display(fmt = "fas fa-book-medical")]
+    #[display(fmt = "fa-solid fa-book-atlas")]
+    BookAtlas,
+    #[display(fmt = "fa-solid fa-book-bible")]
+    BookBible,
+    #[display(fmt = "fa-solid fa-book-bookmark")]
+    BookBookmark,
+    #[display(fmt = "fa-solid fa-book-journal-whills")]
+    BookJournalWhills,
+    #[display(fmt = "fa-solid fa-book-medical")]
     BookMedical,
-    #[display(fmt = "fas fa-book-open")]
+    #[display(fmt = "fa-solid fa-book-open")]
     BookOpen,
-    #[display(fmt = "fas fa-book-reader")]
-    BookReader,
-    #[display(fmt = "fas fa-bookmark")]
-    BookmarkSolid,
-    #[display(fmt = "far fa-bookmark")]
-    BookmarkRegular,
-    #[display(fmt = "fab fa-bootstrap")]
-    Bootstrap,
-    #[display(fmt = "fas fa-border-all")]
+    #[display(fmt = "fa-solid fa-book-open-reader")]
+    BookOpenReader,
+    #[display(fmt = "fa-solid fa-book-quran")]
+    BookQuran,
+    #[display(fmt = "fa-solid fa-book-skull")]
+    BookSkull,
+    #[display(fmt = "fa-solid fa-bookmark")]
+    Bookmark,
+    #[display(fmt = "fa-solid fa-border-all")]
     BorderAll,
-    #[display(fmt = "fas fa-border-none")]
+    #[display(fmt = "fa-solid fa-border-none")]
     BorderNone,
-    #[display(fmt = "fas fa-border-style")]
-    BorderStyle,
-    #[display(fmt = "fas fa-bowling-ball")]
+    #[display(fmt = "fa-solid fa-border-top-left")]
+    BorderTopLeft,
+    #[display(fmt = "fa-solid fa-bore-hole")]
+    BoreHole,
+    #[display(fmt = "fa-solid fa-bottle-droplet")]
+    BottleDroplet,
+    #[display(fmt = "fa-solid fa-bottle-water")]
+    BottleWater,
+    #[display(fmt = "fa-solid fa-bowl-food")]
+    BowlFood,
+    #[display(fmt = "fa-solid fa-bowl-rice")]
+    BowlRice,
+    #[display(fmt = "fa-solid fa-bowling-ball")]
     BowlingBall,
-    #[display(fmt = "fas fa-box")]
+    #[display(fmt = "fa-solid fa-box")]
     Box,
-    #[display(fmt = "fas fa-box-open")]
+    #[display(fmt = "fa-solid fa-box-archive")]
+    BoxArchive,
+    #[display(fmt = "fa-solid fa-box-open")]
     BoxOpen,
-    #[display(fmt = "fas fa-box-tissue")]
+    #[display(fmt = "fa-solid fa-box-tissue")]
     BoxTissue,
-    #[display(fmt = "fas fa-boxes")]
-    Boxes,
-    #[display(fmt = "fas fa-braille")]
+    #[display(fmt = "fa-solid fa-boxes-packing")]
+    BoxesPacking,
+    #[display(fmt = "fa-solid fa-boxes-stacked")]
+    BoxesStacked,
+    #[display(fmt = "fa-solid fa-braille")]
     Braille,
-    #[display(fmt = "fas fa-brain")]
+    #[display(fmt = "fa-solid fa-brain")]
     Brain,
-    #[display(fmt = "fas fa-bread-slice")]
+    #[display(fmt = "fa-solid fa-brazilian-real-sign")]
+    BrazilianRealSign,
+    #[display(fmt = "fa-solid fa-bread-slice")]
     BreadSlice,
-    #[display(fmt = "fas fa-briefcase")]
+    #[display(fmt = "fa-solid fa-bridge")]
+    Bridge,
+    #[display(fmt = "fa-solid fa-bridge-circle-check")]
+    BridgeCircleCheck,
+    #[display(fmt = "fa-solid fa-bridge-circle-exclamation")]
+    BridgeCircleExclamation,
+    #[display(fmt = "fa-solid fa-bridge-circle-xmark")]
+    BridgeCircleXmark,
+    #[display(fmt = "fa-solid fa-bridge-lock")]
+    BridgeLock,
+    #[display(fmt = "fa-solid fa-bridge-water")]
+    BridgeWater,
+    #[display(fmt = "fa-solid fa-briefcase")]
     Briefcase,
-    #[display(fmt = "fas fa-briefcase-medical")]
+    #[display(fmt = "fa-solid fa-briefcase-medical")]
     BriefcaseMedical,
-    #[display(fmt = "fas fa-broadcast-tower")]
-    BroadcastTower,
-    #[display(fmt = "fas fa-broom")]
+    #[display(fmt = "fa-solid fa-broom")]
     Broom,
-    #[display(fmt = "fas fa-brush")]
+    #[display(fmt = "fa-solid fa-broom-ball")]
+    BroomBall,
+    #[display(fmt = "fa-solid fa-brush")]
     Brush,
-    #[display(fmt = "fab fa-btc")]
-    Btc,
-    #[display(fmt = "fab fa-buffer")]
-    Buffer,
-    #[display(fmt = "fas fa-bug")]
+    #[display(fmt = "fa-solid fa-bucket")]
+    Bucket,
+    #[display(fmt = "fa-solid fa-bug")]
     Bug,
-    #[display(fmt = "fas fa-building")]
-    BuildingSolid,
-    #[display(fmt = "far fa-building")]
-    BuildingRegular,
-    #[display(fmt = "fas fa-bullhorn")]
+    #[display(fmt = "fa-solid fa-bug-slash")]
+    BugSlash,
+    #[display(fmt = "fa-solid fa-bugs")]
+    Bugs,
+    #[display(fmt = "fa-solid fa-building")]
+    Building,
+    #[display(fmt = "fa-solid fa-building-circle-arrow-right")]
+    BuildingCircleArrowRight,
+    #[display(fmt = "fa-solid fa-building-circle-check")]
+    BuildingCircleCheck,
+    #[display(fmt = "fa-solid fa-building-circle-exclamation")]
+    BuildingCircleExclamation,
+    #[display(fmt = "fa-solid fa-building-circle-xmark")]
+    BuildingCircleXmark,
+    #[display(fmt = "fa-solid fa-building-columns")]
+    BuildingColumns,
+    #[display(fmt = "fa-solid fa-building-flag")]
+    BuildingFlag,
+    #[display(fmt = "fa-solid fa-building-lock")]
+    BuildingLock,
+    #[display(fmt = "fa-solid fa-building-ngo")]
+    BuildingNgo,
+    #[display(fmt = "fa-solid fa-building-shield")]
+    BuildingShield,
+    #[display(fmt = "fa-solid fa-building-un")]
+    BuildingUn,
+    #[display(fmt = "fa-solid fa-building-user")]
+    BuildingUser,
+    #[display(fmt = "fa-solid fa-building-wheat")]
+    BuildingWheat,
+    #[display(fmt = "fa-solid fa-bullhorn")]
     Bullhorn,
-    #[display(fmt = "fas fa-bullseye")]
+    #[display(fmt = "fa-solid fa-bullseye")]
     Bullseye,
-    #[display(fmt = "fas fa-burn")]
-    Burn,
-    #[display(fmt = "fab fa-buromobelexperte")]
-    Buromobelexperte,
-    #[display(fmt = "fas fa-bus")]
+    #[display(fmt = "fa-solid fa-burger")]
+    Burger,
+    #[display(fmt = "fa-solid fa-burst")]
+    Burst,
+    #[display(fmt = "fa-solid fa-bus")]
     Bus,
-    #[display(fmt = "fas fa-bus-alt")]
-    BusAlt,
-    #[display(fmt = "fas fa-business-time")]
+    #[display(fmt = "fa-solid fa-bus-simple")]
+    BusSimple,
+    #[display(fmt = "fa-solid fa-business-time")]
     BusinessTime,
-    #[display(fmt = "fab fa-buy-n-large")]
-    BuyNLarge,
-    #[display(fmt = "fab fa-buysellads")]
-    Buysellads,
-    #[display(fmt = "fas fa-calculator")]
+    #[display(fmt = "fa-solid fa-c")]
+    C,
+    #[display(fmt = "fa-solid fa-cake-candles")]
+    CakeCandles,
+    #[display(fmt = "fa-solid fa-calculator")]
     Calculator,
-    #[display(fmt = "fas fa-calendar")]
-    CalendarSolid,
-    #[display(fmt = "far fa-calendar")]
-    CalendarRegular,
-    #[display(fmt = "fas fa-calendar-alt")]
-    CalendarAltSolid,
-    #[display(fmt = "far fa-calendar-alt")]
-    CalendarAltRegular,
-    #[display(fmt = "fas fa-calendar-check")]
-    CalendarCheckSolid,
-    #[display(fmt = "far fa-calendar-check")]
-    CalendarCheckRegular,
-    #[display(fmt = "fas fa-calendar-day")]
+    #[display(fmt = "fa-solid fa-calendar")]
+    Calendar,
+    #[display(fmt = "fa-solid fa-calendar-check")]
+    CalendarCheck,
+    #[display(fmt = "fa-solid fa-calendar-day")]
     CalendarDay,
-    #[display(fmt = "fas fa-calendar-minus")]
-    CalendarMinusSolid,
-    #[display(fmt = "far fa-calendar-minus")]
-    CalendarMinusRegular,
-    #[display(fmt = "fas fa-calendar-plus")]
-    CalendarPlusSolid,
-    #[display(fmt = "far fa-calendar-plus")]
-    CalendarPlusRegular,
-    #[display(fmt = "fas fa-calendar-times")]
-    CalendarTimesSolid,
-    #[display(fmt = "far fa-calendar-times")]
-    CalendarTimesRegular,
-    #[display(fmt = "fas fa-calendar-week")]
+    #[display(fmt = "fa-solid fa-calendar-days")]
+    CalendarDays,
+    #[display(fmt = "fa-solid fa-calendar-minus")]
+    CalendarMinus,
+    #[display(fmt = "fa-solid fa-calendar-plus")]
+    CalendarPlus,
+    #[display(fmt = "fa-solid fa-calendar-week")]
     CalendarWeek,
-    #[display(fmt = "fas fa-camera")]
+    #[display(fmt = "fa-solid fa-calendar-xmark")]
+    CalendarXmark,
+    #[display(fmt = "fa-solid fa-camera")]
     Camera,
-    #[display(fmt = "fas fa-camera-retro")]
+    #[display(fmt = "fa-solid fa-camera-retro")]
     CameraRetro,
-    #[display(fmt = "fas fa-campground")]
+    #[display(fmt = "fa-solid fa-camera-rotate")]
+    CameraRotate,
+    #[display(fmt = "fa-solid fa-campground")]
     Campground,
-    #[display(fmt = "fab fa-canadian-maple-leaf")]
-    CanadianMapleLeaf,
-    #[display(fmt = "fas fa-candy-cane")]
+    #[display(fmt = "fa-solid fa-candy-cane")]
     CandyCane,
-    #[display(fmt = "fas fa-cannabis")]
+    #[display(fmt = "fa-solid fa-cannabis")]
     Cannabis,
-    #[display(fmt = "fas fa-capsules")]
+    #[display(fmt = "fa-solid fa-capsules")]
     Capsules,
-    #[display(fmt = "fas fa-car")]
+    #[display(fmt = "fa-solid fa-car")]
     Car,
-    #[display(fmt = "fas fa-car-alt")]
-    CarAlt,
-    #[display(fmt = "fas fa-car-battery")]
+    #[display(fmt = "fa-solid fa-car-battery")]
     CarBattery,
-    #[display(fmt = "fas fa-car-crash")]
-    CarCrash,
-    #[display(fmt = "fas fa-car-side")]
+    #[display(fmt = "fa-solid fa-car-burst")]
+    CarBurst,
+    #[display(fmt = "fa-solid fa-car-on")]
+    CarOn,
+    #[display(fmt = "fa-solid fa-car-rear")]
+    CarRear,
+    #[display(fmt = "fa-solid fa-car-side")]
     CarSide,
-    #[display(fmt = "fas fa-caravan")]
+    #[display(fmt = "fa-solid fa-car-tunnel")]
+    CarTunnel,
+    #[display(fmt = "fa-solid fa-caravan")]
     Caravan,
-    #[display(fmt = "fas fa-caret-down")]
+    #[display(fmt = "fa-solid fa-caret-down")]
     CaretDown,
-    #[display(fmt = "fas fa-caret-left")]
+    #[display(fmt = "fa-solid fa-caret-left")]
     CaretLeft,
-    #[display(fmt = "fas fa-caret-right")]
+    #[display(fmt = "fa-solid fa-caret-right")]
     CaretRight,
-    #[display(fmt = "fas fa-caret-square-down")]
-    CaretSquareDownSolid,
-    #[display(fmt = "far fa-caret-square-down")]
-    CaretSquareDownRegular,
-    #[display(fmt = "fas fa-caret-square-left")]
-    CaretSquareLeftSolid,
-    #[display(fmt = "far fa-caret-square-left")]
-    CaretSquareLeftRegular,
-    #[display(fmt = "fas fa-caret-square-right")]
-    CaretSquareRightSolid,
-    #[display(fmt = "far fa-caret-square-right")]
-    CaretSquareRightRegular,
-    #[display(fmt = "fas fa-caret-square-up")]
-    CaretSquareUpSolid,
-    #[display(fmt = "far fa-caret-square-up")]
-    CaretSquareUpRegular,
-    #[display(fmt = "fas fa-caret-up")]
+    #[display(fmt = "fa-solid fa-caret-up")]
     CaretUp,
-    #[display(fmt = "fas fa-carrot")]
+    #[display(fmt = "fa-solid fa-carrot")]
     Carrot,
-    #[display(fmt = "fas fa-cart-arrow-down")]
+    #[display(fmt = "fa-solid fa-cart-arrow-down")]
     CartArrowDown,
-    #[display(fmt = "fas fa-cart-plus")]
+    #[display(fmt = "fa-solid fa-cart-flatbed")]
+    CartFlatbed,
+    #[display(fmt = "fa-solid fa-cart-flatbed-suitcase")]
+    CartFlatbedSuitcase,
+    #[display(fmt = "fa-solid fa-cart-plus")]
     CartPlus,
-    #[display(fmt = "fas fa-cash-register")]
+    #[display(fmt = "fa-solid fa-cart-shopping")]
+    CartShopping,
+    #[display(fmt = "fa-solid fa-cash-register")]
     CashRegister,
-    #[display(fmt = "fas fa-cat")]
+    #[display(fmt = "fa-solid fa-cat")]
     Cat,
-    #[display(fmt = "fab fa-cc-amazon-pay")]
-    CcAmazonPay,
-    #[display(fmt = "fab fa-cc-amex")]
-    CcAmex,
-    #[display(fmt = "fab fa-cc-apple-pay")]
-    CcApplePay,
-    #[display(fmt = "fab fa-cc-diners-club")]
-    CcDinersClub,
-    #[display(fmt = "fab fa-cc-discover")]
-    CcDiscover,
-    #[display(fmt = "fab fa-cc-jcb")]
-    CcJcb,
-    #[display(fmt = "fab fa-cc-mastercard")]
-    CcMastercard,
-    #[display(fmt = "fab fa-cc-paypal")]
-    CcPaypal,
-    #[display(fmt = "fab fa-cc-stripe")]
-    CcStripe,
-    #[display(fmt = "fab fa-cc-visa")]
-    CcVisa,
-    #[display(fmt = "fab fa-centercode")]
-    Centercode,
-    #[display(fmt = "fab fa-centos")]
-    Centos,
-    #[display(fmt = "fas fa-certificate")]
+    #[display(fmt = "fa-solid fa-cedi-sign")]
+    CediSign,
+    #[display(fmt = "fa-solid fa-cent-sign")]
+    CentSign,
+    #[display(fmt = "fa-solid fa-certificate")]
     Certificate,
-    #[display(fmt = "fas fa-chair")]
+    #[display(fmt = "fa-solid fa-chair")]
     Chair,
-    #[display(fmt = "fas fa-chalkboard")]
+    #[display(fmt = "fa-solid fa-chalkboard")]
     Chalkboard,
-    #[display(fmt = "fas fa-chalkboard-teacher")]
-    ChalkboardTeacher,
-    #[display(fmt = "fas fa-charging-station")]
+    #[display(fmt = "fa-solid fa-chalkboard-user")]
+    ChalkboardUser,
+    #[display(fmt = "fa-solid fa-champagne-glasses")]
+    ChampagneGlasses,
+    #[display(fmt = "fa-solid fa-charging-station")]
     ChargingStation,
-    #[display(fmt = "fas fa-chart-area")]
+    #[display(fmt = "fa-solid fa-chart-area")]
     ChartArea,
-    #[display(fmt = "fas fa-chart-bar")]
-    ChartBarSolid,
-    #[display(fmt = "far fa-chart-bar")]
-    ChartBarRegular,
-    #[display(fmt = "fas fa-chart-line")]
+    #[display(fmt = "fa-solid fa-chart-bar")]
+    ChartBar,
+    #[display(fmt = "fa-solid fa-chart-column")]
+    ChartColumn,
+    #[display(fmt = "fa-solid fa-chart-gantt")]
+    ChartGantt,
+    #[display(fmt = "fa-solid fa-chart-line")]
     ChartLine,
-    #[display(fmt = "fas fa-chart-pie")]
+    #[display(fmt = "fa-solid fa-chart-pie")]
     ChartPie,
-    #[display(fmt = "fas fa-check")]
+    #[display(fmt = "fa-solid fa-chart-simple")]
+    ChartSimple,
+    #[display(fmt = "fa-solid fa-check")]
     Check,
-    #[display(fmt = "fas fa-check-circle")]
-    CheckCircleSolid,
-    #[display(fmt = "far fa-check-circle")]
-    CheckCircleRegular,
-    #[display(fmt = "fas fa-check-double")]
+    #[display(fmt = "fa-solid fa-check-double")]
     CheckDouble,
-    #[display(fmt = "fas fa-check-square")]
-    CheckSquareSolid,
-    #[display(fmt = "far fa-check-square")]
-    CheckSquareRegular,
-    #[display(fmt = "fas fa-cheese")]
+    #[display(fmt = "fa-solid fa-check-to-slot")]
+    CheckToSlot,
+    #[display(fmt = "fa-solid fa-cheese")]
     Cheese,
-    #[display(fmt = "fas fa-chess")]
+    #[display(fmt = "fa-solid fa-chess")]
     Chess,
-    #[display(fmt = "fas fa-chess-bishop")]
+    #[display(fmt = "fa-solid fa-chess-bishop")]
     ChessBishop,
-    #[display(fmt = "fas fa-chess-board")]
+    #[display(fmt = "fa-solid fa-chess-board")]
     ChessBoard,
-    #[display(fmt = "fas fa-chess-king")]
+    #[display(fmt = "fa-solid fa-chess-king")]
     ChessKing,
-    #[display(fmt = "fas fa-chess-knight")]
+    #[display(fmt = "fa-solid fa-chess-knight")]
     ChessKnight,
-    #[display(fmt = "fas fa-chess-pawn")]
+    #[display(fmt = "fa-solid fa-chess-pawn")]
     ChessPawn,
-    #[display(fmt = "fas fa-chess-queen")]
+    #[display(fmt = "fa-solid fa-chess-queen")]
     ChessQueen,
-    #[display(fmt = "fas fa-chess-rook")]
+    #[display(fmt = "fa-solid fa-chess-rook")]
     ChessRook,
-    #[display(fmt = "fas fa-chevron-circle-down")]
-    ChevronCircleDown,
-    #[display(fmt = "fas fa-chevron-circle-left")]
-    ChevronCircleLeft,
-    #[display(fmt = "fas fa-chevron-circle-right")]
-    ChevronCircleRight,
-    #[display(fmt = "fas fa-chevron-circle-up")]
-    ChevronCircleUp,
-    #[display(fmt = "fas fa-chevron-down")]
+    #[display(fmt = "fa-solid fa-chevron-down")]
     ChevronDown,
-    #[display(fmt = "fas fa-chevron-left")]
+    #[display(fmt = "fa-solid fa-chevron-left")]
     ChevronLeft,
-    #[display(fmt = "fas fa-chevron-right")]
+    #[display(fmt = "fa-solid fa-chevron-right")]
     ChevronRight,
-    #[display(fmt = "fas fa-chevron-up")]
+    #[display(fmt = "fa-solid fa-chevron-up")]
     ChevronUp,
-    #[display(fmt = "fas fa-child")]
+    #[display(fmt = "fa-solid fa-child")]
     Child,
-    #[display(fmt = "fab fa-chrome")]
-    Chrome,
-    #[display(fmt = "fab fa-chromecast")]
-    Chromecast,
-    #[display(fmt = "fas fa-church")]
+    #[display(fmt = "fa-solid fa-child-dress")]
+    ChildDress,
+    #[display(fmt = "fa-solid fa-child-reaching")]
+    ChildReaching,
+    #[display(fmt = "fa-solid fa-child-rifle")]
+    ChildRifle,
+    #[display(fmt = "fa-solid fa-children")]
+    Children,
+    #[display(fmt = "fa-solid fa-church")]
     Church,
-    #[display(fmt = "fas fa-circle")]
-    CircleSolid,
-    #[display(fmt = "far fa-circle")]
-    CircleRegular,
-    #[display(fmt = "fas fa-circle-notch")]
+    #[display(fmt = "fa-solid fa-circle")]
+    Circle,
+    #[display(fmt = "fa-solid fa-circle-arrow-down")]
+    CircleArrowDown,
+    #[display(fmt = "fa-solid fa-circle-arrow-left")]
+    CircleArrowLeft,
+    #[display(fmt = "fa-solid fa-circle-arrow-right")]
+    CircleArrowRight,
+    #[display(fmt = "fa-solid fa-circle-arrow-up")]
+    CircleArrowUp,
+    #[display(fmt = "fa-solid fa-circle-check")]
+    CircleCheck,
+    #[display(fmt = "fa-solid fa-circle-chevron-down")]
+    CircleChevronDown,
+    #[display(fmt = "fa-solid fa-circle-chevron-left")]
+    CircleChevronLeft,
+    #[display(fmt = "fa-solid fa-circle-chevron-right")]
+    CircleChevronRight,
+    #[display(fmt = "fa-solid fa-circle-chevron-up")]
+    CircleChevronUp,
+    #[display(fmt = "fa-solid fa-circle-dollar-to-slot")]
+    CircleDollarToSlot,
+    #[display(fmt = "fa-solid fa-circle-dot")]
+    CircleDot,
+    #[display(fmt = "fa-solid fa-circle-down")]
+    CircleDown,
+    #[display(fmt = "fa-solid fa-circle-exclamation")]
+    CircleExclamation,
+    #[display(fmt = "fa-solid fa-circle-h")]
+    CircleH,
+    #[display(fmt = "fa-solid fa-circle-half-stroke")]
+    CircleHalfStroke,
+    #[display(fmt = "fa-solid fa-circle-info")]
+    CircleInfo,
+    #[display(fmt = "fa-solid fa-circle-left")]
+    CircleLeft,
+    #[display(fmt = "fa-solid fa-circle-minus")]
+    CircleMinus,
+    #[display(fmt = "fa-solid fa-circle-nodes")]
+    CircleNodes,
+    #[display(fmt = "fa-solid fa-circle-notch")]
     CircleNotch,
-    #[display(fmt = "fas fa-city")]
+    #[display(fmt = "fa-solid fa-circle-pause")]
+    CirclePause,
+    #[display(fmt = "fa-solid fa-circle-play")]
+    CirclePlay,
+    #[display(fmt = "fa-solid fa-circle-plus")]
+    CirclePlus,
+    #[display(fmt = "fa-solid fa-circle-question")]
+    CircleQuestion,
+    #[display(fmt = "fa-solid fa-circle-radiation")]
+    CircleRadiation,
+    #[display(fmt = "fa-solid fa-circle-right")]
+    CircleRight,
+    #[display(fmt = "fa-solid fa-circle-stop")]
+    CircleStop,
+    #[display(fmt = "fa-solid fa-circle-up")]
+    CircleUp,
+    #[display(fmt = "fa-solid fa-circle-user")]
+    CircleUser,
+    #[display(fmt = "fa-solid fa-circle-xmark")]
+    CircleXmark,
+    #[display(fmt = "fa-solid fa-city")]
     City,
-    #[display(fmt = "fas fa-clinic-medical")]
-    ClinicMedical,
-    #[display(fmt = "fas fa-clipboard")]
-    ClipboardSolid,
-    #[display(fmt = "far fa-clipboard")]
-    ClipboardRegular,
-    #[display(fmt = "fas fa-clipboard-check")]
+    #[display(fmt = "fa-solid fa-clapperboard")]
+    Clapperboard,
+    #[display(fmt = "fa-solid fa-clipboard")]
+    Clipboard,
+    #[display(fmt = "fa-solid fa-clipboard-check")]
     ClipboardCheck,
-    #[display(fmt = "fas fa-clipboard-list")]
+    #[display(fmt = "fa-solid fa-clipboard-list")]
     ClipboardList,
-    #[display(fmt = "fas fa-clock")]
-    ClockSolid,
-    #[display(fmt = "far fa-clock")]
-    ClockRegular,
-    #[display(fmt = "fas fa-clone")]
-    CloneSolid,
-    #[display(fmt = "far fa-clone")]
-    CloneRegular,
-    #[display(fmt = "fas fa-closed-captioning")]
-    ClosedCaptioningSolid,
-    #[display(fmt = "far fa-closed-captioning")]
-    ClosedCaptioningRegular,
-    #[display(fmt = "fas fa-cloud")]
+    #[display(fmt = "fa-solid fa-clipboard-question")]
+    ClipboardQuestion,
+    #[display(fmt = "fa-solid fa-clipboard-user")]
+    ClipboardUser,
+    #[display(fmt = "fa-solid fa-clock")]
+    Clock,
+    #[display(fmt = "fa-solid fa-clock-rotate-left")]
+    ClockRotateLeft,
+    #[display(fmt = "fa-solid fa-clone")]
+    Clone,
+    #[display(fmt = "fa-solid fa-closed-captioning")]
+    ClosedCaptioning,
+    #[display(fmt = "fa-solid fa-cloud")]
     Cloud,
-    #[display(fmt = "fas fa-cloud-download-alt")]
-    CloudDownloadAlt,
-    #[display(fmt = "fas fa-cloud-meatball")]
+    #[display(fmt = "fa-solid fa-cloud-arrow-down")]
+    CloudArrowDown,
+    #[display(fmt = "fa-solid fa-cloud-arrow-up")]
+    CloudArrowUp,
+    #[display(fmt = "fa-solid fa-cloud-bolt")]
+    CloudBolt,
+    #[display(fmt = "fa-solid fa-cloud-meatball")]
     CloudMeatball,
-    #[display(fmt = "fas fa-cloud-moon")]
+    #[display(fmt = "fa-solid fa-cloud-moon")]
     CloudMoon,
-    #[display(fmt = "fas fa-cloud-moon-rain")]
+    #[display(fmt = "fa-solid fa-cloud-moon-rain")]
     CloudMoonRain,
-    #[display(fmt = "fas fa-cloud-rain")]
+    #[display(fmt = "fa-solid fa-cloud-rain")]
     CloudRain,
-    #[display(fmt = "fas fa-cloud-showers-heavy")]
+    #[display(fmt = "fa-solid fa-cloud-showers-heavy")]
     CloudShowersHeavy,
-    #[display(fmt = "fas fa-cloud-sun")]
+    #[display(fmt = "fa-solid fa-cloud-showers-water")]
+    CloudShowersWater,
+    #[display(fmt = "fa-solid fa-cloud-sun")]
     CloudSun,
-    #[display(fmt = "fas fa-cloud-sun-rain")]
+    #[display(fmt = "fa-solid fa-cloud-sun-rain")]
     CloudSunRain,
-    #[display(fmt = "fas fa-cloud-upload-alt")]
-    CloudUploadAlt,
-    #[display(fmt = "fab fa-cloudflare")]
-    Cloudflare,
-    #[display(fmt = "fab fa-cloudscale")]
-    Cloudscale,
-    #[display(fmt = "fab fa-cloudsmith")]
-    Cloudsmith,
-    #[display(fmt = "fab fa-cloudversify")]
-    Cloudversify,
-    #[display(fmt = "fas fa-cocktail")]
-    Cocktail,
-    #[display(fmt = "fas fa-code")]
+    #[display(fmt = "fa-solid fa-clover")]
+    Clover,
+    #[display(fmt = "fa-solid fa-code")]
     Code,
-    #[display(fmt = "fas fa-code-branch")]
+    #[display(fmt = "fa-solid fa-code-branch")]
     CodeBranch,
-    #[display(fmt = "fab fa-codepen")]
-    Codepen,
-    #[display(fmt = "fab fa-codiepie")]
-    Codiepie,
-    #[display(fmt = "fas fa-coffee")]
-    Coffee,
-    #[display(fmt = "fas fa-cog")]
-    Cog,
-    #[display(fmt = "fas fa-cogs")]
-    Cogs,
-    #[display(fmt = "fas fa-coins")]
+    #[display(fmt = "fa-solid fa-code-commit")]
+    CodeCommit,
+    #[display(fmt = "fa-solid fa-code-compare")]
+    CodeCompare,
+    #[display(fmt = "fa-solid fa-code-fork")]
+    CodeFork,
+    #[display(fmt = "fa-solid fa-code-merge")]
+    CodeMerge,
+    #[display(fmt = "fa-solid fa-code-pull-request")]
+    CodePullRequest,
+    #[display(fmt = "fa-solid fa-coins")]
     Coins,
-    #[display(fmt = "fas fa-columns")]
-    Columns,
-    #[display(fmt = "fas fa-comment")]
-    CommentSolid,
-    #[display(fmt = "far fa-comment")]
-    CommentRegular,
-    #[display(fmt = "fas fa-comment-alt")]
-    CommentAltSolid,
-    #[display(fmt = "far fa-comment-alt")]
-    CommentAltRegular,
-    #[display(fmt = "fas fa-comment-dollar")]
+    #[display(fmt = "fa-solid fa-colon-sign")]
+    ColonSign,
+    #[display(fmt = "fa-solid fa-comment")]
+    Comment,
+    #[display(fmt = "fa-solid fa-comment-dollar")]
     CommentDollar,
-    #[display(fmt = "fas fa-comment-dots")]
-    CommentDotsSolid,
-    #[display(fmt = "far fa-comment-dots")]
-    CommentDotsRegular,
-    #[display(fmt = "fas fa-comment-medical")]
+    #[display(fmt = "fa-solid fa-comment-dots")]
+    CommentDots,
+    #[display(fmt = "fa-solid fa-comment-medical")]
     CommentMedical,
-    #[display(fmt = "fas fa-comment-slash")]
+    #[display(fmt = "fa-solid fa-comment-slash")]
     CommentSlash,
-    #[display(fmt = "fas fa-comments")]
-    CommentsSolid,
-    #[display(fmt = "far fa-comments")]
-    CommentsRegular,
-    #[display(fmt = "fas fa-comments-dollar")]
+    #[display(fmt = "fa-solid fa-comment-sms")]
+    CommentSms,
+    #[display(fmt = "fa-solid fa-comments")]
+    Comments,
+    #[display(fmt = "fa-solid fa-comments-dollar")]
     CommentsDollar,
-    #[display(fmt = "fas fa-compact-disc")]
+    #[display(fmt = "fa-solid fa-compact-disc")]
     CompactDisc,
-    #[display(fmt = "fas fa-compass")]
-    CompassSolid,
-    #[display(fmt = "far fa-compass")]
-    CompassRegular,
-    #[display(fmt = "fas fa-compress")]
+    #[display(fmt = "fa-solid fa-compass")]
+    Compass,
+    #[display(fmt = "fa-solid fa-compass-drafting")]
+    CompassDrafting,
+    #[display(fmt = "fa-solid fa-compress")]
     Compress,
-    #[display(fmt = "fas fa-compress-alt")]
-    CompressAlt,
-    #[display(fmt = "fas fa-compress-arrows-alt")]
-    CompressArrowsAlt,
-    #[display(fmt = "fas fa-concierge-bell")]
-    ConciergeBell,
-    #[display(fmt = "fab fa-confluence")]
-    Confluence,
-    #[display(fmt = "fab fa-connectdevelop")]
-    Connectdevelop,
-    #[display(fmt = "fab fa-contao")]
-    Contao,
-    #[display(fmt = "fas fa-cookie")]
+    #[display(fmt = "fa-solid fa-computer")]
+    Computer,
+    #[display(fmt = "fa-solid fa-computer-mouse")]
+    ComputerMouse,
+    #[display(fmt = "fa-solid fa-cookie")]
     Cookie,
-    #[display(fmt = "fas fa-cookie-bite")]
+    #[display(fmt = "fa-solid fa-cookie-bite")]
     CookieBite,
-    #[display(fmt = "fas fa-copy")]
-    CopySolid,
-    #[display(fmt = "far fa-copy")]
-    CopyRegular,
-    #[display(fmt = "fas fa-copyright")]
-    CopyrightSolid,
-    #[display(fmt = "far fa-copyright")]
-    CopyrightRegular,
-    #[display(fmt = "fab fa-cotton-bureau")]
-    CottonBureau,
-    #[display(fmt = "fas fa-couch")]
+    #[display(fmt = "fa-solid fa-copy")]
+    Copy,
+    #[display(fmt = "fa-solid fa-copyright")]
+    Copyright,
+    #[display(fmt = "fa-solid fa-couch")]
     Couch,
-    #[display(fmt = "fab fa-cpanel")]
-    Cpanel,
-    #[display(fmt = "fab fa-creative-commons")]
-    CreativeCommons,
-    #[display(fmt = "fab fa-creative-commons-by")]
-    CreativeCommonsBy,
-    #[display(fmt = "fab fa-creative-commons-nc")]
-    CreativeCommonsNc,
-    #[display(fmt = "fab fa-creative-commons-nc-eu")]
-    CreativeCommonsNcEu,
-    #[display(fmt = "fab fa-creative-commons-nc-jp")]
-    CreativeCommonsNcJp,
-    #[display(fmt = "fab fa-creative-commons-nd")]
-    CreativeCommonsNd,
-    #[display(fmt = "fab fa-creative-commons-pd")]
-    CreativeCommonsPd,
-    #[display(fmt = "fab fa-creative-commons-pd-alt")]
-    CreativeCommonsPdAlt,
-    #[display(fmt = "fab fa-creative-commons-remix")]
-    CreativeCommonsRemix,
-    #[display(fmt = "fab fa-creative-commons-sa")]
-    CreativeCommonsSa,
-    #[display(fmt = "fab fa-creative-commons-sampling")]
-    CreativeCommonsSampling,
-    #[display(fmt = "fab fa-creative-commons-sampling-plus")]
-    CreativeCommonsSamplingPlus,
-    #[display(fmt = "fab fa-creative-commons-share")]
-    CreativeCommonsShare,
-    #[display(fmt = "fab fa-creative-commons-zero")]
-    CreativeCommonsZero,
-    #[display(fmt = "fas fa-credit-card")]
-    CreditCardSolid,
-    #[display(fmt = "far fa-credit-card")]
-    CreditCardRegular,
-    #[display(fmt = "fab fa-critical-role")]
-    CriticalRole,
-    #[display(fmt = "fas fa-crop")]
+    #[display(fmt = "fa-solid fa-cow")]
+    Cow,
+    #[display(fmt = "fa-solid fa-credit-card")]
+    CreditCard,
+    #[display(fmt = "fa-solid fa-crop")]
     Crop,
-    #[display(fmt = "fas fa-crop-alt")]
-    CropAlt,
-    #[display(fmt = "fas fa-cross")]
+    #[display(fmt = "fa-solid fa-crop-simple")]
+    CropSimple,
+    #[display(fmt = "fa-solid fa-cross")]
     Cross,
-    #[display(fmt = "fas fa-crosshairs")]
+    #[display(fmt = "fa-solid fa-crosshairs")]
     Crosshairs,
-    #[display(fmt = "fas fa-crow")]
+    #[display(fmt = "fa-solid fa-crow")]
     Crow,
-    #[display(fmt = "fas fa-crown")]
+    #[display(fmt = "fa-solid fa-crown")]
     Crown,
-    #[display(fmt = "fas fa-crutch")]
+    #[display(fmt = "fa-solid fa-crutch")]
     Crutch,
-    #[display(fmt = "fab fa-css3")]
-    Css3,
-    #[display(fmt = "fab fa-css3-alt")]
-    Css3Alt,
-    #[display(fmt = "fas fa-cube")]
+    #[display(fmt = "fa-solid fa-cruzeiro-sign")]
+    CruzeiroSign,
+    #[display(fmt = "fa-solid fa-cube")]
     Cube,
-    #[display(fmt = "fas fa-cubes")]
+    #[display(fmt = "fa-solid fa-cubes")]
     Cubes,
-    #[display(fmt = "fas fa-cut")]
-    Cut,
-    #[display(fmt = "fab fa-cuttlefish")]
-    Cuttlefish,
-    #[display(fmt = "fab fa-d-and-d")]
-    DAndD,
-    #[display(fmt = "fab fa-d-and-d-beyond")]
-    DAndDBeyond,
-    #[display(fmt = "fab fa-dailymotion")]
-    Dailymotion,
-    #[display(fmt = "fab fa-dashcube")]
-    Dashcube,
-    #[display(fmt = "fas fa-database")]
+    #[display(fmt = "fa-solid fa-cubes-stacked")]
+    CubesStacked,
+    #[display(fmt = "fa-solid fa-d")]
+    D,
+    #[display(fmt = "fa-solid fa-database")]
     Database,
-    #[display(fmt = "fas fa-deaf")]
-    Deaf,
-    #[display(fmt = "fab fa-deezer")]
-    Deezer,
-    #[display(fmt = "fab fa-delicious")]
-    Delicious,
-    #[display(fmt = "fas fa-democrat")]
+    #[display(fmt = "fa-solid fa-delete-left")]
+    DeleteLeft,
+    #[display(fmt = "fa-solid fa-democrat")]
     Democrat,
-    #[display(fmt = "fab fa-deploydog")]
-    Deploydog,
-    #[display(fmt = "fab fa-deskpro")]
-    Deskpro,
-    #[display(fmt = "fas fa-desktop")]
+    #[display(fmt = "fa-solid fa-desktop")]
     Desktop,
-    #[display(fmt = "fab fa-dev")]
-    Dev,
-    #[display(fmt = "fab fa-deviantart")]
-    Deviantart,
-    #[display(fmt = "fas fa-dharmachakra")]
+    #[display(fmt = "fa-solid fa-dharmachakra")]
     Dharmachakra,
-    #[display(fmt = "fab fa-dhl")]
-    Dhl,
-    #[display(fmt = "fas fa-diagnoses")]
-    Diagnoses,
-    #[display(fmt = "fab fa-diaspora")]
-    Diaspora,
-    #[display(fmt = "fas fa-dice")]
+    #[display(fmt = "fa-solid fa-diagram-next")]
+    DiagramNext,
+    #[display(fmt = "fa-solid fa-diagram-predecessor")]
+    DiagramPredecessor,
+    #[display(fmt = "fa-solid fa-diagram-project")]
+    DiagramProject,
+    #[display(fmt = "fa-solid fa-diagram-successor")]
+    DiagramSuccessor,
+    #[display(fmt = "fa-solid fa-diamond")]
+    Diamond,
+    #[display(fmt = "fa-solid fa-diamond-turn-right")]
+    DiamondTurnRight,
+    #[display(fmt = "fa-solid fa-dice")]
     Dice,
-    #[display(fmt = "fas fa-dice-d20")]
+    #[display(fmt = "fa-solid fa-dice-d20")]
     DiceD20,
-    #[display(fmt = "fas fa-dice-d6")]
+    #[display(fmt = "fa-solid fa-dice-d6")]
     DiceD6,
-    #[display(fmt = "fas fa-dice-five")]
+    #[display(fmt = "fa-solid fa-dice-five")]
     DiceFive,
-    #[display(fmt = "fas fa-dice-four")]
+    #[display(fmt = "fa-solid fa-dice-four")]
     DiceFour,
-    #[display(fmt = "fas fa-dice-one")]
+    #[display(fmt = "fa-solid fa-dice-one")]
     DiceOne,
-    #[display(fmt = "fas fa-dice-six")]
+    #[display(fmt = "fa-solid fa-dice-six")]
     DiceSix,
-    #[display(fmt = "fas fa-dice-three")]
+    #[display(fmt = "fa-solid fa-dice-three")]
     DiceThree,
-    #[display(fmt = "fas fa-dice-two")]
+    #[display(fmt = "fa-solid fa-dice-two")]
     DiceTwo,
-    #[display(fmt = "fab fa-digg")]
-    Digg,
-    #[display(fmt = "fab fa-digital-ocean")]
-    DigitalOcean,
-    #[display(fmt = "fas fa-digital-tachograph")]
-    DigitalTachograph,
-    #[display(fmt = "fas fa-directions")]
-    Directions,
-    #[display(fmt = "fab fa-discord")]
-    Discord,
-    #[display(fmt = "fab fa-discourse")]
-    Discourse,
-    #[display(fmt = "fas fa-disease")]
+    #[display(fmt = "fa-solid fa-disease")]
     Disease,
-    #[display(fmt = "fas fa-divide")]
+    #[display(fmt = "fa-solid fa-display")]
+    Display,
+    #[display(fmt = "fa-solid fa-divide")]
     Divide,
-    #[display(fmt = "fas fa-dizzy")]
-    DizzySolid,
-    #[display(fmt = "far fa-dizzy")]
-    DizzyRegular,
-    #[display(fmt = "fas fa-dna")]
+    #[display(fmt = "fa-solid fa-dna")]
     Dna,
-    #[display(fmt = "fab fa-dochub")]
-    Dochub,
-    #[display(fmt = "fab fa-docker")]
-    Docker,
-    #[display(fmt = "fas fa-dog")]
+    #[display(fmt = "fa-solid fa-dog")]
     Dog,
-    #[display(fmt = "fas fa-dollar-sign")]
+    #[display(fmt = "fa-solid fa-dollar-sign")]
     DollarSign,
-    #[display(fmt = "fas fa-dolly")]
+    #[display(fmt = "fa-solid fa-dolly")]
     Dolly,
-    #[display(fmt = "fas fa-dolly-flatbed")]
-    DollyFlatbed,
-    #[display(fmt = "fas fa-donate")]
-    Donate,
-    #[display(fmt = "fas fa-door-closed")]
+    #[display(fmt = "fa-solid fa-dong-sign")]
+    DongSign,
+    #[display(fmt = "fa-solid fa-door-closed")]
     DoorClosed,
-    #[display(fmt = "fas fa-door-open")]
+    #[display(fmt = "fa-solid fa-door-open")]
     DoorOpen,
-    #[display(fmt = "fas fa-dot-circle")]
-    DotCircleSolid,
-    #[display(fmt = "far fa-dot-circle")]
-    DotCircleRegular,
-    #[display(fmt = "fas fa-dove")]
+    #[display(fmt = "fa-solid fa-dove")]
     Dove,
-    #[display(fmt = "fas fa-download")]
+    #[display(fmt = "fa-solid fa-down-left-and-up-right-to-center")]
+    DownLeftAndUpRightToCenter,
+    #[display(fmt = "fa-solid fa-down-long")]
+    DownLong,
+    #[display(fmt = "fa-solid fa-download")]
     Download,
-    #[display(fmt = "fab fa-draft2digital")]
-    Draft2Digital,
-    #[display(fmt = "fas fa-drafting-compass")]
-    DraftingCompass,
-    #[display(fmt = "fas fa-dragon")]
+    #[display(fmt = "fa-solid fa-dragon")]
     Dragon,
-    #[display(fmt = "fas fa-draw-polygon")]
+    #[display(fmt = "fa-solid fa-draw-polygon")]
     DrawPolygon,
-    #[display(fmt = "fab fa-dribbble")]
-    Dribbble,
-    #[display(fmt = "fab fa-dribbble-square")]
-    DribbbleSquare,
-    #[display(fmt = "fab fa-dropbox")]
-    Dropbox,
-    #[display(fmt = "fas fa-drum")]
+    #[display(fmt = "fa-solid fa-droplet")]
+    Droplet,
+    #[display(fmt = "fa-solid fa-droplet-slash")]
+    DropletSlash,
+    #[display(fmt = "fa-solid fa-drum")]
     Drum,
-    #[display(fmt = "fas fa-drum-steelpan")]
+    #[display(fmt = "fa-solid fa-drum-steelpan")]
     DrumSteelpan,
-    #[display(fmt = "fas fa-drumstick-bite")]
+    #[display(fmt = "fa-solid fa-drumstick-bite")]
     DrumstickBite,
-    #[display(fmt = "fab fa-drupal")]
-    Drupal,
-    #[display(fmt = "fas fa-dumbbell")]
+    #[display(fmt = "fa-solid fa-dumbbell")]
     Dumbbell,
-    #[display(fmt = "fas fa-dumpster")]
+    #[display(fmt = "fa-solid fa-dumpster")]
     Dumpster,
-    #[display(fmt = "fas fa-dumpster-fire")]
+    #[display(fmt = "fa-solid fa-dumpster-fire")]
     DumpsterFire,
-    #[display(fmt = "fas fa-dungeon")]
+    #[display(fmt = "fa-solid fa-dungeon")]
     Dungeon,
-    #[display(fmt = "fab fa-dyalog")]
-    Dyalog,
-    #[display(fmt = "fab fa-earlybirds")]
-    Earlybirds,
-    #[display(fmt = "fab fa-ebay")]
-    Ebay,
-    #[display(fmt = "fab fa-edge")]
-    Edge,
-    #[display(fmt = "fab fa-edge-legacy")]
-    EdgeLegacy,
-    #[display(fmt = "fas fa-edit")]
-    EditSolid,
-    #[display(fmt = "far fa-edit")]
-    EditRegular,
-    #[display(fmt = "fas fa-egg")]
+    #[display(fmt = "fa-solid fa-e")]
+    E,
+    #[display(fmt = "fa-solid fa-ear-deaf")]
+    EarDeaf,
+    #[display(fmt = "fa-solid fa-ear-listen")]
+    EarListen,
+    #[display(fmt = "fa-solid fa-earth-africa")]
+    EarthAfrica,
+    #[display(fmt = "fa-solid fa-earth-americas")]
+    EarthAmericas,
+    #[display(fmt = "fa-solid fa-earth-asia")]
+    EarthAsia,
+    #[display(fmt = "fa-solid fa-earth-europe")]
+    EarthEurope,
+    #[display(fmt = "fa-solid fa-earth-oceania")]
+    EarthOceania,
+    #[display(fmt = "fa-solid fa-egg")]
     Egg,
-    #[display(fmt = "fas fa-eject")]
+    #[display(fmt = "fa-solid fa-eject")]
     Eject,
-    #[display(fmt = "fab fa-elementor")]
-    Elementor,
-    #[display(fmt = "fas fa-ellipsis-h")]
-    EllipsisH,
-    #[display(fmt = "fas fa-ellipsis-v")]
-    EllipsisV,
-    #[display(fmt = "fab fa-ello")]
-    Ello,
-    #[display(fmt = "fab fa-ember")]
-    Ember,
-    #[display(fmt = "fab fa-empire")]
-    Empire,
-    #[display(fmt = "fas fa-envelope")]
-    EnvelopeSolid,
-    #[display(fmt = "far fa-envelope")]
-    EnvelopeRegular,
-    #[display(fmt = "fas fa-envelope-open")]
-    EnvelopeOpenSolid,
-    #[display(fmt = "far fa-envelope-open")]
-    EnvelopeOpenRegular,
-    #[display(fmt = "fas fa-envelope-open-text")]
+    #[display(fmt = "fa-solid fa-elevator")]
+    Elevator,
+    #[display(fmt = "fa-solid fa-ellipsis")]
+    Ellipsis,
+    #[display(fmt = "fa-solid fa-ellipsis-vertical")]
+    EllipsisVertical,
+    #[display(fmt = "fa-solid fa-envelope")]
+    Envelope,
+    #[display(fmt = "fa-solid fa-envelope-circle-check")]
+    EnvelopeCircleCheck,
+    #[display(fmt = "fa-solid fa-envelope-open")]
+    EnvelopeOpen,
+    #[display(fmt = "fa-solid fa-envelope-open-text")]
     EnvelopeOpenText,
-    #[display(fmt = "fas fa-envelope-square")]
-    EnvelopeSquare,
-    #[display(fmt = "fab fa-envira")]
-    Envira,
-    #[display(fmt = "fas fa-equals")]
+    #[display(fmt = "fa-solid fa-envelopes-bulk")]
+    EnvelopesBulk,
+    #[display(fmt = "fa-solid fa-equals")]
     Equals,
-    #[display(fmt = "fas fa-eraser")]
+    #[display(fmt = "fa-solid fa-eraser")]
     Eraser,
-    #[display(fmt = "fab fa-erlang")]
-    Erlang,
-    #[display(fmt = "fab fa-ethereum")]
-    Ethereum,
-    #[display(fmt = "fas fa-ethernet")]
+    #[display(fmt = "fa-solid fa-ethernet")]
     Ethernet,
-    #[display(fmt = "fab fa-etsy")]
-    Etsy,
-    #[display(fmt = "fas fa-euro-sign")]
+    #[display(fmt = "fa-solid fa-euro-sign")]
     EuroSign,
-    #[display(fmt = "fab fa-evernote")]
-    Evernote,
-    #[display(fmt = "fas fa-exchange-alt")]
-    ExchangeAlt,
-    #[display(fmt = "fas fa-exclamation")]
+    #[display(fmt = "fa-solid fa-exclamation")]
     Exclamation,
-    #[display(fmt = "fas fa-exclamation-circle")]
-    ExclamationCircle,
-    #[display(fmt = "fas fa-exclamation-triangle")]
-    ExclamationTriangle,
-    #[display(fmt = "fas fa-expand")]
+    #[display(fmt = "fa-solid fa-expand")]
     Expand,
-    #[display(fmt = "fas fa-expand-alt")]
-    ExpandAlt,
-    #[display(fmt = "fas fa-expand-arrows-alt")]
-    ExpandArrowsAlt,
-    #[display(fmt = "fab fa-expeditedssl")]
-    Expeditedssl,
-    #[display(fmt = "fas fa-external-link-alt")]
-    ExternalLinkAlt,
-    #[display(fmt = "fas fa-external-link-square-alt")]
-    ExternalLinkSquareAlt,
-    #[display(fmt = "fas fa-eye")]
-    EyeSolid,
-    #[display(fmt = "far fa-eye")]
-    EyeRegular,
-    #[display(fmt = "fas fa-eye-dropper")]
+    #[display(fmt = "fa-solid fa-explosion")]
+    Explosion,
+    #[display(fmt = "fa-solid fa-eye")]
+    Eye,
+    #[display(fmt = "fa-solid fa-eye-dropper")]
     EyeDropper,
-    #[display(fmt = "fas fa-eye-slash")]
-    EyeSlashSolid,
-    #[display(fmt = "far fa-eye-slash")]
-    EyeSlashRegular,
-    #[display(fmt = "fab fa-facebook")]
-    Facebook,
-    #[display(fmt = "fab fa-facebook-f")]
-    FacebookF,
-    #[display(fmt = "fab fa-facebook-messenger")]
-    FacebookMessenger,
-    #[display(fmt = "fab fa-facebook-square")]
-    FacebookSquare,
-    #[display(fmt = "fas fa-fan")]
+    #[display(fmt = "fa-solid fa-eye-low-vision")]
+    EyeLowVision,
+    #[display(fmt = "fa-solid fa-eye-slash")]
+    EyeSlash,
+    #[display(fmt = "fa-solid fa-f")]
+    F,
+    #[display(fmt = "fa-solid fa-face-angry")]
+    FaceAngry,
+    #[display(fmt = "fa-solid fa-face-dizzy")]
+    FaceDizzy,
+    #[display(fmt = "fa-solid fa-face-flushed")]
+    FaceFlushed,
+    #[display(fmt = "fa-solid fa-face-frown")]
+    FaceFrown,
+    #[display(fmt = "fa-solid fa-face-frown-open")]
+    FaceFrownOpen,
+    #[display(fmt = "fa-solid fa-face-grimace")]
+    FaceGrimace,
+    #[display(fmt = "fa-solid fa-face-grin")]
+    FaceGrin,
+    #[display(fmt = "fa-solid fa-face-grin-beam")]
+    FaceGrinBeam,
+    #[display(fmt = "fa-solid fa-face-grin-beam-sweat")]
+    FaceGrinBeamSweat,
+    #[display(fmt = "fa-solid fa-face-grin-hearts")]
+    FaceGrinHearts,
+    #[display(fmt = "fa-solid fa-face-grin-squint")]
+    FaceGrinSquint,
+    #[display(fmt = "fa-solid fa-face-grin-squint-tears")]
+    FaceGrinSquintTears,
+    #[display(fmt = "fa-solid fa-face-grin-stars")]
+    FaceGrinStars,
+    #[display(fmt = "fa-solid fa-face-grin-tears")]
+    FaceGrinTears,
+    #[display(fmt = "fa-solid fa-face-grin-tongue")]
+    FaceGrinTongue,
+    #[display(fmt = "fa-solid fa-face-grin-tongue-squint")]
+    FaceGrinTongueSquint,
+    #[display(fmt = "fa-solid fa-face-grin-tongue-wink")]
+    FaceGrinTongueWink,
+    #[display(fmt = "fa-solid fa-face-grin-wide")]
+    FaceGrinWide,
+    #[display(fmt = "fa-solid fa-face-grin-wink")]
+    FaceGrinWink,
+    #[display(fmt = "fa-solid fa-face-kiss")]
+    FaceKiss,
+    #[display(fmt = "fa-solid fa-face-kiss-beam")]
+    FaceKissBeam,
+    #[display(fmt = "fa-solid fa-face-kiss-wink-heart")]
+    FaceKissWinkHeart,
+    #[display(fmt = "fa-solid fa-face-laugh")]
+    FaceLaugh,
+    #[display(fmt = "fa-solid fa-face-laugh-beam")]
+    FaceLaughBeam,
+    #[display(fmt = "fa-solid fa-face-laugh-squint")]
+    FaceLaughSquint,
+    #[display(fmt = "fa-solid fa-face-laugh-wink")]
+    FaceLaughWink,
+    #[display(fmt = "fa-solid fa-face-meh")]
+    FaceMeh,
+    #[display(fmt = "fa-solid fa-face-meh-blank")]
+    FaceMehBlank,
+    #[display(fmt = "fa-solid fa-face-rolling-eyes")]
+    FaceRollingEyes,
+    #[display(fmt = "fa-solid fa-face-sad-cry")]
+    FaceSadCry,
+    #[display(fmt = "fa-solid fa-face-sad-tear")]
+    FaceSadTear,
+    #[display(fmt = "fa-solid fa-face-smile")]
+    FaceSmile,
+    #[display(fmt = "fa-solid fa-face-smile-beam")]
+    FaceSmileBeam,
+    #[display(fmt = "fa-solid fa-face-smile-wink")]
+    FaceSmileWink,
+    #[display(fmt = "fa-solid fa-face-surprise")]
+    FaceSurprise,
+    #[display(fmt = "fa-solid fa-face-tired")]
+    FaceTired,
+    #[display(fmt = "fa-solid fa-fan")]
     Fan,
-    #[display(fmt = "fab fa-fantasy-flight-games")]
-    FantasyFlightGames,
-    #[display(fmt = "fas fa-fast-backward")]
-    FastBackward,
-    #[display(fmt = "fas fa-fast-forward")]
-    FastForward,
-    #[display(fmt = "fas fa-faucet")]
+    #[display(fmt = "fa-solid fa-faucet")]
     Faucet,
-    #[display(fmt = "fas fa-fax")]
+    #[display(fmt = "fa-solid fa-faucet-drip")]
+    FaucetDrip,
+    #[display(fmt = "fa-solid fa-fax")]
     Fax,
-    #[display(fmt = "fas fa-feather")]
+    #[display(fmt = "fa-solid fa-feather")]
     Feather,
-    #[display(fmt = "fas fa-feather-alt")]
-    FeatherAlt,
-    #[display(fmt = "fab fa-fedex")]
-    Fedex,
-    #[display(fmt = "fab fa-fedora")]
-    Fedora,
-    #[display(fmt = "fas fa-female")]
-    Female,
-    #[display(fmt = "fas fa-fighter-jet")]
-    FighterJet,
-    #[display(fmt = "fab fa-figma")]
-    Figma,
-    #[display(fmt = "fas fa-file")]
-    FileSolid,
-    #[display(fmt = "far fa-file")]
-    FileRegular,
-    #[display(fmt = "fas fa-file-alt")]
-    FileAltSolid,
-    #[display(fmt = "far fa-file-alt")]
-    FileAltRegular,
-    #[display(fmt = "fas fa-file-archive")]
-    FileArchiveSolid,
-    #[display(fmt = "far fa-file-archive")]
-    FileArchiveRegular,
-    #[display(fmt = "fas fa-file-audio")]
-    FileAudioSolid,
-    #[display(fmt = "far fa-file-audio")]
-    FileAudioRegular,
-    #[display(fmt = "fas fa-file-code")]
-    FileCodeSolid,
-    #[display(fmt = "far fa-file-code")]
-    FileCodeRegular,
-    #[display(fmt = "fas fa-file-contract")]
+    #[display(fmt = "fa-solid fa-feather-pointed")]
+    FeatherPointed,
+    #[display(fmt = "fa-solid fa-ferry")]
+    Ferry,
+    #[display(fmt = "fa-solid fa-file")]
+    File,
+    #[display(fmt = "fa-solid fa-file-arrow-down")]
+    FileArrowDown,
+    #[display(fmt = "fa-solid fa-file-arrow-up")]
+    FileArrowUp,
+    #[display(fmt = "fa-solid fa-file-audio")]
+    FileAudio,
+    #[display(fmt = "fa-solid fa-file-circle-check")]
+    FileCircleCheck,
+    #[display(fmt = "fa-solid fa-file-circle-exclamation")]
+    FileCircleExclamation,
+    #[display(fmt = "fa-solid fa-file-circle-minus")]
+    FileCircleMinus,
+    #[display(fmt = "fa-solid fa-file-circle-plus")]
+    FileCirclePlus,
+    #[display(fmt = "fa-solid fa-file-circle-question")]
+    FileCircleQuestion,
+    #[display(fmt = "fa-solid fa-file-circle-xmark")]
+    FileCircleXmark,
+    #[display(fmt = "fa-solid fa-file-code")]
+    FileCode,
+    #[display(fmt = "fa-solid fa-file-contract")]
     FileContract,
-    #[display(fmt = "fas fa-file-csv")]
+    #[display(fmt = "fa-solid fa-file-csv")]
     FileCsv,
-    #[display(fmt = "fas fa-file-download")]
-    FileDownload,
-    #[display(fmt = "fas fa-file-excel")]
-    FileExcelSolid,
-    #[display(fmt = "far fa-file-excel")]
-    FileExcelRegular,
-    #[display(fmt = "fas fa-file-export")]
+    #[display(fmt = "fa-solid fa-file-excel")]
+    FileExcel,
+    #[display(fmt = "fa-solid fa-file-export")]
     FileExport,
-    #[display(fmt = "fas fa-file-image")]
-    FileImageSolid,
-    #[display(fmt = "far fa-file-image")]
-    FileImageRegular,
-    #[display(fmt = "fas fa-file-import")]
+    #[display(fmt = "fa-solid fa-file-image")]
+    FileImage,
+    #[display(fmt = "fa-solid fa-file-import")]
     FileImport,
-    #[display(fmt = "fas fa-file-invoice")]
+    #[display(fmt = "fa-solid fa-file-invoice")]
     FileInvoice,
-    #[display(fmt = "fas fa-file-invoice-dollar")]
+    #[display(fmt = "fa-solid fa-file-invoice-dollar")]
     FileInvoiceDollar,
-    #[display(fmt = "fas fa-file-medical")]
+    #[display(fmt = "fa-solid fa-file-lines")]
+    FileLines,
+    #[display(fmt = "fa-solid fa-file-medical")]
     FileMedical,
-    #[display(fmt = "fas fa-file-medical-alt")]
-    FileMedicalAlt,
-    #[display(fmt = "fas fa-file-pdf")]
-    FilePdfSolid,
-    #[display(fmt = "far fa-file-pdf")]
-    FilePdfRegular,
-    #[display(fmt = "fas fa-file-powerpoint")]
-    FilePowerpointSolid,
-    #[display(fmt = "far fa-file-powerpoint")]
-    FilePowerpointRegular,
-    #[display(fmt = "fas fa-file-prescription")]
+    #[display(fmt = "fa-solid fa-file-pdf")]
+    FilePdf,
+    #[display(fmt = "fa-solid fa-file-pen")]
+    FilePen,
+    #[display(fmt = "fa-solid fa-file-powerpoint")]
+    FilePowerpoint,
+    #[display(fmt = "fa-solid fa-file-prescription")]
     FilePrescription,
-    #[display(fmt = "fas fa-file-signature")]
+    #[display(fmt = "fa-solid fa-file-shield")]
+    FileShield,
+    #[display(fmt = "fa-solid fa-file-signature")]
     FileSignature,
-    #[display(fmt = "fas fa-file-upload")]
-    FileUpload,
-    #[display(fmt = "fas fa-file-video")]
-    FileVideoSolid,
-    #[display(fmt = "far fa-file-video")]
-    FileVideoRegular,
-    #[display(fmt = "fas fa-file-word")]
-    FileWordSolid,
-    #[display(fmt = "far fa-file-word")]
-    FileWordRegular,
-    #[display(fmt = "fas fa-fill")]
+    #[display(fmt = "fa-solid fa-file-video")]
+    FileVideo,
+    #[display(fmt = "fa-solid fa-file-waveform")]
+    FileWaveform,
+    #[display(fmt = "fa-solid fa-file-word")]
+    FileWord,
+    #[display(fmt = "fa-solid fa-file-zipper")]
+    FileZipper,
+    #[display(fmt = "fa-solid fa-fill")]
     Fill,
-    #[display(fmt = "fas fa-fill-drip")]
+    #[display(fmt = "fa-solid fa-fill-drip")]
     FillDrip,
-    #[display(fmt = "fas fa-film")]
+    #[display(fmt = "fa-solid fa-film")]
     Film,
-    #[display(fmt = "fas fa-filter")]
+    #[display(fmt = "fa-solid fa-filter")]
     Filter,
-    #[display(fmt = "fas fa-fingerprint")]
+    #[display(fmt = "fa-solid fa-filter-circle-dollar")]
+    FilterCircleDollar,
+    #[display(fmt = "fa-solid fa-filter-circle-xmark")]
+    FilterCircleXmark,
+    #[display(fmt = "fa-solid fa-fingerprint")]
     Fingerprint,
-    #[display(fmt = "fas fa-fire")]
+    #[display(fmt = "fa-solid fa-fire")]
     Fire,
-    #[display(fmt = "fas fa-fire-alt")]
-    FireAlt,
-    #[display(fmt = "fas fa-fire-extinguisher")]
+    #[display(fmt = "fa-solid fa-fire-burner")]
+    FireBurner,
+    #[display(fmt = "fa-solid fa-fire-extinguisher")]
     FireExtinguisher,
-    #[display(fmt = "fab fa-firefox")]
-    Firefox,
-    #[display(fmt = "fab fa-firefox-browser")]
-    FirefoxBrowser,
-    #[display(fmt = "fas fa-first-aid")]
-    FirstAid,
-    #[display(fmt = "fab fa-first-order")]
-    FirstOrder,
-    #[display(fmt = "fab fa-first-order-alt")]
-    FirstOrderAlt,
-    #[display(fmt = "fab fa-firstdraft")]
-    Firstdraft,
-    #[display(fmt = "fas fa-fish")]
+    #[display(fmt = "fa-solid fa-fire-flame-curved")]
+    FireFlameCurved,
+    #[display(fmt = "fa-solid fa-fire-flame-simple")]
+    FireFlameSimple,
+    #[display(fmt = "fa-solid fa-fish")]
     Fish,
-    #[display(fmt = "fas fa-fist-raised")]
-    FistRaised,
-    #[display(fmt = "fas fa-flag")]
-    FlagSolid,
-    #[display(fmt = "far fa-flag")]
-    FlagRegular,
-    #[display(fmt = "fas fa-flag-checkered")]
+    #[display(fmt = "fa-solid fa-fish-fins")]
+    FishFins,
+    #[display(fmt = "fa-solid fa-flag")]
+    Flag,
+    #[display(fmt = "fa-solid fa-flag-checkered")]
     FlagCheckered,
-    #[display(fmt = "fas fa-flag-usa")]
+    #[display(fmt = "fa-solid fa-flag-usa")]
     FlagUsa,
-    #[display(fmt = "fas fa-flask")]
+    #[display(fmt = "fa-solid fa-flask")]
     Flask,
-    #[display(fmt = "fab fa-flickr")]
-    Flickr,
-    #[display(fmt = "fab fa-flipboard")]
-    Flipboard,
-    #[display(fmt = "fas fa-flushed")]
-    FlushedSolid,
-    #[display(fmt = "far fa-flushed")]
-    FlushedRegular,
-    #[display(fmt = "fab fa-fly")]
-    Fly,
-    #[display(fmt = "fas fa-folder")]
-    FolderSolid,
-    #[display(fmt = "far fa-folder")]
-    FolderRegular,
-    #[display(fmt = "fas fa-folder-minus")]
+    #[display(fmt = "fa-solid fa-flask-vial")]
+    FlaskVial,
+    #[display(fmt = "fa-solid fa-floppy-disk")]
+    FloppyDisk,
+    #[display(fmt = "fa-solid fa-florin-sign")]
+    FlorinSign,
+    #[display(fmt = "fa-solid fa-folder")]
+    Folder,
+    #[display(fmt = "fa-solid fa-folder-closed")]
+    FolderClosed,
+    #[display(fmt = "fa-solid fa-folder-minus")]
     FolderMinus,
-    #[display(fmt = "fas fa-folder-open")]
-    FolderOpenSolid,
-    #[display(fmt = "far fa-folder-open")]
-    FolderOpenRegular,
-    #[display(fmt = "fas fa-folder-plus")]
+    #[display(fmt = "fa-solid fa-folder-open")]
+    FolderOpen,
+    #[display(fmt = "fa-solid fa-folder-plus")]
     FolderPlus,
-    #[display(fmt = "fas fa-font")]
+    #[display(fmt = "fa-solid fa-folder-tree")]
+    FolderTree,
+    #[display(fmt = "fa-solid fa-font")]
     Font,
-    #[display(fmt = "fab fa-font-awesome")]
+    #[display(fmt = "fa-solid fa-font-awesome")]
     FontAwesome,
-    #[display(fmt = "fab fa-font-awesome-alt")]
-    FontAwesomeAlt,
-    #[display(fmt = "fab fa-font-awesome-flag")]
-    FontAwesomeFlag,
-    #[display(fmt = "far fa-font-awesome-logo-full")]
-    FontAwesomeLogoFullRegular,
-    #[display(fmt = "fas fa-font-awesome-logo-full")]
-    FontAwesomeLogoFullSolid,
-    #[display(fmt = "fab fa-font-awesome-logo-full")]
-    FontAwesomeLogoFullBrand,
-    #[display(fmt = "fab fa-fonticons")]
-    Fonticons,
-    #[display(fmt = "fab fa-fonticons-fi")]
-    FonticonsFi,
-    #[display(fmt = "fas fa-football-ball")]
-    FootballBall,
-    #[display(fmt = "fab fa-fort-awesome")]
-    FortAwesome,
-    #[display(fmt = "fab fa-fort-awesome-alt")]
-    FortAwesomeAlt,
-    #[display(fmt = "fab fa-forumbee")]
-    Forumbee,
-    #[display(fmt = "fas fa-forward")]
+    #[display(fmt = "fa-solid fa-football")]
+    Football,
+    #[display(fmt = "fa-solid fa-forward")]
     Forward,
-    #[display(fmt = "fab fa-foursquare")]
-    Foursquare,
-    #[display(fmt = "fab fa-free-code-camp")]
-    FreeCodeCamp,
-    #[display(fmt = "fab fa-freebsd")]
-    Freebsd,
-    #[display(fmt = "fas fa-frog")]
+    #[display(fmt = "fa-solid fa-forward-fast")]
+    ForwardFast,
+    #[display(fmt = "fa-solid fa-forward-step")]
+    ForwardStep,
+    #[display(fmt = "fa-solid fa-franc-sign")]
+    FrancSign,
+    #[display(fmt = "fa-solid fa-frog")]
     Frog,
-    #[display(fmt = "fas fa-frown")]
-    FrownSolid,
-    #[display(fmt = "far fa-frown")]
-    FrownRegular,
-    #[display(fmt = "fas fa-frown-open")]
-    FrownOpenSolid,
-    #[display(fmt = "far fa-frown-open")]
-    FrownOpenRegular,
-    #[display(fmt = "fab fa-fulcrum")]
-    Fulcrum,
-    #[display(fmt = "fas fa-funnel-dollar")]
-    FunnelDollar,
-    #[display(fmt = "fas fa-futbol")]
-    FutbolSolid,
-    #[display(fmt = "far fa-futbol")]
-    FutbolRegular,
-    #[display(fmt = "fab fa-galactic-republic")]
-    GalacticRepublic,
-    #[display(fmt = "fab fa-galactic-senate")]
-    GalacticSenate,
-    #[display(fmt = "fas fa-gamepad")]
+    #[display(fmt = "fa-solid fa-futbol")]
+    Futbol,
+    #[display(fmt = "fa-solid fa-g")]
+    G,
+    #[display(fmt = "fa-solid fa-gamepad")]
     Gamepad,
-    #[display(fmt = "fas fa-gas-pump")]
+    #[display(fmt = "fa-solid fa-gas-pump")]
     GasPump,
-    #[display(fmt = "fas fa-gavel")]
+    #[display(fmt = "fa-solid fa-gauge")]
+    Gauge,
+    #[display(fmt = "fa-solid fa-gauge-high")]
+    GaugeHigh,
+    #[display(fmt = "fa-solid fa-gauge-simple")]
+    GaugeSimple,
+    #[display(fmt = "fa-solid fa-gauge-simple-high")]
+    GaugeSimpleHigh,
+    #[display(fmt = "fa-solid fa-gavel")]
     Gavel,
-    #[display(fmt = "fas fa-gem")]
-    GemSolid,
-    #[display(fmt = "far fa-gem")]
-    GemRegular,
-    #[display(fmt = "fas fa-genderless")]
+    #[display(fmt = "fa-solid fa-gear")]
+    Gear,
+    #[display(fmt = "fa-solid fa-gears")]
+    Gears,
+    #[display(fmt = "fa-solid fa-gem")]
+    Gem,
+    #[display(fmt = "fa-solid fa-genderless")]
     Genderless,
-    #[display(fmt = "fab fa-get-pocket")]
-    GetPocket,
-    #[display(fmt = "fab fa-gg")]
-    Gg,
-    #[display(fmt = "fab fa-gg-circle")]
-    GgCircle,
-    #[display(fmt = "fas fa-ghost")]
+    #[display(fmt = "fa-solid fa-ghost")]
     Ghost,
-    #[display(fmt = "fas fa-gift")]
+    #[display(fmt = "fa-solid fa-gift")]
     Gift,
-    #[display(fmt = "fas fa-gifts")]
+    #[display(fmt = "fa-solid fa-gifts")]
     Gifts,
-    #[display(fmt = "fab fa-git")]
-    Git,
-    #[display(fmt = "fab fa-git-alt")]
-    GitAlt,
-    #[display(fmt = "fab fa-git-square")]
-    GitSquare,
-    #[display(fmt = "fab fa-github")]
-    Github,
-    #[display(fmt = "fab fa-github-alt")]
-    GithubAlt,
-    #[display(fmt = "fab fa-github-square")]
-    GithubSquare,
-    #[display(fmt = "fab fa-gitkraken")]
-    Gitkraken,
-    #[display(fmt = "fab fa-gitlab")]
-    Gitlab,
-    #[display(fmt = "fab fa-gitter")]
-    Gitter,
-    #[display(fmt = "fas fa-glass-cheers")]
-    GlassCheers,
-    #[display(fmt = "fas fa-glass-martini")]
-    GlassMartini,
-    #[display(fmt = "fas fa-glass-martini-alt")]
-    GlassMartiniAlt,
-    #[display(fmt = "fas fa-glass-whiskey")]
-    GlassWhiskey,
-    #[display(fmt = "fas fa-glasses")]
+    #[display(fmt = "fa-solid fa-glass-water")]
+    GlassWater,
+    #[display(fmt = "fa-solid fa-glass-water-droplet")]
+    GlassWaterDroplet,
+    #[display(fmt = "fa-solid fa-glasses")]
     Glasses,
-    #[display(fmt = "fab fa-glide")]
-    Glide,
-    #[display(fmt = "fab fa-glide-g")]
-    GlideG,
-    #[display(fmt = "fas fa-globe")]
+    #[display(fmt = "fa-solid fa-globe")]
     Globe,
-    #[display(fmt = "fas fa-globe-africa")]
-    GlobeAfrica,
-    #[display(fmt = "fas fa-globe-americas")]
-    GlobeAmericas,
-    #[display(fmt = "fas fa-globe-asia")]
-    GlobeAsia,
-    #[display(fmt = "fas fa-globe-europe")]
-    GlobeEurope,
-    #[display(fmt = "fab fa-gofore")]
-    Gofore,
-    #[display(fmt = "fas fa-golf-ball")]
-    GolfBall,
-    #[display(fmt = "fab fa-goodreads")]
-    Goodreads,
-    #[display(fmt = "fab fa-goodreads-g")]
-    GoodreadsG,
-    #[display(fmt = "fab fa-google")]
-    Google,
-    #[display(fmt = "fab fa-google-drive")]
-    GoogleDrive,
-    #[display(fmt = "fab fa-google-pay")]
-    GooglePay,
-    #[display(fmt = "fab fa-google-play")]
-    GooglePlay,
-    #[display(fmt = "fab fa-google-plus")]
-    GooglePlus,
-    #[display(fmt = "fab fa-google-plus-g")]
-    GooglePlusG,
-    #[display(fmt = "fab fa-google-plus-square")]
-    GooglePlusSquare,
-    #[display(fmt = "fab fa-google-wallet")]
-    GoogleWallet,
-    #[display(fmt = "fas fa-gopuram")]
+    #[display(fmt = "fa-solid fa-golf-ball-tee")]
+    GolfBallTee,
+    #[display(fmt = "fa-solid fa-gopuram")]
     Gopuram,
-    #[display(fmt = "fas fa-graduation-cap")]
+    #[display(fmt = "fa-solid fa-graduation-cap")]
     GraduationCap,
-    #[display(fmt = "fab fa-gratipay")]
-    Gratipay,
-    #[display(fmt = "fab fa-grav")]
-    Grav,
-    #[display(fmt = "fas fa-greater-than")]
+    #[display(fmt = "fa-solid fa-greater-than")]
     GreaterThan,
-    #[display(fmt = "fas fa-greater-than-equal")]
+    #[display(fmt = "fa-solid fa-greater-than-equal")]
     GreaterThanEqual,
-    #[display(fmt = "fas fa-grimace")]
-    GrimaceSolid,
-    #[display(fmt = "far fa-grimace")]
-    GrimaceRegular,
-    #[display(fmt = "fas fa-grin")]
-    GrinSolid,
-    #[display(fmt = "far fa-grin")]
-    GrinRegular,
-    #[display(fmt = "fas fa-grin-alt")]
-    GrinAltSolid,
-    #[display(fmt = "far fa-grin-alt")]
-    GrinAltRegular,
-    #[display(fmt = "fas fa-grin-beam")]
-    GrinBeamSolid,
-    #[display(fmt = "far fa-grin-beam")]
-    GrinBeamRegular,
-    #[display(fmt = "fas fa-grin-beam-sweat")]
-    GrinBeamSweatSolid,
-    #[display(fmt = "far fa-grin-beam-sweat")]
-    GrinBeamSweatRegular,
-    #[display(fmt = "fas fa-grin-hearts")]
-    GrinHeartsSolid,
-    #[display(fmt = "far fa-grin-hearts")]
-    GrinHeartsRegular,
-    #[display(fmt = "fas fa-grin-squint")]
-    GrinSquintSolid,
-    #[display(fmt = "far fa-grin-squint")]
-    GrinSquintRegular,
-    #[display(fmt = "fas fa-grin-squint-tears")]
-    GrinSquintTearsSolid,
-    #[display(fmt = "far fa-grin-squint-tears")]
-    GrinSquintTearsRegular,
-    #[display(fmt = "fas fa-grin-stars")]
-    GrinStarsSolid,
-    #[display(fmt = "far fa-grin-stars")]
-    GrinStarsRegular,
-    #[display(fmt = "fas fa-grin-tears")]
-    GrinTearsSolid,
-    #[display(fmt = "far fa-grin-tears")]
-    GrinTearsRegular,
-    #[display(fmt = "fas fa-grin-tongue")]
-    GrinTongueSolid,
-    #[display(fmt = "far fa-grin-tongue")]
-    GrinTongueRegular,
-    #[display(fmt = "fas fa-grin-tongue-squint")]
-    GrinTongueSquintSolid,
-    #[display(fmt = "far fa-grin-tongue-squint")]
-    GrinTongueSquintRegular,
-    #[display(fmt = "fas fa-grin-tongue-wink")]
-    GrinTongueWinkSolid,
-    #[display(fmt = "far fa-grin-tongue-wink")]
-    GrinTongueWinkRegular,
-    #[display(fmt = "fas fa-grin-wink")]
-    GrinWinkSolid,
-    #[display(fmt = "far fa-grin-wink")]
-    GrinWinkRegular,
-    #[display(fmt = "fas fa-grip-horizontal")]
-    GripHorizontal,
-    #[display(fmt = "fas fa-grip-lines")]
+    #[display(fmt = "fa-solid fa-grip")]
+    Grip,
+    #[display(fmt = "fa-solid fa-grip-lines")]
     GripLines,
-    #[display(fmt = "fas fa-grip-lines-vertical")]
+    #[display(fmt = "fa-solid fa-grip-lines-vertical")]
     GripLinesVertical,
-    #[display(fmt = "fas fa-grip-vertical")]
+    #[display(fmt = "fa-solid fa-grip-vertical")]
     GripVertical,
-    #[display(fmt = "fab fa-gripfire")]
-    Gripfire,
-    #[display(fmt = "fab fa-grunt")]
-    Grunt,
-    #[display(fmt = "fab fa-guilded")]
-    Guilded,
-    #[display(fmt = "fas fa-guitar")]
+    #[display(fmt = "fa-solid fa-group-arrows-rotate")]
+    GroupArrowsRotate,
+    #[display(fmt = "fa-solid fa-guarani-sign")]
+    GuaraniSign,
+    #[display(fmt = "fa-solid fa-guitar")]
     Guitar,
-    #[display(fmt = "fab fa-gulp")]
-    Gulp,
-    #[display(fmt = "fas fa-h-square")]
-    HSquare,
-    #[display(fmt = "fab fa-hacker-news")]
-    HackerNews,
-    #[display(fmt = "fab fa-hacker-news-square")]
-    HackerNewsSquare,
-    #[display(fmt = "fab fa-hackerrank")]
-    Hackerrank,
-    #[display(fmt = "fas fa-hamburger")]
-    Hamburger,
-    #[display(fmt = "fas fa-hammer")]
+    #[display(fmt = "fa-solid fa-gun")]
+    Gun,
+    #[display(fmt = "fa-solid fa-h")]
+    H,
+    #[display(fmt = "fa-solid fa-hammer")]
     Hammer,
-    #[display(fmt = "fas fa-hamsa")]
+    #[display(fmt = "fa-solid fa-hamsa")]
     Hamsa,
-    #[display(fmt = "fas fa-hand-holding")]
+    #[display(fmt = "fa-solid fa-hand")]
+    Hand,
+    #[display(fmt = "fa-solid fa-hand-back-fist")]
+    HandBackFist,
+    #[display(fmt = "fa-solid fa-hand-dots")]
+    HandDots,
+    #[display(fmt = "fa-solid fa-hand-fist")]
+    HandFist,
+    #[display(fmt = "fa-solid fa-hand-holding")]
     HandHolding,
-    #[display(fmt = "fas fa-hand-holding-heart")]
+    #[display(fmt = "fa-solid fa-hand-holding-dollar")]
+    HandHoldingDollar,
+    #[display(fmt = "fa-solid fa-hand-holding-droplet")]
+    HandHoldingDroplet,
+    #[display(fmt = "fa-solid fa-hand-holding-hand")]
+    HandHoldingHand,
+    #[display(fmt = "fa-solid fa-hand-holding-heart")]
     HandHoldingHeart,
-    #[display(fmt = "fas fa-hand-holding-medical")]
+    #[display(fmt = "fa-solid fa-hand-holding-medical")]
     HandHoldingMedical,
-    #[display(fmt = "fas fa-hand-holding-usd")]
-    HandHoldingUsd,
-    #[display(fmt = "fas fa-hand-holding-water")]
-    HandHoldingWater,
-    #[display(fmt = "fas fa-hand-lizard")]
-    HandLizardSolid,
-    #[display(fmt = "far fa-hand-lizard")]
-    HandLizardRegular,
-    #[display(fmt = "fas fa-hand-middle-finger")]
+    #[display(fmt = "fa-solid fa-hand-lizard")]
+    HandLizard,
+    #[display(fmt = "fa-solid fa-hand-middle-finger")]
     HandMiddleFinger,
-    #[display(fmt = "fas fa-hand-paper")]
-    HandPaperSolid,
-    #[display(fmt = "far fa-hand-paper")]
-    HandPaperRegular,
-    #[display(fmt = "fas fa-hand-peace")]
-    HandPeaceSolid,
-    #[display(fmt = "far fa-hand-peace")]
-    HandPeaceRegular,
-    #[display(fmt = "fas fa-hand-point-down")]
-    HandPointDownSolid,
-    #[display(fmt = "far fa-hand-point-down")]
-    HandPointDownRegular,
-    #[display(fmt = "fas fa-hand-point-left")]
-    HandPointLeftSolid,
-    #[display(fmt = "far fa-hand-point-left")]
-    HandPointLeftRegular,
-    #[display(fmt = "fas fa-hand-point-right")]
-    HandPointRightSolid,
-    #[display(fmt = "far fa-hand-point-right")]
-    HandPointRightRegular,
-    #[display(fmt = "fas fa-hand-point-up")]
-    HandPointUpSolid,
-    #[display(fmt = "far fa-hand-point-up")]
-    HandPointUpRegular,
-    #[display(fmt = "fas fa-hand-pointer")]
-    HandPointerSolid,
-    #[display(fmt = "far fa-hand-pointer")]
-    HandPointerRegular,
-    #[display(fmt = "fas fa-hand-rock")]
-    HandRockSolid,
-    #[display(fmt = "far fa-hand-rock")]
-    HandRockRegular,
-    #[display(fmt = "fas fa-hand-scissors")]
-    HandScissorsSolid,
-    #[display(fmt = "far fa-hand-scissors")]
-    HandScissorsRegular,
-    #[display(fmt = "fas fa-hand-sparkles")]
+    #[display(fmt = "fa-solid fa-hand-peace")]
+    HandPeace,
+    #[display(fmt = "fa-solid fa-hand-point-down")]
+    HandPointDown,
+    #[display(fmt = "fa-solid fa-hand-point-left")]
+    HandPointLeft,
+    #[display(fmt = "fa-solid fa-hand-point-right")]
+    HandPointRight,
+    #[display(fmt = "fa-solid fa-hand-point-up")]
+    HandPointUp,
+    #[display(fmt = "fa-solid fa-hand-pointer")]
+    HandPointer,
+    #[display(fmt = "fa-solid fa-hand-scissors")]
+    HandScissors,
+    #[display(fmt = "fa-solid fa-hand-sparkles")]
     HandSparkles,
-    #[display(fmt = "fas fa-hand-spock")]
-    HandSpockSolid,
-    #[display(fmt = "far fa-hand-spock")]
-    HandSpockRegular,
-    #[display(fmt = "fas fa-hands")]
+    #[display(fmt = "fa-solid fa-hand-spock")]
+    HandSpock,
+    #[display(fmt = "fa-solid fa-handcuffs")]
+    Handcuffs,
+    #[display(fmt = "fa-solid fa-hands")]
     Hands,
-    #[display(fmt = "fas fa-hands-helping")]
-    HandsHelping,
-    #[display(fmt = "fas fa-hands-wash")]
-    HandsWash,
-    #[display(fmt = "fas fa-handshake")]
-    HandshakeSolid,
-    #[display(fmt = "far fa-handshake")]
-    HandshakeRegular,
-    #[display(fmt = "fas fa-handshake-alt-slash")]
-    HandshakeAltSlash,
-    #[display(fmt = "fas fa-handshake-slash")]
+    #[display(fmt = "fa-solid fa-hands-asl-interpreting")]
+    HandsAslInterpreting,
+    #[display(fmt = "fa-solid fa-hands-bound")]
+    HandsBound,
+    #[display(fmt = "fa-solid fa-hands-bubbles")]
+    HandsBubbles,
+    #[display(fmt = "fa-solid fa-hands-clapping")]
+    HandsClapping,
+    #[display(fmt = "fa-solid fa-hands-holding")]
+    HandsHolding,
+    #[display(fmt = "fa-solid fa-hands-holding-child")]
+    HandsHoldingChild,
+    #[display(fmt = "fa-solid fa-hands-holding-circle")]
+    HandsHoldingCircle,
+    #[display(fmt = "fa-solid fa-hands-praying")]
+    HandsPraying,
+    #[display(fmt = "fa-solid fa-handshake")]
+    Handshake,
+    #[display(fmt = "fa-solid fa-handshake-angle")]
+    HandshakeAngle,
+    #[display(fmt = "fa-solid fa-handshake-simple")]
+    HandshakeSimple,
+    #[display(fmt = "fa-solid fa-handshake-simple-slash")]
+    HandshakeSimpleSlash,
+    #[display(fmt = "fa-solid fa-handshake-slash")]
     HandshakeSlash,
-    #[display(fmt = "fas fa-hanukiah")]
+    #[display(fmt = "fa-solid fa-hanukiah")]
     Hanukiah,
-    #[display(fmt = "fas fa-hard-hat")]
-    HardHat,
-    #[display(fmt = "fas fa-hashtag")]
+    #[display(fmt = "fa-solid fa-hard-drive")]
+    HardDrive,
+    #[display(fmt = "fa-solid fa-hashtag")]
     Hashtag,
-    #[display(fmt = "fas fa-hat-cowboy")]
+    #[display(fmt = "fa-solid fa-hat-cowboy")]
     HatCowboy,
-    #[display(fmt = "fas fa-hat-cowboy-side")]
+    #[display(fmt = "fa-solid fa-hat-cowboy-side")]
     HatCowboySide,
-    #[display(fmt = "fas fa-hat-wizard")]
+    #[display(fmt = "fa-solid fa-hat-wizard")]
     HatWizard,
-    #[display(fmt = "fas fa-hdd")]
-    HddSolid,
-    #[display(fmt = "far fa-hdd")]
-    HddRegular,
-    #[display(fmt = "fas fa-head-side-cough")]
+    #[display(fmt = "fa-solid fa-head-side-cough")]
     HeadSideCough,
-    #[display(fmt = "fas fa-head-side-cough-slash")]
+    #[display(fmt = "fa-solid fa-head-side-cough-slash")]
     HeadSideCoughSlash,
-    #[display(fmt = "fas fa-head-side-mask")]
+    #[display(fmt = "fa-solid fa-head-side-mask")]
     HeadSideMask,
-    #[display(fmt = "fas fa-head-side-virus")]
+    #[display(fmt = "fa-solid fa-head-side-virus")]
     HeadSideVirus,
-    #[display(fmt = "fas fa-heading")]
+    #[display(fmt = "fa-solid fa-heading")]
     Heading,
-    #[display(fmt = "fas fa-headphones")]
+    #[display(fmt = "fa-solid fa-headphones")]
     Headphones,
-    #[display(fmt = "fas fa-headphones-alt")]
-    HeadphonesAlt,
-    #[display(fmt = "fas fa-headset")]
+    #[display(fmt = "fa-solid fa-headphones-simple")]
+    HeadphonesSimple,
+    #[display(fmt = "fa-solid fa-headset")]
     Headset,
-    #[display(fmt = "fas fa-heart")]
-    HeartSolid,
-    #[display(fmt = "far fa-heart")]
-    HeartRegular,
-    #[display(fmt = "fas fa-heart-broken")]
-    HeartBroken,
-    #[display(fmt = "fas fa-heartbeat")]
-    Heartbeat,
-    #[display(fmt = "fas fa-helicopter")]
+    #[display(fmt = "fa-solid fa-heart")]
+    Heart,
+    #[display(fmt = "fa-solid fa-heart-circle-bolt")]
+    HeartCircleBolt,
+    #[display(fmt = "fa-solid fa-heart-circle-check")]
+    HeartCircleCheck,
+    #[display(fmt = "fa-solid fa-heart-circle-exclamation")]
+    HeartCircleExclamation,
+    #[display(fmt = "fa-solid fa-heart-circle-minus")]
+    HeartCircleMinus,
+    #[display(fmt = "fa-solid fa-heart-circle-plus")]
+    HeartCirclePlus,
+    #[display(fmt = "fa-solid fa-heart-circle-xmark")]
+    HeartCircleXmark,
+    #[display(fmt = "fa-solid fa-heart-crack")]
+    HeartCrack,
+    #[display(fmt = "fa-solid fa-heart-pulse")]
+    HeartPulse,
+    #[display(fmt = "fa-solid fa-helicopter")]
     Helicopter,
-    #[display(fmt = "fas fa-highlighter")]
+    #[display(fmt = "fa-solid fa-helicopter-symbol")]
+    HelicopterSymbol,
+    #[display(fmt = "fa-solid fa-helmet-safety")]
+    HelmetSafety,
+    #[display(fmt = "fa-solid fa-helmet-un")]
+    HelmetUn,
+    #[display(fmt = "fa-solid fa-highlighter")]
     Highlighter,
-    #[display(fmt = "fas fa-hiking")]
-    Hiking,
-    #[display(fmt = "fas fa-hippo")]
+    #[display(fmt = "fa-solid fa-hill-avalanche")]
+    HillAvalanche,
+    #[display(fmt = "fa-solid fa-hill-rockslide")]
+    HillRockslide,
+    #[display(fmt = "fa-solid fa-hippo")]
     Hippo,
-    #[display(fmt = "fab fa-hips")]
-    Hips,
-    #[display(fmt = "fab fa-hire-a-helper")]
-    HireAHelper,
-    #[display(fmt = "fas fa-history")]
-    History,
-    #[display(fmt = "fab fa-hive")]
-    Hive,
-    #[display(fmt = "fas fa-hockey-puck")]
+    #[display(fmt = "fa-solid fa-hockey-puck")]
     HockeyPuck,
-    #[display(fmt = "fas fa-holly-berry")]
+    #[display(fmt = "fa-solid fa-holly-berry")]
     HollyBerry,
-    #[display(fmt = "fas fa-home")]
-    Home,
-    #[display(fmt = "fab fa-hooli")]
-    Hooli,
-    #[display(fmt = "fab fa-hornbill")]
-    Hornbill,
-    #[display(fmt = "fas fa-horse")]
+    #[display(fmt = "fa-solid fa-horse")]
     Horse,
-    #[display(fmt = "fas fa-horse-head")]
+    #[display(fmt = "fa-solid fa-horse-head")]
     HorseHead,
-    #[display(fmt = "fas fa-hospital")]
-    HospitalSolid,
-    #[display(fmt = "far fa-hospital")]
-    HospitalRegular,
-    #[display(fmt = "fas fa-hospital-alt")]
-    HospitalAlt,
-    #[display(fmt = "fas fa-hospital-symbol")]
-    HospitalSymbol,
-    #[display(fmt = "fas fa-hospital-user")]
+    #[display(fmt = "fa-solid fa-hospital")]
+    Hospital,
+    #[display(fmt = "fa-solid fa-hospital-user")]
     HospitalUser,
-    #[display(fmt = "fas fa-hot-tub")]
-    HotTub,
-    #[display(fmt = "fas fa-hotdog")]
+    #[display(fmt = "fa-solid fa-hot-tub-person")]
+    HotTubPerson,
+    #[display(fmt = "fa-solid fa-hotdog")]
     Hotdog,
-    #[display(fmt = "fas fa-hotel")]
+    #[display(fmt = "fa-solid fa-hotel")]
     Hotel,
-    #[display(fmt = "fab fa-hotjar")]
-    Hotjar,
-    #[display(fmt = "fas fa-hourglass")]
-    HourglassSolid,
-    #[display(fmt = "far fa-hourglass")]
-    HourglassRegular,
-    #[display(fmt = "fas fa-hourglass-end")]
+    #[display(fmt = "fa-solid fa-hourglass")]
+    Hourglass,
+    #[display(fmt = "fa-solid fa-hourglass-empty")]
+    HourglassEmpty,
+    #[display(fmt = "fa-solid fa-hourglass-end")]
     HourglassEnd,
-    #[display(fmt = "fas fa-hourglass-half")]
-    HourglassHalf,
-    #[display(fmt = "fas fa-hourglass-start")]
+    #[display(fmt = "fa-solid fa-hourglass-start")]
     HourglassStart,
-    #[display(fmt = "fas fa-house-damage")]
-    HouseDamage,
-    #[display(fmt = "fas fa-house-user")]
+    #[display(fmt = "fa-solid fa-house")]
+    House,
+    #[display(fmt = "fa-solid fa-house-chimney")]
+    HouseChimney,
+    #[display(fmt = "fa-solid fa-house-chimney-crack")]
+    HouseChimneyCrack,
+    #[display(fmt = "fa-solid fa-house-chimney-medical")]
+    HouseChimneyMedical,
+    #[display(fmt = "fa-solid fa-house-chimney-user")]
+    HouseChimneyUser,
+    #[display(fmt = "fa-solid fa-house-chimney-window")]
+    HouseChimneyWindow,
+    #[display(fmt = "fa-solid fa-house-circle-check")]
+    HouseCircleCheck,
+    #[display(fmt = "fa-solid fa-house-circle-exclamation")]
+    HouseCircleExclamation,
+    #[display(fmt = "fa-solid fa-house-circle-xmark")]
+    HouseCircleXmark,
+    #[display(fmt = "fa-solid fa-house-crack")]
+    HouseCrack,
+    #[display(fmt = "fa-solid fa-house-fire")]
+    HouseFire,
+    #[display(fmt = "fa-solid fa-house-flag")]
+    HouseFlag,
+    #[display(fmt = "fa-solid fa-house-flood-water")]
+    HouseFloodWater,
+    #[display(fmt = "fa-solid fa-house-flood-water-circle-arrow-right")]
+    HouseFloodWaterCircleArrowRight,
+    #[display(fmt = "fa-solid fa-house-laptop")]
+    HouseLaptop,
+    #[display(fmt = "fa-solid fa-house-lock")]
+    HouseLock,
+    #[display(fmt = "fa-solid fa-house-medical")]
+    HouseMedical,
+    #[display(fmt = "fa-solid fa-house-medical-circle-check")]
+    HouseMedicalCircleCheck,
+    #[display(fmt = "fa-solid fa-house-medical-circle-exclamation")]
+    HouseMedicalCircleExclamation,
+    #[display(fmt = "fa-solid fa-house-medical-circle-xmark")]
+    HouseMedicalCircleXmark,
+    #[display(fmt = "fa-solid fa-house-medical-flag")]
+    HouseMedicalFlag,
+    #[display(fmt = "fa-solid fa-house-signal")]
+    HouseSignal,
+    #[display(fmt = "fa-solid fa-house-tsunami")]
+    HouseTsunami,
+    #[display(fmt = "fa-solid fa-house-user")]
     HouseUser,
-    #[display(fmt = "fab fa-houzz")]
-    Houzz,
-    #[display(fmt = "fas fa-hryvnia")]
-    Hryvnia,
-    #[display(fmt = "fab fa-html5")]
-    Html5,
-    #[display(fmt = "fab fa-hubspot")]
-    Hubspot,
-    #[display(fmt = "fas fa-i-cursor")]
+    #[display(fmt = "fa-solid fa-hryvnia-sign")]
+    HryvniaSign,
+    #[display(fmt = "fa-solid fa-hurricane")]
+    Hurricane,
+    #[display(fmt = "fa-solid fa-i")]
+    I,
+    #[display(fmt = "fa-solid fa-i-cursor")]
     ICursor,
-    #[display(fmt = "fas fa-ice-cream")]
+    #[display(fmt = "fa-solid fa-ice-cream")]
     IceCream,
-    #[display(fmt = "fas fa-icicles")]
+    #[display(fmt = "fa-solid fa-icicles")]
     Icicles,
-    #[display(fmt = "fas fa-icons")]
+    #[display(fmt = "fa-solid fa-icons")]
     Icons,
-    #[display(fmt = "fas fa-id-badge")]
-    IdBadgeSolid,
-    #[display(fmt = "far fa-id-badge")]
-    IdBadgeRegular,
-    #[display(fmt = "fas fa-id-card")]
-    IdCardSolid,
-    #[display(fmt = "far fa-id-card")]
-    IdCardRegular,
-    #[display(fmt = "fas fa-id-card-alt")]
-    IdCardAlt,
-    #[display(fmt = "fab fa-ideal")]
-    Ideal,
-    #[display(fmt = "fas fa-igloo")]
+    #[display(fmt = "fa-solid fa-id-badge")]
+    IdBadge,
+    #[display(fmt = "fa-solid fa-id-card")]
+    IdCard,
+    #[display(fmt = "fa-solid fa-id-card-clip")]
+    IdCardClip,
+    #[display(fmt = "fa-solid fa-igloo")]
     Igloo,
-    #[display(fmt = "fas fa-image")]
-    ImageSolid,
-    #[display(fmt = "far fa-image")]
-    ImageRegular,
-    #[display(fmt = "fas fa-images")]
-    ImagesSolid,
-    #[display(fmt = "far fa-images")]
-    ImagesRegular,
-    #[display(fmt = "fab fa-imdb")]
-    Imdb,
-    #[display(fmt = "fas fa-inbox")]
+    #[display(fmt = "fa-solid fa-image")]
+    Image,
+    #[display(fmt = "fa-solid fa-image-portrait")]
+    ImagePortrait,
+    #[display(fmt = "fa-solid fa-images")]
+    Images,
+    #[display(fmt = "fa-solid fa-inbox")]
     Inbox,
-    #[display(fmt = "fas fa-indent")]
+    #[display(fmt = "fa-solid fa-indent")]
     Indent,
-    #[display(fmt = "fas fa-industry")]
+    #[display(fmt = "fa-solid fa-indian-rupee-sign")]
+    IndianRupeeSign,
+    #[display(fmt = "fa-solid fa-industry")]
     Industry,
-    #[display(fmt = "fas fa-infinity")]
+    #[display(fmt = "fa-solid fa-infinity")]
     Infinity,
-    #[display(fmt = "fas fa-info")]
+    #[display(fmt = "fa-solid fa-info")]
     Info,
-    #[display(fmt = "fas fa-info-circle")]
-    InfoCircle,
-    #[display(fmt = "fab fa-innosoft")]
-    Innosoft,
-    #[display(fmt = "fab fa-instagram")]
-    Instagram,
-    #[display(fmt = "fab fa-instagram-square")]
-    InstagramSquare,
-    #[display(fmt = "fab fa-instalod")]
-    Instalod,
-    #[display(fmt = "fab fa-intercom")]
-    Intercom,
-    #[display(fmt = "fab fa-internet-explorer")]
-    InternetExplorer,
-    #[display(fmt = "fab fa-invision")]
-    Invision,
-    #[display(fmt = "fab fa-ioxhost")]
-    Ioxhost,
-    #[display(fmt = "fas fa-italic")]
+    #[display(fmt = "fa-solid fa-italic")]
     Italic,
-    #[display(fmt = "fab fa-itch-io")]
-    ItchIo,
-    #[display(fmt = "fab fa-itunes")]
-    Itunes,
-    #[display(fmt = "fab fa-itunes-note")]
-    ItunesNote,
-    #[display(fmt = "fab fa-java")]
-    Java,
-    #[display(fmt = "fas fa-jedi")]
+    #[display(fmt = "fa-solid fa-j")]
+    J,
+    #[display(fmt = "fa-solid fa-jar")]
+    Jar,
+    #[display(fmt = "fa-solid fa-jar-wheat")]
+    JarWheat,
+    #[display(fmt = "fa-solid fa-jedi")]
     Jedi,
-    #[display(fmt = "fab fa-jedi-order")]
-    JediOrder,
-    #[display(fmt = "fab fa-jenkins")]
-    Jenkins,
-    #[display(fmt = "fab fa-jira")]
-    Jira,
-    #[display(fmt = "fab fa-joget")]
-    Joget,
-    #[display(fmt = "fas fa-joint")]
+    #[display(fmt = "fa-solid fa-jet-fighter")]
+    JetFighter,
+    #[display(fmt = "fa-solid fa-jet-fighter-up")]
+    JetFighterUp,
+    #[display(fmt = "fa-solid fa-joint")]
     Joint,
-    #[display(fmt = "fab fa-joomla")]
-    Joomla,
-    #[display(fmt = "fas fa-journal-whills")]
-    JournalWhills,
-    #[display(fmt = "fab fa-js")]
-    Js,
-    #[display(fmt = "fab fa-js-square")]
-    JsSquare,
-    #[display(fmt = "fab fa-jsfiddle")]
-    Jsfiddle,
-    #[display(fmt = "fas fa-kaaba")]
+    #[display(fmt = "fa-solid fa-jug-detergent")]
+    JugDetergent,
+    #[display(fmt = "fa-solid fa-k")]
+    K,
+    #[display(fmt = "fa-solid fa-kaaba")]
     Kaaba,
-    #[display(fmt = "fab fa-kaggle")]
-    Kaggle,
-    #[display(fmt = "fas fa-key")]
+    #[display(fmt = "fa-solid fa-key")]
     Key,
-    #[display(fmt = "fab fa-keybase")]
-    Keybase,
-    #[display(fmt = "fas fa-keyboard")]
-    KeyboardSolid,
-    #[display(fmt = "far fa-keyboard")]
-    KeyboardRegular,
-    #[display(fmt = "fab fa-keycdn")]
-    Keycdn,
-    #[display(fmt = "fas fa-khanda")]
+    #[display(fmt = "fa-solid fa-keyboard")]
+    Keyboard,
+    #[display(fmt = "fa-solid fa-khanda")]
     Khanda,
-    #[display(fmt = "fab fa-kickstarter")]
-    Kickstarter,
-    #[display(fmt = "fab fa-kickstarter-k")]
-    KickstarterK,
-    #[display(fmt = "fas fa-kiss")]
-    KissSolid,
-    #[display(fmt = "far fa-kiss")]
-    KissRegular,
-    #[display(fmt = "fas fa-kiss-beam")]
-    KissBeamSolid,
-    #[display(fmt = "far fa-kiss-beam")]
-    KissBeamRegular,
-    #[display(fmt = "fas fa-kiss-wink-heart")]
-    KissWinkHeartSolid,
-    #[display(fmt = "far fa-kiss-wink-heart")]
-    KissWinkHeartRegular,
-    #[display(fmt = "fas fa-kiwi-bird")]
+    #[display(fmt = "fa-solid fa-kip-sign")]
+    KipSign,
+    #[display(fmt = "fa-solid fa-kit-medical")]
+    KitMedical,
+    #[display(fmt = "fa-solid fa-kitchen-set")]
+    KitchenSet,
+    #[display(fmt = "fa-solid fa-kiwi-bird")]
     KiwiBird,
-    #[display(fmt = "fab fa-korvue")]
-    Korvue,
-    #[display(fmt = "fas fa-landmark")]
+    #[display(fmt = "fa-solid fa-l")]
+    L,
+    #[display(fmt = "fa-solid fa-land-mine-on")]
+    LandMineOn,
+    #[display(fmt = "fa-solid fa-landmark")]
     Landmark,
-    #[display(fmt = "fas fa-language")]
+    #[display(fmt = "fa-solid fa-landmark-dome")]
+    LandmarkDome,
+    #[display(fmt = "fa-solid fa-landmark-flag")]
+    LandmarkFlag,
+    #[display(fmt = "fa-solid fa-language")]
     Language,
-    #[display(fmt = "fas fa-laptop")]
+    #[display(fmt = "fa-solid fa-laptop")]
     Laptop,
-    #[display(fmt = "fas fa-laptop-code")]
+    #[display(fmt = "fa-solid fa-laptop-code")]
     LaptopCode,
-    #[display(fmt = "fas fa-laptop-house")]
-    LaptopHouse,
-    #[display(fmt = "fas fa-laptop-medical")]
+    #[display(fmt = "fa-solid fa-laptop-file")]
+    LaptopFile,
+    #[display(fmt = "fa-solid fa-laptop-medical")]
     LaptopMedical,
-    #[display(fmt = "fab fa-laravel")]
-    Laravel,
-    #[display(fmt = "fab fa-lastfm")]
-    Lastfm,
-    #[display(fmt = "fab fa-lastfm-square")]
-    LastfmSquare,
-    #[display(fmt = "fas fa-laugh")]
-    LaughSolid,
-    #[display(fmt = "far fa-laugh")]
-    LaughRegular,
-    #[display(fmt = "fas fa-laugh-beam")]
-    LaughBeamSolid,
-    #[display(fmt = "far fa-laugh-beam")]
-    LaughBeamRegular,
-    #[display(fmt = "fas fa-laugh-squint")]
-    LaughSquintSolid,
-    #[display(fmt = "far fa-laugh-squint")]
-    LaughSquintRegular,
-    #[display(fmt = "fas fa-laugh-wink")]
-    LaughWinkSolid,
-    #[display(fmt = "far fa-laugh-wink")]
-    LaughWinkRegular,
-    #[display(fmt = "fas fa-layer-group")]
+    #[display(fmt = "fa-solid fa-lari-sign")]
+    LariSign,
+    #[display(fmt = "fa-solid fa-layer-group")]
     LayerGroup,
-    #[display(fmt = "fas fa-leaf")]
+    #[display(fmt = "fa-solid fa-leaf")]
     Leaf,
-    #[display(fmt = "fab fa-leanpub")]
-    Leanpub,
-    #[display(fmt = "fas fa-lemon")]
-    LemonSolid,
-    #[display(fmt = "far fa-lemon")]
-    LemonRegular,
-    #[display(fmt = "fab fa-less")]
-    Less,
-    #[display(fmt = "fas fa-less-than")]
+    #[display(fmt = "fa-solid fa-left-long")]
+    LeftLong,
+    #[display(fmt = "fa-solid fa-left-right")]
+    LeftRight,
+    #[display(fmt = "fa-solid fa-lemon")]
+    Lemon,
+    #[display(fmt = "fa-solid fa-less-than")]
     LessThan,
-    #[display(fmt = "fas fa-less-than-equal")]
+    #[display(fmt = "fa-solid fa-less-than-equal")]
     LessThanEqual,
-    #[display(fmt = "fas fa-level-down-alt")]
-    LevelDownAlt,
-    #[display(fmt = "fas fa-level-up-alt")]
-    LevelUpAlt,
-    #[display(fmt = "fas fa-life-ring")]
-    LifeRingSolid,
-    #[display(fmt = "far fa-life-ring")]
-    LifeRingRegular,
-    #[display(fmt = "fas fa-lightbulb")]
-    LightbulbSolid,
-    #[display(fmt = "far fa-lightbulb")]
-    LightbulbRegular,
-    #[display(fmt = "fab fa-line")]
-    Line,
-    #[display(fmt = "fas fa-link")]
+    #[display(fmt = "fa-solid fa-life-ring")]
+    LifeRing,
+    #[display(fmt = "fa-solid fa-lightbulb")]
+    Lightbulb,
+    #[display(fmt = "fa-solid fa-lines-leaning")]
+    LinesLeaning,
+    #[display(fmt = "fa-solid fa-link")]
     Link,
-    #[display(fmt = "fab fa-linkedin")]
-    Linkedin,
-    #[display(fmt = "fab fa-linkedin-in")]
-    LinkedinIn,
-    #[display(fmt = "fab fa-linode")]
-    Linode,
-    #[display(fmt = "fab fa-linux")]
-    Linux,
-    #[display(fmt = "fas fa-lira-sign")]
+    #[display(fmt = "fa-solid fa-link-slash")]
+    LinkSlash,
+    #[display(fmt = "fa-solid fa-lira-sign")]
     LiraSign,
-    #[display(fmt = "fas fa-list")]
+    #[display(fmt = "fa-solid fa-list")]
     List,
-    #[display(fmt = "fas fa-list-alt")]
-    ListAltSolid,
-    #[display(fmt = "far fa-list-alt")]
-    ListAltRegular,
-    #[display(fmt = "fas fa-list-ol")]
+    #[display(fmt = "fa-solid fa-list-check")]
+    ListCheck,
+    #[display(fmt = "fa-solid fa-list-ol")]
     ListOl,
-    #[display(fmt = "fas fa-list-ul")]
+    #[display(fmt = "fa-solid fa-list-ul")]
     ListUl,
-    #[display(fmt = "fas fa-location-arrow")]
+    #[display(fmt = "fa-solid fa-litecoin-sign")]
+    LitecoinSign,
+    #[display(fmt = "fa-solid fa-location-arrow")]
     LocationArrow,
-    #[display(fmt = "fas fa-lock")]
+    #[display(fmt = "fa-solid fa-location-crosshairs")]
+    LocationCrosshairs,
+    #[display(fmt = "fa-solid fa-location-dot")]
+    LocationDot,
+    #[display(fmt = "fa-solid fa-location-pin")]
+    LocationPin,
+    #[display(fmt = "fa-solid fa-location-pin-lock")]
+    LocationPinLock,
+    #[display(fmt = "fa-solid fa-lock")]
     Lock,
-    #[display(fmt = "fas fa-lock-open")]
+    #[display(fmt = "fa-solid fa-lock-open")]
     LockOpen,
-    #[display(fmt = "fas fa-long-arrow-alt-down")]
-    LongArrowAltDown,
-    #[display(fmt = "fas fa-long-arrow-alt-left")]
-    LongArrowAltLeft,
-    #[display(fmt = "fas fa-long-arrow-alt-right")]
-    LongArrowAltRight,
-    #[display(fmt = "fas fa-long-arrow-alt-up")]
-    LongArrowAltUp,
-    #[display(fmt = "fas fa-low-vision")]
-    LowVision,
-    #[display(fmt = "fas fa-luggage-cart")]
-    LuggageCart,
-    #[display(fmt = "fas fa-lungs")]
+    #[display(fmt = "fa-solid fa-locust")]
+    Locust,
+    #[display(fmt = "fa-solid fa-lungs")]
     Lungs,
-    #[display(fmt = "fas fa-lungs-virus")]
+    #[display(fmt = "fa-solid fa-lungs-virus")]
     LungsVirus,
-    #[display(fmt = "fab fa-lyft")]
-    Lyft,
-    #[display(fmt = "fab fa-magento")]
-    Magento,
-    #[display(fmt = "fas fa-magic")]
-    Magic,
-    #[display(fmt = "fas fa-magnet")]
+    #[display(fmt = "fa-solid fa-m")]
+    M,
+    #[display(fmt = "fa-solid fa-magnet")]
     Magnet,
-    #[display(fmt = "fas fa-mail-bulk")]
-    MailBulk,
-    #[display(fmt = "fab fa-mailchimp")]
-    Mailchimp,
-    #[display(fmt = "fas fa-male")]
-    Male,
-    #[display(fmt = "fab fa-mandalorian")]
-    Mandalorian,
-    #[display(fmt = "fas fa-map")]
-    MapSolid,
-    #[display(fmt = "far fa-map")]
-    MapRegular,
-    #[display(fmt = "fas fa-map-marked")]
-    MapMarked,
-    #[display(fmt = "fas fa-map-marked-alt")]
-    MapMarkedAlt,
-    #[display(fmt = "fas fa-map-marker")]
-    MapMarker,
-    #[display(fmt = "fas fa-map-marker-alt")]
-    MapMarkerAlt,
-    #[display(fmt = "fas fa-map-pin")]
+    #[display(fmt = "fa-solid fa-magnifying-glass")]
+    MagnifyingGlass,
+    #[display(fmt = "fa-solid fa-magnifying-glass-arrow-right")]
+    MagnifyingGlassArrowRight,
+    #[display(fmt = "fa-solid fa-magnifying-glass-chart")]
+    MagnifyingGlassChart,
+    #[display(fmt = "fa-solid fa-magnifying-glass-dollar")]
+    MagnifyingGlassDollar,
+    #[display(fmt = "fa-solid fa-magnifying-glass-location")]
+    MagnifyingGlassLocation,
+    #[display(fmt = "fa-solid fa-magnifying-glass-minus")]
+    MagnifyingGlassMinus,
+    #[display(fmt = "fa-solid fa-magnifying-glass-plus")]
+    MagnifyingGlassPlus,
+    #[display(fmt = "fa-solid fa-manat-sign")]
+    ManatSign,
+    #[display(fmt = "fa-solid fa-map")]
+    Map,
+    #[display(fmt = "fa-solid fa-map-location")]
+    MapLocation,
+    #[display(fmt = "fa-solid fa-map-location-dot")]
+    MapLocationDot,
+    #[display(fmt = "fa-solid fa-map-pin")]
     MapPin,
-    #[display(fmt = "fas fa-map-signs")]
-    MapSigns,
-    #[display(fmt = "fab fa-markdown")]
-    Markdown,
-    #[display(fmt = "fas fa-marker")]
+    #[display(fmt = "fa-solid fa-marker")]
     Marker,
-    #[display(fmt = "fas fa-mars")]
+    #[display(fmt = "fa-solid fa-mars")]
     Mars,
-    #[display(fmt = "fas fa-mars-double")]
+    #[display(fmt = "fa-solid fa-mars-and-venus")]
+    MarsAndVenus,
+    #[display(fmt = "fa-solid fa-mars-and-venus-burst")]
+    MarsAndVenusBurst,
+    #[display(fmt = "fa-solid fa-mars-double")]
     MarsDouble,
-    #[display(fmt = "fas fa-mars-stroke")]
+    #[display(fmt = "fa-solid fa-mars-stroke")]
     MarsStroke,
-    #[display(fmt = "fas fa-mars-stroke-h")]
-    MarsStrokeH,
-    #[display(fmt = "fas fa-mars-stroke-v")]
-    MarsStrokeV,
-    #[display(fmt = "fas fa-mask")]
+    #[display(fmt = "fa-solid fa-mars-stroke-right")]
+    MarsStrokeRight,
+    #[display(fmt = "fa-solid fa-mars-stroke-up")]
+    MarsStrokeUp,
+    #[display(fmt = "fa-solid fa-martini-glass")]
+    MartiniGlass,
+    #[display(fmt = "fa-solid fa-martini-glass-citrus")]
+    MartiniGlassCitrus,
+    #[display(fmt = "fa-solid fa-martini-glass-empty")]
+    MartiniGlassEmpty,
+    #[display(fmt = "fa-solid fa-mask")]
     Mask,
-    #[display(fmt = "fab fa-mastodon")]
-    Mastodon,
-    #[display(fmt = "fab fa-maxcdn")]
-    Maxcdn,
-    #[display(fmt = "fab fa-mdb")]
-    Mdb,
-    #[display(fmt = "fas fa-medal")]
+    #[display(fmt = "fa-solid fa-mask-face")]
+    MaskFace,
+    #[display(fmt = "fa-solid fa-mask-ventilator")]
+    MaskVentilator,
+    #[display(fmt = "fa-solid fa-masks-theater")]
+    MasksTheater,
+    #[display(fmt = "fa-solid fa-mattress-pillow")]
+    MattressPillow,
+    #[display(fmt = "fa-solid fa-maximize")]
+    Maximize,
+    #[display(fmt = "fa-solid fa-medal")]
     Medal,
-    #[display(fmt = "fab fa-medapps")]
-    Medapps,
-    #[display(fmt = "fab fa-medium")]
-    Medium,
-    #[display(fmt = "fab fa-medium-m")]
-    MediumM,
-    #[display(fmt = "fas fa-medkit")]
-    Medkit,
-    #[display(fmt = "fab fa-medrt")]
-    Medrt,
-    #[display(fmt = "fab fa-meetup")]
-    Meetup,
-    #[display(fmt = "fab fa-megaport")]
-    Megaport,
-    #[display(fmt = "fas fa-meh")]
-    MehSolid,
-    #[display(fmt = "far fa-meh")]
-    MehRegular,
-    #[display(fmt = "fas fa-meh-blank")]
-    MehBlankSolid,
-    #[display(fmt = "far fa-meh-blank")]
-    MehBlankRegular,
-    #[display(fmt = "fas fa-meh-rolling-eyes")]
-    MehRollingEyesSolid,
-    #[display(fmt = "far fa-meh-rolling-eyes")]
-    MehRollingEyesRegular,
-    #[display(fmt = "fas fa-memory")]
+    #[display(fmt = "fa-solid fa-memory")]
     Memory,
-    #[display(fmt = "fab fa-mendeley")]
-    Mendeley,
-    #[display(fmt = "fas fa-menorah")]
+    #[display(fmt = "fa-solid fa-menorah")]
     Menorah,
-    #[display(fmt = "fas fa-mercury")]
+    #[display(fmt = "fa-solid fa-mercury")]
     Mercury,
-    #[display(fmt = "fas fa-meteor")]
+    #[display(fmt = "fa-solid fa-message")]
+    Message,
+    #[display(fmt = "fa-solid fa-meteor")]
     Meteor,
-    #[display(fmt = "fab fa-microblog")]
-    Microblog,
-    #[display(fmt = "fas fa-microchip")]
+    #[display(fmt = "fa-solid fa-microchip")]
     Microchip,
-    #[display(fmt = "fas fa-microphone")]
+    #[display(fmt = "fa-solid fa-microphone")]
     Microphone,
-    #[display(fmt = "fas fa-microphone-alt")]
-    MicrophoneAlt,
-    #[display(fmt = "fas fa-microphone-alt-slash")]
-    MicrophoneAltSlash,
-    #[display(fmt = "fas fa-microphone-slash")]
+    #[display(fmt = "fa-solid fa-microphone-lines")]
+    MicrophoneLines,
+    #[display(fmt = "fa-solid fa-microphone-lines-slash")]
+    MicrophoneLinesSlash,
+    #[display(fmt = "fa-solid fa-microphone-slash")]
     MicrophoneSlash,
-    #[display(fmt = "fas fa-microscope")]
+    #[display(fmt = "fa-solid fa-microscope")]
     Microscope,
-    #[display(fmt = "fab fa-microsoft")]
-    Microsoft,
-    #[display(fmt = "fas fa-minus")]
+    #[display(fmt = "fa-solid fa-mill-sign")]
+    MillSign,
+    #[display(fmt = "fa-solid fa-minimize")]
+    Minimize,
+    #[display(fmt = "fa-solid fa-minus")]
     Minus,
-    #[display(fmt = "fas fa-minus-circle")]
-    MinusCircle,
-    #[display(fmt = "fas fa-minus-square")]
-    MinusSquareSolid,
-    #[display(fmt = "far fa-minus-square")]
-    MinusSquareRegular,
-    #[display(fmt = "fas fa-mitten")]
+    #[display(fmt = "fa-solid fa-mitten")]
     Mitten,
-    #[display(fmt = "fab fa-mix")]
-    Mix,
-    #[display(fmt = "fab fa-mixcloud")]
-    Mixcloud,
-    #[display(fmt = "fab fa-mixer")]
-    Mixer,
-    #[display(fmt = "fab fa-mizuni")]
-    Mizuni,
-    #[display(fmt = "fas fa-mobile")]
+    #[display(fmt = "fa-solid fa-mobile")]
     Mobile,
-    #[display(fmt = "fas fa-mobile-alt")]
-    MobileAlt,
-    #[display(fmt = "fab fa-modx")]
-    Modx,
-    #[display(fmt = "fab fa-monero")]
-    Monero,
-    #[display(fmt = "fas fa-money-bill")]
+    #[display(fmt = "fa-solid fa-mobile-button")]
+    MobileButton,
+    #[display(fmt = "fa-solid fa-mobile-retro")]
+    MobileRetro,
+    #[display(fmt = "fa-solid fa-mobile-screen")]
+    MobileScreen,
+    #[display(fmt = "fa-solid fa-mobile-screen-button")]
+    MobileScreenButton,
+    #[display(fmt = "fa-solid fa-money-bill")]
     MoneyBill,
-    #[display(fmt = "fas fa-money-bill-alt")]
-    MoneyBillAltSolid,
-    #[display(fmt = "far fa-money-bill-alt")]
-    MoneyBillAltRegular,
-    #[display(fmt = "fas fa-money-bill-wave")]
+    #[display(fmt = "fa-solid fa-money-bill-1")]
+    MoneyBill1,
+    #[display(fmt = "fa-solid fa-money-bill-1-wave")]
+    MoneyBill1Wave,
+    #[display(fmt = "fa-solid fa-money-bill-transfer")]
+    MoneyBillTransfer,
+    #[display(fmt = "fa-solid fa-money-bill-trend-up")]
+    MoneyBillTrendUp,
+    #[display(fmt = "fa-solid fa-money-bill-wave")]
     MoneyBillWave,
-    #[display(fmt = "fas fa-money-bill-wave-alt")]
-    MoneyBillWaveAlt,
-    #[display(fmt = "fas fa-money-check")]
+    #[display(fmt = "fa-solid fa-money-bill-wheat")]
+    MoneyBillWheat,
+    #[display(fmt = "fa-solid fa-money-bills")]
+    MoneyBills,
+    #[display(fmt = "fa-solid fa-money-check")]
     MoneyCheck,
-    #[display(fmt = "fas fa-money-check-alt")]
-    MoneyCheckAlt,
-    #[display(fmt = "fas fa-monument")]
+    #[display(fmt = "fa-solid fa-money-check-dollar")]
+    MoneyCheckDollar,
+    #[display(fmt = "fa-solid fa-monument")]
     Monument,
-    #[display(fmt = "fas fa-moon")]
-    MoonSolid,
-    #[display(fmt = "far fa-moon")]
-    MoonRegular,
-    #[display(fmt = "fas fa-mortar-pestle")]
+    #[display(fmt = "fa-solid fa-moon")]
+    Moon,
+    #[display(fmt = "fa-solid fa-mortar-pestle")]
     MortarPestle,
-    #[display(fmt = "fas fa-mosque")]
+    #[display(fmt = "fa-solid fa-mosque")]
     Mosque,
-    #[display(fmt = "fas fa-motorcycle")]
+    #[display(fmt = "fa-solid fa-mosquito")]
+    Mosquito,
+    #[display(fmt = "fa-solid fa-mosquito-net")]
+    MosquitoNet,
+    #[display(fmt = "fa-solid fa-motorcycle")]
     Motorcycle,
-    #[display(fmt = "fas fa-mountain")]
+    #[display(fmt = "fa-solid fa-mound")]
+    Mound,
+    #[display(fmt = "fa-solid fa-mountain")]
     Mountain,
-    #[display(fmt = "fas fa-mouse")]
-    Mouse,
-    #[display(fmt = "fas fa-mouse-pointer")]
-    MousePointer,
-    #[display(fmt = "fas fa-mug-hot")]
+    #[display(fmt = "fa-solid fa-mountain-city")]
+    MountainCity,
+    #[display(fmt = "fa-solid fa-mountain-sun")]
+    MountainSun,
+    #[display(fmt = "fa-solid fa-mug-hot")]
     MugHot,
-    #[display(fmt = "fas fa-music")]
+    #[display(fmt = "fa-solid fa-mug-saucer")]
+    MugSaucer,
+    #[display(fmt = "fa-solid fa-music")]
     Music,
-    #[display(fmt = "fab fa-napster")]
-    Napster,
-    #[display(fmt = "fab fa-neos")]
-    Neos,
-    #[display(fmt = "fas fa-network-wired")]
+    #[display(fmt = "fa-solid fa-n")]
+    N,
+    #[display(fmt = "fa-solid fa-naira-sign")]
+    NairaSign,
+    #[display(fmt = "fa-solid fa-network-wired")]
     NetworkWired,
-    #[display(fmt = "fas fa-neuter")]
+    #[display(fmt = "fa-solid fa-neuter")]
     Neuter,
-    #[display(fmt = "fas fa-newspaper")]
-    NewspaperSolid,
-    #[display(fmt = "far fa-newspaper")]
-    NewspaperRegular,
-    #[display(fmt = "fab fa-nimblr")]
-    Nimblr,
-    #[display(fmt = "fab fa-node")]
-    Node,
-    #[display(fmt = "fab fa-node-js")]
-    NodeJs,
-    #[display(fmt = "fas fa-not-equal")]
+    #[display(fmt = "fa-solid fa-newspaper")]
+    Newspaper,
+    #[display(fmt = "fa-solid fa-not-equal")]
     NotEqual,
-    #[display(fmt = "fas fa-notes-medical")]
+    #[display(fmt = "fa-solid fa-note-sticky")]
+    NoteSticky,
+    #[display(fmt = "fa-solid fa-notes-medical")]
     NotesMedical,
-    #[display(fmt = "fab fa-npm")]
-    Npm,
-    #[display(fmt = "fab fa-ns8")]
-    Ns8,
-    #[display(fmt = "fab fa-nutritionix")]
-    Nutritionix,
-    #[display(fmt = "fas fa-object-group")]
-    ObjectGroupSolid,
-    #[display(fmt = "far fa-object-group")]
-    ObjectGroupRegular,
-    #[display(fmt = "fas fa-object-ungroup")]
-    ObjectUngroupSolid,
-    #[display(fmt = "far fa-object-ungroup")]
-    ObjectUngroupRegular,
-    #[display(fmt = "fab fa-octopus-deploy")]
-    OctopusDeploy,
-    #[display(fmt = "fab fa-odnoklassniki")]
-    Odnoklassniki,
-    #[display(fmt = "fab fa-odnoklassniki-square")]
-    OdnoklassnikiSquare,
-    #[display(fmt = "fas fa-oil-can")]
+    #[display(fmt = "fa-solid fa-o")]
+    O,
+    #[display(fmt = "fa-solid fa-object-group")]
+    ObjectGroup,
+    #[display(fmt = "fa-solid fa-object-ungroup")]
+    ObjectUngroup,
+    #[display(fmt = "fa-solid fa-oil-can")]
     OilCan,
-    #[display(fmt = "fab fa-old-republic")]
-    OldRepublic,
-    #[display(fmt = "fas fa-om")]
+    #[display(fmt = "fa-solid fa-oil-well")]
+    OilWell,
+    #[display(fmt = "fa-solid fa-om")]
     Om,
-    #[display(fmt = "fab fa-opencart")]
-    Opencart,
-    #[display(fmt = "fab fa-openid")]
-    Openid,
-    #[display(fmt = "fab fa-opera")]
-    Opera,
-    #[display(fmt = "fab fa-optin-monster")]
-    OptinMonster,
-    #[display(fmt = "fab fa-orcid")]
-    Orcid,
-    #[display(fmt = "fab fa-osi")]
-    Osi,
-    #[display(fmt = "fas fa-otter")]
+    #[display(fmt = "fa-solid fa-otter")]
     Otter,
-    #[display(fmt = "fas fa-outdent")]
+    #[display(fmt = "fa-solid fa-outdent")]
     Outdent,
-    #[display(fmt = "fab fa-page4")]
-    Page4,
-    #[display(fmt = "fab fa-pagelines")]
-    Pagelines,
-    #[display(fmt = "fas fa-pager")]
+    #[display(fmt = "fa-solid fa-p")]
+    P,
+    #[display(fmt = "fa-solid fa-pager")]
     Pager,
-    #[display(fmt = "fas fa-paint-brush")]
-    PaintBrush,
-    #[display(fmt = "fas fa-paint-roller")]
+    #[display(fmt = "fa-solid fa-paint-roller")]
     PaintRoller,
-    #[display(fmt = "fas fa-palette")]
+    #[display(fmt = "fa-solid fa-paintbrush")]
+    Paintbrush,
+    #[display(fmt = "fa-solid fa-palette")]
     Palette,
-    #[display(fmt = "fab fa-palfed")]
-    Palfed,
-    #[display(fmt = "fas fa-pallet")]
+    #[display(fmt = "fa-solid fa-pallet")]
     Pallet,
-    #[display(fmt = "fas fa-paper-plane")]
-    PaperPlaneSolid,
-    #[display(fmt = "far fa-paper-plane")]
-    PaperPlaneRegular,
-    #[display(fmt = "fas fa-paperclip")]
+    #[display(fmt = "fa-solid fa-panorama")]
+    Panorama,
+    #[display(fmt = "fa-solid fa-paper-plane")]
+    PaperPlane,
+    #[display(fmt = "fa-solid fa-paperclip")]
     Paperclip,
-    #[display(fmt = "fas fa-parachute-box")]
+    #[display(fmt = "fa-solid fa-parachute-box")]
     ParachuteBox,
-    #[display(fmt = "fas fa-paragraph")]
+    #[display(fmt = "fa-solid fa-paragraph")]
     Paragraph,
-    #[display(fmt = "fas fa-parking")]
-    Parking,
-    #[display(fmt = "fas fa-passport")]
+    #[display(fmt = "fa-solid fa-passport")]
     Passport,
-    #[display(fmt = "fas fa-pastafarianism")]
-    Pastafarianism,
-    #[display(fmt = "fas fa-paste")]
+    #[display(fmt = "fa-solid fa-paste")]
     Paste,
-    #[display(fmt = "fab fa-patreon")]
-    Patreon,
-    #[display(fmt = "fas fa-pause")]
+    #[display(fmt = "fa-solid fa-pause")]
     Pause,
-    #[display(fmt = "fas fa-pause-circle")]
-    PauseCircleSolid,
-    #[display(fmt = "far fa-pause-circle")]
-    PauseCircleRegular,
-    #[display(fmt = "fas fa-paw")]
+    #[display(fmt = "fa-solid fa-paw")]
     Paw,
-    #[display(fmt = "fab fa-paypal")]
-    Paypal,
-    #[display(fmt = "fas fa-peace")]
+    #[display(fmt = "fa-solid fa-peace")]
     Peace,
-    #[display(fmt = "fas fa-pen")]
+    #[display(fmt = "fa-solid fa-pen")]
     Pen,
-    #[display(fmt = "fas fa-pen-alt")]
-    PenAlt,
-    #[display(fmt = "fas fa-pen-fancy")]
+    #[display(fmt = "fa-solid fa-pen-clip")]
+    PenClip,
+    #[display(fmt = "fa-solid fa-pen-fancy")]
     PenFancy,
-    #[display(fmt = "fas fa-pen-nib")]
+    #[display(fmt = "fa-solid fa-pen-nib")]
     PenNib,
-    #[display(fmt = "fas fa-pen-square")]
-    PenSquare,
-    #[display(fmt = "fas fa-pencil-alt")]
-    PencilAlt,
-    #[display(fmt = "fas fa-pencil-ruler")]
-    PencilRuler,
-    #[display(fmt = "fab fa-penny-arcade")]
-    PennyArcade,
-    #[display(fmt = "fas fa-people-arrows")]
-    PeopleArrows,
-    #[display(fmt = "fas fa-people-carry")]
-    PeopleCarry,
-    #[display(fmt = "fas fa-pepper-hot")]
+    #[display(fmt = "fa-solid fa-pen-ruler")]
+    PenRuler,
+    #[display(fmt = "fa-solid fa-pen-to-square")]
+    PenToSquare,
+    #[display(fmt = "fa-solid fa-pencil")]
+    Pencil,
+    #[display(fmt = "fa-solid fa-people-arrows-left-right")]
+    PeopleArrowsLeftRight,
+    #[display(fmt = "fa-solid fa-people-carry-box")]
+    PeopleCarryBox,
+    #[display(fmt = "fa-solid fa-people-group")]
+    PeopleGroup,
+    #[display(fmt = "fa-solid fa-people-line")]
+    PeopleLine,
+    #[display(fmt = "fa-solid fa-people-pulling")]
+    PeoplePulling,
+    #[display(fmt = "fa-solid fa-people-robbery")]
+    PeopleRobbery,
+    #[display(fmt = "fa-solid fa-people-roof")]
+    PeopleRoof,
+    #[display(fmt = "fa-solid fa-pepper-hot")]
     PepperHot,
-    #[display(fmt = "fab fa-perbyte")]
-    Perbyte,
-    #[display(fmt = "fas fa-percent")]
+    #[display(fmt = "fa-solid fa-percent")]
     Percent,
-    #[display(fmt = "fas fa-percentage")]
-    Percentage,
-    #[display(fmt = "fab fa-periscope")]
-    Periscope,
-    #[display(fmt = "fas fa-person-booth")]
+    #[display(fmt = "fa-solid fa-person")]
+    Person,
+    #[display(fmt = "fa-solid fa-person-arrow-down-to-line")]
+    PersonArrowDownToLine,
+    #[display(fmt = "fa-solid fa-person-arrow-up-from-line")]
+    PersonArrowUpFromLine,
+    #[display(fmt = "fa-solid fa-person-biking")]
+    PersonBiking,
+    #[display(fmt = "fa-solid fa-person-booth")]
     PersonBooth,
-    #[display(fmt = "fab fa-phabricator")]
-    Phabricator,
-    #[display(fmt = "fab fa-phoenix-framework")]
-    PhoenixFramework,
-    #[display(fmt = "fab fa-phoenix-squadron")]
-    PhoenixSquadron,
-    #[display(fmt = "fas fa-phone")]
+    #[display(fmt = "fa-solid fa-person-breastfeeding")]
+    PersonBreastfeeding,
+    #[display(fmt = "fa-solid fa-person-burst")]
+    PersonBurst,
+    #[display(fmt = "fa-solid fa-person-cane")]
+    PersonCane,
+    #[display(fmt = "fa-solid fa-person-chalkboard")]
+    PersonChalkboard,
+    #[display(fmt = "fa-solid fa-person-circle-check")]
+    PersonCircleCheck,
+    #[display(fmt = "fa-solid fa-person-circle-exclamation")]
+    PersonCircleExclamation,
+    #[display(fmt = "fa-solid fa-person-circle-minus")]
+    PersonCircleMinus,
+    #[display(fmt = "fa-solid fa-person-circle-plus")]
+    PersonCirclePlus,
+    #[display(fmt = "fa-solid fa-person-circle-question")]
+    PersonCircleQuestion,
+    #[display(fmt = "fa-solid fa-person-circle-xmark")]
+    PersonCircleXmark,
+    #[display(fmt = "fa-solid fa-person-digging")]
+    PersonDigging,
+    #[display(fmt = "fa-solid fa-person-dots-from-line")]
+    PersonDotsFromLine,
+    #[display(fmt = "fa-solid fa-person-dress")]
+    PersonDress,
+    #[display(fmt = "fa-solid fa-person-dress-burst")]
+    PersonDressBurst,
+    #[display(fmt = "fa-solid fa-person-drowning")]
+    PersonDrowning,
+    #[display(fmt = "fa-solid fa-person-falling")]
+    PersonFalling,
+    #[display(fmt = "fa-solid fa-person-falling-burst")]
+    PersonFallingBurst,
+    #[display(fmt = "fa-solid fa-person-half-dress")]
+    PersonHalfDress,
+    #[display(fmt = "fa-solid fa-person-harassing")]
+    PersonHarassing,
+    #[display(fmt = "fa-solid fa-person-hiking")]
+    PersonHiking,
+    #[display(fmt = "fa-solid fa-person-military-pointing")]
+    PersonMilitaryPointing,
+    #[display(fmt = "fa-solid fa-person-military-rifle")]
+    PersonMilitaryRifle,
+    #[display(fmt = "fa-solid fa-person-military-to-person")]
+    PersonMilitaryToPerson,
+    #[display(fmt = "fa-solid fa-person-praying")]
+    PersonPraying,
+    #[display(fmt = "fa-solid fa-person-pregnant")]
+    PersonPregnant,
+    #[display(fmt = "fa-solid fa-person-rays")]
+    PersonRays,
+    #[display(fmt = "fa-solid fa-person-rifle")]
+    PersonRifle,
+    #[display(fmt = "fa-solid fa-person-running")]
+    PersonRunning,
+    #[display(fmt = "fa-solid fa-person-shelter")]
+    PersonShelter,
+    #[display(fmt = "fa-solid fa-person-skating")]
+    PersonSkating,
+    #[display(fmt = "fa-solid fa-person-skiing")]
+    PersonSkiing,
+    #[display(fmt = "fa-solid fa-person-skiing-nordic")]
+    PersonSkiingNordic,
+    #[display(fmt = "fa-solid fa-person-snowboarding")]
+    PersonSnowboarding,
+    #[display(fmt = "fa-solid fa-person-swimming")]
+    PersonSwimming,
+    #[display(fmt = "fa-solid fa-person-through-window")]
+    PersonThroughWindow,
+    #[display(fmt = "fa-solid fa-person-walking")]
+    PersonWalking,
+    #[display(fmt = "fa-solid fa-person-walking-arrow-loop-left")]
+    PersonWalkingArrowLoopLeft,
+    #[display(fmt = "fa-solid fa-person-walking-arrow-right")]
+    PersonWalkingArrowRight,
+    #[display(fmt = "fa-solid fa-person-walking-dashed-line-arrow-right")]
+    PersonWalkingDashedLineArrowRight,
+    #[display(fmt = "fa-solid fa-person-walking-luggage")]
+    PersonWalkingLuggage,
+    #[display(fmt = "fa-solid fa-person-walking-with-cane")]
+    PersonWalkingWithCane,
+    #[display(fmt = "fa-solid fa-peseta-sign")]
+    PesetaSign,
+    #[display(fmt = "fa-solid fa-peso-sign")]
+    PesoSign,
+    #[display(fmt = "fa-solid fa-phone")]
     Phone,
-    #[display(fmt = "fas fa-phone-alt")]
-    PhoneAlt,
-    #[display(fmt = "fas fa-phone-slash")]
+    #[display(fmt = "fa-solid fa-phone-flip")]
+    PhoneFlip,
+    #[display(fmt = "fa-solid fa-phone-slash")]
     PhoneSlash,
-    #[display(fmt = "fas fa-phone-square")]
-    PhoneSquare,
-    #[display(fmt = "fas fa-phone-square-alt")]
-    PhoneSquareAlt,
-    #[display(fmt = "fas fa-phone-volume")]
+    #[display(fmt = "fa-solid fa-phone-volume")]
     PhoneVolume,
-    #[display(fmt = "fas fa-photo-video")]
-    PhotoVideo,
-    #[display(fmt = "fab fa-php")]
-    Php,
-    #[display(fmt = "fab fa-pied-piper")]
-    PiedPiper,
-    #[display(fmt = "fab fa-pied-piper-alt")]
-    PiedPiperAlt,
-    #[display(fmt = "fab fa-pied-piper-hat")]
-    PiedPiperHat,
-    #[display(fmt = "fab fa-pied-piper-pp")]
-    PiedPiperPp,
-    #[display(fmt = "fab fa-pied-piper-square")]
-    PiedPiperSquare,
-    #[display(fmt = "fas fa-piggy-bank")]
+    #[display(fmt = "fa-solid fa-photo-film")]
+    PhotoFilm,
+    #[display(fmt = "fa-solid fa-piggy-bank")]
     PiggyBank,
-    #[display(fmt = "fas fa-pills")]
+    #[display(fmt = "fa-solid fa-pills")]
     Pills,
-    #[display(fmt = "fab fa-pinterest")]
-    Pinterest,
-    #[display(fmt = "fab fa-pinterest-p")]
-    PinterestP,
-    #[display(fmt = "fab fa-pinterest-square")]
-    PinterestSquare,
-    #[display(fmt = "fas fa-pizza-slice")]
+    #[display(fmt = "fa-solid fa-pizza-slice")]
     PizzaSlice,
-    #[display(fmt = "fas fa-place-of-worship")]
+    #[display(fmt = "fa-solid fa-place-of-worship")]
     PlaceOfWorship,
-    #[display(fmt = "fas fa-plane")]
+    #[display(fmt = "fa-solid fa-plane")]
     Plane,
-    #[display(fmt = "fas fa-plane-arrival")]
+    #[display(fmt = "fa-solid fa-plane-arrival")]
     PlaneArrival,
-    #[display(fmt = "fas fa-plane-departure")]
+    #[display(fmt = "fa-solid fa-plane-circle-check")]
+    PlaneCircleCheck,
+    #[display(fmt = "fa-solid fa-plane-circle-exclamation")]
+    PlaneCircleExclamation,
+    #[display(fmt = "fa-solid fa-plane-circle-xmark")]
+    PlaneCircleXmark,
+    #[display(fmt = "fa-solid fa-plane-departure")]
     PlaneDeparture,
-    #[display(fmt = "fas fa-plane-slash")]
+    #[display(fmt = "fa-solid fa-plane-lock")]
+    PlaneLock,
+    #[display(fmt = "fa-solid fa-plane-slash")]
     PlaneSlash,
-    #[display(fmt = "fas fa-play")]
+    #[display(fmt = "fa-solid fa-plane-up")]
+    PlaneUp,
+    #[display(fmt = "fa-solid fa-plant-wilt")]
+    PlantWilt,
+    #[display(fmt = "fa-solid fa-plate-wheat")]
+    PlateWheat,
+    #[display(fmt = "fa-solid fa-play")]
     Play,
-    #[display(fmt = "fas fa-play-circle")]
-    PlayCircleSolid,
-    #[display(fmt = "far fa-play-circle")]
-    PlayCircleRegular,
-    #[display(fmt = "fab fa-playstation")]
-    Playstation,
-    #[display(fmt = "fas fa-plug")]
+    #[display(fmt = "fa-solid fa-plug")]
     Plug,
-    #[display(fmt = "fas fa-plus")]
+    #[display(fmt = "fa-solid fa-plug-circle-bolt")]
+    PlugCircleBolt,
+    #[display(fmt = "fa-solid fa-plug-circle-check")]
+    PlugCircleCheck,
+    #[display(fmt = "fa-solid fa-plug-circle-exclamation")]
+    PlugCircleExclamation,
+    #[display(fmt = "fa-solid fa-plug-circle-minus")]
+    PlugCircleMinus,
+    #[display(fmt = "fa-solid fa-plug-circle-plus")]
+    PlugCirclePlus,
+    #[display(fmt = "fa-solid fa-plug-circle-xmark")]
+    PlugCircleXmark,
+    #[display(fmt = "fa-solid fa-plus")]
     Plus,
-    #[display(fmt = "fas fa-plus-circle")]
-    PlusCircle,
-    #[display(fmt = "fas fa-plus-square")]
-    PlusSquareSolid,
-    #[display(fmt = "far fa-plus-square")]
-    PlusSquareRegular,
-    #[display(fmt = "fas fa-podcast")]
+    #[display(fmt = "fa-solid fa-plus-minus")]
+    PlusMinus,
+    #[display(fmt = "fa-solid fa-podcast")]
     Podcast,
-    #[display(fmt = "fas fa-poll")]
-    Poll,
-    #[display(fmt = "fas fa-poll-h")]
-    PollH,
-    #[display(fmt = "fas fa-poo")]
+    #[display(fmt = "fa-solid fa-poo")]
     Poo,
-    #[display(fmt = "fas fa-poo-storm")]
+    #[display(fmt = "fa-solid fa-poo-storm")]
     PooStorm,
-    #[display(fmt = "fas fa-poop")]
+    #[display(fmt = "fa-solid fa-poop")]
     Poop,
-    #[display(fmt = "fas fa-portrait")]
-    Portrait,
-    #[display(fmt = "fas fa-pound-sign")]
-    PoundSign,
-    #[display(fmt = "fas fa-power-off")]
+    #[display(fmt = "fa-solid fa-power-off")]
     PowerOff,
-    #[display(fmt = "fas fa-pray")]
-    Pray,
-    #[display(fmt = "fas fa-praying-hands")]
-    PrayingHands,
-    #[display(fmt = "fas fa-prescription")]
+    #[display(fmt = "fa-solid fa-prescription")]
     Prescription,
-    #[display(fmt = "fas fa-prescription-bottle")]
+    #[display(fmt = "fa-solid fa-prescription-bottle")]
     PrescriptionBottle,
-    #[display(fmt = "fas fa-prescription-bottle-alt")]
-    PrescriptionBottleAlt,
-    #[display(fmt = "fas fa-print")]
+    #[display(fmt = "fa-solid fa-prescription-bottle-medical")]
+    PrescriptionBottleMedical,
+    #[display(fmt = "fa-solid fa-print")]
     Print,
-    #[display(fmt = "fas fa-procedures")]
-    Procedures,
-    #[display(fmt = "fab fa-product-hunt")]
-    ProductHunt,
-    #[display(fmt = "fas fa-project-diagram")]
-    ProjectDiagram,
-    #[display(fmt = "fas fa-pump-medical")]
+    #[display(fmt = "fa-solid fa-pump-medical")]
     PumpMedical,
-    #[display(fmt = "fas fa-pump-soap")]
+    #[display(fmt = "fa-solid fa-pump-soap")]
     PumpSoap,
-    #[display(fmt = "fab fa-pushed")]
-    Pushed,
-    #[display(fmt = "fas fa-puzzle-piece")]
+    #[display(fmt = "fa-solid fa-puzzle-piece")]
     PuzzlePiece,
-    #[display(fmt = "fab fa-python")]
-    Python,
-    #[display(fmt = "fab fa-qq")]
-    Qq,
-    #[display(fmt = "fas fa-qrcode")]
+    #[display(fmt = "fa-solid fa-q")]
+    Q,
+    #[display(fmt = "fa-solid fa-qrcode")]
     Qrcode,
-    #[display(fmt = "fas fa-question")]
+    #[display(fmt = "fa-solid fa-question")]
     Question,
-    #[display(fmt = "fas fa-question-circle")]
-    QuestionCircleSolid,
-    #[display(fmt = "far fa-question-circle")]
-    QuestionCircleRegular,
-    #[display(fmt = "fas fa-quidditch")]
-    Quidditch,
-    #[display(fmt = "fab fa-quinscape")]
-    Quinscape,
-    #[display(fmt = "fab fa-quora")]
-    Quora,
-    #[display(fmt = "fas fa-quote-left")]
+    #[display(fmt = "fa-solid fa-quote-left")]
     QuoteLeft,
-    #[display(fmt = "fas fa-quote-right")]
+    #[display(fmt = "fa-solid fa-quote-right")]
     QuoteRight,
-    #[display(fmt = "fas fa-quran")]
-    Quran,
-    #[display(fmt = "fab fa-r-project")]
-    RProject,
-    #[display(fmt = "fas fa-radiation")]
+    #[display(fmt = "fa-solid fa-r")]
+    R,
+    #[display(fmt = "fa-solid fa-radiation")]
     Radiation,
-    #[display(fmt = "fas fa-radiation-alt")]
-    RadiationAlt,
-    #[display(fmt = "fas fa-rainbow")]
+    #[display(fmt = "fa-solid fa-radio")]
+    Radio,
+    #[display(fmt = "fa-solid fa-rainbow")]
     Rainbow,
-    #[display(fmt = "fas fa-random")]
-    Random,
-    #[display(fmt = "fab fa-raspberry-pi")]
-    RaspberryPi,
-    #[display(fmt = "fab fa-ravelry")]
-    Ravelry,
-    #[display(fmt = "fab fa-react")]
-    React,
-    #[display(fmt = "fab fa-reacteurope")]
-    Reacteurope,
-    #[display(fmt = "fab fa-readme")]
-    Readme,
-    #[display(fmt = "fab fa-rebel")]
-    Rebel,
-    #[display(fmt = "fas fa-receipt")]
+    #[display(fmt = "fa-solid fa-ranking-star")]
+    RankingStar,
+    #[display(fmt = "fa-solid fa-receipt")]
     Receipt,
-    #[display(fmt = "fas fa-record-vinyl")]
+    #[display(fmt = "fa-solid fa-record-vinyl")]
     RecordVinyl,
-    #[display(fmt = "fas fa-recycle")]
+    #[display(fmt = "fa-solid fa-rectangle-ad")]
+    RectangleAd,
+    #[display(fmt = "fa-solid fa-rectangle-list")]
+    RectangleList,
+    #[display(fmt = "fa-solid fa-rectangle-xmark")]
+    RectangleXmark,
+    #[display(fmt = "fa-solid fa-recycle")]
     Recycle,
-    #[display(fmt = "fab fa-red-river")]
-    RedRiver,
-    #[display(fmt = "fab fa-reddit")]
-    Reddit,
-    #[display(fmt = "fab fa-reddit-alien")]
-    RedditAlien,
-    #[display(fmt = "fab fa-reddit-square")]
-    RedditSquare,
-    #[display(fmt = "fab fa-redhat")]
-    Redhat,
-    #[display(fmt = "fas fa-redo")]
-    Redo,
-    #[display(fmt = "fas fa-redo-alt")]
-    RedoAlt,
-    #[display(fmt = "fas fa-registered")]
-    RegisteredSolid,
-    #[display(fmt = "far fa-registered")]
-    RegisteredRegular,
-    #[display(fmt = "fas fa-remove-format")]
-    RemoveFormat,
-    #[display(fmt = "fab fa-renren")]
-    Renren,
-    #[display(fmt = "fas fa-reply")]
+    #[display(fmt = "fa-solid fa-registered")]
+    Registered,
+    #[display(fmt = "fa-solid fa-repeat")]
+    Repeat,
+    #[display(fmt = "fa-solid fa-reply")]
     Reply,
-    #[display(fmt = "fas fa-reply-all")]
+    #[display(fmt = "fa-solid fa-reply-all")]
     ReplyAll,
-    #[display(fmt = "fab fa-replyd")]
-    Replyd,
-    #[display(fmt = "fas fa-republican")]
+    #[display(fmt = "fa-solid fa-republican")]
     Republican,
-    #[display(fmt = "fab fa-researchgate")]
-    Researchgate,
-    #[display(fmt = "fab fa-resolving")]
-    Resolving,
-    #[display(fmt = "fas fa-restroom")]
+    #[display(fmt = "fa-solid fa-restroom")]
     Restroom,
-    #[display(fmt = "fas fa-retweet")]
+    #[display(fmt = "fa-solid fa-retweet")]
     Retweet,
-    #[display(fmt = "fab fa-rev")]
-    Rev,
-    #[display(fmt = "fas fa-ribbon")]
+    #[display(fmt = "fa-solid fa-ribbon")]
     Ribbon,
-    #[display(fmt = "fas fa-ring")]
+    #[display(fmt = "fa-solid fa-right-from-bracket")]
+    RightFromBracket,
+    #[display(fmt = "fa-solid fa-right-left")]
+    RightLeft,
+    #[display(fmt = "fa-solid fa-right-long")]
+    RightLong,
+    #[display(fmt = "fa-solid fa-right-to-bracket")]
+    RightToBracket,
+    #[display(fmt = "fa-solid fa-ring")]
     Ring,
-    #[display(fmt = "fas fa-road")]
+    #[display(fmt = "fa-solid fa-road")]
     Road,
-    #[display(fmt = "fas fa-robot")]
+    #[display(fmt = "fa-solid fa-road-barrier")]
+    RoadBarrier,
+    #[display(fmt = "fa-solid fa-road-bridge")]
+    RoadBridge,
+    #[display(fmt = "fa-solid fa-road-circle-check")]
+    RoadCircleCheck,
+    #[display(fmt = "fa-solid fa-road-circle-exclamation")]
+    RoadCircleExclamation,
+    #[display(fmt = "fa-solid fa-road-circle-xmark")]
+    RoadCircleXmark,
+    #[display(fmt = "fa-solid fa-road-lock")]
+    RoadLock,
+    #[display(fmt = "fa-solid fa-road-spikes")]
+    RoadSpikes,
+    #[display(fmt = "fa-solid fa-robot")]
     Robot,
-    #[display(fmt = "fas fa-rocket")]
+    #[display(fmt = "fa-solid fa-rocket")]
     Rocket,
-    #[display(fmt = "fab fa-rocketchat")]
-    Rocketchat,
-    #[display(fmt = "fab fa-rockrms")]
-    Rockrms,
-    #[display(fmt = "fas fa-route")]
+    #[display(fmt = "fa-solid fa-rotate")]
+    Rotate,
+    #[display(fmt = "fa-solid fa-rotate-left")]
+    RotateLeft,
+    #[display(fmt = "fa-solid fa-rotate-right")]
+    RotateRight,
+    #[display(fmt = "fa-solid fa-route")]
     Route,
-    #[display(fmt = "fas fa-rss")]
+    #[display(fmt = "fa-solid fa-rss")]
     Rss,
-    #[display(fmt = "fas fa-rss-square")]
-    RssSquare,
-    #[display(fmt = "fas fa-ruble-sign")]
+    #[display(fmt = "fa-solid fa-ruble-sign")]
     RubleSign,
-    #[display(fmt = "fas fa-ruler")]
+    #[display(fmt = "fa-solid fa-rug")]
+    Rug,
+    #[display(fmt = "fa-solid fa-ruler")]
     Ruler,
-    #[display(fmt = "fas fa-ruler-combined")]
+    #[display(fmt = "fa-solid fa-ruler-combined")]
     RulerCombined,
-    #[display(fmt = "fas fa-ruler-horizontal")]
+    #[display(fmt = "fa-solid fa-ruler-horizontal")]
     RulerHorizontal,
-    #[display(fmt = "fas fa-ruler-vertical")]
+    #[display(fmt = "fa-solid fa-ruler-vertical")]
     RulerVertical,
-    #[display(fmt = "fas fa-running")]
-    Running,
-    #[display(fmt = "fas fa-rupee-sign")]
+    #[display(fmt = "fa-solid fa-rupee-sign")]
     RupeeSign,
-    #[display(fmt = "fab fa-rust")]
-    Rust,
-    #[display(fmt = "fas fa-sad-cry")]
-    SadCrySolid,
-    #[display(fmt = "far fa-sad-cry")]
-    SadCryRegular,
-    #[display(fmt = "fas fa-sad-tear")]
-    SadTearSolid,
-    #[display(fmt = "far fa-sad-tear")]
-    SadTearRegular,
-    #[display(fmt = "fab fa-safari")]
-    Safari,
-    #[display(fmt = "fab fa-salesforce")]
-    Salesforce,
-    #[display(fmt = "fab fa-sass")]
-    Sass,
-    #[display(fmt = "fas fa-satellite")]
+    #[display(fmt = "fa-solid fa-rupiah-sign")]
+    RupiahSign,
+    #[display(fmt = "fa-solid fa-s")]
+    S,
+    #[display(fmt = "fa-solid fa-sack-dollar")]
+    SackDollar,
+    #[display(fmt = "fa-solid fa-sack-xmark")]
+    SackXmark,
+    #[display(fmt = "fa-solid fa-sailboat")]
+    Sailboat,
+    #[display(fmt = "fa-solid fa-satellite")]
     Satellite,
-    #[display(fmt = "fas fa-satellite-dish")]
+    #[display(fmt = "fa-solid fa-satellite-dish")]
     SatelliteDish,
-    #[display(fmt = "fas fa-save")]
-    SaveSolid,
-    #[display(fmt = "far fa-save")]
-    SaveRegular,
-    #[display(fmt = "fab fa-schlix")]
-    Schlix,
-    #[display(fmt = "fas fa-school")]
+    #[display(fmt = "fa-solid fa-scale-balanced")]
+    ScaleBalanced,
+    #[display(fmt = "fa-solid fa-scale-unbalanced")]
+    ScaleUnbalanced,
+    #[display(fmt = "fa-solid fa-scale-unbalanced-flip")]
+    ScaleUnbalancedFlip,
+    #[display(fmt = "fa-solid fa-school")]
     School,
-    #[display(fmt = "fas fa-screwdriver")]
+    #[display(fmt = "fa-solid fa-school-circle-check")]
+    SchoolCircleCheck,
+    #[display(fmt = "fa-solid fa-school-circle-exclamation")]
+    SchoolCircleExclamation,
+    #[display(fmt = "fa-solid fa-school-circle-xmark")]
+    SchoolCircleXmark,
+    #[display(fmt = "fa-solid fa-school-flag")]
+    SchoolFlag,
+    #[display(fmt = "fa-solid fa-school-lock")]
+    SchoolLock,
+    #[display(fmt = "fa-solid fa-scissors")]
+    Scissors,
+    #[display(fmt = "fa-solid fa-screwdriver")]
     Screwdriver,
-    #[display(fmt = "fab fa-scribd")]
-    Scribd,
-    #[display(fmt = "fas fa-scroll")]
+    #[display(fmt = "fa-solid fa-screwdriver-wrench")]
+    ScrewdriverWrench,
+    #[display(fmt = "fa-solid fa-scroll")]
     Scroll,
-    #[display(fmt = "fas fa-sd-card")]
+    #[display(fmt = "fa-solid fa-scroll-torah")]
+    ScrollTorah,
+    #[display(fmt = "fa-solid fa-sd-card")]
     SdCard,
-    #[display(fmt = "fas fa-search")]
-    Search,
-    #[display(fmt = "fas fa-search-dollar")]
-    SearchDollar,
-    #[display(fmt = "fas fa-search-location")]
-    SearchLocation,
-    #[display(fmt = "fas fa-search-minus")]
-    SearchMinus,
-    #[display(fmt = "fas fa-search-plus")]
-    SearchPlus,
-    #[display(fmt = "fab fa-searchengin")]
-    Searchengin,
-    #[display(fmt = "fas fa-seedling")]
+    #[display(fmt = "fa-solid fa-section")]
+    Section,
+    #[display(fmt = "fa-solid fa-seedling")]
     Seedling,
-    #[display(fmt = "fab fa-sellcast")]
-    Sellcast,
-    #[display(fmt = "fab fa-sellsy")]
-    Sellsy,
-    #[display(fmt = "fas fa-server")]
+    #[display(fmt = "fa-solid fa-server")]
     Server,
-    #[display(fmt = "fab fa-servicestack")]
-    Servicestack,
-    #[display(fmt = "fas fa-shapes")]
+    #[display(fmt = "fa-solid fa-shapes")]
     Shapes,
-    #[display(fmt = "fas fa-share")]
+    #[display(fmt = "fa-solid fa-share")]
     Share,
-    #[display(fmt = "fas fa-share-alt")]
-    ShareAlt,
-    #[display(fmt = "fas fa-share-alt-square")]
-    ShareAltSquare,
-    #[display(fmt = "fas fa-share-square")]
-    ShareSquareSolid,
-    #[display(fmt = "far fa-share-square")]
-    ShareSquareRegular,
-    #[display(fmt = "fas fa-shekel-sign")]
+    #[display(fmt = "fa-solid fa-share-from-square")]
+    ShareFromSquare,
+    #[display(fmt = "fa-solid fa-share-nodes")]
+    ShareNodes,
+    #[display(fmt = "fa-solid fa-sheet-plastic")]
+    SheetPlastic,
+    #[display(fmt = "fa-solid fa-shekel-sign")]
     ShekelSign,
-    #[display(fmt = "fas fa-shield-alt")]
-    ShieldAlt,
-    #[display(fmt = "fas fa-shield-virus")]
+    #[display(fmt = "fa-solid fa-shield")]
+    Shield,
+    #[display(fmt = "fa-solid fa-shield-cat")]
+    ShieldCat,
+    #[display(fmt = "fa-solid fa-shield-dog")]
+    ShieldDog,
+    #[display(fmt = "fa-solid fa-shield-halved")]
+    ShieldHalved,
+    #[display(fmt = "fa-solid fa-shield-heart")]
+    ShieldHeart,
+    #[display(fmt = "fa-solid fa-shield-virus")]
     ShieldVirus,
-    #[display(fmt = "fas fa-ship")]
+    #[display(fmt = "fa-solid fa-ship")]
     Ship,
-    #[display(fmt = "fas fa-shipping-fast")]
-    ShippingFast,
-    #[display(fmt = "fab fa-shirtsinbulk")]
-    Shirtsinbulk,
-    #[display(fmt = "fas fa-shoe-prints")]
+    #[display(fmt = "fa-solid fa-shirt")]
+    Shirt,
+    #[display(fmt = "fa-solid fa-shoe-prints")]
     ShoePrints,
-    #[display(fmt = "fab fa-shopify")]
-    Shopify,
-    #[display(fmt = "fas fa-shopping-bag")]
-    ShoppingBag,
-    #[display(fmt = "fas fa-shopping-basket")]
-    ShoppingBasket,
-    #[display(fmt = "fas fa-shopping-cart")]
-    ShoppingCart,
-    #[display(fmt = "fab fa-shopware")]
-    Shopware,
-    #[display(fmt = "fas fa-shower")]
+    #[display(fmt = "fa-solid fa-shop")]
+    Shop,
+    #[display(fmt = "fa-solid fa-shop-lock")]
+    ShopLock,
+    #[display(fmt = "fa-solid fa-shop-slash")]
+    ShopSlash,
+    #[display(fmt = "fa-solid fa-shower")]
     Shower,
-    #[display(fmt = "fas fa-shuttle-van")]
-    ShuttleVan,
-    #[display(fmt = "fas fa-sign")]
-    Sign,
-    #[display(fmt = "fas fa-sign-in-alt")]
-    SignInAlt,
-    #[display(fmt = "fas fa-sign-language")]
-    SignLanguage,
-    #[display(fmt = "fas fa-sign-out-alt")]
-    SignOutAlt,
-    #[display(fmt = "fas fa-signal")]
+    #[display(fmt = "fa-solid fa-shrimp")]
+    Shrimp,
+    #[display(fmt = "fa-solid fa-shuffle")]
+    Shuffle,
+    #[display(fmt = "fa-solid fa-shuttle-space")]
+    ShuttleSpace,
+    #[display(fmt = "fa-solid fa-sign-hanging")]
+    SignHanging,
+    #[display(fmt = "fa-solid fa-signal")]
     Signal,
-    #[display(fmt = "fas fa-signature")]
+    #[display(fmt = "fa-solid fa-signature")]
     Signature,
-    #[display(fmt = "fas fa-sim-card")]
+    #[display(fmt = "fa-solid fa-signs-post")]
+    SignsPost,
+    #[display(fmt = "fa-solid fa-sim-card")]
     SimCard,
-    #[display(fmt = "fab fa-simplybuilt")]
-    Simplybuilt,
-    #[display(fmt = "fas fa-sink")]
+    #[display(fmt = "fa-solid fa-sink")]
     Sink,
-    #[display(fmt = "fab fa-sistrix")]
-    Sistrix,
-    #[display(fmt = "fas fa-sitemap")]
+    #[display(fmt = "fa-solid fa-sitemap")]
     Sitemap,
-    #[display(fmt = "fab fa-sith")]
-    Sith,
-    #[display(fmt = "fas fa-skating")]
-    Skating,
-    #[display(fmt = "fab fa-sketch")]
-    Sketch,
-    #[display(fmt = "fas fa-skiing")]
-    Skiing,
-    #[display(fmt = "fas fa-skiing-nordic")]
-    SkiingNordic,
-    #[display(fmt = "fas fa-skull")]
+    #[display(fmt = "fa-solid fa-skull")]
     Skull,
-    #[display(fmt = "fas fa-skull-crossbones")]
+    #[display(fmt = "fa-solid fa-skull-crossbones")]
     SkullCrossbones,
-    #[display(fmt = "fab fa-skyatlas")]
-    Skyatlas,
-    #[display(fmt = "fab fa-skype")]
-    Skype,
-    #[display(fmt = "fab fa-slack")]
-    Slack,
-    #[display(fmt = "fab fa-slack-hash")]
-    SlackHash,
-    #[display(fmt = "fas fa-slash")]
+    #[display(fmt = "fa-solid fa-slash")]
     Slash,
-    #[display(fmt = "fas fa-sleigh")]
+    #[display(fmt = "fa-solid fa-sleigh")]
     Sleigh,
-    #[display(fmt = "fas fa-sliders-h")]
-    SlidersH,
-    #[display(fmt = "fab fa-slideshare")]
-    Slideshare,
-    #[display(fmt = "fas fa-smile")]
-    SmileSolid,
-    #[display(fmt = "far fa-smile")]
-    SmileRegular,
-    #[display(fmt = "fas fa-smile-beam")]
-    SmileBeamSolid,
-    #[display(fmt = "far fa-smile-beam")]
-    SmileBeamRegular,
-    #[display(fmt = "fas fa-smile-wink")]
-    SmileWinkSolid,
-    #[display(fmt = "far fa-smile-wink")]
-    SmileWinkRegular,
-    #[display(fmt = "fas fa-smog")]
+    #[display(fmt = "fa-solid fa-sliders")]
+    Sliders,
+    #[display(fmt = "fa-solid fa-smog")]
     Smog,
-    #[display(fmt = "fas fa-smoking")]
+    #[display(fmt = "fa-solid fa-smoking")]
     Smoking,
-    #[display(fmt = "fas fa-smoking-ban")]
-    SmokingBan,
-    #[display(fmt = "fas fa-sms")]
-    Sms,
-    #[display(fmt = "fab fa-snapchat")]
-    Snapchat,
-    #[display(fmt = "fab fa-snapchat-ghost")]
-    SnapchatGhost,
-    #[display(fmt = "fab fa-snapchat-square")]
-    SnapchatSquare,
-    #[display(fmt = "fas fa-snowboarding")]
-    Snowboarding,
-    #[display(fmt = "fas fa-snowflake")]
-    SnowflakeSolid,
-    #[display(fmt = "far fa-snowflake")]
-    SnowflakeRegular,
-    #[display(fmt = "fas fa-snowman")]
+    #[display(fmt = "fa-solid fa-snowflake")]
+    Snowflake,
+    #[display(fmt = "fa-solid fa-snowman")]
     Snowman,
-    #[display(fmt = "fas fa-snowplow")]
+    #[display(fmt = "fa-solid fa-snowplow")]
     Snowplow,
-    #[display(fmt = "fas fa-soap")]
+    #[display(fmt = "fa-solid fa-soap")]
     Soap,
-    #[display(fmt = "fas fa-socks")]
+    #[display(fmt = "fa-solid fa-socks")]
     Socks,
-    #[display(fmt = "fas fa-solar-panel")]
+    #[display(fmt = "fa-solid fa-solar-panel")]
     SolarPanel,
-    #[display(fmt = "fas fa-sort")]
+    #[display(fmt = "fa-solid fa-sort")]
     Sort,
-    #[display(fmt = "fas fa-sort-alpha-down")]
-    SortAlphaDown,
-    #[display(fmt = "fas fa-sort-alpha-down-alt")]
-    SortAlphaDownAlt,
-    #[display(fmt = "fas fa-sort-alpha-up")]
-    SortAlphaUp,
-    #[display(fmt = "fas fa-sort-alpha-up-alt")]
-    SortAlphaUpAlt,
-    #[display(fmt = "fas fa-sort-amount-down")]
-    SortAmountDown,
-    #[display(fmt = "fas fa-sort-amount-down-alt")]
-    SortAmountDownAlt,
-    #[display(fmt = "fas fa-sort-amount-up")]
-    SortAmountUp,
-    #[display(fmt = "fas fa-sort-amount-up-alt")]
-    SortAmountUpAlt,
-    #[display(fmt = "fas fa-sort-down")]
+    #[display(fmt = "fa-solid fa-sort-down")]
     SortDown,
-    #[display(fmt = "fas fa-sort-numeric-down")]
-    SortNumericDown,
-    #[display(fmt = "fas fa-sort-numeric-down-alt")]
-    SortNumericDownAlt,
-    #[display(fmt = "fas fa-sort-numeric-up")]
-    SortNumericUp,
-    #[display(fmt = "fas fa-sort-numeric-up-alt")]
-    SortNumericUpAlt,
-    #[display(fmt = "fas fa-sort-up")]
+    #[display(fmt = "fa-solid fa-sort-up")]
     SortUp,
-    #[display(fmt = "fab fa-soundcloud")]
-    Soundcloud,
-    #[display(fmt = "fab fa-sourcetree")]
-    Sourcetree,
-    #[display(fmt = "fas fa-spa")]
+    #[display(fmt = "fa-solid fa-spa")]
     Spa,
-    #[display(fmt = "fas fa-space-shuttle")]
-    SpaceShuttle,
-    #[display(fmt = "fab fa-speakap")]
-    Speakap,
-    #[display(fmt = "fab fa-speaker-deck")]
-    SpeakerDeck,
-    #[display(fmt = "fas fa-spell-check")]
+    #[display(fmt = "fa-solid fa-spaghetti-monster-flying")]
+    SpaghettiMonsterFlying,
+    #[display(fmt = "fa-solid fa-spell-check")]
     SpellCheck,
-    #[display(fmt = "fas fa-spider")]
+    #[display(fmt = "fa-solid fa-spider")]
     Spider,
-    #[display(fmt = "fas fa-spinner")]
+    #[display(fmt = "fa-solid fa-spinner")]
     Spinner,
-    #[display(fmt = "fas fa-splotch")]
+    #[display(fmt = "fa-solid fa-splotch")]
     Splotch,
-    #[display(fmt = "fab fa-spotify")]
-    Spotify,
-    #[display(fmt = "fas fa-spray-can")]
+    #[display(fmt = "fa-solid fa-spoon")]
+    Spoon,
+    #[display(fmt = "fa-solid fa-spray-can")]
     SprayCan,
-    #[display(fmt = "fas fa-square")]
-    SquareSolid,
-    #[display(fmt = "far fa-square")]
-    SquareRegular,
-    #[display(fmt = "fas fa-square-full")]
+    #[display(fmt = "fa-solid fa-spray-can-sparkles")]
+    SprayCanSparkles,
+    #[display(fmt = "fa-solid fa-square")]
+    Square,
+    #[display(fmt = "fa-solid fa-square-arrow-up-right")]
+    SquareArrowUpRight,
+    #[display(fmt = "fa-solid fa-square-caret-down")]
+    SquareCaretDown,
+    #[display(fmt = "fa-solid fa-square-caret-left")]
+    SquareCaretLeft,
+    #[display(fmt = "fa-solid fa-square-caret-right")]
+    SquareCaretRight,
+    #[display(fmt = "fa-solid fa-square-caret-up")]
+    SquareCaretUp,
+    #[display(fmt = "fa-solid fa-square-check")]
+    SquareCheck,
+    #[display(fmt = "fa-solid fa-square-envelope")]
+    SquareEnvelope,
+    #[display(fmt = "fa-solid fa-square-full")]
     SquareFull,
-    #[display(fmt = "fas fa-square-root-alt")]
-    SquareRootAlt,
-    #[display(fmt = "fab fa-squarespace")]
-    Squarespace,
-    #[display(fmt = "fab fa-stack-exchange")]
-    StackExchange,
-    #[display(fmt = "fab fa-stack-overflow")]
-    StackOverflow,
-    #[display(fmt = "fab fa-stackpath")]
-    Stackpath,
-    #[display(fmt = "fas fa-stamp")]
+    #[display(fmt = "fa-solid fa-square-h")]
+    SquareH,
+    #[display(fmt = "fa-solid fa-square-minus")]
+    SquareMinus,
+    #[display(fmt = "fa-solid fa-square-nfi")]
+    SquareNfi,
+    #[display(fmt = "fa-solid fa-square-parking")]
+    SquareParking,
+    #[display(fmt = "fa-solid fa-square-pen")]
+    SquarePen,
+    #[display(fmt = "fa-solid fa-square-person-confined")]
+    SquarePersonConfined,
+    #[display(fmt = "fa-solid fa-square-phone")]
+    SquarePhone,
+    #[display(fmt = "fa-solid fa-square-phone-flip")]
+    SquarePhoneFlip,
+    #[display(fmt = "fa-solid fa-square-plus")]
+    SquarePlus,
+    #[display(fmt = "fa-solid fa-square-poll-horizontal")]
+    SquarePollHorizontal,
+    #[display(fmt = "fa-solid fa-square-poll-vertical")]
+    SquarePollVertical,
+    #[display(fmt = "fa-solid fa-square-root-variable")]
+    SquareRootVariable,
+    #[display(fmt = "fa-solid fa-square-rss")]
+    SquareRss,
+    #[display(fmt = "fa-solid fa-square-share-nodes")]
+    SquareShareNodes,
+    #[display(fmt = "fa-solid fa-square-up-right")]
+    SquareUpRight,
+    #[display(fmt = "fa-solid fa-square-virus")]
+    SquareVirus,
+    #[display(fmt = "fa-solid fa-square-xmark")]
+    SquareXmark,
+    #[display(fmt = "fa-solid fa-staff-aesculapius")]
+    StaffAesculapius,
+    #[display(fmt = "fa-solid fa-stairs")]
+    Stairs,
+    #[display(fmt = "fa-solid fa-stamp")]
     Stamp,
-    #[display(fmt = "fas fa-star")]
-    StarSolid,
-    #[display(fmt = "far fa-star")]
-    StarRegular,
-    #[display(fmt = "fas fa-star-and-crescent")]
+    #[display(fmt = "fa-solid fa-star")]
+    Star,
+    #[display(fmt = "fa-solid fa-star-and-crescent")]
     StarAndCrescent,
-    #[display(fmt = "fas fa-star-half")]
-    StarHalfSolid,
-    #[display(fmt = "far fa-star-half")]
-    StarHalfRegular,
-    #[display(fmt = "fas fa-star-half-alt")]
-    StarHalfAlt,
-    #[display(fmt = "fas fa-star-of-david")]
+    #[display(fmt = "fa-solid fa-star-half")]
+    StarHalf,
+    #[display(fmt = "fa-solid fa-star-half-stroke")]
+    StarHalfStroke,
+    #[display(fmt = "fa-solid fa-star-of-david")]
     StarOfDavid,
-    #[display(fmt = "fas fa-star-of-life")]
+    #[display(fmt = "fa-solid fa-star-of-life")]
     StarOfLife,
-    #[display(fmt = "fab fa-staylinked")]
-    Staylinked,
-    #[display(fmt = "fab fa-steam")]
-    Steam,
-    #[display(fmt = "fab fa-steam-square")]
-    SteamSquare,
-    #[display(fmt = "fab fa-steam-symbol")]
-    SteamSymbol,
-    #[display(fmt = "fas fa-step-backward")]
-    StepBackward,
-    #[display(fmt = "fas fa-step-forward")]
-    StepForward,
-    #[display(fmt = "fas fa-stethoscope")]
+    #[display(fmt = "fa-solid fa-sterling-sign")]
+    SterlingSign,
+    #[display(fmt = "fa-solid fa-stethoscope")]
     Stethoscope,
-    #[display(fmt = "fab fa-sticker-mule")]
-    StickerMule,
-    #[display(fmt = "fas fa-sticky-note")]
-    StickyNoteSolid,
-    #[display(fmt = "far fa-sticky-note")]
-    StickyNoteRegular,
-    #[display(fmt = "fas fa-stop")]
+    #[display(fmt = "fa-solid fa-stop")]
     Stop,
-    #[display(fmt = "fas fa-stop-circle")]
-    StopCircleSolid,
-    #[display(fmt = "far fa-stop-circle")]
-    StopCircleRegular,
-    #[display(fmt = "fas fa-stopwatch")]
+    #[display(fmt = "fa-solid fa-stopwatch")]
     Stopwatch,
-    #[display(fmt = "fas fa-stopwatch-20")]
+    #[display(fmt = "fa-solid fa-stopwatch-20")]
     Stopwatch20,
-    #[display(fmt = "fas fa-store")]
+    #[display(fmt = "fa-solid fa-store")]
     Store,
-    #[display(fmt = "fas fa-store-alt")]
-    StoreAlt,
-    #[display(fmt = "fas fa-store-alt-slash")]
-    StoreAltSlash,
-    #[display(fmt = "fas fa-store-slash")]
+    #[display(fmt = "fa-solid fa-store-slash")]
     StoreSlash,
-    #[display(fmt = "fab fa-strava")]
-    Strava,
-    #[display(fmt = "fas fa-stream")]
-    Stream,
-    #[display(fmt = "fas fa-street-view")]
+    #[display(fmt = "fa-solid fa-street-view")]
     StreetView,
-    #[display(fmt = "fas fa-strikethrough")]
+    #[display(fmt = "fa-solid fa-strikethrough")]
     Strikethrough,
-    #[display(fmt = "fab fa-stripe")]
-    Stripe,
-    #[display(fmt = "fab fa-stripe-s")]
-    StripeS,
-    #[display(fmt = "fas fa-stroopwafel")]
+    #[display(fmt = "fa-solid fa-stroopwafel")]
     Stroopwafel,
-    #[display(fmt = "fab fa-studiovinari")]
-    Studiovinari,
-    #[display(fmt = "fab fa-stumbleupon")]
-    Stumbleupon,
-    #[display(fmt = "fab fa-stumbleupon-circle")]
-    StumbleuponCircle,
-    #[display(fmt = "fas fa-subscript")]
+    #[display(fmt = "fa-solid fa-subscript")]
     Subscript,
-    #[display(fmt = "fas fa-subway")]
-    Subway,
-    #[display(fmt = "fas fa-suitcase")]
+    #[display(fmt = "fa-solid fa-suitcase")]
     Suitcase,
-    #[display(fmt = "fas fa-suitcase-rolling")]
+    #[display(fmt = "fa-solid fa-suitcase-medical")]
+    SuitcaseMedical,
+    #[display(fmt = "fa-solid fa-suitcase-rolling")]
     SuitcaseRolling,
-    #[display(fmt = "fas fa-sun")]
-    SunSolid,
-    #[display(fmt = "far fa-sun")]
-    SunRegular,
-    #[display(fmt = "fab fa-superpowers")]
-    Superpowers,
-    #[display(fmt = "fas fa-superscript")]
+    #[display(fmt = "fa-solid fa-sun")]
+    Sun,
+    #[display(fmt = "fa-solid fa-sun-plant-wilt")]
+    SunPlantWilt,
+    #[display(fmt = "fa-solid fa-superscript")]
     Superscript,
-    #[display(fmt = "fab fa-supple")]
-    Supple,
-    #[display(fmt = "fas fa-surprise")]
-    SurpriseSolid,
-    #[display(fmt = "far fa-surprise")]
-    SurpriseRegular,
-    #[display(fmt = "fab fa-suse")]
-    Suse,
-    #[display(fmt = "fas fa-swatchbook")]
+    #[display(fmt = "fa-solid fa-swatchbook")]
     Swatchbook,
-    #[display(fmt = "fab fa-swift")]
-    Swift,
-    #[display(fmt = "fas fa-swimmer")]
-    Swimmer,
-    #[display(fmt = "fas fa-swimming-pool")]
-    SwimmingPool,
-    #[display(fmt = "fab fa-symfony")]
-    Symfony,
-    #[display(fmt = "fas fa-synagogue")]
+    #[display(fmt = "fa-solid fa-synagogue")]
     Synagogue,
-    #[display(fmt = "fas fa-sync")]
-    Sync,
-    #[display(fmt = "fas fa-sync-alt")]
-    SyncAlt,
-    #[display(fmt = "fas fa-syringe")]
+    #[display(fmt = "fa-solid fa-syringe")]
     Syringe,
-    #[display(fmt = "fas fa-table")]
+    #[display(fmt = "fa-solid fa-t")]
+    T,
+    #[display(fmt = "fa-solid fa-table")]
     Table,
-    #[display(fmt = "fas fa-table-tennis")]
-    TableTennis,
-    #[display(fmt = "fas fa-tablet")]
+    #[display(fmt = "fa-solid fa-table-cells")]
+    TableCells,
+    #[display(fmt = "fa-solid fa-table-cells-large")]
+    TableCellsLarge,
+    #[display(fmt = "fa-solid fa-table-columns")]
+    TableColumns,
+    #[display(fmt = "fa-solid fa-table-list")]
+    TableList,
+    #[display(fmt = "fa-solid fa-table-tennis-paddle-ball")]
+    TableTennisPaddleBall,
+    #[display(fmt = "fa-solid fa-tablet")]
     Tablet,
-    #[display(fmt = "fas fa-tablet-alt")]
-    TabletAlt,
-    #[display(fmt = "fas fa-tablets")]
+    #[display(fmt = "fa-solid fa-tablet-button")]
+    TabletButton,
+    #[display(fmt = "fa-solid fa-tablet-screen-button")]
+    TabletScreenButton,
+    #[display(fmt = "fa-solid fa-tablets")]
     Tablets,
-    #[display(fmt = "fas fa-tachometer-alt")]
-    TachometerAlt,
-    #[display(fmt = "fas fa-tag")]
+    #[display(fmt = "fa-solid fa-tachograph-digital")]
+    TachographDigital,
+    #[display(fmt = "fa-solid fa-tag")]
     Tag,
-    #[display(fmt = "fas fa-tags")]
+    #[display(fmt = "fa-solid fa-tags")]
     Tags,
-    #[display(fmt = "fas fa-tape")]
+    #[display(fmt = "fa-solid fa-tape")]
     Tape,
-    #[display(fmt = "fas fa-tasks")]
-    Tasks,
-    #[display(fmt = "fas fa-taxi")]
+    #[display(fmt = "fa-solid fa-tarp")]
+    Tarp,
+    #[display(fmt = "fa-solid fa-tarp-droplet")]
+    TarpDroplet,
+    #[display(fmt = "fa-solid fa-taxi")]
     Taxi,
-    #[display(fmt = "fab fa-teamspeak")]
-    Teamspeak,
-    #[display(fmt = "fas fa-teeth")]
+    #[display(fmt = "fa-solid fa-teeth")]
     Teeth,
-    #[display(fmt = "fas fa-teeth-open")]
+    #[display(fmt = "fa-solid fa-teeth-open")]
     TeethOpen,
-    #[display(fmt = "fab fa-telegram")]
-    Telegram,
-    #[display(fmt = "fab fa-telegram-plane")]
-    TelegramPlane,
-    #[display(fmt = "fas fa-temperature-high")]
+    #[display(fmt = "fa-solid fa-temperature-arrow-down")]
+    TemperatureArrowDown,
+    #[display(fmt = "fa-solid fa-temperature-arrow-up")]
+    TemperatureArrowUp,
+    #[display(fmt = "fa-solid fa-temperature-empty")]
+    TemperatureEmpty,
+    #[display(fmt = "fa-solid fa-temperature-full")]
+    TemperatureFull,
+    #[display(fmt = "fa-solid fa-temperature-half")]
+    TemperatureHalf,
+    #[display(fmt = "fa-solid fa-temperature-high")]
     TemperatureHigh,
-    #[display(fmt = "fas fa-temperature-low")]
+    #[display(fmt = "fa-solid fa-temperature-low")]
     TemperatureLow,
-    #[display(fmt = "fab fa-tencent-weibo")]
-    TencentWeibo,
-    #[display(fmt = "fas fa-tenge")]
-    Tenge,
-    #[display(fmt = "fas fa-terminal")]
+    #[display(fmt = "fa-solid fa-temperature-quarter")]
+    TemperatureQuarter,
+    #[display(fmt = "fa-solid fa-temperature-three-quarters")]
+    TemperatureThreeQuarters,
+    #[display(fmt = "fa-solid fa-tenge-sign")]
+    TengeSign,
+    #[display(fmt = "fa-solid fa-tent")]
+    Tent,
+    #[display(fmt = "fa-solid fa-tent-arrow-down-to-line")]
+    TentArrowDownToLine,
+    #[display(fmt = "fa-solid fa-tent-arrow-left-right")]
+    TentArrowLeftRight,
+    #[display(fmt = "fa-solid fa-tent-arrow-turn-left")]
+    TentArrowTurnLeft,
+    #[display(fmt = "fa-solid fa-tent-arrows-down")]
+    TentArrowsDown,
+    #[display(fmt = "fa-solid fa-tents")]
+    Tents,
+    #[display(fmt = "fa-solid fa-terminal")]
     Terminal,
-    #[display(fmt = "fas fa-text-height")]
+    #[display(fmt = "fa-solid fa-text-height")]
     TextHeight,
-    #[display(fmt = "fas fa-text-width")]
+    #[display(fmt = "fa-solid fa-text-slash")]
+    TextSlash,
+    #[display(fmt = "fa-solid fa-text-width")]
     TextWidth,
-    #[display(fmt = "fas fa-th")]
-    Th,
-    #[display(fmt = "fas fa-th-large")]
-    ThLarge,
-    #[display(fmt = "fas fa-th-list")]
-    ThList,
-    #[display(fmt = "fab fa-the-red-yeti")]
-    TheRedYeti,
-    #[display(fmt = "fas fa-theater-masks")]
-    TheaterMasks,
-    #[display(fmt = "fab fa-themeco")]
-    Themeco,
-    #[display(fmt = "fab fa-themeisle")]
-    Themeisle,
-    #[display(fmt = "fas fa-thermometer")]
+    #[display(fmt = "fa-solid fa-thermometer")]
     Thermometer,
-    #[display(fmt = "fas fa-thermometer-empty")]
-    ThermometerEmpty,
-    #[display(fmt = "fas fa-thermometer-full")]
-    ThermometerFull,
-    #[display(fmt = "fas fa-thermometer-half")]
-    ThermometerHalf,
-    #[display(fmt = "fas fa-thermometer-quarter")]
-    ThermometerQuarter,
-    #[display(fmt = "fas fa-thermometer-three-quarters")]
-    ThermometerThreeQuarters,
-    #[display(fmt = "fab fa-think-peaks")]
-    ThinkPeaks,
-    #[display(fmt = "fas fa-thumbs-down")]
-    ThumbsDownSolid,
-    #[display(fmt = "far fa-thumbs-down")]
-    ThumbsDownRegular,
-    #[display(fmt = "fas fa-thumbs-up")]
-    ThumbsUpSolid,
-    #[display(fmt = "far fa-thumbs-up")]
-    ThumbsUpRegular,
-    #[display(fmt = "fas fa-thumbtack")]
+    #[display(fmt = "fa-solid fa-thumbs-down")]
+    ThumbsDown,
+    #[display(fmt = "fa-solid fa-thumbs-up")]
+    ThumbsUp,
+    #[display(fmt = "fa-solid fa-thumbtack")]
     Thumbtack,
-    #[display(fmt = "fas fa-ticket-alt")]
-    TicketAlt,
-    #[display(fmt = "fab fa-tiktok")]
-    Tiktok,
-    #[display(fmt = "fas fa-times")]
-    Times,
-    #[display(fmt = "fas fa-times-circle")]
-    TimesCircleSolid,
-    #[display(fmt = "far fa-times-circle")]
-    TimesCircleRegular,
-    #[display(fmt = "fas fa-tint")]
-    Tint,
-    #[display(fmt = "fas fa-tint-slash")]
-    TintSlash,
-    #[display(fmt = "fas fa-tired")]
-    TiredSolid,
-    #[display(fmt = "far fa-tired")]
-    TiredRegular,
-    #[display(fmt = "fas fa-toggle-off")]
+    #[display(fmt = "fa-solid fa-ticket")]
+    Ticket,
+    #[display(fmt = "fa-solid fa-ticket-simple")]
+    TicketSimple,
+    #[display(fmt = "fa-solid fa-timeline")]
+    Timeline,
+    #[display(fmt = "fa-solid fa-toggle-off")]
     ToggleOff,
-    #[display(fmt = "fas fa-toggle-on")]
+    #[display(fmt = "fa-solid fa-toggle-on")]
     ToggleOn,
-    #[display(fmt = "fas fa-toilet")]
+    #[display(fmt = "fa-solid fa-toilet")]
     Toilet,
-    #[display(fmt = "fas fa-toilet-paper")]
+    #[display(fmt = "fa-solid fa-toilet-paper")]
     ToiletPaper,
-    #[display(fmt = "fas fa-toilet-paper-slash")]
+    #[display(fmt = "fa-solid fa-toilet-paper-slash")]
     ToiletPaperSlash,
-    #[display(fmt = "fas fa-toolbox")]
+    #[display(fmt = "fa-solid fa-toilet-portable")]
+    ToiletPortable,
+    #[display(fmt = "fa-solid fa-toilets-portable")]
+    ToiletsPortable,
+    #[display(fmt = "fa-solid fa-toolbox")]
     Toolbox,
-    #[display(fmt = "fas fa-tools")]
-    Tools,
-    #[display(fmt = "fas fa-tooth")]
+    #[display(fmt = "fa-solid fa-tooth")]
     Tooth,
-    #[display(fmt = "fas fa-torah")]
-    Torah,
-    #[display(fmt = "fas fa-torii-gate")]
+    #[display(fmt = "fa-solid fa-torii-gate")]
     ToriiGate,
-    #[display(fmt = "fas fa-tractor")]
+    #[display(fmt = "fa-solid fa-tornado")]
+    Tornado,
+    #[display(fmt = "fa-solid fa-tower-broadcast")]
+    TowerBroadcast,
+    #[display(fmt = "fa-solid fa-tower-cell")]
+    TowerCell,
+    #[display(fmt = "fa-solid fa-tower-observation")]
+    TowerObservation,
+    #[display(fmt = "fa-solid fa-tractor")]
     Tractor,
-    #[display(fmt = "fab fa-trade-federation")]
-    TradeFederation,
-    #[display(fmt = "fas fa-trademark")]
+    #[display(fmt = "fa-solid fa-trademark")]
     Trademark,
-    #[display(fmt = "fas fa-traffic-light")]
+    #[display(fmt = "fa-solid fa-traffic-light")]
     TrafficLight,
-    #[display(fmt = "fas fa-trailer")]
+    #[display(fmt = "fa-solid fa-trailer")]
     Trailer,
-    #[display(fmt = "fas fa-train")]
+    #[display(fmt = "fa-solid fa-train")]
     Train,
-    #[display(fmt = "fas fa-tram")]
-    Tram,
-    #[display(fmt = "fas fa-transgender")]
+    #[display(fmt = "fa-solid fa-train-subway")]
+    TrainSubway,
+    #[display(fmt = "fa-solid fa-train-tram")]
+    TrainTram,
+    #[display(fmt = "fa-solid fa-transgender")]
     Transgender,
-    #[display(fmt = "fas fa-transgender-alt")]
-    TransgenderAlt,
-    #[display(fmt = "fas fa-trash")]
+    #[display(fmt = "fa-solid fa-trash")]
     Trash,
-    #[display(fmt = "fas fa-trash-alt")]
-    TrashAltSolid,
-    #[display(fmt = "far fa-trash-alt")]
-    TrashAltRegular,
-    #[display(fmt = "fas fa-trash-restore")]
-    TrashRestore,
-    #[display(fmt = "fas fa-trash-restore-alt")]
-    TrashRestoreAlt,
-    #[display(fmt = "fas fa-tree")]
+    #[display(fmt = "fa-solid fa-trash-arrow-up")]
+    TrashArrowUp,
+    #[display(fmt = "fa-solid fa-trash-can")]
+    TrashCan,
+    #[display(fmt = "fa-solid fa-trash-can-arrow-up")]
+    TrashCanArrowUp,
+    #[display(fmt = "fa-solid fa-tree")]
     Tree,
-    #[display(fmt = "fab fa-trello")]
-    Trello,
-    #[display(fmt = "fab fa-tripadvisor")]
-    Tripadvisor,
-    #[display(fmt = "fas fa-trophy")]
+    #[display(fmt = "fa-solid fa-tree-city")]
+    TreeCity,
+    #[display(fmt = "fa-solid fa-triangle-exclamation")]
+    TriangleExclamation,
+    #[display(fmt = "fa-solid fa-trophy")]
     Trophy,
-    #[display(fmt = "fas fa-truck")]
+    #[display(fmt = "fa-solid fa-trowel")]
+    Trowel,
+    #[display(fmt = "fa-solid fa-trowel-bricks")]
+    TrowelBricks,
+    #[display(fmt = "fa-solid fa-truck")]
     Truck,
-    #[display(fmt = "fas fa-truck-loading")]
-    TruckLoading,
-    #[display(fmt = "fas fa-truck-monster")]
+    #[display(fmt = "fa-solid fa-truck-arrow-right")]
+    TruckArrowRight,
+    #[display(fmt = "fa-solid fa-truck-droplet")]
+    TruckDroplet,
+    #[display(fmt = "fa-solid fa-truck-fast")]
+    TruckFast,
+    #[display(fmt = "fa-solid fa-truck-field")]
+    TruckField,
+    #[display(fmt = "fa-solid fa-truck-field-un")]
+    TruckFieldUn,
+    #[display(fmt = "fa-solid fa-truck-front")]
+    TruckFront,
+    #[display(fmt = "fa-solid fa-truck-medical")]
+    TruckMedical,
+    #[display(fmt = "fa-solid fa-truck-monster")]
     TruckMonster,
-    #[display(fmt = "fas fa-truck-moving")]
+    #[display(fmt = "fa-solid fa-truck-moving")]
     TruckMoving,
-    #[display(fmt = "fas fa-truck-pickup")]
+    #[display(fmt = "fa-solid fa-truck-pickup")]
     TruckPickup,
-    #[display(fmt = "fas fa-tshirt")]
-    Tshirt,
-    #[display(fmt = "fas fa-tty")]
+    #[display(fmt = "fa-solid fa-truck-plane")]
+    TruckPlane,
+    #[display(fmt = "fa-solid fa-truck-ramp-box")]
+    TruckRampBox,
+    #[display(fmt = "fa-solid fa-tty")]
     Tty,
-    #[display(fmt = "fab fa-tumblr")]
-    Tumblr,
-    #[display(fmt = "fab fa-tumblr-square")]
-    TumblrSquare,
-    #[display(fmt = "fas fa-tv")]
+    #[display(fmt = "fa-solid fa-turkish-lira-sign")]
+    TurkishLiraSign,
+    #[display(fmt = "fa-solid fa-turn-down")]
+    TurnDown,
+    #[display(fmt = "fa-solid fa-turn-up")]
+    TurnUp,
+    #[display(fmt = "fa-solid fa-tv")]
     Tv,
-    #[display(fmt = "fab fa-twitch")]
-    Twitch,
-    #[display(fmt = "fab fa-twitter")]
-    Twitter,
-    #[display(fmt = "fab fa-twitter-square")]
-    TwitterSquare,
-    #[display(fmt = "fab fa-typo3")]
-    Typo3,
-    #[display(fmt = "fab fa-uber")]
-    Uber,
-    #[display(fmt = "fab fa-ubuntu")]
-    Ubuntu,
-    #[display(fmt = "fab fa-uikit")]
-    Uikit,
-    #[display(fmt = "fab fa-umbraco")]
-    Umbraco,
-    #[display(fmt = "fas fa-umbrella")]
+    #[display(fmt = "fa-solid fa-u")]
+    U,
+    #[display(fmt = "fa-solid fa-umbrella")]
     Umbrella,
-    #[display(fmt = "fas fa-umbrella-beach")]
+    #[display(fmt = "fa-solid fa-umbrella-beach")]
     UmbrellaBeach,
-    #[display(fmt = "fab fa-uncharted")]
-    Uncharted,
-    #[display(fmt = "fas fa-underline")]
+    #[display(fmt = "fa-solid fa-underline")]
     Underline,
-    #[display(fmt = "fas fa-undo")]
-    Undo,
-    #[display(fmt = "fas fa-undo-alt")]
-    UndoAlt,
-    #[display(fmt = "fab fa-uniregistry")]
-    Uniregistry,
-    #[display(fmt = "fab fa-unity")]
-    Unity,
-    #[display(fmt = "fas fa-universal-access")]
+    #[display(fmt = "fa-solid fa-universal-access")]
     UniversalAccess,
-    #[display(fmt = "fas fa-university")]
-    University,
-    #[display(fmt = "fas fa-unlink")]
-    Unlink,
-    #[display(fmt = "fas fa-unlock")]
+    #[display(fmt = "fa-solid fa-unlock")]
     Unlock,
-    #[display(fmt = "fas fa-unlock-alt")]
-    UnlockAlt,
-    #[display(fmt = "fab fa-unsplash")]
-    Unsplash,
-    #[display(fmt = "fab fa-untappd")]
-    Untappd,
-    #[display(fmt = "fas fa-upload")]
+    #[display(fmt = "fa-solid fa-unlock-keyhole")]
+    UnlockKeyhole,
+    #[display(fmt = "fa-solid fa-up-down")]
+    UpDown,
+    #[display(fmt = "fa-solid fa-up-down-left-right")]
+    UpDownLeftRight,
+    #[display(fmt = "fa-solid fa-up-long")]
+    UpLong,
+    #[display(fmt = "fa-solid fa-up-right-and-down-left-from-center")]
+    UpRightAndDownLeftFromCenter,
+    #[display(fmt = "fa-solid fa-up-right-from-square")]
+    UpRightFromSquare,
+    #[display(fmt = "fa-solid fa-upload")]
     Upload,
-    #[display(fmt = "fab fa-ups")]
-    Ups,
-    #[display(fmt = "fab fa-usb")]
-    Usb,
-    #[display(fmt = "fas fa-user")]
-    UserSolid,
-    #[display(fmt = "far fa-user")]
-    UserRegular,
-    #[display(fmt = "fas fa-user-alt")]
-    UserAlt,
-    #[display(fmt = "fas fa-user-alt-slash")]
-    UserAltSlash,
-    #[display(fmt = "fas fa-user-astronaut")]
+    #[display(fmt = "fa-solid fa-user")]
+    User,
+    #[display(fmt = "fa-solid fa-user-astronaut")]
     UserAstronaut,
-    #[display(fmt = "fas fa-user-check")]
+    #[display(fmt = "fa-solid fa-user-check")]
     UserCheck,
-    #[display(fmt = "fas fa-user-circle")]
-    UserCircleSolid,
-    #[display(fmt = "far fa-user-circle")]
-    UserCircleRegular,
-    #[display(fmt = "fas fa-user-clock")]
+    #[display(fmt = "fa-solid fa-user-clock")]
     UserClock,
-    #[display(fmt = "fas fa-user-cog")]
-    UserCog,
-    #[display(fmt = "fas fa-user-edit")]
-    UserEdit,
-    #[display(fmt = "fas fa-user-friends")]
-    UserFriends,
-    #[display(fmt = "fas fa-user-graduate")]
+    #[display(fmt = "fa-solid fa-user-doctor")]
+    UserDoctor,
+    #[display(fmt = "fa-solid fa-user-gear")]
+    UserGear,
+    #[display(fmt = "fa-solid fa-user-graduate")]
     UserGraduate,
-    #[display(fmt = "fas fa-user-injured")]
+    #[display(fmt = "fa-solid fa-user-group")]
+    UserGroup,
+    #[display(fmt = "fa-solid fa-user-injured")]
     UserInjured,
-    #[display(fmt = "fas fa-user-lock")]
+    #[display(fmt = "fa-solid fa-user-large")]
+    UserLarge,
+    #[display(fmt = "fa-solid fa-user-large-slash")]
+    UserLargeSlash,
+    #[display(fmt = "fa-solid fa-user-lock")]
     UserLock,
-    #[display(fmt = "fas fa-user-md")]
-    UserMd,
-    #[display(fmt = "fas fa-user-minus")]
+    #[display(fmt = "fa-solid fa-user-minus")]
     UserMinus,
-    #[display(fmt = "fas fa-user-ninja")]
+    #[display(fmt = "fa-solid fa-user-ninja")]
     UserNinja,
-    #[display(fmt = "fas fa-user-nurse")]
+    #[display(fmt = "fa-solid fa-user-nurse")]
     UserNurse,
-    #[display(fmt = "fas fa-user-plus")]
+    #[display(fmt = "fa-solid fa-user-pen")]
+    UserPen,
+    #[display(fmt = "fa-solid fa-user-plus")]
     UserPlus,
-    #[display(fmt = "fas fa-user-secret")]
+    #[display(fmt = "fa-solid fa-user-secret")]
     UserSecret,
-    #[display(fmt = "fas fa-user-shield")]
+    #[display(fmt = "fa-solid fa-user-shield")]
     UserShield,
-    #[display(fmt = "fas fa-user-slash")]
+    #[display(fmt = "fa-solid fa-user-slash")]
     UserSlash,
-    #[display(fmt = "fas fa-user-tag")]
+    #[display(fmt = "fa-solid fa-user-tag")]
     UserTag,
-    #[display(fmt = "fas fa-user-tie")]
+    #[display(fmt = "fa-solid fa-user-tie")]
     UserTie,
-    #[display(fmt = "fas fa-user-times")]
-    UserTimes,
-    #[display(fmt = "fas fa-users")]
+    #[display(fmt = "fa-solid fa-user-xmark")]
+    UserXmark,
+    #[display(fmt = "fa-solid fa-users")]
     Users,
-    #[display(fmt = "fas fa-users-cog")]
-    UsersCog,
-    #[display(fmt = "fas fa-users-slash")]
+    #[display(fmt = "fa-solid fa-users-between-lines")]
+    UsersBetweenLines,
+    #[display(fmt = "fa-solid fa-users-gear")]
+    UsersGear,
+    #[display(fmt = "fa-solid fa-users-line")]
+    UsersLine,
+    #[display(fmt = "fa-solid fa-users-rays")]
+    UsersRays,
+    #[display(fmt = "fa-solid fa-users-rectangle")]
+    UsersRectangle,
+    #[display(fmt = "fa-solid fa-users-slash")]
     UsersSlash,
-    #[display(fmt = "fab fa-usps")]
-    Usps,
-    #[display(fmt = "fab fa-ussunnah")]
-    Ussunnah,
-    #[display(fmt = "fas fa-utensil-spoon")]
-    UtensilSpoon,
-    #[display(fmt = "fas fa-utensils")]
+    #[display(fmt = "fa-solid fa-users-viewfinder")]
+    UsersViewfinder,
+    #[display(fmt = "fa-solid fa-utensils")]
     Utensils,
-    #[display(fmt = "fab fa-vaadin")]
-    Vaadin,
-    #[display(fmt = "fas fa-vector-square")]
+    #[display(fmt = "fa-solid fa-v")]
+    V,
+    #[display(fmt = "fa-solid fa-van-shuttle")]
+    VanShuttle,
+    #[display(fmt = "fa-solid fa-vault")]
+    Vault,
+    #[display(fmt = "fa-solid fa-vector-square")]
     VectorSquare,
-    #[display(fmt = "fas fa-venus")]
+    #[display(fmt = "fa-solid fa-venus")]
     Venus,
-    #[display(fmt = "fas fa-venus-double")]
+    #[display(fmt = "fa-solid fa-venus-double")]
     VenusDouble,
-    #[display(fmt = "fas fa-venus-mars")]
+    #[display(fmt = "fa-solid fa-venus-mars")]
     VenusMars,
-    #[display(fmt = "fas fa-vest")]
+    #[display(fmt = "fa-solid fa-vest")]
     Vest,
-    #[display(fmt = "fas fa-vest-patches")]
+    #[display(fmt = "fa-solid fa-vest-patches")]
     VestPatches,
-    #[display(fmt = "fab fa-viacoin")]
-    Viacoin,
-    #[display(fmt = "fab fa-viadeo")]
-    Viadeo,
-    #[display(fmt = "fab fa-viadeo-square")]
-    ViadeoSquare,
-    #[display(fmt = "fas fa-vial")]
+    #[display(fmt = "fa-solid fa-vial")]
     Vial,
-    #[display(fmt = "fas fa-vials")]
+    #[display(fmt = "fa-solid fa-vial-circle-check")]
+    VialCircleCheck,
+    #[display(fmt = "fa-solid fa-vial-virus")]
+    VialVirus,
+    #[display(fmt = "fa-solid fa-vials")]
     Vials,
-    #[display(fmt = "fab fa-viber")]
-    Viber,
-    #[display(fmt = "fas fa-video")]
+    #[display(fmt = "fa-solid fa-video")]
     Video,
-    #[display(fmt = "fas fa-video-slash")]
+    #[display(fmt = "fa-solid fa-video-slash")]
     VideoSlash,
-    #[display(fmt = "fas fa-vihara")]
+    #[display(fmt = "fa-solid fa-vihara")]
     Vihara,
-    #[display(fmt = "fab fa-vimeo")]
-    Vimeo,
-    #[display(fmt = "fab fa-vimeo-square")]
-    VimeoSquare,
-    #[display(fmt = "fab fa-vimeo-v")]
-    VimeoV,
-    #[display(fmt = "fab fa-vine")]
-    Vine,
-    #[display(fmt = "fas fa-virus")]
+    #[display(fmt = "fa-solid fa-virus")]
     Virus,
-    #[display(fmt = "fas fa-virus-slash")]
+    #[display(fmt = "fa-solid fa-virus-covid")]
+    VirusCovid,
+    #[display(fmt = "fa-solid fa-virus-covid-slash")]
+    VirusCovidSlash,
+    #[display(fmt = "fa-solid fa-virus-slash")]
     VirusSlash,
-    #[display(fmt = "fas fa-viruses")]
+    #[display(fmt = "fa-solid fa-viruses")]
     Viruses,
-    #[display(fmt = "fab fa-vk")]
-    Vk,
-    #[display(fmt = "fab fa-vnv")]
-    Vnv,
-    #[display(fmt = "fas fa-voicemail")]
+    #[display(fmt = "fa-solid fa-voicemail")]
     Voicemail,
-    #[display(fmt = "fas fa-volleyball-ball")]
-    VolleyballBall,
-    #[display(fmt = "fas fa-volume-down")]
-    VolumeDown,
-    #[display(fmt = "fas fa-volume-mute")]
-    VolumeMute,
-    #[display(fmt = "fas fa-volume-off")]
+    #[display(fmt = "fa-solid fa-volcano")]
+    Volcano,
+    #[display(fmt = "fa-solid fa-volleyball")]
+    Volleyball,
+    #[display(fmt = "fa-solid fa-volume-high")]
+    VolumeHigh,
+    #[display(fmt = "fa-solid fa-volume-low")]
+    VolumeLow,
+    #[display(fmt = "fa-solid fa-volume-off")]
     VolumeOff,
-    #[display(fmt = "fas fa-volume-up")]
-    VolumeUp,
-    #[display(fmt = "fas fa-vote-yea")]
-    VoteYea,
-    #[display(fmt = "fas fa-vr-cardboard")]
+    #[display(fmt = "fa-solid fa-volume-xmark")]
+    VolumeXmark,
+    #[display(fmt = "fa-solid fa-vr-cardboard")]
     VrCardboard,
-    #[display(fmt = "fab fa-vuejs")]
-    Vuejs,
-    #[display(fmt = "fas fa-walking")]
-    Walking,
-    #[display(fmt = "fas fa-wallet")]
+    #[display(fmt = "fa-solid fa-w")]
+    W,
+    #[display(fmt = "fa-solid fa-walkie-talkie")]
+    WalkieTalkie,
+    #[display(fmt = "fa-solid fa-wallet")]
     Wallet,
-    #[display(fmt = "fas fa-warehouse")]
+    #[display(fmt = "fa-solid fa-wand-magic")]
+    WandMagic,
+    #[display(fmt = "fa-solid fa-wand-magic-sparkles")]
+    WandMagicSparkles,
+    #[display(fmt = "fa-solid fa-wand-sparkles")]
+    WandSparkles,
+    #[display(fmt = "fa-solid fa-warehouse")]
     Warehouse,
-    #[display(fmt = "fab fa-watchman-monitoring")]
-    WatchmanMonitoring,
-    #[display(fmt = "fas fa-water")]
+    #[display(fmt = "fa-solid fa-water")]
     Water,
-    #[display(fmt = "fas fa-wave-square")]
+    #[display(fmt = "fa-solid fa-water-ladder")]
+    WaterLadder,
+    #[display(fmt = "fa-solid fa-wave-square")]
     WaveSquare,
-    #[display(fmt = "fab fa-waze")]
-    Waze,
-    #[display(fmt = "fab fa-weebly")]
-    Weebly,
-    #[display(fmt = "fab fa-weibo")]
-    Weibo,
-    #[display(fmt = "fas fa-weight")]
-    Weight,
-    #[display(fmt = "fas fa-weight-hanging")]
+    #[display(fmt = "fa-solid fa-weight-hanging")]
     WeightHanging,
-    #[display(fmt = "fab fa-weixin")]
-    Weixin,
-    #[display(fmt = "fab fa-whatsapp")]
-    Whatsapp,
-    #[display(fmt = "fab fa-whatsapp-square")]
-    WhatsappSquare,
-    #[display(fmt = "fas fa-wheelchair")]
+    #[display(fmt = "fa-solid fa-weight-scale")]
+    WeightScale,
+    #[display(fmt = "fa-solid fa-wheat-awn")]
+    WheatAwn,
+    #[display(fmt = "fa-solid fa-wheat-awn-circle-exclamation")]
+    WheatAwnCircleExclamation,
+    #[display(fmt = "fa-solid fa-wheelchair")]
     Wheelchair,
-    #[display(fmt = "fab fa-whmcs")]
-    Whmcs,
-    #[display(fmt = "fas fa-wifi")]
+    #[display(fmt = "fa-solid fa-wheelchair-move")]
+    WheelchairMove,
+    #[display(fmt = "fa-solid fa-whiskey-glass")]
+    WhiskeyGlass,
+    #[display(fmt = "fa-solid fa-wifi")]
     Wifi,
-    #[display(fmt = "fab fa-wikipedia-w")]
-    WikipediaW,
-    #[display(fmt = "fas fa-wind")]
+    #[display(fmt = "fa-solid fa-wind")]
     Wind,
-    #[display(fmt = "fas fa-window-close")]
-    WindowCloseSolid,
-    #[display(fmt = "far fa-window-close")]
-    WindowCloseRegular,
-    #[display(fmt = "fas fa-window-maximize")]
-    WindowMaximizeSolid,
-    #[display(fmt = "far fa-window-maximize")]
-    WindowMaximizeRegular,
-    #[display(fmt = "fas fa-window-minimize")]
-    WindowMinimizeSolid,
-    #[display(fmt = "far fa-window-minimize")]
-    WindowMinimizeRegular,
-    #[display(fmt = "fas fa-window-restore")]
-    WindowRestoreSolid,
-    #[display(fmt = "far fa-window-restore")]
-    WindowRestoreRegular,
-    #[display(fmt = "fab fa-windows")]
-    Windows,
-    #[display(fmt = "fas fa-wine-bottle")]
+    #[display(fmt = "fa-solid fa-window-maximize")]
+    WindowMaximize,
+    #[display(fmt = "fa-solid fa-window-minimize")]
+    WindowMinimize,
+    #[display(fmt = "fa-solid fa-window-restore")]
+    WindowRestore,
+    #[display(fmt = "fa-solid fa-wine-bottle")]
     WineBottle,
-    #[display(fmt = "fas fa-wine-glass")]
+    #[display(fmt = "fa-solid fa-wine-glass")]
     WineGlass,
-    #[display(fmt = "fas fa-wine-glass-alt")]
-    WineGlassAlt,
-    #[display(fmt = "fab fa-wix")]
-    Wix,
-    #[display(fmt = "fab fa-wizards-of-the-coast")]
-    WizardsOfTheCoast,
-    #[display(fmt = "fab fa-wodu")]
-    Wodu,
-    #[display(fmt = "fab fa-wolf-pack-battalion")]
-    WolfPackBattalion,
-    #[display(fmt = "fas fa-won-sign")]
+    #[display(fmt = "fa-solid fa-wine-glass-empty")]
+    WineGlassEmpty,
+    #[display(fmt = "fa-solid fa-won-sign")]
     WonSign,
-    #[display(fmt = "fab fa-wordpress")]
-    Wordpress,
-    #[display(fmt = "fab fa-wordpress-simple")]
-    WordpressSimple,
-    #[display(fmt = "fab fa-wpbeginner")]
-    Wpbeginner,
-    #[display(fmt = "fab fa-wpexplorer")]
-    Wpexplorer,
-    #[display(fmt = "fab fa-wpforms")]
-    Wpforms,
-    #[display(fmt = "fab fa-wpressr")]
-    Wpressr,
-    #[display(fmt = "fas fa-wrench")]
+    #[display(fmt = "fa-solid fa-worm")]
+    Worm,
+    #[display(fmt = "fa-solid fa-wrench")]
     Wrench,
-    #[display(fmt = "fas fa-x-ray")]
+    #[display(fmt = "fa-solid fa-x")]
+    X,
+    #[display(fmt = "fa-solid fa-x-ray")]
     XRay,
-    #[display(fmt = "fab fa-xbox")]
-    Xbox,
-    #[display(fmt = "fab fa-xing")]
-    Xing,
-    #[display(fmt = "fab fa-xing-square")]
-    XingSquare,
-    #[display(fmt = "fab fa-y-combinator")]
-    YCombinator,
-    #[display(fmt = "fab fa-yahoo")]
-    Yahoo,
-    #[display(fmt = "fab fa-yammer")]
-    Yammer,
-    #[display(fmt = "fab fa-yandex")]
-    Yandex,
-    #[display(fmt = "fab fa-yandex-international")]
-    YandexInternational,
-    #[display(fmt = "fab fa-yarn")]
-    Yarn,
-    #[display(fmt = "fab fa-yelp")]
-    Yelp,
-    #[display(fmt = "fas fa-yen-sign")]
+    #[display(fmt = "fa-solid fa-xmark")]
+    Xmark,
+    #[display(fmt = "fa-solid fa-xmarks-lines")]
+    XmarksLines,
+    #[display(fmt = "fa-solid fa-y")]
+    Y,
+    #[display(fmt = "fa-solid fa-yen-sign")]
     YenSign,
-    #[display(fmt = "fas fa-yin-yang")]
+    #[display(fmt = "fa-solid fa-yin-yang")]
     YinYang,
-    #[display(fmt = "fab fa-yoast")]
+    #[display(fmt = "fa-solid fa-z")]
+    Z,
+}
+
+impl yew::html::IntoPropValue<String> for Solid {
+    fn into_prop_value(self) -> String {
+        self.to_string()
+    }
+}
+
+#[derive(Clone, Copy, derive_more::Display)]
+pub enum Brands {
+    #[display(fmt = "fa-brands fa-accessible-icon")]
+    AccessibleIcon,
+    #[display(fmt = "fa-brands fa-accusoft")]
+    Accusoft,
+    #[display(fmt = "fa-brands fa-adn")]
+    Adn,
+    #[display(fmt = "fa-brands fa-adversal")]
+    Adversal,
+    #[display(fmt = "fa-brands fa-affiliatetheme")]
+    Affiliatetheme,
+    #[display(fmt = "fa-brands fa-airbnb")]
+    Airbnb,
+    #[display(fmt = "fa-brands fa-algolia")]
+    Algolia,
+    #[display(fmt = "fa-brands fa-alipay")]
+    Alipay,
+    #[display(fmt = "fa-brands fa-amazon")]
+    Amazon,
+    #[display(fmt = "fa-brands fa-amazon-pay")]
+    AmazonPay,
+    #[display(fmt = "fa-brands fa-amilia")]
+    Amilia,
+    #[display(fmt = "fa-brands fa-android")]
+    Android,
+    #[display(fmt = "fa-brands fa-angellist")]
+    Angellist,
+    #[display(fmt = "fa-brands fa-angrycreative")]
+    Angrycreative,
+    #[display(fmt = "fa-brands fa-angular")]
+    Angular,
+    #[display(fmt = "fa-brands fa-app-store")]
+    AppStore,
+    #[display(fmt = "fa-brands fa-app-store-ios")]
+    AppStoreIos,
+    #[display(fmt = "fa-brands fa-apper")]
+    Apper,
+    #[display(fmt = "fa-brands fa-apple")]
+    Apple,
+    #[display(fmt = "fa-brands fa-apple-pay")]
+    ApplePay,
+    #[display(fmt = "fa-brands fa-artstation")]
+    Artstation,
+    #[display(fmt = "fa-brands fa-asymmetrik")]
+    Asymmetrik,
+    #[display(fmt = "fa-brands fa-atlassian")]
+    Atlassian,
+    #[display(fmt = "fa-brands fa-audible")]
+    Audible,
+    #[display(fmt = "fa-brands fa-autoprefixer")]
+    Autoprefixer,
+    #[display(fmt = "fa-brands fa-avianex")]
+    Avianex,
+    #[display(fmt = "fa-brands fa-aviato")]
+    Aviato,
+    #[display(fmt = "fa-brands fa-aws")]
+    Aws,
+    #[display(fmt = "fa-brands fa-bandcamp")]
+    Bandcamp,
+    #[display(fmt = "fa-brands fa-battle-net")]
+    BattleNet,
+    #[display(fmt = "fa-brands fa-behance")]
+    Behance,
+    #[display(fmt = "fa-brands fa-behance-square")]
+    BehanceSquare,
+    #[display(fmt = "fa-brands fa-bilibili")]
+    Bilibili,
+    #[display(fmt = "fa-brands fa-bimobject")]
+    Bimobject,
+    #[display(fmt = "fa-brands fa-bitbucket")]
+    Bitbucket,
+    #[display(fmt = "fa-brands fa-bitcoin")]
+    Bitcoin,
+    #[display(fmt = "fa-brands fa-bity")]
+    Bity,
+    #[display(fmt = "fa-brands fa-black-tie")]
+    BlackTie,
+    #[display(fmt = "fa-brands fa-blackberry")]
+    Blackberry,
+    #[display(fmt = "fa-brands fa-blogger")]
+    Blogger,
+    #[display(fmt = "fa-brands fa-blogger-b")]
+    BloggerB,
+    #[display(fmt = "fa-brands fa-bluetooth")]
+    Bluetooth,
+    #[display(fmt = "fa-brands fa-bluetooth-b")]
+    BluetoothB,
+    #[display(fmt = "fa-brands fa-bootstrap")]
+    Bootstrap,
+    #[display(fmt = "fa-brands fa-bots")]
+    Bots,
+    #[display(fmt = "fa-brands fa-btc")]
+    Btc,
+    #[display(fmt = "fa-brands fa-buffer")]
+    Buffer,
+    #[display(fmt = "fa-brands fa-buromobelexperte")]
+    Buromobelexperte,
+    #[display(fmt = "fa-brands fa-buy-n-large")]
+    BuyNLarge,
+    #[display(fmt = "fa-brands fa-buysellads")]
+    Buysellads,
+    #[display(fmt = "fa-brands fa-canadian-maple-leaf")]
+    CanadianMapleLeaf,
+    #[display(fmt = "fa-brands fa-cc-amazon-pay")]
+    CcAmazonPay,
+    #[display(fmt = "fa-brands fa-cc-amex")]
+    CcAmex,
+    #[display(fmt = "fa-brands fa-cc-apple-pay")]
+    CcApplePay,
+    #[display(fmt = "fa-brands fa-cc-diners-club")]
+    CcDinersClub,
+    #[display(fmt = "fa-brands fa-cc-discover")]
+    CcDiscover,
+    #[display(fmt = "fa-brands fa-cc-jcb")]
+    CcJcb,
+    #[display(fmt = "fa-brands fa-cc-mastercard")]
+    CcMastercard,
+    #[display(fmt = "fa-brands fa-cc-paypal")]
+    CcPaypal,
+    #[display(fmt = "fa-brands fa-cc-stripe")]
+    CcStripe,
+    #[display(fmt = "fa-brands fa-cc-visa")]
+    CcVisa,
+    #[display(fmt = "fa-brands fa-centercode")]
+    Centercode,
+    #[display(fmt = "fa-brands fa-centos")]
+    Centos,
+    #[display(fmt = "fa-brands fa-chrome")]
+    Chrome,
+    #[display(fmt = "fa-brands fa-chromecast")]
+    Chromecast,
+    #[display(fmt = "fa-brands fa-cloudflare")]
+    Cloudflare,
+    #[display(fmt = "fa-brands fa-cloudscale")]
+    Cloudscale,
+    #[display(fmt = "fa-brands fa-cloudsmith")]
+    Cloudsmith,
+    #[display(fmt = "fa-brands fa-cloudversify")]
+    Cloudversify,
+    #[display(fmt = "fa-brands fa-cmplid")]
+    Cmplid,
+    #[display(fmt = "fa-brands fa-codepen")]
+    Codepen,
+    #[display(fmt = "fa-brands fa-codiepie")]
+    Codiepie,
+    #[display(fmt = "fa-brands fa-confluence")]
+    Confluence,
+    #[display(fmt = "fa-brands fa-connectdevelop")]
+    Connectdevelop,
+    #[display(fmt = "fa-brands fa-contao")]
+    Contao,
+    #[display(fmt = "fa-brands fa-cotton-bureau")]
+    CottonBureau,
+    #[display(fmt = "fa-brands fa-cpanel")]
+    Cpanel,
+    #[display(fmt = "fa-brands fa-creative-commons")]
+    CreativeCommons,
+    #[display(fmt = "fa-brands fa-creative-commons-by")]
+    CreativeCommonsBy,
+    #[display(fmt = "fa-brands fa-creative-commons-nc")]
+    CreativeCommonsNc,
+    #[display(fmt = "fa-brands fa-creative-commons-nc-eu")]
+    CreativeCommonsNcEu,
+    #[display(fmt = "fa-brands fa-creative-commons-nc-jp")]
+    CreativeCommonsNcJp,
+    #[display(fmt = "fa-brands fa-creative-commons-nd")]
+    CreativeCommonsNd,
+    #[display(fmt = "fa-brands fa-creative-commons-pd")]
+    CreativeCommonsPd,
+    #[display(fmt = "fa-brands fa-creative-commons-pd-alt")]
+    CreativeCommonsPdAlt,
+    #[display(fmt = "fa-brands fa-creative-commons-remix")]
+    CreativeCommonsRemix,
+    #[display(fmt = "fa-brands fa-creative-commons-sa")]
+    CreativeCommonsSa,
+    #[display(fmt = "fa-brands fa-creative-commons-sampling")]
+    CreativeCommonsSampling,
+    #[display(fmt = "fa-brands fa-creative-commons-sampling-plus")]
+    CreativeCommonsSamplingPlus,
+    #[display(fmt = "fa-brands fa-creative-commons-share")]
+    CreativeCommonsShare,
+    #[display(fmt = "fa-brands fa-creative-commons-zero")]
+    CreativeCommonsZero,
+    #[display(fmt = "fa-brands fa-critical-role")]
+    CriticalRole,
+    #[display(fmt = "fa-brands fa-css3")]
+    Css3,
+    #[display(fmt = "fa-brands fa-css3-alt")]
+    Css3Alt,
+    #[display(fmt = "fa-brands fa-cuttlefish")]
+    Cuttlefish,
+    #[display(fmt = "fa-brands fa-d-and-d")]
+    DAndD,
+    #[display(fmt = "fa-brands fa-d-and-d-beyond")]
+    DAndDBeyond,
+    #[display(fmt = "fa-brands fa-dailymotion")]
+    Dailymotion,
+    #[display(fmt = "fa-brands fa-dashcube")]
+    Dashcube,
+    #[display(fmt = "fa-brands fa-deezer")]
+    Deezer,
+    #[display(fmt = "fa-brands fa-delicious")]
+    Delicious,
+    #[display(fmt = "fa-brands fa-deploydog")]
+    Deploydog,
+    #[display(fmt = "fa-brands fa-deskpro")]
+    Deskpro,
+    #[display(fmt = "fa-brands fa-dev")]
+    Dev,
+    #[display(fmt = "fa-brands fa-deviantart")]
+    Deviantart,
+    #[display(fmt = "fa-brands fa-dhl")]
+    Dhl,
+    #[display(fmt = "fa-brands fa-diaspora")]
+    Diaspora,
+    #[display(fmt = "fa-brands fa-digg")]
+    Digg,
+    #[display(fmt = "fa-brands fa-digital-ocean")]
+    DigitalOcean,
+    #[display(fmt = "fa-brands fa-discord")]
+    Discord,
+    #[display(fmt = "fa-brands fa-discourse")]
+    Discourse,
+    #[display(fmt = "fa-brands fa-dochub")]
+    Dochub,
+    #[display(fmt = "fa-brands fa-docker")]
+    Docker,
+    #[display(fmt = "fa-brands fa-draft2digital")]
+    Draft2Digital,
+    #[display(fmt = "fa-brands fa-dribbble")]
+    Dribbble,
+    #[display(fmt = "fa-brands fa-dribbble-square")]
+    DribbbleSquare,
+    #[display(fmt = "fa-brands fa-dropbox")]
+    Dropbox,
+    #[display(fmt = "fa-brands fa-drupal")]
+    Drupal,
+    #[display(fmt = "fa-brands fa-dyalog")]
+    Dyalog,
+    #[display(fmt = "fa-brands fa-earlybirds")]
+    Earlybirds,
+    #[display(fmt = "fa-brands fa-ebay")]
+    Ebay,
+    #[display(fmt = "fa-brands fa-edge")]
+    Edge,
+    #[display(fmt = "fa-brands fa-edge-legacy")]
+    EdgeLegacy,
+    #[display(fmt = "fa-brands fa-elementor")]
+    Elementor,
+    #[display(fmt = "fa-brands fa-ello")]
+    Ello,
+    #[display(fmt = "fa-brands fa-ember")]
+    Ember,
+    #[display(fmt = "fa-brands fa-empire")]
+    Empire,
+    #[display(fmt = "fa-brands fa-envira")]
+    Envira,
+    #[display(fmt = "fa-brands fa-erlang")]
+    Erlang,
+    #[display(fmt = "fa-brands fa-ethereum")]
+    Ethereum,
+    #[display(fmt = "fa-brands fa-etsy")]
+    Etsy,
+    #[display(fmt = "fa-brands fa-evernote")]
+    Evernote,
+    #[display(fmt = "fa-brands fa-expeditedssl")]
+    Expeditedssl,
+    #[display(fmt = "fa-brands fa-facebook")]
+    Facebook,
+    #[display(fmt = "fa-brands fa-facebook-f")]
+    FacebookF,
+    #[display(fmt = "fa-brands fa-facebook-messenger")]
+    FacebookMessenger,
+    #[display(fmt = "fa-brands fa-facebook-square")]
+    FacebookSquare,
+    #[display(fmt = "fa-brands fa-fantasy-flight-games")]
+    FantasyFlightGames,
+    #[display(fmt = "fa-brands fa-fedex")]
+    Fedex,
+    #[display(fmt = "fa-brands fa-fedora")]
+    Fedora,
+    #[display(fmt = "fa-brands fa-figma")]
+    Figma,
+    #[display(fmt = "fa-brands fa-firefox")]
+    Firefox,
+    #[display(fmt = "fa-brands fa-firefox-browser")]
+    FirefoxBrowser,
+    #[display(fmt = "fa-brands fa-first-order")]
+    FirstOrder,
+    #[display(fmt = "fa-brands fa-first-order-alt")]
+    FirstOrderAlt,
+    #[display(fmt = "fa-brands fa-firstdraft")]
+    Firstdraft,
+    #[display(fmt = "fa-brands fa-flickr")]
+    Flickr,
+    #[display(fmt = "fa-brands fa-flipboard")]
+    Flipboard,
+    #[display(fmt = "fa-brands fa-fly")]
+    Fly,
+    #[display(fmt = "fa-brands fa-font-awesome")]
+    FontAwesome,
+    #[display(fmt = "fa-brands fa-fonticons")]
+    Fonticons,
+    #[display(fmt = "fa-brands fa-fonticons-fi")]
+    FonticonsFi,
+    #[display(fmt = "fa-brands fa-fort-awesome")]
+    FortAwesome,
+    #[display(fmt = "fa-brands fa-fort-awesome-alt")]
+    FortAwesomeAlt,
+    #[display(fmt = "fa-brands fa-forumbee")]
+    Forumbee,
+    #[display(fmt = "fa-brands fa-foursquare")]
+    Foursquare,
+    #[display(fmt = "fa-brands fa-free-code-camp")]
+    FreeCodeCamp,
+    #[display(fmt = "fa-brands fa-freebsd")]
+    Freebsd,
+    #[display(fmt = "fa-brands fa-fulcrum")]
+    Fulcrum,
+    #[display(fmt = "fa-brands fa-galactic-republic")]
+    GalacticRepublic,
+    #[display(fmt = "fa-brands fa-galactic-senate")]
+    GalacticSenate,
+    #[display(fmt = "fa-brands fa-get-pocket")]
+    GetPocket,
+    #[display(fmt = "fa-brands fa-gg")]
+    Gg,
+    #[display(fmt = "fa-brands fa-gg-circle")]
+    GgCircle,
+    #[display(fmt = "fa-brands fa-git")]
+    Git,
+    #[display(fmt = "fa-brands fa-git-alt")]
+    GitAlt,
+    #[display(fmt = "fa-brands fa-git-square")]
+    GitSquare,
+    #[display(fmt = "fa-brands fa-github")]
+    Github,
+    #[display(fmt = "fa-brands fa-github-alt")]
+    GithubAlt,
+    #[display(fmt = "fa-brands fa-github-square")]
+    GithubSquare,
+    #[display(fmt = "fa-brands fa-gitkraken")]
+    Gitkraken,
+    #[display(fmt = "fa-brands fa-gitlab")]
+    Gitlab,
+    #[display(fmt = "fa-brands fa-gitter")]
+    Gitter,
+    #[display(fmt = "fa-brands fa-glide")]
+    Glide,
+    #[display(fmt = "fa-brands fa-glide-g")]
+    GlideG,
+    #[display(fmt = "fa-brands fa-gofore")]
+    Gofore,
+    #[display(fmt = "fa-brands fa-golang")]
+    Golang,
+    #[display(fmt = "fa-brands fa-goodreads")]
+    Goodreads,
+    #[display(fmt = "fa-brands fa-goodreads-g")]
+    GoodreadsG,
+    #[display(fmt = "fa-brands fa-google")]
+    Google,
+    #[display(fmt = "fa-brands fa-google-drive")]
+    GoogleDrive,
+    #[display(fmt = "fa-brands fa-google-pay")]
+    GooglePay,
+    #[display(fmt = "fa-brands fa-google-play")]
+    GooglePlay,
+    #[display(fmt = "fa-brands fa-google-plus")]
+    GooglePlus,
+    #[display(fmt = "fa-brands fa-google-plus-g")]
+    GooglePlusG,
+    #[display(fmt = "fa-brands fa-google-plus-square")]
+    GooglePlusSquare,
+    #[display(fmt = "fa-brands fa-google-wallet")]
+    GoogleWallet,
+    #[display(fmt = "fa-brands fa-gratipay")]
+    Gratipay,
+    #[display(fmt = "fa-brands fa-grav")]
+    Grav,
+    #[display(fmt = "fa-brands fa-gripfire")]
+    Gripfire,
+    #[display(fmt = "fa-brands fa-grunt")]
+    Grunt,
+    #[display(fmt = "fa-brands fa-guilded")]
+    Guilded,
+    #[display(fmt = "fa-brands fa-gulp")]
+    Gulp,
+    #[display(fmt = "fa-brands fa-hacker-news")]
+    HackerNews,
+    #[display(fmt = "fa-brands fa-hacker-news-square")]
+    HackerNewsSquare,
+    #[display(fmt = "fa-brands fa-hackerrank")]
+    Hackerrank,
+    #[display(fmt = "fa-brands fa-hashnode")]
+    Hashnode,
+    #[display(fmt = "fa-brands fa-hips")]
+    Hips,
+    #[display(fmt = "fa-brands fa-hire-a-helper")]
+    HireAHelper,
+    #[display(fmt = "fa-brands fa-hive")]
+    Hive,
+    #[display(fmt = "fa-brands fa-hooli")]
+    Hooli,
+    #[display(fmt = "fa-brands fa-hornbill")]
+    Hornbill,
+    #[display(fmt = "fa-brands fa-hotjar")]
+    Hotjar,
+    #[display(fmt = "fa-brands fa-houzz")]
+    Houzz,
+    #[display(fmt = "fa-brands fa-html5")]
+    Html5,
+    #[display(fmt = "fa-brands fa-hubspot")]
+    Hubspot,
+    #[display(fmt = "fa-brands fa-ideal")]
+    Ideal,
+    #[display(fmt = "fa-brands fa-imdb")]
+    Imdb,
+    #[display(fmt = "fa-brands fa-instagram")]
+    Instagram,
+    #[display(fmt = "fa-brands fa-instagram-square")]
+    InstagramSquare,
+    #[display(fmt = "fa-brands fa-instalod")]
+    Instalod,
+    #[display(fmt = "fa-brands fa-intercom")]
+    Intercom,
+    #[display(fmt = "fa-brands fa-internet-explorer")]
+    InternetExplorer,
+    #[display(fmt = "fa-brands fa-invision")]
+    Invision,
+    #[display(fmt = "fa-brands fa-ioxhost")]
+    Ioxhost,
+    #[display(fmt = "fa-brands fa-itch-io")]
+    ItchIo,
+    #[display(fmt = "fa-brands fa-itunes")]
+    Itunes,
+    #[display(fmt = "fa-brands fa-itunes-note")]
+    ItunesNote,
+    #[display(fmt = "fa-brands fa-java")]
+    Java,
+    #[display(fmt = "fa-brands fa-jedi-order")]
+    JediOrder,
+    #[display(fmt = "fa-brands fa-jenkins")]
+    Jenkins,
+    #[display(fmt = "fa-brands fa-jira")]
+    Jira,
+    #[display(fmt = "fa-brands fa-joget")]
+    Joget,
+    #[display(fmt = "fa-brands fa-joomla")]
+    Joomla,
+    #[display(fmt = "fa-brands fa-js")]
+    Js,
+    #[display(fmt = "fa-brands fa-js-square")]
+    JsSquare,
+    #[display(fmt = "fa-brands fa-jsfiddle")]
+    Jsfiddle,
+    #[display(fmt = "fa-brands fa-kaggle")]
+    Kaggle,
+    #[display(fmt = "fa-brands fa-keybase")]
+    Keybase,
+    #[display(fmt = "fa-brands fa-keycdn")]
+    Keycdn,
+    #[display(fmt = "fa-brands fa-kickstarter")]
+    Kickstarter,
+    #[display(fmt = "fa-brands fa-kickstarter-k")]
+    KickstarterK,
+    #[display(fmt = "fa-brands fa-korvue")]
+    Korvue,
+    #[display(fmt = "fa-brands fa-laravel")]
+    Laravel,
+    #[display(fmt = "fa-brands fa-lastfm")]
+    Lastfm,
+    #[display(fmt = "fa-brands fa-lastfm-square")]
+    LastfmSquare,
+    #[display(fmt = "fa-brands fa-leanpub")]
+    Leanpub,
+    #[display(fmt = "fa-brands fa-less")]
+    Less,
+    #[display(fmt = "fa-brands fa-line")]
+    Line,
+    #[display(fmt = "fa-brands fa-linkedin")]
+    Linkedin,
+    #[display(fmt = "fa-brands fa-linkedin-in")]
+    LinkedinIn,
+    #[display(fmt = "fa-brands fa-linode")]
+    Linode,
+    #[display(fmt = "fa-brands fa-linux")]
+    Linux,
+    #[display(fmt = "fa-brands fa-lyft")]
+    Lyft,
+    #[display(fmt = "fa-brands fa-magento")]
+    Magento,
+    #[display(fmt = "fa-brands fa-mailchimp")]
+    Mailchimp,
+    #[display(fmt = "fa-brands fa-mandalorian")]
+    Mandalorian,
+    #[display(fmt = "fa-brands fa-markdown")]
+    Markdown,
+    #[display(fmt = "fa-brands fa-mastodon")]
+    Mastodon,
+    #[display(fmt = "fa-brands fa-maxcdn")]
+    Maxcdn,
+    #[display(fmt = "fa-brands fa-mdb")]
+    Mdb,
+    #[display(fmt = "fa-brands fa-medapps")]
+    Medapps,
+    #[display(fmt = "fa-brands fa-medium")]
+    Medium,
+    #[display(fmt = "fa-brands fa-medrt")]
+    Medrt,
+    #[display(fmt = "fa-brands fa-meetup")]
+    Meetup,
+    #[display(fmt = "fa-brands fa-megaport")]
+    Megaport,
+    #[display(fmt = "fa-brands fa-mendeley")]
+    Mendeley,
+    #[display(fmt = "fa-brands fa-microblog")]
+    Microblog,
+    #[display(fmt = "fa-brands fa-microsoft")]
+    Microsoft,
+    #[display(fmt = "fa-brands fa-mix")]
+    Mix,
+    #[display(fmt = "fa-brands fa-mixcloud")]
+    Mixcloud,
+    #[display(fmt = "fa-brands fa-mixer")]
+    Mixer,
+    #[display(fmt = "fa-brands fa-mizuni")]
+    Mizuni,
+    #[display(fmt = "fa-brands fa-modx")]
+    Modx,
+    #[display(fmt = "fa-brands fa-monero")]
+    Monero,
+    #[display(fmt = "fa-brands fa-napster")]
+    Napster,
+    #[display(fmt = "fa-brands fa-neos")]
+    Neos,
+    #[display(fmt = "fa-brands fa-nfc-directional")]
+    NfcDirectional,
+    #[display(fmt = "fa-brands fa-nfc-symbol")]
+    NfcSymbol,
+    #[display(fmt = "fa-brands fa-nimblr")]
+    Nimblr,
+    #[display(fmt = "fa-brands fa-node")]
+    Node,
+    #[display(fmt = "fa-brands fa-node-js")]
+    NodeJs,
+    #[display(fmt = "fa-brands fa-npm")]
+    Npm,
+    #[display(fmt = "fa-brands fa-ns8")]
+    Ns8,
+    #[display(fmt = "fa-brands fa-nutritionix")]
+    Nutritionix,
+    #[display(fmt = "fa-brands fa-octopus-deploy")]
+    OctopusDeploy,
+    #[display(fmt = "fa-brands fa-odnoklassniki")]
+    Odnoklassniki,
+    #[display(fmt = "fa-brands fa-odnoklassniki-square")]
+    OdnoklassnikiSquare,
+    #[display(fmt = "fa-brands fa-old-republic")]
+    OldRepublic,
+    #[display(fmt = "fa-brands fa-opencart")]
+    Opencart,
+    #[display(fmt = "fa-brands fa-openid")]
+    Openid,
+    #[display(fmt = "fa-brands fa-opera")]
+    Opera,
+    #[display(fmt = "fa-brands fa-optin-monster")]
+    OptinMonster,
+    #[display(fmt = "fa-brands fa-orcid")]
+    Orcid,
+    #[display(fmt = "fa-brands fa-osi")]
+    Osi,
+    #[display(fmt = "fa-brands fa-padlet")]
+    Padlet,
+    #[display(fmt = "fa-brands fa-page4")]
+    Page4,
+    #[display(fmt = "fa-brands fa-pagelines")]
+    Pagelines,
+    #[display(fmt = "fa-brands fa-palfed")]
+    Palfed,
+    #[display(fmt = "fa-brands fa-patreon")]
+    Patreon,
+    #[display(fmt = "fa-brands fa-paypal")]
+    Paypal,
+    #[display(fmt = "fa-brands fa-perbyte")]
+    Perbyte,
+    #[display(fmt = "fa-brands fa-periscope")]
+    Periscope,
+    #[display(fmt = "fa-brands fa-phabricator")]
+    Phabricator,
+    #[display(fmt = "fa-brands fa-phoenix-framework")]
+    PhoenixFramework,
+    #[display(fmt = "fa-brands fa-phoenix-squadron")]
+    PhoenixSquadron,
+    #[display(fmt = "fa-brands fa-php")]
+    Php,
+    #[display(fmt = "fa-brands fa-pied-piper")]
+    PiedPiper,
+    #[display(fmt = "fa-brands fa-pied-piper-alt")]
+    PiedPiperAlt,
+    #[display(fmt = "fa-brands fa-pied-piper-hat")]
+    PiedPiperHat,
+    #[display(fmt = "fa-brands fa-pied-piper-pp")]
+    PiedPiperPp,
+    #[display(fmt = "fa-brands fa-pied-piper-square")]
+    PiedPiperSquare,
+    #[display(fmt = "fa-brands fa-pinterest")]
+    Pinterest,
+    #[display(fmt = "fa-brands fa-pinterest-p")]
+    PinterestP,
+    #[display(fmt = "fa-brands fa-pinterest-square")]
+    PinterestSquare,
+    #[display(fmt = "fa-brands fa-pix")]
+    Pix,
+    #[display(fmt = "fa-brands fa-playstation")]
+    Playstation,
+    #[display(fmt = "fa-brands fa-product-hunt")]
+    ProductHunt,
+    #[display(fmt = "fa-brands fa-pushed")]
+    Pushed,
+    #[display(fmt = "fa-brands fa-python")]
+    Python,
+    #[display(fmt = "fa-brands fa-qq")]
+    Qq,
+    #[display(fmt = "fa-brands fa-quinscape")]
+    Quinscape,
+    #[display(fmt = "fa-brands fa-quora")]
+    Quora,
+    #[display(fmt = "fa-brands fa-r-project")]
+    RProject,
+    #[display(fmt = "fa-brands fa-raspberry-pi")]
+    RaspberryPi,
+    #[display(fmt = "fa-brands fa-ravelry")]
+    Ravelry,
+    #[display(fmt = "fa-brands fa-react")]
+    React,
+    #[display(fmt = "fa-brands fa-reacteurope")]
+    Reacteurope,
+    #[display(fmt = "fa-brands fa-readme")]
+    Readme,
+    #[display(fmt = "fa-brands fa-rebel")]
+    Rebel,
+    #[display(fmt = "fa-brands fa-red-river")]
+    RedRiver,
+    #[display(fmt = "fa-brands fa-reddit")]
+    Reddit,
+    #[display(fmt = "fa-brands fa-reddit-alien")]
+    RedditAlien,
+    #[display(fmt = "fa-brands fa-reddit-square")]
+    RedditSquare,
+    #[display(fmt = "fa-brands fa-redhat")]
+    Redhat,
+    #[display(fmt = "fa-brands fa-renren")]
+    Renren,
+    #[display(fmt = "fa-brands fa-replyd")]
+    Replyd,
+    #[display(fmt = "fa-brands fa-researchgate")]
+    Researchgate,
+    #[display(fmt = "fa-brands fa-resolving")]
+    Resolving,
+    #[display(fmt = "fa-brands fa-rev")]
+    Rev,
+    #[display(fmt = "fa-brands fa-rocketchat")]
+    Rocketchat,
+    #[display(fmt = "fa-brands fa-rockrms")]
+    Rockrms,
+    #[display(fmt = "fa-brands fa-rust")]
+    Rust,
+    #[display(fmt = "fa-brands fa-safari")]
+    Safari,
+    #[display(fmt = "fa-brands fa-salesforce")]
+    Salesforce,
+    #[display(fmt = "fa-brands fa-sass")]
+    Sass,
+    #[display(fmt = "fa-brands fa-schlix")]
+    Schlix,
+    #[display(fmt = "fa-brands fa-screenpal")]
+    Screenpal,
+    #[display(fmt = "fa-brands fa-scribd")]
+    Scribd,
+    #[display(fmt = "fa-brands fa-searchengin")]
+    Searchengin,
+    #[display(fmt = "fa-brands fa-sellcast")]
+    Sellcast,
+    #[display(fmt = "fa-brands fa-sellsy")]
+    Sellsy,
+    #[display(fmt = "fa-brands fa-servicestack")]
+    Servicestack,
+    #[display(fmt = "fa-brands fa-shirtsinbulk")]
+    Shirtsinbulk,
+    #[display(fmt = "fa-brands fa-shopify")]
+    Shopify,
+    #[display(fmt = "fa-brands fa-shopware")]
+    Shopware,
+    #[display(fmt = "fa-brands fa-simplybuilt")]
+    Simplybuilt,
+    #[display(fmt = "fa-brands fa-sistrix")]
+    Sistrix,
+    #[display(fmt = "fa-brands fa-sith")]
+    Sith,
+    #[display(fmt = "fa-brands fa-sitrox")]
+    Sitrox,
+    #[display(fmt = "fa-brands fa-sketch")]
+    Sketch,
+    #[display(fmt = "fa-brands fa-skyatlas")]
+    Skyatlas,
+    #[display(fmt = "fa-brands fa-skype")]
+    Skype,
+    #[display(fmt = "fa-brands fa-slack")]
+    Slack,
+    #[display(fmt = "fa-brands fa-slideshare")]
+    Slideshare,
+    #[display(fmt = "fa-brands fa-snapchat")]
+    Snapchat,
+    #[display(fmt = "fa-brands fa-snapchat-square")]
+    SnapchatSquare,
+    #[display(fmt = "fa-brands fa-soundcloud")]
+    Soundcloud,
+    #[display(fmt = "fa-brands fa-sourcetree")]
+    Sourcetree,
+    #[display(fmt = "fa-brands fa-speakap")]
+    Speakap,
+    #[display(fmt = "fa-brands fa-speaker-deck")]
+    SpeakerDeck,
+    #[display(fmt = "fa-brands fa-spotify")]
+    Spotify,
+    #[display(fmt = "fa-brands fa-square-font-awesome")]
+    SquareFontAwesome,
+    #[display(fmt = "fa-brands fa-square-font-awesome-stroke")]
+    SquareFontAwesomeStroke,
+    #[display(fmt = "fa-brands fa-squarespace")]
+    Squarespace,
+    #[display(fmt = "fa-brands fa-stack-exchange")]
+    StackExchange,
+    #[display(fmt = "fa-brands fa-stack-overflow")]
+    StackOverflow,
+    #[display(fmt = "fa-brands fa-stackpath")]
+    Stackpath,
+    #[display(fmt = "fa-brands fa-staylinked")]
+    Staylinked,
+    #[display(fmt = "fa-brands fa-steam")]
+    Steam,
+    #[display(fmt = "fa-brands fa-steam-square")]
+    SteamSquare,
+    #[display(fmt = "fa-brands fa-steam-symbol")]
+    SteamSymbol,
+    #[display(fmt = "fa-brands fa-sticker-mule")]
+    StickerMule,
+    #[display(fmt = "fa-brands fa-strava")]
+    Strava,
+    #[display(fmt = "fa-brands fa-stripe")]
+    Stripe,
+    #[display(fmt = "fa-brands fa-stripe-s")]
+    StripeS,
+    #[display(fmt = "fa-brands fa-studiovinari")]
+    Studiovinari,
+    #[display(fmt = "fa-brands fa-stumbleupon")]
+    Stumbleupon,
+    #[display(fmt = "fa-brands fa-stumbleupon-circle")]
+    StumbleuponCircle,
+    #[display(fmt = "fa-brands fa-superpowers")]
+    Superpowers,
+    #[display(fmt = "fa-brands fa-supple")]
+    Supple,
+    #[display(fmt = "fa-brands fa-suse")]
+    Suse,
+    #[display(fmt = "fa-brands fa-swift")]
+    Swift,
+    #[display(fmt = "fa-brands fa-symfony")]
+    Symfony,
+    #[display(fmt = "fa-brands fa-teamspeak")]
+    Teamspeak,
+    #[display(fmt = "fa-brands fa-telegram")]
+    Telegram,
+    #[display(fmt = "fa-brands fa-tencent-weibo")]
+    TencentWeibo,
+    #[display(fmt = "fa-brands fa-the-red-yeti")]
+    TheRedYeti,
+    #[display(fmt = "fa-brands fa-themeco")]
+    Themeco,
+    #[display(fmt = "fa-brands fa-themeisle")]
+    Themeisle,
+    #[display(fmt = "fa-brands fa-think-peaks")]
+    ThinkPeaks,
+    #[display(fmt = "fa-brands fa-tiktok")]
+    Tiktok,
+    #[display(fmt = "fa-brands fa-trade-federation")]
+    TradeFederation,
+    #[display(fmt = "fa-brands fa-trello")]
+    Trello,
+    #[display(fmt = "fa-brands fa-tumblr")]
+    Tumblr,
+    #[display(fmt = "fa-brands fa-tumblr-square")]
+    TumblrSquare,
+    #[display(fmt = "fa-brands fa-twitch")]
+    Twitch,
+    #[display(fmt = "fa-brands fa-twitter")]
+    Twitter,
+    #[display(fmt = "fa-brands fa-twitter-square")]
+    TwitterSquare,
+    #[display(fmt = "fa-brands fa-typo3")]
+    Typo3,
+    #[display(fmt = "fa-brands fa-uber")]
+    Uber,
+    #[display(fmt = "fa-brands fa-ubuntu")]
+    Ubuntu,
+    #[display(fmt = "fa-brands fa-uikit")]
+    Uikit,
+    #[display(fmt = "fa-brands fa-umbraco")]
+    Umbraco,
+    #[display(fmt = "fa-brands fa-uncharted")]
+    Uncharted,
+    #[display(fmt = "fa-brands fa-uniregistry")]
+    Uniregistry,
+    #[display(fmt = "fa-brands fa-unity")]
+    Unity,
+    #[display(fmt = "fa-brands fa-unsplash")]
+    Unsplash,
+    #[display(fmt = "fa-brands fa-untappd")]
+    Untappd,
+    #[display(fmt = "fa-brands fa-ups")]
+    Ups,
+    #[display(fmt = "fa-brands fa-usb")]
+    Usb,
+    #[display(fmt = "fa-brands fa-usps")]
+    Usps,
+    #[display(fmt = "fa-brands fa-ussunnah")]
+    Ussunnah,
+    #[display(fmt = "fa-brands fa-vaadin")]
+    Vaadin,
+    #[display(fmt = "fa-brands fa-viacoin")]
+    Viacoin,
+    #[display(fmt = "fa-brands fa-viadeo")]
+    Viadeo,
+    #[display(fmt = "fa-brands fa-viadeo-square")]
+    ViadeoSquare,
+    #[display(fmt = "fa-brands fa-viber")]
+    Viber,
+    #[display(fmt = "fa-brands fa-vimeo")]
+    Vimeo,
+    #[display(fmt = "fa-brands fa-vimeo-square")]
+    VimeoSquare,
+    #[display(fmt = "fa-brands fa-vimeo-v")]
+    VimeoV,
+    #[display(fmt = "fa-brands fa-vine")]
+    Vine,
+    #[display(fmt = "fa-brands fa-vk")]
+    Vk,
+    #[display(fmt = "fa-brands fa-vnv")]
+    Vnv,
+    #[display(fmt = "fa-brands fa-vuejs")]
+    Vuejs,
+    #[display(fmt = "fa-brands fa-watchman-monitoring")]
+    WatchmanMonitoring,
+    #[display(fmt = "fa-brands fa-waze")]
+    Waze,
+    #[display(fmt = "fa-brands fa-weebly")]
+    Weebly,
+    #[display(fmt = "fa-brands fa-weibo")]
+    Weibo,
+    #[display(fmt = "fa-brands fa-weixin")]
+    Weixin,
+    #[display(fmt = "fa-brands fa-whatsapp")]
+    Whatsapp,
+    #[display(fmt = "fa-brands fa-whatsapp-square")]
+    WhatsappSquare,
+    #[display(fmt = "fa-brands fa-whmcs")]
+    Whmcs,
+    #[display(fmt = "fa-brands fa-wikipedia-w")]
+    WikipediaW,
+    #[display(fmt = "fa-brands fa-windows")]
+    Windows,
+    #[display(fmt = "fa-brands fa-wirsindhandwerk")]
+    Wirsindhandwerk,
+    #[display(fmt = "fa-brands fa-wix")]
+    Wix,
+    #[display(fmt = "fa-brands fa-wizards-of-the-coast")]
+    WizardsOfTheCoast,
+    #[display(fmt = "fa-brands fa-wodu")]
+    Wodu,
+    #[display(fmt = "fa-brands fa-wolf-pack-battalion")]
+    WolfPackBattalion,
+    #[display(fmt = "fa-brands fa-wordpress")]
+    Wordpress,
+    #[display(fmt = "fa-brands fa-wordpress-simple")]
+    WordpressSimple,
+    #[display(fmt = "fa-brands fa-wpbeginner")]
+    Wpbeginner,
+    #[display(fmt = "fa-brands fa-wpexplorer")]
+    Wpexplorer,
+    #[display(fmt = "fa-brands fa-wpforms")]
+    Wpforms,
+    #[display(fmt = "fa-brands fa-wpressr")]
+    Wpressr,
+    #[display(fmt = "fa-brands fa-xbox")]
+    Xbox,
+    #[display(fmt = "fa-brands fa-xing")]
+    Xing,
+    #[display(fmt = "fa-brands fa-xing-square")]
+    XingSquare,
+    #[display(fmt = "fa-brands fa-y-combinator")]
+    YCombinator,
+    #[display(fmt = "fa-brands fa-yahoo")]
+    Yahoo,
+    #[display(fmt = "fa-brands fa-yammer")]
+    Yammer,
+    #[display(fmt = "fa-brands fa-yandex")]
+    Yandex,
+    #[display(fmt = "fa-brands fa-yandex-international")]
+    YandexInternational,
+    #[display(fmt = "fa-brands fa-yarn")]
+    Yarn,
+    #[display(fmt = "fa-brands fa-yelp")]
+    Yelp,
+    #[display(fmt = "fa-brands fa-yoast")]
     Yoast,
-    #[display(fmt = "fab fa-youtube")]
+    #[display(fmt = "fa-brands fa-youtube")]
     Youtube,
-    #[display(fmt = "fab fa-youtube-square")]
+    #[display(fmt = "fa-brands fa-youtube-square")]
     YoutubeSquare,
-    #[display(fmt = "fab fa-zhihu")]
+    #[display(fmt = "fa-brands fa-zhihu")]
     Zhihu,
 }
 
-impl IntoPropValue<String> for Icons {
+impl yew::html::IntoPropValue<String> for Brands {
+    fn into_prop_value(self) -> String {
+        self.to_string()
+    }
+}
+
+#[derive(Clone, Copy, derive_more::Display)]
+pub enum Regular {
+    #[display(fmt = "fa-regular fa-address-book")]
+    AddressBook,
+    #[display(fmt = "fa-regular fa-address-card")]
+    AddressCard,
+    #[display(fmt = "fa-regular fa-bell")]
+    Bell,
+    #[display(fmt = "fa-regular fa-bell-slash")]
+    BellSlash,
+    #[display(fmt = "fa-regular fa-bookmark")]
+    Bookmark,
+    #[display(fmt = "fa-regular fa-building")]
+    Building,
+    #[display(fmt = "fa-regular fa-calendar")]
+    Calendar,
+    #[display(fmt = "fa-regular fa-calendar-check")]
+    CalendarCheck,
+    #[display(fmt = "fa-regular fa-calendar-days")]
+    CalendarDays,
+    #[display(fmt = "fa-regular fa-calendar-minus")]
+    CalendarMinus,
+    #[display(fmt = "fa-regular fa-calendar-plus")]
+    CalendarPlus,
+    #[display(fmt = "fa-regular fa-calendar-xmark")]
+    CalendarXmark,
+    #[display(fmt = "fa-regular fa-chart-bar")]
+    ChartBar,
+    #[display(fmt = "fa-regular fa-chess-bishop")]
+    ChessBishop,
+    #[display(fmt = "fa-regular fa-chess-king")]
+    ChessKing,
+    #[display(fmt = "fa-regular fa-chess-knight")]
+    ChessKnight,
+    #[display(fmt = "fa-regular fa-chess-pawn")]
+    ChessPawn,
+    #[display(fmt = "fa-regular fa-chess-queen")]
+    ChessQueen,
+    #[display(fmt = "fa-regular fa-chess-rook")]
+    ChessRook,
+    #[display(fmt = "fa-regular fa-circle")]
+    Circle,
+    #[display(fmt = "fa-regular fa-circle-check")]
+    CircleCheck,
+    #[display(fmt = "fa-regular fa-circle-dot")]
+    CircleDot,
+    #[display(fmt = "fa-regular fa-circle-down")]
+    CircleDown,
+    #[display(fmt = "fa-regular fa-circle-left")]
+    CircleLeft,
+    #[display(fmt = "fa-regular fa-circle-pause")]
+    CirclePause,
+    #[display(fmt = "fa-regular fa-circle-play")]
+    CirclePlay,
+    #[display(fmt = "fa-regular fa-circle-question")]
+    CircleQuestion,
+    #[display(fmt = "fa-regular fa-circle-right")]
+    CircleRight,
+    #[display(fmt = "fa-regular fa-circle-stop")]
+    CircleStop,
+    #[display(fmt = "fa-regular fa-circle-up")]
+    CircleUp,
+    #[display(fmt = "fa-regular fa-circle-user")]
+    CircleUser,
+    #[display(fmt = "fa-regular fa-circle-xmark")]
+    CircleXmark,
+    #[display(fmt = "fa-regular fa-clipboard")]
+    Clipboard,
+    #[display(fmt = "fa-regular fa-clock")]
+    Clock,
+    #[display(fmt = "fa-regular fa-clone")]
+    Clone,
+    #[display(fmt = "fa-regular fa-closed-captioning")]
+    ClosedCaptioning,
+    #[display(fmt = "fa-regular fa-comment")]
+    Comment,
+    #[display(fmt = "fa-regular fa-comment-dots")]
+    CommentDots,
+    #[display(fmt = "fa-regular fa-comments")]
+    Comments,
+    #[display(fmt = "fa-regular fa-compass")]
+    Compass,
+    #[display(fmt = "fa-regular fa-copy")]
+    Copy,
+    #[display(fmt = "fa-regular fa-copyright")]
+    Copyright,
+    #[display(fmt = "fa-regular fa-credit-card")]
+    CreditCard,
+    #[display(fmt = "fa-regular fa-envelope")]
+    Envelope,
+    #[display(fmt = "fa-regular fa-envelope-open")]
+    EnvelopeOpen,
+    #[display(fmt = "fa-regular fa-eye")]
+    Eye,
+    #[display(fmt = "fa-regular fa-eye-slash")]
+    EyeSlash,
+    #[display(fmt = "fa-regular fa-face-angry")]
+    FaceAngry,
+    #[display(fmt = "fa-regular fa-face-dizzy")]
+    FaceDizzy,
+    #[display(fmt = "fa-regular fa-face-flushed")]
+    FaceFlushed,
+    #[display(fmt = "fa-regular fa-face-frown")]
+    FaceFrown,
+    #[display(fmt = "fa-regular fa-face-frown-open")]
+    FaceFrownOpen,
+    #[display(fmt = "fa-regular fa-face-grimace")]
+    FaceGrimace,
+    #[display(fmt = "fa-regular fa-face-grin")]
+    FaceGrin,
+    #[display(fmt = "fa-regular fa-face-grin-beam")]
+    FaceGrinBeam,
+    #[display(fmt = "fa-regular fa-face-grin-beam-sweat")]
+    FaceGrinBeamSweat,
+    #[display(fmt = "fa-regular fa-face-grin-hearts")]
+    FaceGrinHearts,
+    #[display(fmt = "fa-regular fa-face-grin-squint")]
+    FaceGrinSquint,
+    #[display(fmt = "fa-regular fa-face-grin-squint-tears")]
+    FaceGrinSquintTears,
+    #[display(fmt = "fa-regular fa-face-grin-stars")]
+    FaceGrinStars,
+    #[display(fmt = "fa-regular fa-face-grin-tears")]
+    FaceGrinTears,
+    #[display(fmt = "fa-regular fa-face-grin-tongue")]
+    FaceGrinTongue,
+    #[display(fmt = "fa-regular fa-face-grin-tongue-squint")]
+    FaceGrinTongueSquint,
+    #[display(fmt = "fa-regular fa-face-grin-tongue-wink")]
+    FaceGrinTongueWink,
+    #[display(fmt = "fa-regular fa-face-grin-wide")]
+    FaceGrinWide,
+    #[display(fmt = "fa-regular fa-face-grin-wink")]
+    FaceGrinWink,
+    #[display(fmt = "fa-regular fa-face-kiss")]
+    FaceKiss,
+    #[display(fmt = "fa-regular fa-face-kiss-beam")]
+    FaceKissBeam,
+    #[display(fmt = "fa-regular fa-face-kiss-wink-heart")]
+    FaceKissWinkHeart,
+    #[display(fmt = "fa-regular fa-face-laugh")]
+    FaceLaugh,
+    #[display(fmt = "fa-regular fa-face-laugh-beam")]
+    FaceLaughBeam,
+    #[display(fmt = "fa-regular fa-face-laugh-squint")]
+    FaceLaughSquint,
+    #[display(fmt = "fa-regular fa-face-laugh-wink")]
+    FaceLaughWink,
+    #[display(fmt = "fa-regular fa-face-meh")]
+    FaceMeh,
+    #[display(fmt = "fa-regular fa-face-meh-blank")]
+    FaceMehBlank,
+    #[display(fmt = "fa-regular fa-face-rolling-eyes")]
+    FaceRollingEyes,
+    #[display(fmt = "fa-regular fa-face-sad-cry")]
+    FaceSadCry,
+    #[display(fmt = "fa-regular fa-face-sad-tear")]
+    FaceSadTear,
+    #[display(fmt = "fa-regular fa-face-smile")]
+    FaceSmile,
+    #[display(fmt = "fa-regular fa-face-smile-beam")]
+    FaceSmileBeam,
+    #[display(fmt = "fa-regular fa-face-smile-wink")]
+    FaceSmileWink,
+    #[display(fmt = "fa-regular fa-face-surprise")]
+    FaceSurprise,
+    #[display(fmt = "fa-regular fa-face-tired")]
+    FaceTired,
+    #[display(fmt = "fa-regular fa-file")]
+    File,
+    #[display(fmt = "fa-regular fa-file-audio")]
+    FileAudio,
+    #[display(fmt = "fa-regular fa-file-code")]
+    FileCode,
+    #[display(fmt = "fa-regular fa-file-excel")]
+    FileExcel,
+    #[display(fmt = "fa-regular fa-file-image")]
+    FileImage,
+    #[display(fmt = "fa-regular fa-file-lines")]
+    FileLines,
+    #[display(fmt = "fa-regular fa-file-pdf")]
+    FilePdf,
+    #[display(fmt = "fa-regular fa-file-powerpoint")]
+    FilePowerpoint,
+    #[display(fmt = "fa-regular fa-file-video")]
+    FileVideo,
+    #[display(fmt = "fa-regular fa-file-word")]
+    FileWord,
+    #[display(fmt = "fa-regular fa-file-zipper")]
+    FileZipper,
+    #[display(fmt = "fa-regular fa-flag")]
+    Flag,
+    #[display(fmt = "fa-regular fa-floppy-disk")]
+    FloppyDisk,
+    #[display(fmt = "fa-regular fa-folder")]
+    Folder,
+    #[display(fmt = "fa-regular fa-folder-closed")]
+    FolderClosed,
+    #[display(fmt = "fa-regular fa-folder-open")]
+    FolderOpen,
+    #[display(fmt = "fa-regular fa-font-awesome")]
+    FontAwesome,
+    #[display(fmt = "fa-regular fa-futbol")]
+    Futbol,
+    #[display(fmt = "fa-regular fa-gem")]
+    Gem,
+    #[display(fmt = "fa-regular fa-hand")]
+    Hand,
+    #[display(fmt = "fa-regular fa-hand-back-fist")]
+    HandBackFist,
+    #[display(fmt = "fa-regular fa-hand-lizard")]
+    HandLizard,
+    #[display(fmt = "fa-regular fa-hand-peace")]
+    HandPeace,
+    #[display(fmt = "fa-regular fa-hand-point-down")]
+    HandPointDown,
+    #[display(fmt = "fa-regular fa-hand-point-left")]
+    HandPointLeft,
+    #[display(fmt = "fa-regular fa-hand-point-right")]
+    HandPointRight,
+    #[display(fmt = "fa-regular fa-hand-point-up")]
+    HandPointUp,
+    #[display(fmt = "fa-regular fa-hand-pointer")]
+    HandPointer,
+    #[display(fmt = "fa-regular fa-hand-scissors")]
+    HandScissors,
+    #[display(fmt = "fa-regular fa-hand-spock")]
+    HandSpock,
+    #[display(fmt = "fa-regular fa-handshake")]
+    Handshake,
+    #[display(fmt = "fa-regular fa-hard-drive")]
+    HardDrive,
+    #[display(fmt = "fa-regular fa-heart")]
+    Heart,
+    #[display(fmt = "fa-regular fa-hospital")]
+    Hospital,
+    #[display(fmt = "fa-regular fa-hourglass")]
+    Hourglass,
+    #[display(fmt = "fa-regular fa-id-badge")]
+    IdBadge,
+    #[display(fmt = "fa-regular fa-id-card")]
+    IdCard,
+    #[display(fmt = "fa-regular fa-image")]
+    Image,
+    #[display(fmt = "fa-regular fa-images")]
+    Images,
+    #[display(fmt = "fa-regular fa-keyboard")]
+    Keyboard,
+    #[display(fmt = "fa-regular fa-lemon")]
+    Lemon,
+    #[display(fmt = "fa-regular fa-life-ring")]
+    LifeRing,
+    #[display(fmt = "fa-regular fa-lightbulb")]
+    Lightbulb,
+    #[display(fmt = "fa-regular fa-map")]
+    Map,
+    #[display(fmt = "fa-regular fa-message")]
+    Message,
+    #[display(fmt = "fa-regular fa-money-bill-1")]
+    MoneyBill1,
+    #[display(fmt = "fa-regular fa-moon")]
+    Moon,
+    #[display(fmt = "fa-regular fa-newspaper")]
+    Newspaper,
+    #[display(fmt = "fa-regular fa-note-sticky")]
+    NoteSticky,
+    #[display(fmt = "fa-regular fa-object-group")]
+    ObjectGroup,
+    #[display(fmt = "fa-regular fa-object-ungroup")]
+    ObjectUngroup,
+    #[display(fmt = "fa-regular fa-paper-plane")]
+    PaperPlane,
+    #[display(fmt = "fa-regular fa-paste")]
+    Paste,
+    #[display(fmt = "fa-regular fa-pen-to-square")]
+    PenToSquare,
+    #[display(fmt = "fa-regular fa-rectangle-list")]
+    RectangleList,
+    #[display(fmt = "fa-regular fa-rectangle-xmark")]
+    RectangleXmark,
+    #[display(fmt = "fa-regular fa-registered")]
+    Registered,
+    #[display(fmt = "fa-regular fa-share-from-square")]
+    ShareFromSquare,
+    #[display(fmt = "fa-regular fa-snowflake")]
+    Snowflake,
+    #[display(fmt = "fa-regular fa-square")]
+    Square,
+    #[display(fmt = "fa-regular fa-square-caret-down")]
+    SquareCaretDown,
+    #[display(fmt = "fa-regular fa-square-caret-left")]
+    SquareCaretLeft,
+    #[display(fmt = "fa-regular fa-square-caret-right")]
+    SquareCaretRight,
+    #[display(fmt = "fa-regular fa-square-caret-up")]
+    SquareCaretUp,
+    #[display(fmt = "fa-regular fa-square-check")]
+    SquareCheck,
+    #[display(fmt = "fa-regular fa-square-full")]
+    SquareFull,
+    #[display(fmt = "fa-regular fa-square-minus")]
+    SquareMinus,
+    #[display(fmt = "fa-regular fa-square-plus")]
+    SquarePlus,
+    #[display(fmt = "fa-regular fa-star")]
+    Star,
+    #[display(fmt = "fa-regular fa-star-half")]
+    StarHalf,
+    #[display(fmt = "fa-regular fa-star-half-stroke")]
+    StarHalfStroke,
+    #[display(fmt = "fa-regular fa-sun")]
+    Sun,
+    #[display(fmt = "fa-regular fa-thumbs-down")]
+    ThumbsDown,
+    #[display(fmt = "fa-regular fa-thumbs-up")]
+    ThumbsUp,
+    #[display(fmt = "fa-regular fa-trash-can")]
+    TrashCan,
+    #[display(fmt = "fa-regular fa-user")]
+    User,
+    #[display(fmt = "fa-regular fa-window-maximize")]
+    WindowMaximize,
+    #[display(fmt = "fa-regular fa-window-minimize")]
+    WindowMinimize,
+    #[display(fmt = "fa-regular fa-window-restore")]
+    WindowRestore,
+}
+
+impl yew::html::IntoPropValue<String> for Regular {
     fn into_prop_value(self) -> String {
         self.to_string()
     }

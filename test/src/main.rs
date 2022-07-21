@@ -3,17 +3,19 @@ use strum::EnumIter;
 use yew::prelude::*;
 
 use cobul::*;
-use form_test::FormTester;
-use slider_test::SliderTester;
-use switch_test::SwitchTester;
-use dropdown_test::DropdownTester;
-use tabs_tester::TabsTester;
+use dropdown::DropdownTester;
+use form::FormTester;
+use loader::LoaderTester;
+use slider::SliderTester;
+use switch::SwitchTester;
+use tabs::TabsTester;
 
-mod form_test;
-mod slider_test;
-mod switch_test;
-mod tabs_tester;
-mod dropdown_test;
+mod dropdown;
+mod form;
+mod loader;
+mod slider;
+mod switch;
+mod tabs;
 
 #[derive(Display, Clone, Copy, EnumIter, PartialEq)]
 pub enum SelectEnum {
@@ -57,6 +59,7 @@ fn app() -> Html {
         // <SliderTester/>
         // <SwitchTester/>
         <TabsTester/>
+        <LoaderTester/>
         // <DropdownTester/>
 
         <Block>
@@ -141,7 +144,7 @@ fn app() -> Html {
         </Block>
 
         <Block>
-        <Icon icon={Icons::Plus}/>
+        <Icon icon={Solid::Plus}/>
         </Block>
 
         <Block>

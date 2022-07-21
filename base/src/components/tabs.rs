@@ -1,6 +1,6 @@
 use yew::prelude::*;
 
-use crate::props::{Alignment, Boxed, Fullwidth, Rounded, Size, Toggle, ToggleRounded};
+use crate::props::{Alignment, Boxed, Fullwidth, Size, Toggle, ToggleRounded};
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {

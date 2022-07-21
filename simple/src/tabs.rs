@@ -2,7 +2,7 @@ use strum::IntoEnumIterator;
 use yew::prelude::*;
 
 use base::components;
-use base::props::{Alignment, Color, Size};
+use base::props::{Alignment, Size};
 
 #[derive(Clone, Properties, PartialEq)]
 pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static> {
@@ -37,8 +37,8 @@ pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static> {
 
 #[function_component(Tabs)]
 pub fn tabs<T>(props: &Props<T>) -> Html
-    where
-        T: IntoEnumIterator + ToString + Copy + PartialEq + 'static,
+where
+    T: IntoEnumIterator + ToString + Copy + PartialEq + 'static,
 {
     let tab_map = |variant: T| {
         let class = (&props.value == &variant).then(|| "is-active");
@@ -51,7 +51,17 @@ pub fn tabs<T>(props: &Props<T>) -> Html
         }
     };
 
-    let Props { class, alignment, size, boxed, toggle, rounded, fullwidth, style, .. } = props.clone();
+    let Props {
+        class,
+        alignment,
+        size,
+        boxed,
+        toggle,
+        rounded,
+        fullwidth,
+        style,
+        ..
+    } = props.clone();
 
     html! {
         <components::Tabs {class} {alignment} {size} {boxed} {toggle} {rounded} {fullwidth} {style}>
