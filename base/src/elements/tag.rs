@@ -25,8 +25,7 @@ pub struct Props {
     pub tag: String,
 
     #[prop_or_default]
-    pub onclick: Option<Callback<()>>,
-    // TODO: how to incorporate this? Use this onclick as the ondelete?
+    pub onclick: Callback<()>,
 
     #[prop_or_default]
     pub rounded: Rounded,
@@ -51,8 +50,9 @@ pub fn tag(props: &Props) -> Html {
         props.delete
     );
 
+    let onclick = props.onclick.reform(|_| ());
     html! {
-        <@{ props.tag.clone() } style={props.style.clone()} class={classes}>
+        <@{ props.tag.clone() } style={props.style.clone()} class={classes} {onclick}>
             { for props.children.iter() }
         </@>
     }
