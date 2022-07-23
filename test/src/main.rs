@@ -2,6 +2,7 @@ use derive_more::Display;
 use strum::EnumIter;
 use yew::prelude::*;
 
+use checkradio::CheckradioTester;
 use cobul::*;
 use dropdown::DropdownTester;
 use form::FormTester;
@@ -11,6 +12,7 @@ use switch::SwitchTester;
 use tabs::TabsTester;
 use tooltip::TooltipTester;
 
+mod checkradio;
 mod dropdown;
 mod form;
 mod loader;
@@ -63,6 +65,7 @@ fn app() -> Html {
         <TabsTester/>
         <LoaderTester/>
         <TooltipTester/>
+        <CheckradioTester/>
         // <DropdownTester/>
 
         <Block>

@@ -90,7 +90,7 @@ pub fn form_tester() -> Html {
     html! {
         <Box>
             <SignupForm {signup}/>
-            <Checkbox name={"checkbox"} {checked} {onchange} />
+            <Checkbox id="cmy0" label="checkbox" {checked} {onchange} />
         </Box>
     }
 }
