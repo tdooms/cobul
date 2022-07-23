@@ -1,4 +1,5 @@
 use std::collections::HashMap;
+use std::rc::Rc;
 
 use validator::Validate;
 use yew::{hook, use_effect_with_deps, use_state_eq, Callback, UseStateHandle};
@@ -7,13 +8,13 @@ use crate::actions::Actions;
 use crate::errors::{use_errors, UseErrorHandle};
 
 #[derive(Clone, PartialEq)]
-pub struct UseFormHandle<T: Clone + Validate> {
-    state: UseStateHandle<T>,
+pub struct UseFormHandle<T: Validate + Clone> {
+    state: UseStateHandle<Rc<T>>,
     actions: Actions<T>,
     errors: UseErrorHandle,
 }
 
-impl<T: Clone + Validate + 'static> UseFormHandle<T> {
+impl<T: Validate + Clone + 'static> UseFormHandle<T> {
     pub fn submit(&self) -> Callback<()> {
         let state = self.state.clone();
         self.actions
@@ -52,12 +53,12 @@ impl<T: Clone + Validate + 'static> UseFormHandle<T> {
         } = self.clone();
 
         Callback::from(move |value| {
-            let mut cloned = (*state).clone();
-            *extract(&mut cloned) = value;
-            if let Some(cb) = onchange.clone() {
-                cb.emit(cloned.clone())
-            }
-            state.set(cloned);
+            let mut inner = (**state).clone();
+            *extract(&mut inner) = value;
+            let new = Rc::new(inner);
+
+            state.set(new.clone());
+            onchange.clone().map(|cb| cb.emit(new));
         })
     }
 
@@ -75,12 +76,13 @@ impl<T: Clone + Validate + 'static> UseFormHandle<T> {
 
         Callback::from(move |result| match result {
             Ok(value) => {
-                let mut cloned = (*state).clone();
-                *extract(&mut cloned) = value;
-                if let Some(cb) = onchange.clone() {
-                    cb.emit(cloned.clone())
-                }
-                state.set(cloned);
+                let mut inner = (**state).clone();
+                *extract(&mut inner) = value;
+                let new = Rc::new(inner);
+
+                onchange.clone().map(|cb| cb.emit(new.clone()));
+                state.set(new);
+
                 errors.set(field.clone(), None);
             }
             Err(err) => errors.set(field.clone(), Some(explain(err))),
@@ -89,9 +91,9 @@ impl<T: Clone + Validate + 'static> UseFormHandle<T> {
 }
 
 #[hook]
-pub fn use_form<T>(value: &T, actions: Actions<T>) -> (UseFormHandle<T>, T)
+pub fn use_form<T>(value: Rc<T>, actions: Actions<T>) -> UseFormHandle<T>
 where
-    T: Clone + Validate + PartialEq + 'static,
+    T: Validate + PartialEq + Clone + 'static,
 {
     let cloned = value.clone();
     let state = use_state_eq(move || cloned);
@@ -105,8 +107,7 @@ where
         value.clone(),
     );
 
-    let cloned = (*state).clone();
-    let errors = use_errors(&cloned);
+    let errors = use_errors(state.as_ref());
 
     let handle = UseFormHandle {
         state,
@@ -114,5 +115,5 @@ where
         actions,
     };
 
-    (handle, cloned)
+    handle
 }

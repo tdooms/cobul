@@ -1,3 +1,4 @@
+use std::rc::Rc;
 use validator::Validate;
 use yew::*;
 
@@ -20,18 +21,18 @@ pub struct Signup {
 
 #[derive(Properties, PartialEq)]
 pub struct Props {
-    signup: Signup,
+    signup: Rc<Signup>,
 }
 
 #[function_component(SignupForm)]
 pub fn signup(props: &Props) -> Html {
-    let (form, signup) = use_form(&props.signup, Actions::new());
+    let form = use_form(props.signup.clone(), Actions::new());
     let Signup {
         mail,
         site,
         username,
         age,
-    } = signup;
+    } = (*props.signup).clone();
 
     html! {
         <>
@@ -83,7 +84,7 @@ pub fn form_tester() -> Html {
         age: 20,
     };
 
-    let signup = if checked { signup1 } else { signup2 };
+    let signup = Rc::new(if checked { signup1 } else { signup2 });
     let onchange = Callback::from(move |b| state.set(b));
 
     html! {
