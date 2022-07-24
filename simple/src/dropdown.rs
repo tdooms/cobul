@@ -39,7 +39,7 @@ where
     let trigger = html! {
         <elements::Button size={size.clone()}>
             <span> {value.to_string()} </span>
-            <elements::Icon icon="fas fa-angle-down"/>
+            <elements::Icon icon={fa::Solid::AngleDown}/>
         </elements::Button>
     };
 

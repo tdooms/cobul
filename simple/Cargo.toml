@@ -7,6 +7,8 @@ edition = "2021"
 
 [dependencies]
 base = { path = "../base" }
+fa = { path = "../fa" }
+
 yew = { git = "https://github.com/yewstack/yew.git", rev = "421b4e1f608e6d648dcf571157b081fcbd886996" }
 strum = { version = "0.24", features = ["derive"] }
 ywt = { git = "https://github.com/tdooms/ywt.git"}
