@@ -66,7 +66,7 @@ fn app() -> Html {
         <LoaderTester/>
         <TooltipTester/>
         <CheckradioTester/>
-        // <DropdownTester/>
+        <DropdownTester/>
 
         <Block>
             {"This text is within a "} <strong>{"block"}</strong>{"."}

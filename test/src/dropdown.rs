@@ -1,8 +1,9 @@
-use yew::*;
 use cobul::*;
+use yew::*;
 
-#[derive(Debug, Clone, PartialEq, Copy, strum::EnumIter, derive_more::Display)]
+#[derive(Debug, Clone, PartialEq, Copy, Default, strum::EnumIter, derive_more::Display)]
 pub enum TestEnum {
+    #[default]
     #[display(fmt = "Option 1")]
     Option1,
     #[display(fmt = "Option 2")]

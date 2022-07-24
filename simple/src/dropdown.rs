@@ -3,12 +3,8 @@ use yew::prelude::*;
 
 use base::components;
 use base::elements;
-use base::props::{Color, Size};
-
-pub enum DropdownElement {
-    Item(String),
-    Divider,
-}
+use base::props::Size;
+use ywt::callback;
 
 // TODO: deselect when not in focus
 #[derive(Clone, Debug, Properties, PartialEq)]
@@ -22,6 +18,9 @@ pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static> {
 
     #[prop_or_default]
     pub size: Size,
+
+    #[prop_or_default]
+    pub style: Option<String>,
 }
 
 #[function_component(Dropdown)]
@@ -29,28 +28,22 @@ pub fn dropdown<T>(props: &Props<T>) -> Html
 where
     T: IntoEnumIterator + ToString + Copy + PartialEq + 'static,
 {
-    let active = use_state(|| false);
-
     let Props {
         class,
         value,
         onchange,
         size,
+        ..
     } = &props;
 
-    let trigger = {
-        let active = active.clone();
-        let onclick = Callback::from(move |_| active.set(!(*active)));
-
-        html! {
-            <elements::Button {onclick} size={size.clone()}>
-                <span> {value.to_string()} </span>
-                <elements::Icon icon="fas fa-angle-down"/>
-            </elements::Button>
-        }
+    let trigger = html! {
+        <elements::Button size={size.clone()}>
+            <span> {value.to_string()} </span>
+            <elements::Icon icon="fas fa-angle-down"/>
+        </elements::Button>
     };
 
-    let dropdown_map = |variant: T| {
+    let view_option = |variant: T| {
         let active = &variant == value;
         let onclick = onchange.reform(move |_| variant);
 
@@ -61,9 +54,13 @@ where
         }
     };
 
+    let active = use_state(|| false);
+    let onfocus = callback!(active; move |focussed| active.set(focussed));
+
+    let style = props.style.clone();
     html! {
-        <components::Dropdown {trigger} active={*active}>
-            { for T::iter().map(dropdown_map) }
+        <components::Dropdown {style} {trigger} active={*active} class={class.clone()} {onfocus}>
+            { for T::iter().map(view_option) }
         </components::Dropdown>
     }
 }
