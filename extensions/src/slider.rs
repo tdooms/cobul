@@ -114,7 +114,7 @@ where
     let style = props.tooltip.then(|| format!("left:{offset}px"));
 
     html! {
-        <div style="position:relative" ref={container} class="pt-2 m-2">
+        <div style="position:relative" ref={container} class="pt-2">
         <input id={props.id} {class} step={props.step.to_string()} min={props.range.start.to_string()} max={props.range.end.to_string()}
                 disabled={props.disabled} orient={props.vertical.then(|| "vertical")} {onchange} {oninput} type="range" value={props.value.to_string()}/>
         <output {style} for={props.id} ref={label}> {formatted} </output>

@@ -28,27 +28,19 @@ pub fn dropdown<T>(props: &Props<T>) -> Html
 where
     T: IntoEnumIterator + ToString + Copy + PartialEq + 'static,
 {
-    let Props {
-        class,
-        value,
-        onchange,
-        size,
-        ..
-    } = &props;
-
     let trigger = html! {
-        <elements::Button size={size.clone()}>
-            <span> {value.to_string()} </span>
+        <elements::Button size={props.size} fullwidth=true>
+            <span> {props.value.to_string()} </span>
             <elements::Icon icon={fa::Solid::AngleDown}/>
         </elements::Button>
     };
 
     let view_option = |variant: T| {
-        let active = &variant == value;
-        let onclick = onchange.reform(move |_| variant);
+        let active = &variant == &props.value;
+        let onclick = props.onchange.reform(move |_| variant);
 
         html! {
-            <components::DropdownItem class={classes!(*size)} {onclick} {active}>
+            <components::DropdownItem class={classes!(props.size)} {onclick} {active}>
                 {variant.to_string()}
             </components::DropdownItem>
         }
@@ -58,8 +50,10 @@ where
     let onfocus = callback!(active; move |focussed| active.set(focussed));
 
     let style = props.style.clone();
+    let class = props.class.clone();
+
     html! {
-        <components::Dropdown {style} {trigger} active={*active} class={class.clone()} {onfocus}>
+        <components::Dropdown {style} {trigger} active={*active} {class} {onfocus}>
             { for T::iter().map(view_option) }
         </components::Dropdown>
     }

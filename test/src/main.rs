@@ -60,7 +60,7 @@ fn app() -> Html {
         <Column offset={ColumnOffset::Is2} size={ColumnSize::Is6}>
 
         // <FormTester/>
-        // <SliderTester/>
+        <SliderTester/>
         // <SwitchTester/>
         <TabsTester/>
         <LoaderTester/>

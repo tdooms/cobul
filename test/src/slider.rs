@@ -1,4 +1,4 @@
-use cobul::{Slider, Box};
+use cobul::{Box, Slider};
 use yew::*;
 
 #[function_component(SliderTester)]
@@ -10,7 +10,7 @@ pub fn slider_tester() -> Html {
     let floats = html! {
         <>
         <Slider<f32> id="1" oninput={oninput.clone()} range={0.0..100.0} value={*value} step=1.0 fullwidth=true label=true fmt="{}%"/>
-        <Slider<f32> id="2" oninput={oninput.clone()} range={0.0..50.0} value={*value} step=1.0 fullwidth=true tooltip=true label=true/>
+        <Slider<f32> id="2" oninput={oninput.clone()} range={0.0..50.0} value={*value} step=1.0 fullwidth=true tooltip=true/>
         <p> {value.to_string()} </p>
         </>
     };
