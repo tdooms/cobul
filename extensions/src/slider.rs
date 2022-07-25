@@ -52,6 +52,9 @@ pub struct Props<T: PartialEq> {
 
     #[prop_or_default]
     pub label: bool,
+
+    #[prop_or(3.0)]
+    pub labelwidth: f64,
 }
 
 /// [https://wikiki.github.io/form/slider/](https://wikiki.github.io/form/slider/)
@@ -111,13 +114,25 @@ where
     );
 
     let offset = *width as f64 * ((value - start) / (end - start)).clamp(0.0, 1.0);
-    let style = props.tooltip.then(|| format!("left:{offset}px"));
+
+    let output_style = match props.tooltip {
+        true => format!(
+            "z-index:-100px;left:{offset}px;width:{}rem",
+            props.labelwidth
+        ),
+        false => format!("z-index:-100px;width:{}rem", props.labelwidth),
+    };
+
+    let input_style = match props.tooltip {
+        false => format!("width:calc(100% - ({}rem))", props.labelwidth + 1.2),
+        true => "width:100%".to_owned(),
+    };
 
     html! {
         <div style="position:relative" ref={container} class="pt-2">
-        <input id={props.id} {class} step={props.step.to_string()} min={props.range.start.to_string()} max={props.range.end.to_string()}
+        <input style={input_style} id={props.id} {class} step={props.step.to_string()} min={props.range.start.to_string()} max={props.range.end.to_string()}
                 disabled={props.disabled} orient={props.vertical.then(|| "vertical")} {onchange} {oninput} type="range" value={props.value.to_string()}/>
-        <output {style} for={props.id} ref={label}> {formatted} </output>
+        <output style={output_style} for={props.id} ref={label}> {formatted} </output>
         </div>
     }
 }
