@@ -20,6 +20,9 @@ pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static> {
     pub size: Size,
 
     #[prop_or_default]
+    pub fullwidth: bool,
+
+    #[prop_or_default]
     pub style: Option<String>,
 }
 
@@ -29,7 +32,7 @@ where
     T: IntoEnumIterator + ToString + Copy + PartialEq + 'static,
 {
     let trigger = html! {
-        <elements::Button size={props.size} fullwidth=true>
+        <elements::Button size={props.size} fullwidth=true class="is-flex is-justify-content-space-between">
             <span> {props.value.to_string()} </span>
             <elements::Icon icon={fa::Solid::AngleDown}/>
         </elements::Button>
@@ -50,10 +53,11 @@ where
     let onfocus = callback!(active; move |focussed| active.set(focussed));
 
     let style = props.style.clone();
-    let class = props.class.clone();
+    let class = classes!(props.class.clone(), props.size);
+    let fullwidth = props.fullwidth;
 
     html! {
-        <components::Dropdown {style} {trigger} active={*active} {class} {onfocus}>
+        <components::Dropdown {style} {trigger} active={*active} {class} {onfocus} {fullwidth}>
             { for T::iter().map(view_option) }
         </components::Dropdown>
     }

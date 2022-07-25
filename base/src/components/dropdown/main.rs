@@ -1,4 +1,4 @@
-use crate::props::{Active, Hoverable, Right, Up};
+use crate::props::{Active, Fullwidth, Hoverable, Right, Up};
 use yew::prelude::*;
 
 #[derive(Clone, Debug, Properties, PartialEq)]
@@ -27,6 +27,9 @@ pub struct Props {
     pub active: Active,
 
     #[prop_or_default]
+    pub fullwidth: bool,
+
+    #[prop_or_default]
     pub style: Option<String>,
 }
 
@@ -39,20 +42,22 @@ pub fn dropdown(props: &Props) -> Html {
         props.hoverable,
         props.active,
         props.up,
-        props.right
+        props.right,
+        props.fullwidth.then(|| "is-flex"),
     );
 
     let onfocus = props.onfocus.reform(|_| true);
     let onblur = props.onfocus.reform(|_| false);
     let onmousedown = Callback::from(|e: MouseEvent| e.prevent_default());
 
-    let style = props.style.clone();
+    let style = props.fullwidth.then(|| "width:100%");
+
     html! {
-        <div {style} {class} onclick={onfocus.clone()} {onblur}>
-            <div class="dropdown-trigger is-clickable">
+        <div style={props.style.clone()} {class} onclick={onfocus.clone()} {onblur}>
+            <div class="dropdown-trigger is-clickable" style={style.clone()}>
                 { props.trigger.clone() }
             </div>
-            <div class="dropdown-menu" role="menu">
+            <div class="dropdown-menu" role="menu" {style}>
                 <div class="dropdown-content" {onmousedown}>
                     { for props.children.iter() }
                 </div>

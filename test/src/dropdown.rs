@@ -21,7 +21,12 @@ pub fn dropdown_tester() -> Html {
 
     html! {
         <Box>
-        <simple::Dropdown<TestEnum> {value} {onchange}/>
+        <simple::Dropdown<TestEnum> value={value.clone()} onchange={onchange.clone()}/>
+
+        <Columns>
+        <Column><simple::Dropdown<TestEnum> {value} {onchange} fullwidth=true/></Column>
+        <Column size={ColumnSize::Is7} />
+        </Columns>
         </Box>
     }
 }
