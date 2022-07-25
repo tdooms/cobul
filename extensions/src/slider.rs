@@ -120,7 +120,7 @@ where
             "z-index:-100px;left:{offset}px;width:{}rem",
             props.labelwidth
         ),
-        false => format!("z-index:-100px;width:{}rem", props.labelwidth),
+        false => format!("z-index:-100;width:{}rem", props.labelwidth),
     };
 
     let input_style = match props.tooltip {
