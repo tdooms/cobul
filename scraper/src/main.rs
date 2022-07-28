@@ -29,10 +29,14 @@ fn export_kind(out: &mut impl Write, icons: &[(String, Icon)], kind: &String) ->
     ))?;
     out.write(b"\tfn into_prop_value(self) -> String { self.to_string() }\n")?;
     out.write(b"}\n\n")?;
+
+    out.write_fmt(format_args!("impl Icon for {} {{ }}\n\n", ident))?;
     Ok(())
 }
 
 fn export_all(out: &mut impl Write, icons: &[(String, Icon)]) -> Result<(), Error> {
+    out.write(b"pub trait Icon: yew::html::IntoPropValue<String> {} \n\n")?;
+
     for kind in ["solid", "brands", "regular"].map(ToString::to_string) {
         export_kind(out, icons, &kind)?;
     }

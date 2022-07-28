@@ -150,7 +150,7 @@ fn app() -> Html {
         </Block>
 
         <Block>
-        <Icon icon={Solid::Plus}/>
+        <Icon icon={fa::Solid::Plus}/>
         </Block>
 
         <Block>

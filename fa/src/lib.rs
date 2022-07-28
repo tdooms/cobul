@@ -1,3 +1,5 @@
+pub trait Icon: yew::html::IntoPropValue<String> {}
+
 #[derive(Clone, Copy, derive_more::Display)]
 pub enum Solid {
     #[display(fmt = "fa-solid fa-a")]
@@ -2758,6 +2760,7 @@ impl yew::html::IntoPropValue<String> for Solid {
     }
 }
 
+impl Icon for Solid {}
 #[derive(Clone, Copy, derive_more::Display)]
 pub enum Brands {
     #[display(fmt = "fa-brands fa-accessible-icon")]
@@ -3688,6 +3691,7 @@ impl yew::html::IntoPropValue<String> for Brands {
     }
 }
 
+impl Icon for Brands {}
 #[derive(Clone, Copy, derive_more::Display)]
 pub enum Regular {
     #[display(fmt = "fa-regular fa-address-book")]
@@ -4021,3 +4025,5 @@ impl yew::html::IntoPropValue<String> for Regular {
         self.to_string()
     }
 }
+
+impl Icon for Regular {}
