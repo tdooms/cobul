@@ -1,4 +1,4 @@
-use crate::props::{Active, Fullwidth, Hoverable, Right, Up};
+use crate::props::{Active, Hoverable, Right, Up};
 use yew::prelude::*;
 
 #[derive(Clone, Debug, Properties, PartialEq)]

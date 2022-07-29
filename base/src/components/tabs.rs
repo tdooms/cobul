@@ -42,7 +42,8 @@ pub fn tabs(props: &Props) -> Html {
         props.boxed,
         props.toggle,
         props.rounded,
-        props.fullwidth
+        props.fullwidth,
+        props.alignment
     );
 
     html! {
