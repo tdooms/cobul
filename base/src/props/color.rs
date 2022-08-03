@@ -59,6 +59,8 @@ pub enum TextColor {
     Info,
     #[display(fmt = "success")]
     Success,
+    #[display(fmt = "warning")]
+    Warning,
     #[display(fmt = "danger")]
     Danger,
     #[display(fmt = "black-bis")]
