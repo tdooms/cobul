@@ -38,9 +38,18 @@ where
         </elements::Button>
     };
 
-    let view_option = |variant: T| {
+    let active = use_state(|| false);
+
+    let onchange = props.onchange.clone();
+    let handle = active.clone();
+
+    let view_option = move |variant: T| {
         let active = &variant == &props.value;
-        let onclick = props.onchange.reform(move |_| variant);
+
+        let onclick = callback!(handle, onchange; move |_| {
+            onchange.emit(variant);
+            handle.set(false)
+        });
 
         html! {
             <components::DropdownItem class={classes!(props.size)} {onclick} {active}>
@@ -49,7 +58,6 @@ where
         }
     };
 
-    let active = use_state(|| false);
     let onfocus = callback!(active; move |focussed| active.set(focussed));
 
     let style = props.style.clone();

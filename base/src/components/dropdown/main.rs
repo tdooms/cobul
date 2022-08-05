@@ -46,14 +46,16 @@ pub fn dropdown(props: &Props) -> Html {
         props.fullwidth.then(|| "is-flex"),
     );
 
-    let onfocus = props.onfocus.reform(|_| true);
     let onblur = props.onfocus.reform(|_| false);
     let onmousedown = Callback::from(|e: MouseEvent| e.prevent_default());
 
     let style = props.fullwidth.then(|| "width:100%");
 
+    let active = props.active.0;
+    let onclick = props.onfocus.reform(move |_| !active);
+
     html! {
-        <div style={props.style.clone()} {class} onclick={onfocus.clone()} {onblur}>
+        <div style={props.style.clone()} {class} {onclick} {onblur}>
             <div class="dropdown-trigger is-clickable" style={style.clone()}>
                 { props.trigger.clone() }
             </div>
