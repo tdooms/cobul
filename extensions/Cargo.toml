@@ -9,5 +9,5 @@ edition = "2021"
 base = { path = "../base" }
 yew = { git = "https://github.com/yewstack/yew.git", rev = "421b4e1f608e6d648dcf571157b081fcbd886996" }
 derive_more = "0.99"
-num = "*"
+num = "0.4"
 web-sys = { version = "0.3", features = ["HtmlInputElement", "HtmlOutputElement", "HtmlDivElement"] }
