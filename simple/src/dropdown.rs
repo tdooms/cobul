@@ -6,7 +6,6 @@ use base::elements;
 use base::props::Size;
 use ywt::callback;
 
-// TODO: deselect when not in focus
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static> {
     #[prop_or_default]
@@ -31,14 +30,7 @@ pub fn dropdown<T>(props: &Props<T>) -> Html
 where
     T: IntoEnumIterator + ToString + Copy + PartialEq + 'static,
 {
-    let trigger = html! {
-        <elements::Button size={props.size} fullwidth=true class="is-flex is-justify-content-space-between">
-            <span> {props.value.to_string()} </span>
-            <elements::Icon icon={fa::Solid::AngleDown}/>
-        </elements::Button>
-    };
-
-    let active = use_state(|| false);
+    let active = use_state_eq(|| false);
 
     let onchange = props.onchange.clone();
     let handle = active.clone();
@@ -47,8 +39,9 @@ where
         let active = &variant == &props.value;
 
         let onclick = callback!(handle, onchange; move |_| {
+            handle.set(false);
             onchange.emit(variant);
-            handle.set(false)
+            log::info!("here");
         });
 
         html! {
@@ -58,7 +51,22 @@ where
         }
     };
 
-    let onfocus = callback!(active; move |focussed| active.set(focussed));
+    let onfocus = callback!(active; move |focussed| {
+        active.set(focussed);
+        log::info!("here2 {focussed}");
+    });
+    let onclick = callback!(active; move |_| {
+        active.set(!*active);
+        log::info!("here3");
+    });
+
+    let class = "is-flex is-justify-content-space-between";
+    let trigger = html! {
+        <elements::Button size={props.size} fullwidth=true {class} {onclick}>
+            <span> {props.value.to_string()} </span>
+            <elements::Icon icon={fa::Solid::AngleDown}/>
+        </elements::Button>
+    };
 
     let style = props.style.clone();
     let class = classes!(props.class.clone(), props.size);
