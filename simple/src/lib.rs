@@ -1,6 +1,7 @@
 mod buttons;
 mod dropdown;
 mod field;
+mod pagination;
 mod tabs;
 
 pub use buttons::*;
