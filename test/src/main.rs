@@ -7,6 +7,7 @@ use cobul::*;
 use dropdown::DropdownTester;
 use form::FormTester;
 use loader::LoaderTester;
+use pagination::PaginationTester;
 use slider::SliderTester;
 use switch::SwitchTester;
 use tabs::TabsTester;
@@ -16,6 +17,7 @@ mod checkradio;
 mod dropdown;
 mod form;
 mod loader;
+mod pagination;
 mod slider;
 mod switch;
 mod tabs;
@@ -60,13 +62,14 @@ fn app() -> Html {
         <Column offset={ColumnOffset::Is2} size={ColumnSize::Is6}>
 
         // <FormTester/>
-        <SliderTester/>
+        // <SliderTester/>
         // <SwitchTester/>
-        <TabsTester/>
-        <LoaderTester/>
-        <TooltipTester/>
-        <CheckradioTester/>
-        <DropdownTester/>
+        // <TabsTester/>
+        // <LoaderTester/>
+        // <TooltipTester/>
+        // <CheckradioTester/>
+        // <DropdownTester/>
+        <PaginationTester/>
 
         <Block>
             {"This text is within a "} <strong>{"block"}</strong>{"."}

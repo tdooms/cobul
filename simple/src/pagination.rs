@@ -20,6 +20,8 @@ pub struct Props {
     pub page: u64,
 
     pub total: u64,
+
+    pub onchange: Callback<u64>,
 }
 
 #[function_component(Pagination)]
@@ -31,20 +33,24 @@ pub fn pagination(props: &Props) -> Html {
         rounded,
         page,
         total,
+        onchange,
     } = props.clone();
 
-    let ellipsis = html! {<PaginationEllipsis> {"&hellip;"} </PaginationEllipsis>};
+    let ellipsis = html! {<PaginationEllipsis> {"\u{2026}"} </PaginationEllipsis>};
 
-    let left_ellipsis = (page > 3).then(|| ellipsis.clone()).unwrap_or_default();
+    let left_ellipsis = (page >= 3).then(|| ellipsis.clone()).unwrap_or_default();
 
-    let right_ellipsis = (total - page > 3).then(|| ellipsis).unwrap_or_default();
+    let right_ellipsis = (total - page >= 4).then(|| ellipsis).unwrap_or_default();
 
-    let item = |idx| html! { <PaginationLink current={ page == idx }> {idx + 1} </PaginationLink> };
+    let item = |idx| {
+        let onclick = onchange.reform(move |_| idx);
+        html! { <PaginationLink {onclick} current={ page == idx }> {idx + 1} </PaginationLink> }
+    };
 
     let first = item(0);
     let last = (total != 1).then(|| item(total - 1)).unwrap_or_default();
 
-    let center = (page - 1).max(1)..(page + 1).min(total);
+    let center = (page.max(2) - 1)..(page + 2).min(total - 1);
 
     html! {
         <components::Pagination {size} {class} {alignment} {rounded}>

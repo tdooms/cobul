@@ -1,13 +1,15 @@
 use cobul::simple::Pagination;
+use cobul::Box;
 use yew::*;
 
-#[function_component(SwitchTester)]
-pub fn switch_tester() -> Html {
+#[function_component(PaginationTester)]
+pub fn pagination_tester() -> Html {
     let state = use_state(|| 0);
+    let onchange = ywt::callback!(state; move |idx| state.set(idx));
 
     html! {
         <Box>
-        <Pagination page={*state} total={10}/>
+        <Pagination page={*state} total={10} {onchange}/>
         </Box>
     }
 }
