@@ -64,7 +64,7 @@ where
     let trigger = html! {
         <elements::Button size={props.size} fullwidth=true {class} {onclick}>
             <span> {props.value.to_string()} </span>
-            <elements::Icon icon={fa::Solid::AngleDown}/>
+            <elements::Icon icon="fa-solid fa-angle-down"/>
         </elements::Button>
     };
 
