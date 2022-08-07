@@ -6,7 +6,7 @@ edition = "2021"
 [dependencies]
 yew = { git = "https://github.com/yewstack/yew.git", rev = "421b4e1f608e6d648dcf571157b081fcbd886996", features = ["csr"] }
 ywt = { git = "https://github.com/tdooms/ywt.git" }
-cobul = { path = "..", features = ["fa", "forms", "simple", "extensions"] }
+cobul = { path = "..", features = ["fa", "simple", "extensions"] }
 gloo-timers = "0.2"
 
 wasm-bindgen = "0.2"

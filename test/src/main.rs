@@ -5,7 +5,6 @@ use yew::prelude::*;
 use checkradio::CheckradioTester;
 use cobul::*;
 use dropdown::DropdownTester;
-use form::FormTester;
 use loader::LoaderTester;
 use pagination::PaginationTester;
 use slider::SliderTester;
@@ -15,7 +14,6 @@ use tooltip::TooltipTester;
 
 mod checkradio;
 mod dropdown;
-mod form;
 mod loader;
 mod pagination;
 mod slider;
@@ -61,14 +59,13 @@ fn app() -> Html {
         <Columns>
         <Column offset={ColumnOffset::Is2} size={ColumnSize::Is6}>
 
-        // <FormTester/>
-        // <SliderTester/>
-        // <SwitchTester/>
-        // <TabsTester/>
-        // <LoaderTester/>
-        // <TooltipTester/>
-        // <CheckradioTester/>
-        // <DropdownTester/>
+        <SliderTester/>
+        <SwitchTester/>
+        <TabsTester/>
+        <LoaderTester/>
+        <TooltipTester/>
+        <CheckradioTester/>
+        <DropdownTester/>
         <PaginationTester/>
 
         <Block>
