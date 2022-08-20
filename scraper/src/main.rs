@@ -30,6 +30,13 @@ fn export_kind(out: &mut impl Write, icons: &[(String, Icon)], kind: &String) ->
     out.write(b"\tfn into_prop_value(self) -> String { self.to_string() }\n")?;
     out.write(b"}\n\n")?;
 
+    out.write_fmt(format_args!(
+        "impl yew::html::IntoPropValue<Option<String>> for {} {{\n",
+        ident
+    ))?;
+    out.write(b"\tfn into_prop_value(self) -> Option<String> { Some(self.to_string()) }\n")?;
+    out.write(b"}\n\n")?;
+
     out.write_fmt(format_args!("impl Icon for {} {{ }}\n\n", ident))?;
     Ok(())
 }

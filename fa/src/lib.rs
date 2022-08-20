@@ -2760,6 +2760,12 @@ impl yew::html::IntoPropValue<String> for Solid {
     }
 }
 
+impl yew::html::IntoPropValue<Option<String>> for Solid {
+    fn into_prop_value(self) -> Option<String> {
+        Some(self.to_string())
+    }
+}
+
 impl Icon for Solid {}
 #[derive(Clone, Copy, derive_more::Display)]
 pub enum Brands {
@@ -3691,6 +3697,12 @@ impl yew::html::IntoPropValue<String> for Brands {
     }
 }
 
+impl yew::html::IntoPropValue<Option<String>> for Brands {
+    fn into_prop_value(self) -> Option<String> {
+        Some(self.to_string())
+    }
+}
+
 impl Icon for Brands {}
 #[derive(Clone, Copy, derive_more::Display)]
 pub enum Regular {
@@ -4023,6 +4035,12 @@ pub enum Regular {
 impl yew::html::IntoPropValue<String> for Regular {
     fn into_prop_value(self) -> String {
         self.to_string()
+    }
+}
+
+impl yew::html::IntoPropValue<Option<String>> for Regular {
+    fn into_prop_value(self) -> Option<String> {
+        Some(self.to_string())
     }
 }
 
