@@ -1,12 +1,12 @@
-pub use navbar_divider::NavbarDivider;
-pub use navbar_dropdown::NavbarDropdown;
-pub use navbar_item::NavbarItem;
-pub use navbar_link::NavbarLink;
+pub use divider::NavbarDivider;
+pub use dropdown::NavbarDropdown;
+pub use item::NavbarItem;
+pub use link::NavbarLink;
 
-mod navbar_divider;
-mod navbar_dropdown;
-mod navbar_item;
-mod navbar_link;
+mod divider;
+mod dropdown;
+mod item;
+mod link;
 
 use yew::prelude::*;
 

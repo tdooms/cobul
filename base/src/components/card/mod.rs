@@ -1,10 +1,10 @@
-pub use card_footer_item::CardFooterItem;
-pub use card_header_icon::CardHeaderIcon;
-pub use card_header_title::CardHeaderTitle;
+pub use footer_item::CardFooterItem;
+pub use header_icon::CardHeaderIcon;
+pub use header_title::CardHeaderTitle;
 
-mod card_footer_item;
-mod card_header_icon;
-mod card_header_title;
+mod footer_item;
+mod header_icon;
+mod header_title;
 
 use crate::utils::enclose;
 use yew::prelude::*;

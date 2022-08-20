@@ -1,8 +1,8 @@
-pub use menu_label::MenuLabel;
-pub use menu_list::MenuList;
+pub use label::MenuLabel;
+pub use list::MenuList;
 
-mod menu_label;
-mod menu_list;
+mod label;
+mod list;
 
 use yew::prelude::*;
 

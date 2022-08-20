@@ -1,8 +1,8 @@
-pub use dropdown_divider::DropdownDivider;
-pub use dropdown_item::DropdownItem;
+pub use divider::DropdownDivider;
+pub use item::DropdownItem;
 
-mod dropdown_divider;
-mod dropdown_item;
+mod divider;
+mod item;
 
 use crate::props::{Active, Hoverable, Right, Up};
 use yew::prelude::*;

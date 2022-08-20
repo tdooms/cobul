@@ -1,5 +1,5 @@
-mod panel_block;
-mod panel_tabs;
+mod block;
+mod tabs;
 
 use yew::prelude::*;
 
