@@ -29,16 +29,10 @@ pub fn modal(props: &Props) -> Html {
     let classes = classes!("modal", props.class.clone(), props.active);
     let width = props.width.map(|x| format!("width:{}px !important;", x));
 
-    let style = format!(
-        "{}{}",
-        width.unwrap_or_default(),
-        props.style.clone().unwrap_or_default()
-    );
-
     html! {
-        <div {style} class={classes}>
+        <div style={props.style.clone()} class={classes}>
             <div class="modal-background"></div>
-            <div class="modal-content">
+            <div class="modal-content" style={width}>
                 { for props.children.iter() }
             </div>
         </div>
