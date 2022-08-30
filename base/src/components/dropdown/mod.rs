@@ -27,7 +27,7 @@ pub struct Props {
     pub hoverable: Hoverable,
 
     #[prop_or_default]
-    pub onfocus: Callback<bool>,
+    pub focus: Callback<bool>,
 
     #[prop_or_default]
     pub active: Active,
@@ -52,7 +52,7 @@ pub fn dropdown(props: &Props) -> Html {
         props.fullwidth.then(|| "is-flex"),
     );
 
-    let onblur = props.onfocus.reform(|_| false);
+    let onblur = props.focus.reform(|_| false);
     let onmousedown = Callback::from(|e: MouseEvent| e.prevent_default());
 
     let style = props.fullwidth.then(|| "width:100%");
