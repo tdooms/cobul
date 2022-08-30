@@ -7,7 +7,7 @@ pub fn loader_tester() -> Html {
     let state = use_state(|| None);
     let timer = use_state(|| None);
 
-    let onclick = |dir: Direction| {
+    let click = |dir: Direction| {
         callback!(state, timer; move |_| {
             state.set(Some(dir));
             let cloned = state.clone();
@@ -23,7 +23,7 @@ pub fn loader_tester() -> Html {
 
     html! {
         <Box>
-        <Button onclick={onclick(Direction::BottomToTop)}> {"Loading screen"} </Button>
+        <Button click={click(Direction::BottomToTop)}> {"Loading screen"} </Button>
         {loader}
         </Box>
     }

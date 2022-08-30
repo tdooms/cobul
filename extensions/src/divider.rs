@@ -18,7 +18,11 @@ pub struct Props {
 /// [https://wikiki.github.io/elements/pageloader/](https://wikiki.github.io/elements/pageloader/)
 #[function_component(Loader)]
 pub fn loader(props: &Props) -> Html {
-    let direction = if props.vertical { "is-divider-vertical" } else { "is-divider" };
+    let direction = if props.vertical {
+        "is-divider-vertical"
+    } else {
+        "is-divider"
+    };
     let classes = classes!(direction, props.class.clone());
-    html! { <div style={props.style.clone()} data-content={props.text} class={classes}></div> }
+    html! { <div style={props.style.clone()} data-content={props.text.clone()} class={classes}></div> }
 }

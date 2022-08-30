@@ -34,7 +34,7 @@ pub fn notification(props: &Props) -> Html {
     );
 
     let button = match props.delete == Callback::noop() {
-        false => html! {<button class="delete" onclick={cb.reform(|_| ())}></button>},
+        false => html! {<button class="delete" onclick={props.delete.reform(|_| ())}></button>},
         true => html! {},
     };
 

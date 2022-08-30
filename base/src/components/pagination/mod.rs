@@ -69,13 +69,13 @@ pub struct LinkProps {
 #[function_component(PaginationNext)]
 pub fn pagination_next(props: &NavProps) -> Html {
     let class = classes!("pagination-next", props.disabled);
-    html! {<a {class} onclick={props.onclick.reform(|_| ())}> { for props.children.iter() } </a>}
+    html! {<a {class} onclick={props.click.reform(|_| ())}> { for props.children.iter() } </a>}
 }
 
 #[function_component(PaginationPrevious)]
 pub fn pagination_previous(props: &NavProps) -> Html {
     let class = classes!("pagination-previous", props.disabled);
-    html! { <a {class} onclick={props.onclick.reform(|_| ())}> { for props.children.iter() } </a> }
+    html! { <a {class} onclick={props.click.reform(|_| ())}> { for props.children.iter() } </a> }
 }
 
 #[function_component(PaginationList)]
@@ -86,7 +86,7 @@ pub fn pagination_list(props: &SubProps) -> Html {
 #[function_component(PaginationLink)]
 pub fn pagination_link(props: &LinkProps) -> Html {
     let class = classes!("pagination-link", props.current);
-    html! { <li><a {class} onclick={props.onclick.reform(|_| ())}> { for props.children.iter() } </a></li> }
+    html! { <li><a {class} onclick={props.click.reform(|_| ())}> { for props.children.iter() } </a></li> }
 }
 
 #[function_component(PaginationEllipsis)]

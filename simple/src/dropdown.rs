@@ -38,31 +38,25 @@ where
     let view_option = move |variant: T| {
         let active = &variant == &props.value;
 
-        let onclick = callback!(handle, change; move |_| {
+        let click = callback!(handle, change; move |_| {
             handle.set(false);
             change.emit(variant);
             log::info!("here");
         });
 
         html! {
-            <components::DropdownItem class={classes!(props.size)} {onclick} {active}>
+            <components::DropdownItem class={classes!(props.size)} {click} {active}>
                 {variant.to_string()}
             </components::DropdownItem>
         }
     };
 
-    let onfocus = callback!(active; move |focussed| {
-        active.set(focussed);
-        log::info!("here2 {focussed}");
-    });
-    let onclick = callback!(active; move |_| {
-        active.set(!*active);
-        log::info!("here3");
-    });
+    let focus = callback!(active; move |focussed| active.set(focussed));
+    let click = callback!(active; move |_| active.set(!*active));
 
     let class = "is-flex is-justify-content-space-between";
     let trigger = html! {
-        <elements::Button size={props.size} fullwidth=true {class} {onclick}>
+        <elements::Button size={props.size} fullwidth=true {class} {click}>
             <span> {props.value.to_string()} </span>
             <elements::Icon icon="fa-solid fa-angle-down"/>
         </elements::Button>
@@ -73,7 +67,7 @@ where
     let fullwidth = props.fullwidth;
 
     html! {
-        <components::Dropdown {style} {trigger} active={*active} {class} {onfocus} {fullwidth}>
+        <components::Dropdown {style} {trigger} active={*active} {class} {focus} {fullwidth}>
             { for T::iter().map(view_option) }
         </components::Dropdown>
     }

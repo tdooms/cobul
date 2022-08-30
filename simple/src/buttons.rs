@@ -33,15 +33,15 @@ where
         size,
         color,
         value,
-        click: onclick,
+        click,
     } = &props;
     let button_map = |variant: T| {
         let selected = value == &variant;
         let color = selected.then(|| color);
-        let onclick = onclick.reform(move |_| variant);
+        let click = click.reform(move |_| variant);
 
         html! {
-            <elements::Button color={color.cloned()} onclick={onclick} selected={selected} size={*size}>
+            <elements::Button color={color.cloned()} {click} {selected} size={*size}>
                 { variant.to_string() }
             </elements::Button>
         }

@@ -16,13 +16,13 @@ pub fn switch_tester() -> Html {
     let state = use_state(|| Tab::Tab1);
 
     let cloned = state.clone();
-    let onclick = Callback::from(move |x| cloned.set(x));
+    let click = Callback::from(move |x| cloned.set(x));
 
     html! {
         <Box>
-        <simple::Tabs<Tab> value={*state} onclick={onclick.clone()} />
-        <simple::Tabs<Tab> value={*state} onclick={onclick.clone()} rounded=true />
-        <simple::Tabs<Tab> value={*state} onclick={onclick.clone()} fullwidth=true toggle=true rounded=true />
+        <simple::Tabs<Tab> value={*state} click={click.clone()} />
+        <simple::Tabs<Tab> value={*state} click={click.clone()} rounded=true />
+        <simple::Tabs<Tab> value={*state} click={click.clone()} fullwidth=true toggle=true rounded=true />
         <p> {state.to_string()} </p>
         </Box>
     }
