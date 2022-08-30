@@ -5,7 +5,7 @@ use crate::props::{Color, Light};
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {
     #[prop_or_default]
-    pub ondelete: Option<Callback<()>>,
+    pub delete: Callback<()>,
 
     #[prop_or_default]
     pub children: Children,
@@ -33,9 +33,9 @@ pub fn notification(props: &Props) -> Html {
         props.light
     );
 
-    let button = match props.ondelete.clone() {
-        Some(cb) => html! {<button class="delete" onclick={cb.reform(|_| ())}></button>},
-        None => html! {}
+    let button = match props.delete == Callback::noop() {
+        false => html! {<button class="delete" onclick={cb.reform(|_| ())}></button>},
+        true => html! {},
     };
 
     html! {

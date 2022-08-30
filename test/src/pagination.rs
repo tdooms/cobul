@@ -5,11 +5,11 @@ use yew::*;
 #[function_component(PaginationTester)]
 pub fn pagination_tester() -> Html {
     let state = use_state(|| 1);
-    let onchange = ywt::callback!(state; move |idx| state.set(idx));
+    let change = ywt::callback!(state; move |idx| state.set(idx));
 
     html! {
         <Box>
-        <Pagination page={*state} total={10} {onchange}/>
+        <Pagination page={*state} total={10} {change}/>
         </Box>
     }
 }

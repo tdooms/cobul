@@ -8,7 +8,7 @@ use crate::props::{
 #[derive(Properties, Clone, PartialEq)]
 pub struct Props {
     #[prop_or_default]
-    pub onclick: Callback<()>,
+    pub click: Callback<()>,
 
     #[prop_or_default]
     pub children: Children,
@@ -90,7 +90,7 @@ pub fn button(props: &Props) -> Html {
         props.class.clone()
     );
 
-    let onclick = props.onclick.reform(|_| ());
+    let onclick = props.click.reform(|_| ());
 
     let Props {
         style,

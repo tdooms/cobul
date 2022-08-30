@@ -1,9 +1,9 @@
 use base::props::{Color, Size};
+use rand::Rng;
 use yew::prelude::*;
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {
-    pub id: String,
     pub label: String,
 
     #[prop_or_default]
@@ -40,7 +40,7 @@ pub struct Props {
     pub checked: bool,
 
     #[prop_or_default]
-    pub onchange: Callback<bool>,
+    pub input: Callback<bool>,
 }
 
 #[derive(derive_more::Display)]
@@ -51,7 +51,7 @@ enum Kind {
     Radio,
 }
 
-fn render(props: &Props, kind: Kind) -> Html {
+fn render(props: &Props, kind: Kind, id: String) -> Html {
     let class = classes!(
         "is-checkradio",
         props.class.clone(),
@@ -64,22 +64,24 @@ fn render(props: &Props, kind: Kind) -> Html {
     );
 
     let checked = props.checked;
-    let onchange = props.onchange.reform(move |_| !checked);
+    let input = props.input.reform(move |_| !checked);
 
     html! {
         <>
-        <input id={props.id.clone()} {class} type={kind.to_string()} {onchange} {checked}/>
-        <label for={props.id.clone()}> {props.label.clone()} </label>
+        <input id={id.clone()} {class} type={kind.to_string()} onchange={input} {checked}/>
+        <label for={id}> {props.label.clone()} </label>
         </>
     }
 }
 
 #[function_component(Checkbox)]
 pub fn checkbox(props: &Props) -> Html {
-    render(props, Kind::Checkbox)
+    let id = use_state(|| rand::thread_rng().gen::<u64>().to_string());
+    render(props, Kind::Checkbox, (*id).clone())
 }
 
 #[function_component(Radio)]
 pub fn radio(props: &Props) -> Html {
-    render(props, Kind::Radio)
+    let id = use_state(|| rand::thread_rng().gen::<u64>().to_string());
+    render(props, Kind::Radio, (*id).clone())
 }

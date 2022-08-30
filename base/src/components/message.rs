@@ -11,7 +11,7 @@ pub struct Props {
     pub header: Option<Html>,
 
     #[prop_or_default]
-    pub ondelete: Option<Callback<()>>,
+    pub delete: Option<Callback<()>>,
 
     #[prop_or_default]
     pub color: Option<Color>,
@@ -26,7 +26,7 @@ pub struct Props {
 /// [https://bulma.io/documentation/components/message/](https://bulma.io/documentation/components/message/)
 #[function_component(Message)]
 pub fn message(props: &Props) -> Html {
-    let header = match (props.header.clone(), props.ondelete.clone()) {
+    let header = match (props.header.clone(), props.delete.clone()) {
         (Some(html), Some(ondelete)) => html! {
             <div class="message-header"> {html}
                 <button class="delete" aria-label="delete" onclick={ondelete.reform(|_| ())}></button>

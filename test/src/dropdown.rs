@@ -17,14 +17,14 @@ pub fn dropdown_tester() -> Html {
     let state = use_state(|| TestEnum::Option1);
     let value = *state;
 
-    let onchange = Callback::from(move |x| state.set(x));
+    let change = Callback::from(move |x| state.set(x));
 
     html! {
         <Box>
-        <simple::Dropdown<TestEnum> value={value.clone()} onchange={onchange.clone()}/>
+        <simple::Dropdown<TestEnum> value={value.clone()} change={change.clone()}/>
 
         <Columns>
-        <Column><simple::Dropdown<TestEnum> {value} {onchange} fullwidth=true/></Column>
+        <Column><simple::Dropdown<TestEnum> {value} {change} fullwidth=true/></Column>
         <Column size={ColumnSize::Is7} />
         </Columns>
         </Box>

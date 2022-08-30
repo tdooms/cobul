@@ -10,7 +10,8 @@ pub struct Props {
     #[prop_or_default]
     pub value: Option<String>,
 
-    pub oninput: Callback<String>,
+    #[prop_or_default]
+    pub input: Callback<String>,
 
     #[prop_or_default]
     pub class: Classes,
@@ -58,7 +59,7 @@ pub fn textarea(props: &Props) -> Html {
         props.r#static,
         props.fixed
     );
-    let oninput = props.oninput.reform(|e: InputEvent| {
+    let input = props.input.reform(|e: InputEvent| {
         e.target_unchecked_into::<web_sys::HtmlInputElement>()
             .value()
     });
@@ -67,7 +68,7 @@ pub fn textarea(props: &Props) -> Html {
         <textarea
             name={props.name.clone()}
             value={props.value.clone()}
-            oninput={oninput}
+            oninput={input}
             style={props.style.clone()}
             class={classes}
             rows={props.rows.as_ref().map(ToString::to_string)}

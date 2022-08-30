@@ -25,7 +25,7 @@ pub struct Props {
     pub tag: String,
 
     #[prop_or_default]
-    pub onclick: Callback<()>,
+    pub click: Callback<()>,
 
     #[prop_or_default]
     pub rounded: Rounded,
@@ -50,7 +50,7 @@ pub fn tag(props: &Props) -> Html {
         props.delete
     );
 
-    let onclick = props.onclick.reform(|_| ());
+    let onclick = props.click.reform(|_| ());
     html! {
         <@{ props.tag.clone() } style={props.style.clone()} class={classes} {onclick}>
             { for props.children.iter() }

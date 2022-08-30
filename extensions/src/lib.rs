@@ -1,4 +1,5 @@
 mod checkradio;
+mod divider;
 mod loader;
 mod slider;
 mod switch;

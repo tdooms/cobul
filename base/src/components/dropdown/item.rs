@@ -10,7 +10,7 @@ pub struct Props {
     pub class: Classes,
 
     #[prop_or_default]
-    pub onclick: Callback<()>,
+    pub click: Callback<()>,
 
     #[prop_or_default]
     pub active: Active,
@@ -25,9 +25,9 @@ pub fn dropdown_item(props: &Props) -> Html {
     let Props {
         class,
         children,
-        onclick,
+        click: onclick,
         active,
-        style
+        style,
     } = &props;
     let classes = classes!("dropdown-item", *active, class.clone());
 

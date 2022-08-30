@@ -9,8 +9,8 @@ pub struct Props {
     #[prop_or_default]
     pub class: Classes,
 
-    #[prop_or_else(Callback::noop)]
-    pub onclick: Callback<()>,
+    #[prop_or_default]
+    pub click: Callback<()>,
 
     #[prop_or_default]
     pub size: Size,
@@ -26,7 +26,7 @@ pub struct Props {
 #[function_component(Icon)]
 pub fn icon(props: &Props) -> Html {
     let class = classes!("icon", props.class.clone(), props.size, props.color);
-    let onclick = props.onclick.reform(|_| ());
+    let onclick = props.click.reform(|_| ());
 
     let size = match props.size {
         Size::Small => "fa-xs",

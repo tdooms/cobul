@@ -16,7 +16,7 @@ pub struct Props {
     #[prop_or_else(|| "button".into())]
     pub tag: String,
 
-    pub onclick: Callback<()>,
+    pub click: Callback<()>,
 
     #[prop_or_default]
     pub style: Option<String>,
@@ -26,7 +26,7 @@ pub struct Props {
 #[function_component(Delete)]
 pub fn delete(props: &Props) -> Html {
     let classes = classes!("delete", props.class.clone(), props.size);
-    let onclick = props.onclick.reform(|_| ());
+    let onclick = props.click.reform(|_| ());
 
     html! {
         <@{props.tag.clone()} style={props.style.clone()} class={classes} onclick={onclick}>

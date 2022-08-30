@@ -32,7 +32,7 @@ pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static> {
 
     pub value: T,
 
-    pub onclick: Callback<T>,
+    pub click: Callback<T>,
 }
 
 #[function_component(Tabs)]
@@ -42,7 +42,7 @@ where
 {
     let tab_map = |variant: T| {
         let class = (&props.value == &variant).then(|| "is-active");
-        let onclick = props.onclick.reform(move |_| variant);
+        let onclick = props.click.reform(move |_| variant);
 
         html! {
             <li {onclick} {class}>

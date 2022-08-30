@@ -2,11 +2,12 @@ use yew::prelude::*;
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {
-    pub name: String,
+    pub label: String,
 
     pub checked: bool,
 
-    pub onchange: Callback<bool>,
+    #[prop_or_default]
+    pub input: Callback<bool>,
 
     #[prop_or_default]
     pub children: Children,
@@ -26,16 +27,16 @@ pub struct Props {
 pub fn checkbox(props: &Props) -> Html {
     let classes = classes!("checkbox", props.class.clone());
 
-    let copied = !props.checked;
-    let onchange = props.onchange.reform(move |_| copied);
+    let checked = props.checked;
+    let change = props.change.reform(move |_| !checked);
 
     html! {
         <label style={props.style.clone()} class={classes}>
             <input
                 type="checkbox"
                 checked={props.checked}
-                name={props.name.clone()}
-                onclick={onchange}
+                label={props.label.clone()}
+                onclick={change}
                 disabled={props.disabled}
                 />
             { for props.children.iter() }

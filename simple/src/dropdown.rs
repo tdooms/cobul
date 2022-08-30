@@ -13,7 +13,7 @@ pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static> {
 
     pub value: T,
 
-    pub onchange: Callback<T>,
+    pub change: Callback<T>,
 
     #[prop_or_default]
     pub size: Size,
@@ -32,15 +32,15 @@ where
 {
     let active = use_state_eq(|| false);
 
-    let onchange = props.onchange.clone();
+    let change = props.change.clone();
     let handle = active.clone();
 
     let view_option = move |variant: T| {
         let active = &variant == &props.value;
 
-        let onclick = callback!(handle, onchange; move |_| {
+        let onclick = callback!(handle, change; move |_| {
             handle.set(false);
-            onchange.emit(variant);
+            change.emit(variant);
             log::info!("here");
         });
 

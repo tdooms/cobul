@@ -30,7 +30,7 @@ pub struct Props {
     pub burger: bool,
 
     #[prop_or_default]
-    pub onclick: Callback<()>,
+    pub click: Callback<()>,
 
     #[prop_or_default]
     pub style: Option<String>,
@@ -40,7 +40,7 @@ pub struct Props {
 #[function_component(Navbar)]
 pub fn navbar(props: &Props) -> Html {
     let classes = classes!("navbar-burger", props.active);
-    let onclick = props.onclick.reform(|_| ());
+    let onclick = props.click.reform(|_| ());
 
     let burger = match props.burger {
         true => html! {

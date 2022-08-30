@@ -19,7 +19,7 @@ pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static> {
 
     pub value: T,
 
-    pub onclick: Callback<T>,
+    pub click: Callback<T>,
 }
 
 #[function_component(Buttons)]
@@ -33,7 +33,7 @@ where
         size,
         color,
         value,
-        onclick,
+        click: onclick,
     } = &props;
     let button_map = |variant: T| {
         let selected = value == &variant;

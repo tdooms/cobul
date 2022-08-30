@@ -29,7 +29,7 @@ pub struct Props {
     #[prop_or_default]
     pub class: Classes,
 
-    pub onupload: Callback<Vec<web_sys::File>>,
+    pub upload: Callback<Vec<web_sys::File>>,
 
     #[prop_or_default]
     pub style: Option<String>,
@@ -52,7 +52,7 @@ pub fn file(props: &Props) -> Html {
         props.class.clone()
     );
 
-    let onchange = props.onupload.reform(|e: Event| {
+    let change = props.upload.reform(|e: Event| {
         let files = e
             .target_unchecked_into::<web_sys::HtmlInputElement>()
             .files()
@@ -63,7 +63,7 @@ pub fn file(props: &Props) -> Html {
     html! {
         <div style={props.style.clone()} class={classes}>
             <label class="file-label">
-            <input class="file-input" type="file" accept={props.accept.clone()} onchange={onchange} />
+            <input class="file-input" type="file" accept={props.accept.clone()} onchange={change} />
             <span class="file-cta">
                 <span class="file-icon">
                 <i class="fas fa-upload"></i>

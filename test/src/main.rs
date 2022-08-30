@@ -191,14 +191,14 @@ fn app() -> Html {
         <Field>
             <Label> {"Name"} </Label>
             <Control>
-                <Input placeholder="Text input" oninput={Callback::noop()}/>
+                <Input placeholder="Text input" input={Callback::noop()}/>
             </Control>
         </Field>
 
         <Field>
             <Label> {"Username"} </Label>
             <Control right="fas fa-user" left="fas fa-check">
-                <Input color={Color::Success} placeholder="Text input" value="bulma" oninput={Callback::noop()}/>
+                <Input color={Color::Success} placeholder="Text input" value="bulma" input={Callback::noop()}/>
                 <Help color={Color::Success}> {"This username is available"} </Help>
             </Control>
         </Field>
@@ -206,7 +206,7 @@ fn app() -> Html {
         <Field>
             <Label> {"Email"} </Label>
             <Control right="fas fa-envelope" left="fas fa-exclamation-triangle">
-                <Input color={Color::Danger} placeholder="Text input" value="bulma" oninput={Callback::noop()}/>
+                <Input color={Color::Danger} placeholder="Text input" value="bulma" input={Callback::noop()}/>
                 <Help color={Color::Danger}> {"This email is invalid"} </Help>
             </Control>
         </Field>
@@ -214,14 +214,14 @@ fn app() -> Html {
         <Field>
             <Label> {"Subject"} </Label>
             <Control>
-                <Select<SelectEnum> selected={SelectEnum::SelectDropdown} onselect={Callback::noop()}/>
+                <Select<SelectEnum> selected={SelectEnum::SelectDropdown} input={Callback::noop()}/>
             </Control>
         </Field>
 
         <Field>
             <Label> {"Message"} </Label>
             <Control>
-                <Textarea placeholder="Textarea" oninput={Callback::noop()}/>
+                <Textarea placeholder="Textarea" input={Callback::noop()}/>
             </Control>
         </Field>
 

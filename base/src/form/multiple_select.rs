@@ -23,7 +23,7 @@ pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static> {
     pub selected: Vec<T>,
 
     #[prop_or_default]
-    pub onselect: Callback<Vec<T>>,
+    pub input: Callback<Vec<T>>,
 
     #[prop_or_default]
     pub style: Option<String>,
@@ -54,7 +54,7 @@ where
 
         let (onclick, selected) = match position {
             Some(index) => (
-                props.onselect.reform(move |_| {
+                props.input.reform(move |_| {
                     let mut cloned = items.clone();
                     cloned.remove(index);
                     cloned
@@ -62,7 +62,7 @@ where
                 true,
             ),
             None => (
-                props.onselect.reform(move |_| {
+                props.input.reform(move |_| {
                     let mut cloned = items.clone();
                     cloned.push(variant);
                     cloned

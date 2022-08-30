@@ -6,7 +6,8 @@ use crate::props::{Color, InputType, Loading, Rounded, Size, Static};
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props<T: FromStr + ToString + PartialEq + 'static> {
-    pub oninput: Callback<Result<T, String>>,
+    #[prop_or_default]
+    pub input: Callback<Result<T, String>>,
 
     #[prop_or_default]
     pub name: Option<String>,
@@ -82,7 +83,7 @@ where
         props.r#static,
     );
 
-    let oninput = props.oninput.clone();
+    let input = props.input.clone();
     let state_clone = state.clone();
 
     let cb = move |e: InputEvent| {
@@ -90,7 +91,7 @@ where
             .target_unchecked_into::<web_sys::HtmlInputElement>()
             .value();
 
-        oninput.emit(T::from_str(&str).map_err(|_| String::from("error")));
+        input.emit(T::from_str(&str).map_err(|_| String::from("error")));
         state_clone.set(str);
     };
 

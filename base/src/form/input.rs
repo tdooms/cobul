@@ -4,7 +4,8 @@ use crate::props::{Color, InputType, Loading, Rounded, Size, Static};
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {
-    pub oninput: Callback<String>,
+    #[prop_or_default]
+    pub input: Callback<String>,
 
     #[prop_or_default]
     pub name: Option<String>,
@@ -59,7 +60,7 @@ pub fn input(props: &Props) -> Html {
         props.r#static,
     );
 
-    let oninput = props.oninput.reform(|e: InputEvent| {
+    let input = props.input.reform(|e: InputEvent| {
         e.target_unchecked_into::<web_sys::HtmlInputElement>()
             .value()
     });
@@ -69,7 +70,7 @@ pub fn input(props: &Props) -> Html {
             name={props.name.clone()}
             value={props.value.clone()}
             style={props.style.clone()}
-            oninput={oninput}
+            oninput={input}
             class={classes}
             type={props.r#type.to_string()}
             placeholder={props.placeholder.clone()}

@@ -1,13 +1,13 @@
 use base::props::{Color, Size};
+use rand::Rng;
 use yew::*;
 
 #[derive(Properties, Debug, PartialEq, Clone)]
 pub struct Props {
-    pub id: &'static str,
     pub checked: bool,
 
     pub label: String,
-    pub onchange: Callback<bool>,
+    pub change: Callback<bool>,
 
     #[prop_or_default]
     pub label_left: bool,
@@ -36,6 +36,8 @@ pub struct Props {
 
 #[function_component(Switch)]
 pub fn switch(props: &Props) -> Html {
+    let id = use_state(|| rand::thread_rng().gen::<u64>().to_string());
+
     let class = classes!(
         "switch",
         props.class.clone(),
@@ -48,12 +50,12 @@ pub fn switch(props: &Props) -> Html {
     );
 
     let checked = props.checked;
+    let onchange = props.change.reform(move |_| !checked);
 
     html! {
         <>
-        <input id={props.id} {class} type="checkbox" checked=true name={props.id}
-            disabled={props.disabled} onchange={props.onchange.reform(move |_| !checked)}/>
-        <label for={props.id}> {props.label.clone()} </label>
+        <input id={(*id).clone()} {class} type="checkbox" {checked} disabled={props.disabled} {onchange}/>
+        <label for={(*id).clone()}> {props.label.clone()} </label>
         </>
     }
 }

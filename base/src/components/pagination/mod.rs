@@ -52,7 +52,7 @@ pub struct NavProps {
     #[prop_or_default]
     pub children: Children,
 
-    pub onclick: Callback<()>,
+    pub click: Callback<()>,
 }
 
 #[derive(Properties, PartialEq)]
@@ -63,7 +63,7 @@ pub struct LinkProps {
     #[prop_or_default]
     pub children: Children,
 
-    pub onclick: Callback<()>,
+    pub click: Callback<()>,
 }
 
 #[function_component(PaginationNext)]

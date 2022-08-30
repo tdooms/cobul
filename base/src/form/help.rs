@@ -6,6 +6,7 @@ use crate::props::Color;
 pub struct Props {
     #[prop_or_default]
     pub children: Children,
+
     #[prop_or_default]
     pub class: Classes,
 

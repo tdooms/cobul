@@ -8,7 +8,7 @@ pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static> {
 
     pub value: T,
 
-    pub onclick: Callback<T>,
+    pub click: Callback<T>,
 
     #[prop_or_default]
     pub style: Option<String>,
@@ -22,7 +22,7 @@ where
 {
     let button_map = |variant: T| {
         let active = props.value == variant;
-        let onclick = props.onclick.reform(move |_| variant);
+        let onclick = props.click.reform(move |_| variant);
 
         html! {
             <a onclick={onclick} class={active.then(|| "is-active")}>

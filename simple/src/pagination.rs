@@ -21,7 +21,7 @@ pub struct Props {
 
     pub total: u64,
 
-    pub onchange: Callback<u64>,
+    pub change: Callback<u64>,
 }
 
 #[function_component(Pagination)]
@@ -33,7 +33,7 @@ pub fn pagination(props: &Props) -> Html {
         rounded,
         page,
         total,
-        onchange,
+        change,
     } = props.clone();
 
     let ellipsis = html! {<PaginationEllipsis> {"\u{2026}"} </PaginationEllipsis>};
@@ -43,7 +43,7 @@ pub fn pagination(props: &Props) -> Html {
     let right_ellipsis = (total - page >= 3).then(|| ellipsis).unwrap_or_default();
 
     let item = |idx| {
-        let onclick = onchange.reform(move |_| idx);
+        let onclick = change.reform(move |_| idx);
         html! { <PaginationLink {onclick} current={ page == idx }> {idx} </PaginationLink> }
     };
 

@@ -1,4 +1,5 @@
 use num::{FromPrimitive, ToPrimitive};
+use rand::Rng;
 use std::fmt::{Debug, Display};
 use std::ops::Range;
 use web_sys::{HtmlDivElement, HtmlInputElement, HtmlOutputElement};
@@ -8,9 +9,8 @@ use base::props::{Color, Size};
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props<T: PartialEq> {
-    pub id: &'static str,
-
     pub step: T,
+
     pub range: Range<T>,
 
     pub value: T,
@@ -18,13 +18,11 @@ pub struct Props<T: PartialEq> {
     #[prop_or("{}")]
     pub fmt: &'static str,
 
-    /// Onchange is triggered when the slider is released
     #[prop_or_default]
-    pub onchange: Callback<T>,
+    pub change: Callback<T>, // Onchange is triggered when the slider is released (deferred)
 
-    // Oninput is triggered when the slider is moved (instantly)
     #[prop_or_default]
-    pub oninput: Callback<T>,
+    pub input: Callback<T>, // Oninput is triggered when the slider is moved (instantly)
 
     #[prop_or_default]
     pub class: Classes,
@@ -63,6 +61,8 @@ pub fn slider<T>(props: &Props<T>) -> Html
 where
     T: PartialEq + Clone + Display + FromPrimitive + ToPrimitive + 'static,
 {
+    let id = use_state(|| rand::thread_rng().gen::<u64>().to_string());
+
     if props.label && props.tooltip {
         panic!("both right label and tooltip are not supported");
     }
@@ -96,11 +96,11 @@ where
         props.label.then(|| "has-output"),
     );
 
-    let onchange = props.onchange.reform(|e: Event| {
+    let change = props.change.reform(|e: Event| {
         let elem = e.target_unchecked_into::<HtmlInputElement>();
         T::from_f64(elem.value_as_number()).unwrap()
     });
-    let oninput = props.oninput.reform(|e: InputEvent| {
+    let input = props.input.reform(|e: InputEvent| {
         let elem = e.target_unchecked_into::<HtmlInputElement>();
         T::from_f64(elem.value_as_number()).unwrap()
     });
@@ -127,9 +127,9 @@ where
 
     html! {
         <div style="position:relative" ref={container} class="pt-2">
-        <input style={input_style} id={props.id} {class} step={props.step.to_string()} min={props.range.start.to_string()} max={props.range.end.to_string()}
-                disabled={props.disabled} orient={props.vertical.then(|| "vertical")} {onchange} {oninput} type="range" value={props.value.to_string()}/>
-        <output style={output_style} for={props.id} ref={label}> {formatted} </output>
+        <input style={input_style} id={(*id).clone()} {class} step={props.step.to_string()} min={props.range.start.to_string()} max={props.range.end.to_string()}
+                disabled={props.disabled} orient={props.vertical.then(|| "vertical")} onchange={change} oninput={input} type="range" value={props.value.to_string()}/>
+        <output style={output_style} for={(*id).clone()} ref={label}> {formatted} </output>
         </div>
     }
 }
