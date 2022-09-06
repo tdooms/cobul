@@ -20,13 +20,13 @@ pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static> {
     #[prop_or_default]
     pub focussed: Focused,
 
-    pub selected: Vec<T>,
+    #[prop_or_default]
+    pub style: Option<String>,
 
     #[prop_or_default]
     pub input: Callback<Vec<T>>,
 
-    #[prop_or_default]
-    pub style: Option<String>,
+    pub value: Vec<T>,
 }
 
 /// [https://bulma.io/documentation/form/select/](https://bulma.io/documentation/form/select/)
@@ -45,14 +45,14 @@ where
 
     let view_option = |variant: T| {
         let position = props
-            .selected
+            .value
             .iter()
             .position(|x| std::mem::discriminant(x) == std::mem::discriminant(&variant));
 
         // TODO: this is N^2 for a simple select, use Cow?
-        let items = props.selected.clone();
+        let items = props.value.clone();
 
-        let (onclick, selected) = match position {
+        let (click, selected) = match position {
             Some(index) => (
                 props.input.reform(move |_| {
                     let mut cloned = items.clone();
@@ -71,7 +71,7 @@ where
             ),
         };
 
-        html! { <option selected={selected} onclick={onclick}> {variant} </option> }
+        html! { <option {selected} onclick={click}> {variant} </option> }
     };
 
     html! {

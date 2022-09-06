@@ -214,7 +214,7 @@ fn app() -> Html {
         <Field>
             <Label> {"Subject"} </Label>
             <Control>
-                <Select<SelectEnum> selected={SelectEnum::SelectDropdown} input={Callback::noop()}/>
+                <Select<SelectEnum> value={SelectEnum::SelectDropdown} input={Callback::noop()}/>
             </Control>
         </Field>
 

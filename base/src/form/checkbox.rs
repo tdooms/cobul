@@ -4,7 +4,7 @@ use yew::prelude::*;
 pub struct Props {
     pub label: String,
 
-    pub checked: bool,
+    pub value: bool,
 
     #[prop_or_default]
     pub input: Callback<bool>,
@@ -27,16 +27,16 @@ pub struct Props {
 pub fn checkbox(props: &Props) -> Html {
     let classes = classes!("checkbox", props.class.clone());
 
-    let checked = props.checked;
-    let change = props.change.reform(move |_| !checked);
+    let checked = props.value;
+    let input = props.input.reform(move |_| !checked);
 
     html! {
         <label style={props.style.clone()} class={classes}>
             <input
                 type="checkbox"
-                checked={props.checked}
+                checked={props.value}
                 label={props.label.clone()}
-                onclick={change}
+                onclick={input}
                 disabled={props.disabled}
                 />
             { for props.children.iter() }

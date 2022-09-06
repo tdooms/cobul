@@ -27,12 +27,12 @@ pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static> {
     pub loading: Loading,
 
     #[prop_or_default]
-    pub input: Callback<T>,
-
-    #[prop_or_default]
     pub style: Option<String>,
 
-    pub selected: T,
+    #[prop_or_default]
+    pub input: Callback<T>,
+
+    pub value: T,
 }
 
 /// [https://bulma.io/documentation/form/select/](https://bulma.io/documentation/form/select/)
@@ -51,9 +51,9 @@ where
     );
 
     let view_option = |variant: T| {
-        let selected = std::mem::discriminant(&variant) == std::mem::discriminant(&props.selected);
-        let onclick = (!selected).then(move || props.input.reform(move |_| variant));
-        html! { <option selected={selected} onclick={onclick}> {variant} </option> }
+        let value = std::mem::discriminant(&variant) == std::mem::discriminant(&props.value);
+        let click = (!value).then(move || props.input.reform(move |_| variant));
+        html! { <option selected={value} onclick={click}> {variant} </option> }
     };
 
     html! {

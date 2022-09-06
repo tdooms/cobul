@@ -4,10 +4,11 @@ use yew::*;
 
 #[derive(Properties, Debug, PartialEq, Clone)]
 pub struct Props {
-    pub checked: bool,
+    pub value: bool,
 
     pub label: String,
-    pub change: Callback<bool>,
+
+    pub input: Callback<bool>,
 
     #[prop_or_default]
     pub label_left: bool,
@@ -49,12 +50,12 @@ pub fn switch(props: &Props) -> Html {
         props.outlined.then(|| "is-outlined"),
     );
 
-    let checked = props.checked;
-    let onchange = props.change.reform(move |_| !checked);
+    let checked = props.value;
+    let input = props.input.reform(move |_| !checked);
 
     html! {
         <>
-        <input id={(*id).clone()} {class} type="checkbox" {checked} disabled={props.disabled} {onchange}/>
+        <input id={(*id).clone()} {class} type="checkbox" {checked} disabled={props.disabled} onchange={input}/>
         <label for={(*id).clone()}> {props.label.clone()} </label>
         </>
     }
