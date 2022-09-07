@@ -24,6 +24,9 @@ pub struct Props {
 
     #[prop_or_default]
     pub style: Option<String>,
+
+    #[prop_or_default]
+    pub focus: Callback<bool>,
 }
 
 /// [https://bulma.io/documentation/form/general/](https://bulma.io/documentation/form/general/)
@@ -38,8 +41,11 @@ pub fn field(props: &Props) -> Html {
         props.alignment
     );
 
+    let onfocus = props.focus.reform(|_| true);
+    let onblur = props.focus.reform(|_| false);
+
     html! {
-        <div style={props.style.clone()} class={classes}>
+        <div style={props.style.clone()} class={classes} {onfocus} {onblur}>
             { for props.children.iter() }
         </div>
     }

@@ -15,12 +15,6 @@ pub enum Size {
     Large,
 }
 
-impl Default for Size {
-    fn default() -> Self {
-        Size::Normal
-    }
-}
-
 impl Into<Classes> for Size {
     fn into(self) -> Classes {
         Classes::from(self.to_string())
@@ -38,12 +32,6 @@ pub enum ButtonsSize {
     Medium,
     #[display(fmt = "large")]
     Large,
-}
-
-impl Default for ButtonsSize {
-    fn default() -> Self {
-        ButtonsSize::Normal
-    }
 }
 
 /// Available placeholder sizes for figures.

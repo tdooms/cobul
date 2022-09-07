@@ -9,6 +9,11 @@ macro_rules! bool_prop {
             std::marker::Copy,
         )]
         pub struct $x(pub bool);
+        impl $x {
+            pub fn or(self, other: Option<Self>) -> Self {
+                Self(self.0 || other.unwrap_or_default().0)
+            }
+        }
 
         impl std::convert::Into<yew::Classes> for $x {
             fn into(self) -> yew::Classes {

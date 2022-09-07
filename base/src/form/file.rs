@@ -1,12 +1,10 @@
-use web_sys;
-use yew::prelude::*;
-
 use crate::props::{Alignment, Boxed, Color, Fullwidth, Size};
+use yew::prelude::*;
 
 #[derive(Properties, Clone, PartialEq)]
 pub struct Props {
     #[prop_or_default]
-    pub size: Size,
+    pub size: Option<Size>,
 
     #[prop_or_default]
     pub color: Option<Color>,
@@ -29,10 +27,11 @@ pub struct Props {
     #[prop_or_default]
     pub class: Classes,
 
-    pub input: Callback<Vec<web_sys::File>>,
+    #[prop_or_default]
+    pub style: Option<AttrValue>,
 
     #[prop_or_default]
-    pub style: Option<String>,
+    pub input: Callback<Vec<web_sys::File>>,
 }
 
 /// [https://bulma.io/documentation/form/file/](https://bulma.io/documentation/form/file/)
