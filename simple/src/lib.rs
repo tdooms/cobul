@@ -5,6 +5,7 @@ mod field;
 mod pagination;
 mod tabs;
 
+pub use button::*;
 pub use buttons::*;
 pub use dropdown::*;
 pub use field::*;
