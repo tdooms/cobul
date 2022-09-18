@@ -1,6 +1,7 @@
-use base::props::{Color, Size};
 use rand::Rng;
 use yew::prelude::*;
+
+use base::props::{Color, Size};
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {
@@ -10,7 +11,7 @@ pub struct Props {
     pub class: Classes,
 
     #[prop_or_default]
-    pub style: Option<String>,
+    pub style: Option<AttrValue>,
 
     #[prop_or_default]
     pub color: Option<Color>,

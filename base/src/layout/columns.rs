@@ -25,15 +25,14 @@ pub struct Props {
     #[prop_or_default]
     pub breakpoint: Option<Breakpoint>,
     // TODO: experimental https://bulma.io/documentation/columns/gap/#breakpoint-based-column-gaps
-
     #[prop_or_default]
-    pub style: Option<String>,
+    pub style: Option<AttrValue>,
 }
 
 /// [https://bulma.io/documentation/columns/](https://bulma.io/documentation/columns/)
 #[function_component(Columns)]
 pub fn columns(props: &Props) -> Html {
-    let classes = classes!(
+    let class = classes!(
         "columns",
         props.class.clone(),
         props.vcentered,
@@ -43,7 +42,7 @@ pub fn columns(props: &Props) -> Html {
     );
 
     html! {
-        <div style={props.style.clone()} class={classes}>
+        <div style={props.style.clone()} {class}>
             { for props.children.iter() }
         </div>
     }

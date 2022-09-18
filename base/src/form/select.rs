@@ -12,7 +12,7 @@ pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static> {
     pub color: Option<Color>,
 
     #[prop_or_default]
-    pub size: Size,
+    pub size: Option<Size>,
 
     #[prop_or_default]
     pub rounded: Rounded,
@@ -27,7 +27,7 @@ pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static> {
     pub loading: Loading,
 
     #[prop_or_default]
-    pub style: Option<String>,
+    pub style: Option<AttrValue>,
 
     #[prop_or_default]
     pub input: Callback<T>,
@@ -41,7 +41,7 @@ pub fn select<T>(props: &Props<T>) -> Html
 where
     T: IntoEnumIterator + ToString + Copy + PartialEq + 'static,
 {
-    let classes = classes!(
+    let class = classes!(
         "select",
         props.class.clone(),
         props.color,
@@ -57,7 +57,7 @@ where
     };
 
     html! {
-        <div style={props.style.clone()} class={classes}>
+        <div style={props.style.clone()} {class}>
             <select class={classes!(props.hovered, props.focussed)}>
                 { for T::iter().map(view_option) }
             </select>

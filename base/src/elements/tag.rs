@@ -31,16 +31,16 @@ pub struct Props {
     pub rounded: Rounded,
 
     #[prop_or_default]
-    pub size: Size,
+    pub size: Option<Size>,
 
     #[prop_or_default]
-    pub style: Option<String>,
+    pub style: Option<AttrValue>,
 }
 
 /// [https://bulma.io/documentation/elements/tag/](https://bulma.io/documentation/elements/tag/)
 #[function_component(Tag)]
 pub fn tag(props: &Props) -> Html {
-    let classes = classes!(
+    let class = classes!(
         "tag",
         props.class.clone(),
         props.size,
@@ -52,7 +52,7 @@ pub fn tag(props: &Props) -> Html {
 
     let onclick = props.click.reform(|_| ());
     html! {
-        <@{ props.tag.clone() } style={props.style.clone()} class={classes} {onclick}>
+        <@{ props.tag.clone() } style={props.style.clone()} {class} {onclick}>
             { for props.children.iter() }
         </@>
     }

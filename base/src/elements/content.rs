@@ -12,15 +12,15 @@ pub struct Props {
     pub tag: String,
 
     #[prop_or_default]
-    pub style: Option<String>,
+    pub style: Option<AttrValue>,
 }
 
 /// [https://bulma.io/documentation/elements/content/](https://bulma.io/documentation/elements/content/)
 #[function_component(Content)]
 pub fn content(props: &Props) -> Html {
-    let classes = classes!("content", props.class.clone());
+    let class = classes!("content", props.class.clone());
     html! {
-        <@{props.tag.clone()} style={props.style.clone()} class={classes}>
+        <@{props.tag.clone()} style={props.style.clone()} {class}>
             { for props.children.iter() }
         </@>
     }

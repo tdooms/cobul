@@ -9,15 +9,15 @@ pub struct Props {
     pub class: Classes,
 
     #[prop_or_default]
-    pub style: Option<String>,
+    pub style: Option<AttrValue>,
 }
 
 /// [https://bulma.io/documentation/elements/block/](https://bulma.io/documentation/elements/block/)
 #[function_component(Block)]
 pub fn block(props: &Props) -> Html {
-    let classes = classes!("block", props.class.clone());
+    let class = classes!("block", props.class.clone());
     html! {
-        <div style={props.style.clone()} class={classes}>
+        <div style={props.style.clone()} {class}>
             { for props.children.iter() }
         </div>
     }

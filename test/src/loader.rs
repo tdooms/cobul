@@ -1,6 +1,7 @@
-use cobul::{Box, Button, Color, Direction, Loader};
 use yew::*;
 use ywt::callback;
+
+use cobul::{Box, Button, Color, Direction, Loader};
 
 #[function_component(LoaderTester)]
 pub fn loader_tester() -> Html {

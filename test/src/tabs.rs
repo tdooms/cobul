@@ -1,5 +1,6 @@
-use cobul::*;
 use yew::*;
+
+use cobul::*;
 
 #[derive(derive_more::Display, strum::EnumIter, PartialEq, Clone, Copy)]
 enum Tab {

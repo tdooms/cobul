@@ -1,5 +1,6 @@
-use cobul::*;
 use yew::*;
+
+use cobul::*;
 
 #[derive(Debug, Clone, PartialEq, Copy, Default, strum::EnumIter, derive_more::Display)]
 pub enum TestEnum {

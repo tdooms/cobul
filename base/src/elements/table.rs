@@ -28,13 +28,13 @@ pub struct Props {
     pub scrollable: bool,
 
     #[prop_or_default]
-    pub style: Option<String>,
+    pub style: Option<AttrValue>,
 }
 
 /// [https://bulma.io/documentation/elements/table/](https://bulma.io/documentation/elements/table/)
 #[function_component(Table)]
 pub fn table(props: &Props) -> Html {
-    let classes = classes!(
+    let class = classes!(
         "table",
         props.class.clone(),
         props.bordered,
@@ -45,7 +45,7 @@ pub fn table(props: &Props) -> Html {
     );
 
     let table = html! {
-        <table style={props.style.clone()} class={classes}>
+        <table style={props.style.clone()} {class}>
             { for props.children.iter() }
         </table>
     };

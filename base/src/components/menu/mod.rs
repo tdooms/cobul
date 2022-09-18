@@ -1,10 +1,10 @@
+use yew::prelude::*;
+
 pub use label::MenuLabel;
 pub use list::MenuList;
 
 mod label;
 mod list;
-
-use yew::prelude::*;
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {
@@ -15,15 +15,15 @@ pub struct Props {
     pub class: Classes,
 
     #[prop_or_default]
-    pub style: Option<String>,
+    pub style: Option<AttrValue>,
 }
 
 /// [https://bulma.io/documentation/components/menu/](https://bulma.io/documentation/components/menu/)
 #[function_component(Menu)]
 pub fn menu(props: &Props) -> Html {
-    let classes = classes!("menu", props.class.clone());
+    let class = classes!("menu", props.class.clone());
     html! {
-        <div style={props.style.clone()} class={classes}>
+        <div style={props.style.clone()} {class}>
             { for props.children.iter() }
         </div>
     }

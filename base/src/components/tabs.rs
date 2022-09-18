@@ -29,13 +29,13 @@ pub struct Props {
     pub fullwidth: Fullwidth,
 
     #[prop_or_default]
-    pub style: Option<String>,
+    pub style: Option<AttrValue>,
 }
 
 /// [https://bulma.io/documentation/components/tabs/](https://bulma.io/documentation/components/tabs/)
 #[function_component(Tabs)]
 pub fn tabs(props: &Props) -> Html {
-    let classes = classes!(
+    let class = classes!(
         "tabs",
         props.class.clone(),
         props.size,
@@ -47,7 +47,7 @@ pub fn tabs(props: &Props) -> Html {
     );
 
     html! {
-        <div style={props.style.clone()} class={classes}>
+        <div style={props.style.clone()} {class}>
             <ul>
                 { for props.children.iter() }
             </ul>

@@ -1,5 +1,6 @@
-use crate::props::{Alignment, Current, Disabled, Rounded, Size};
 use yew::*;
+
+use crate::props::{Alignment, Current, Disabled, Rounded, Size};
 
 #[derive(Properties, PartialEq)]
 pub struct Props {
@@ -10,13 +11,13 @@ pub struct Props {
     pub alignment: Alignment,
 
     #[prop_or_default]
-    pub size: Size,
+    pub size: Option<Size>,
 
     #[prop_or_default]
     pub class: Classes,
 
     #[prop_or_default]
-    pub style: Option<String>,
+    pub style: Option<AttrValue>,
 
     #[prop_or_default]
     pub children: Children,
@@ -57,13 +58,13 @@ pub struct NavProps {
 
 #[derive(Properties, PartialEq)]
 pub struct LinkProps {
+    pub click: Callback<()>,
+
     #[prop_or_default]
     pub current: Current,
 
     #[prop_or_default]
     pub children: Children,
-
-    pub click: Callback<()>,
 }
 
 #[function_component(PaginationNext)]

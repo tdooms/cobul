@@ -1,11 +1,18 @@
+use web_sys::HtmlInputElement;
 use yew::prelude::*;
 
-use crate::props::{Color, InputType, Loading, Rounded, Size, Static};
+use crate::props::{Color, Disabled, InputType, Loading, Readonly, Rounded, Size, Static};
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {
     #[prop_or_default]
     pub input: Callback<String>,
+
+    #[prop_or_default]
+    pub style: Option<AttrValue>,
+
+    #[prop_or_default]
+    pub class: Classes,
 
     #[prop_or_default]
     pub name: Option<String>,
@@ -14,16 +21,13 @@ pub struct Props {
     pub value: Option<String>,
 
     #[prop_or_default]
-    pub class: Classes,
-
-    #[prop_or_default]
-    pub r#type: InputType,
+    pub kind: String,
 
     #[prop_or_default]
     pub placeholder: String,
 
     #[prop_or_default]
-    pub size: Size,
+    pub size: Option<Size>,
 
     #[prop_or_default]
     pub color: Option<Color>,
@@ -35,47 +39,48 @@ pub struct Props {
     pub loading: Loading,
 
     #[prop_or_default]
-    pub disabled: bool,
+    pub disabled: Disabled,
 
     #[prop_or_default]
-    pub readonly: bool,
+    pub readonly: Readonly,
 
     #[prop_or_default]
-    pub r#static: Static,
-
-    #[prop_or_default]
-    pub style: Option<String>,
+    pub fixed: Static,
 }
 
 /// [https://bulma.io/documentation/form/input/](https://bulma.io/documentation/form/input/)
 #[function_component(Input)]
 pub fn input(props: &Props) -> Html {
-    let classes = classes!(
+    let size = use_context::<Size>();
+    let color = use_context::<Color>();
+    let rounded = use_context::<Rounded>();
+    let loading = use_context::<Loading>();
+    let fixed = use_context::<Static>();
+
+    let class = classes!(
         "input",
         props.class.clone(),
-        props.size,
-        props.color,
-        props.rounded,
-        props.loading,
-        props.r#static,
+        props.size.or(size),
+        props.color.or(color),
+        props.rounded.or(rounded),
+        props.loading.or(loading),
+        props.fixed.or(fixed),
     );
 
-    let input = props.input.reform(|e: InputEvent| {
-        e.target_unchecked_into::<web_sys::HtmlInputElement>()
-            .value()
-    });
+    let reform = |e: InputEvent| e.target_unchecked_into::<HtmlInputElement>().value();
+    let oninput = props.input.reform(reform);
 
     html! {
         <input
             name={props.name.clone()}
             value={props.value.clone()}
             style={props.style.clone()}
-            oninput={input}
-            class={classes}
-            type={props.r#type.to_string()}
+            {oninput}
+            {class}
+            type={props.kind.clone()}
             placeholder={props.placeholder.clone()}
-            disabled={props.disabled}
-            readonly={props.readonly}
+            disabled={props.disabled.0}
+            readonly={props.readonly.0}
             />
     }
 }

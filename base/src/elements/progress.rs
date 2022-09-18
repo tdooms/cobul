@@ -17,22 +17,22 @@ pub struct Props {
     pub color: Option<Color>,
 
     #[prop_or_default]
-    pub size: Size,
+    pub size: Option<Size>,
 
     #[prop_or_default]
-    pub style: Option<String>,
+    pub style: Option<AttrValue>,
 }
 
 /// [https://bulma.io/documentation/elements/progress/](https://bulma.io/documentation/elements/progress/)
 #[function_component(Progress)]
 pub fn progress(props: &Props) -> Html {
-    let classes = classes!("progress", props.class.clone(), props.size, props.color);
+    let class = classes!("progress", props.class.clone(), props.size, props.color);
 
     let max = props.max.to_string();
     let value = props.value.as_ref().map(ToString::to_string);
 
     html! {
-        <progress style={props.style.clone()} class={classes} max={max} value={value}>
+        <progress style={props.style.clone()} {class} max={max} value={value}>
             // { format!("{}%", self.props.value) }
         </progress>
     }

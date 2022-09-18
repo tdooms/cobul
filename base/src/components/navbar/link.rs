@@ -3,8 +3,10 @@ use yew_router::{prelude::Link, Routable};
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props<T: Routable + PartialEq + 'static> {
-    children: Children,
     route: T,
+
+    #[prop_or_default]
+    children: Children,
 }
 
 /// [https://bulma.io/documentation/components/navbar/](https://bulma.io/documentation/components/navbar/)

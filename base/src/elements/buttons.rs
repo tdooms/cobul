@@ -1,6 +1,6 @@
 use yew::prelude::*;
 
-use crate::props::{Addons, Alignment, ButtonsSize};
+use crate::props::{Addons, Alignment, Size};
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {
@@ -17,16 +17,16 @@ pub struct Props {
     pub addons: Addons,
 
     #[prop_or_default]
-    pub size: ButtonsSize,
+    pub size: Option<Size>,
 
     #[prop_or_default]
-    pub style: Option<String>,
+    pub style: Option<AttrValue>,
 }
 
 /// [https://bulma.io/documentation/elements/button/#list-of-buttons](https://bulma.io/documentation/elements/button/#list-of-buttons)
 #[function_component(Buttons)]
 pub fn buttons(props: &Props) -> Html {
-    let classes = classes!(
+    let class = classes!(
         "buttons",
         props.class.clone(),
         props.alignment,
@@ -34,7 +34,7 @@ pub fn buttons(props: &Props) -> Html {
     );
 
     html! {
-        <div style={props.style.clone()} class={classes}>
+        <div style={props.style.clone()} {class}>
             { for props.children.iter() }
         </div>
     }

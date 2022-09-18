@@ -12,7 +12,7 @@ pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static> {
     pub color: Option<Color>,
 
     #[prop_or_default]
-    pub size: Size,
+    pub size: Option<Size>,
 
     #[prop_or_default]
     pub hovered: Hovered,
@@ -21,7 +21,7 @@ pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static> {
     pub focussed: Focused,
 
     #[prop_or_default]
-    pub style: Option<String>,
+    pub style: Option<AttrValue>,
 
     #[prop_or_default]
     pub input: Callback<Vec<T>>,
@@ -35,7 +35,7 @@ pub fn multiple_select<T>(props: &Props<T>) -> Html
 where
     T: IntoEnumIterator + ToString + Copy + PartialEq + 'static,
 {
-    let classes = classes!(
+    let class = classes!(
         "select",
         "is-multiple",
         props.class.clone(),
@@ -75,7 +75,7 @@ where
     };
 
     html! {
-        <div class={classes}>
+        <div {class}>
             <select style={props.style.clone()} multiple={true} size={T::iter().count().to_string()} class={classes!(props.hovered, props.focussed)}>
                 { for T::iter().map(view_option) }
             </select>

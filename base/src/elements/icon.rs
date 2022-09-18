@@ -13,13 +13,13 @@ pub struct Props {
     pub click: Callback<()>,
 
     #[prop_or_default]
-    pub size: Size,
+    pub size: Option<Size>,
 
     #[prop_or_default]
     pub color: Option<TextColor>,
 
     #[prop_or_default]
-    pub style: Option<String>,
+    pub style: Option<AttrValue>,
 }
 
 /// [https://bulma.io/documentation/elements/icon/](https://bulma.io/documentation/elements/icon/)
@@ -29,9 +29,9 @@ pub fn icon(props: &Props) -> Html {
     let onclick = props.click.reform(|_| ());
 
     let size = match props.size {
-        Size::Small => "fa-xs",
-        Size::Normal | Size::Medium => "",
-        Size::Large => "fa-2xl",
+        Some(Size::Small) => "fa-xs",
+        Some(Size::Large) => "fa-2xl",
+        _ => "",
     };
 
     let icon = format!("{} {}", props.icon, size);

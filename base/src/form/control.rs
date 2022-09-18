@@ -23,13 +23,13 @@ pub struct Props {
     pub left: Option<String>,
 
     #[prop_or_default]
-    pub style: Option<String>,
+    pub style: Option<AttrValue>,
 }
 
 /// [https://bulma.io/documentation/form/general/](https://bulma.io/documentation/form/general/)
 #[function_component(Control)]
 pub fn control(props: &Props) -> Html {
-    let classes = classes!(
+    let class = classes!(
         "control",
         props.class.clone(),
         props.expanded,
@@ -39,16 +39,16 @@ pub fn control(props: &Props) -> Html {
 
     let map_icon = |icon: Option<&String>, right: bool| {
         let alignment = if right { "is-right" } else { "is-left" };
-        let classes = classes!("icon", "is-small", alignment);
+        let class = classes!("icon", "is-small", alignment);
 
         match icon {
             None => html! {},
-            Some(name) => html! {<span class={classes}><i class={name}> </i></span>},
+            Some(name) => html! {<span {class}><i class={name}> </i></span>},
         }
     };
 
     html! {
-        <@{ props.tag.clone() } style={props.style.clone()} class={classes}>
+        <@{ props.tag.clone() } style={props.style.clone()} {class}>
             { for props.children.iter() }
             { map_icon(props.right.as_ref(), true) }
             { map_icon(props.left.as_ref(), false) }

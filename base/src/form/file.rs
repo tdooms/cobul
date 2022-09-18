@@ -1,5 +1,6 @@
-use crate::props::{Alignment, Boxed, Color, Fullwidth, Size};
 use yew::prelude::*;
+
+use crate::props::{Alignment, Boxed, Color, Fullwidth, Size};
 
 #[derive(Properties, Clone, PartialEq)]
 pub struct Props {
@@ -42,7 +43,7 @@ pub fn file(props: &Props) -> Html {
         Some(file) => html! {<span class="file-name"> {file} </span>},
     };
 
-    let classes = classes!(
+    let class = classes!(
         "file",
         props.filename.as_ref().map(|_| "has-name"),
         props.boxed,
@@ -60,7 +61,7 @@ pub fn file(props: &Props) -> Html {
     });
 
     html! {
-        <div style={props.style.clone()} class={classes}>
+        <div style={props.style.clone()} {class}>
             <label class="file-label">
             <input class="file-input" type="file" accept={props.accept.clone()} onchange={input} />
             <span class="file-cta">

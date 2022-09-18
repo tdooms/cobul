@@ -23,7 +23,7 @@ pub struct Props {
     pub rows: Option<u32>,
 
     #[prop_or_default]
-    pub size: Size,
+    pub size: Option<Size>,
 
     #[prop_or_default]
     pub color: Option<Color>,
@@ -44,13 +44,13 @@ pub struct Props {
     pub r#static: Static,
 
     #[prop_or_default]
-    pub style: Option<String>,
+    pub style: Option<AttrValue>,
 }
 
 /// [https://bulma.io/documentation/form/textarea/](https://bulma.io/documentation/form/textarea/)
 #[function_component(Textarea)]
 pub fn textarea(props: &Props) -> Html {
-    let classes = classes!(
+    let class = classes!(
         "textarea",
         props.class.clone(),
         props.color,
@@ -70,7 +70,7 @@ pub fn textarea(props: &Props) -> Html {
             value={props.value.clone()}
             oninput={input}
             style={props.style.clone()}
-            class={classes}
+            {class}
             rows={props.rows.as_ref().map(ToString::to_string)}
             placeholder={props.placeholder.clone()}
             disabled={props.disabled}

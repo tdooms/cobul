@@ -1,11 +1,12 @@
+use yew::prelude::*;
+
 pub use divider::DropdownDivider;
 pub use item::DropdownItem;
 
+use crate::props::{Active, Hoverable, Right, Up};
+
 mod divider;
 mod item;
-
-use crate::props::{Active, Hoverable, Right, Up};
-use yew::prelude::*;
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {
@@ -36,7 +37,7 @@ pub struct Props {
     pub fullwidth: bool,
 
     #[prop_or_default]
-    pub style: Option<String>,
+    pub style: Option<AttrValue>,
 }
 
 /// [// https://bulma.io/documentation/components/dropdown/](// https://bulma.io/documentation/components/dropdown/)

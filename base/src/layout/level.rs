@@ -24,15 +24,15 @@ pub struct Props {
     pub mobile: Mobile,
 
     #[prop_or_default]
-    pub style: Option<String>,
+    pub style: Option<AttrValue>,
 }
 
 /// [https://bulma.io/documentation/layout/level/](https://bulma.io/documentation/layout/level/)
 #[function_component(Level)]
 pub fn level(props: &Props) -> Html {
-    let classes = classes!("level", props.class.clone(), props.centered, props.mobile);
+    let class = classes!("level", props.class.clone(), props.centered, props.mobile);
     html! {
-        <div style={props.style.clone()} class={classes}>
+        <div style={props.style.clone()} {class}>
             { enclose("media-left", props.left.clone()) }
             { for props.children.iter() }
             { enclose("media-right", props.right.clone()) }

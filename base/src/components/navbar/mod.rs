@@ -1,16 +1,16 @@
+use yew::prelude::*;
+
 pub use divider::NavbarDivider;
 pub use dropdown::NavbarDropdown;
 pub use item::NavbarItem;
 pub use link::NavbarLink;
 
+use crate::props::Active;
+
 mod divider;
 mod dropdown;
 mod item;
 mod link;
-
-use yew::prelude::*;
-
-use crate::props::Active;
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {
@@ -33,18 +33,18 @@ pub struct Props {
     pub click: Callback<()>,
 
     #[prop_or_default]
-    pub style: Option<String>,
+    pub style: Option<AttrValue>,
 }
 
 /// [https://bulma.io/documentation/components/navbar/](https://bulma.io/documentation/components/navbar/)
 #[function_component(Navbar)]
 pub fn navbar(props: &Props) -> Html {
-    let classes = classes!("navbar-burger", props.active);
+    let class = classes!("navbar-burger", props.active);
     let onclick = props.click.reform(|_| ());
 
     let burger = match props.burger {
         true => html! {
-            <a role="button" class={classes} aria-label="menu" aria-expanded="false" data-target="navbar" onclick={onclick}>
+            <a role="button" {class} aria-label="menu" aria-expanded="false" data-target="navbar" {onclick}>
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>

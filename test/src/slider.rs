@@ -1,5 +1,6 @@
-use cobul::{Box, Slider};
 use yew::*;
+
+use cobul::{Box, Slider};
 
 #[function_component(SliderTester)]
 pub fn slider_tester() -> Html {

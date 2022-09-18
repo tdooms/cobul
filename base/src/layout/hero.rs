@@ -24,16 +24,16 @@ pub struct Props {
     pub footer: Option<Html>,
 
     #[prop_or_default]
-    pub style: Option<String>,
+    pub style: Option<AttrValue>,
 }
 
 /// [https://bulma.io/documentation/layout/hero/](https://bulma.io/documentation/layout/hero/)
 #[function_component(Hero)]
 pub fn hero(props: &Props) -> Html {
-    let classes = classes!("hero", props.size, props.color, props.class.clone());
+    let class = classes!("hero", props.size, props.color, props.class.clone());
 
     html! {
-        <section style={props.style.clone()} class={classes}>
+        <section style={props.style.clone()} {class}>
             { enclose("hero-header", props.header.clone()) }
             <div class="hero-body"> { for props.children.iter() } </div>
             { enclose("hero-footer", props.footer.clone()) }

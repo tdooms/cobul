@@ -14,12 +14,12 @@ pub struct Props {
     pub children: Children,
 
     #[prop_or_default]
-    pub style: Option<String>,
+    pub style: Option<AttrValue>,
 }
 
 /// [https://bulma.io/documentation/elements/icon/](https://bulma.io/documentation/elements/icon/)
 #[function_component(IconText)]
 pub fn icon_text(props: &Props) -> Html {
-    let classes = classes!("icon-text", props.class.clone(), props.color);
-    html! {<span style={props.style.clone()} class={classes}> { for props.children.iter() } </span>}
+    let class = classes!("icon-text", props.class.clone(), props.color);
+    html! {<span style={props.style.clone()} {class}> { for props.children.iter() } </span>}
 }

@@ -15,15 +15,15 @@ pub struct Props {
     pub active: Active,
 
     #[prop_or_default]
-    pub style: Option<String>,
+    pub style: Option<AttrValue>,
 }
 
 /// [https://bulma.io/documentation/components/panel/](https://bulma.io/documentation/components/panel/)
 #[function_component(PanelBlock)]
 pub fn panel_block(props: &Props) -> Html {
-    let classes = classes!("panel-block", props.class.clone(), props.active);
+    let class = classes!("panel-block", props.class.clone(), props.active);
     html! {
-        <nav style={props.style.clone()} class={classes}>
+        <nav style={props.style.clone()} {class}>
             { for props.children.iter() }
         </nav>
     }

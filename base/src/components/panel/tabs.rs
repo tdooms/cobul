@@ -3,15 +3,16 @@ use yew::prelude::*;
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static> {
-    #[prop_or_default]
-    pub class: Classes,
-
     pub value: T,
 
+    #[prop_or_default]
     pub click: Callback<T>,
 
     #[prop_or_default]
-    pub style: Option<String>,
+    pub class: Classes,
+
+    #[prop_or_default]
+    pub style: Option<AttrValue>,
 }
 
 /// [https://bulma.io/documentation/components/panel/](https://bulma.io/documentation/components/panel/)

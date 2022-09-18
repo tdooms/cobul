@@ -11,7 +11,7 @@ pub struct Props {
     pub class: Classes,
 
     #[prop_or_default]
-    pub size: Size,
+    pub size: Option<Size>,
 
     #[prop_or_else(|| "button".into())]
     pub tag: String,
@@ -19,17 +19,17 @@ pub struct Props {
     pub click: Callback<()>,
 
     #[prop_or_default]
-    pub style: Option<String>,
+    pub style: Option<AttrValue>,
 }
 
 /// [https://bulma.io/documentation/elements/delete/](https://bulma.io/documentation/elements/delete/)
 #[function_component(Delete)]
 pub fn delete(props: &Props) -> Html {
-    let classes = classes!("delete", props.class.clone(), props.size);
+    let class = classes!("delete", props.class.clone(), props.size);
     let onclick = props.click.reform(|_| ());
 
     html! {
-        <@{props.tag.clone()} style={props.style.clone()} class={classes} onclick={onclick}>
+        <@{props.tag.clone()} style={props.style.clone()} {class} {onclick}>
             { for props.children.iter() }
         </@>
     }

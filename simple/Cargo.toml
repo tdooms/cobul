@@ -12,4 +12,4 @@ fa = { path = "../fa" }
 log = "0.4"
 strum = { version = "0.24", features = ["derive"] }
 yew = { git = "https://github.com/yewstack/yew.git", rev = "421b4e1f608e6d648dcf571157b081fcbd886996" }
-ywt = { git = "https://github.com/tdooms/ywt.git"}
+ywt = { git = "https://github.com/tdooms/ywt.git" }

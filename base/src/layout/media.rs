@@ -23,15 +23,15 @@ pub struct Props {
     pub left_tag: String,
 
     #[prop_or_default]
-    pub style: Option<String>,
+    pub style: Option<AttrValue>,
 }
 
 /// [https://bulma.io/documentation/layout/media-object/](https://bulma.io/documentation/layout/media-object/)
 #[function_component(Media)]
 pub fn media(props: &Props) -> Html {
-    let classes = classes!("media", props.class.clone());
+    let class = classes!("media", props.class.clone());
     html! {
-        <div style={props.style.clone()} class={classes}>
+        <div style={props.style.clone()} {class}>
             { enclose_with_tag(props.left_tag.clone(), "media-left", props.left.clone()) }
             <div class="media-content"> { for props.children.iter() } </div>
             { enclose_with_tag(props.right_tag.clone(), "media-right", props.right.clone()) }

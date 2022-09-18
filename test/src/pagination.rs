@@ -1,6 +1,7 @@
+use yew::*;
+
 use cobul::simple::Pagination;
 use cobul::Box;
-use yew::*;
 
 #[function_component(PaginationTester)]
 pub fn pagination_tester() -> Html {

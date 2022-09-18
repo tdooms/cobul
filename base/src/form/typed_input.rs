@@ -1,5 +1,4 @@
 use std::str::FromStr;
-
 use yew::prelude::*;
 
 use crate::props::{Color, InputType, Loading, Rounded, Size, Static};
@@ -25,7 +24,7 @@ pub struct Props<T: FromStr + ToString + PartialEq + 'static> {
     pub placeholder: String,
 
     #[prop_or_default]
-    pub size: Size,
+    pub size: Option<Size>,
 
     #[prop_or_default]
     pub color: Option<Color>,
@@ -46,7 +45,7 @@ pub struct Props<T: FromStr + ToString + PartialEq + 'static> {
     pub r#static: Static,
 
     #[prop_or_default]
-    pub style: Option<String>,
+    pub style: Option<AttrValue>,
 }
 
 /// [https://bulma.io/documentation/form/input/](https://bulma.io/documentation/form/input/)
@@ -73,7 +72,7 @@ where
         value,
     );
 
-    let classes = classes!(
+    let class = classes!(
         "input",
         props.class.clone(),
         props.size,
@@ -101,7 +100,7 @@ where
             value={(*state).clone()}
             oninput={Callback::from(cb)}
             style={props.style.clone()}
-            class={classes}
+            {class}
             type={props.r#type.to_string()}
             placeholder={props.placeholder.clone()}
             disabled={props.disabled}

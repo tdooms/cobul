@@ -21,19 +21,6 @@ impl Into<Classes> for Size {
     }
 }
 
-#[derive(Clone, Debug, Display, PartialEq, Copy)]
-#[display(fmt = "are-{}")]
-pub enum ButtonsSize {
-    #[display(fmt = "small")]
-    Small,
-    #[display(fmt = "normal")]
-    Normal,
-    #[display(fmt = "medium")]
-    Medium,
-    #[display(fmt = "large")]
-    Large,
-}
-
 /// Available placeholder sizes for figures.
 /// https://bulma.io/documentation/elements/image/
 #[derive(Clone, Debug, Display, PartialEq, Copy)]

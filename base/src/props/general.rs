@@ -1,4 +1,3 @@
-#[macro_export]
 macro_rules! bool_prop {
     ($x:ident, $y:literal) => {
         #[derive(
@@ -9,8 +8,9 @@ macro_rules! bool_prop {
             std::marker::Copy,
         )]
         pub struct $x(pub bool);
+
         impl $x {
-            pub fn or(self, other: Option<Self>) -> Self {
+            pub fn or(self, other: std::option::Option<Self>) -> Self {
                 Self(self.0 || other.unwrap_or_default().0)
             }
         }
@@ -60,6 +60,7 @@ bool_prop!(Multiline, "is-multiline");
 bool_prop!(Narrow, "is-narrow");
 bool_prop!(Outlined, "is-outlined");
 bool_prop!(Right, "is-right");
+bool_prop!(Readonly, "is-readonly");
 bool_prop!(Rounded, "is-rounded");
 bool_prop!(Selected, "is-selected");
 bool_prop!(Shadow, "has-shadow");

@@ -17,17 +17,17 @@ pub struct Props {
     pub size: Option<HeaderSize>,
 
     #[prop_or_default]
-    pub style: Option<String>,
+    pub style: Option<AttrValue>,
 }
 
 /// [https://bulma.io/documentation/elements/title/](https://bulma.io/documentation/elements/title/)
 #[function_component(Title)]
 pub fn title(props: &Props) -> Html {
     let size = props.size.unwrap_or(HeaderSize::Is3);
-    let classes = classes!("title", props.class.clone(), size, props.spaced);
+    let class = classes!("title", props.class.clone(), size, props.spaced);
 
     html! {
-        <p style={props.style.clone()} class={classes}>
+        <p style={props.style.clone()} {class}>
             { for props.children.iter() }
         </p>
     }

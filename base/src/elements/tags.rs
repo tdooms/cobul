@@ -14,16 +14,16 @@ pub struct Props {
     pub addons: Addons,
 
     #[prop_or_default]
-    pub style: Option<String>,
+    pub style: Option<AttrValue>,
 }
 
 /// [https://bulma.io/documentation/elements/tag/](https://bulma.io/documentation/elements/tag/)
 #[function_component(Tags)]
 pub fn tags(props: &Props) -> Html {
-    let classes = classes!("tags", props.class.clone(), props.addons);
+    let class = classes!("tags", props.class.clone(), props.addons);
 
     html! {
-        <div style={props.style.clone()} class={classes}>
+        <div style={props.style.clone()} {class}>
             { for props.children.iter() }
         </div>
     }

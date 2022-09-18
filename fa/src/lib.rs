@@ -2767,6 +2767,7 @@ impl yew::html::IntoPropValue<Option<String>> for Solid {
 }
 
 impl Icon for Solid {}
+
 #[derive(Clone, Copy, derive_more::Display)]
 pub enum Brands {
     #[display(fmt = "fa-brands fa-accessible-icon")]
@@ -3704,6 +3705,7 @@ impl yew::html::IntoPropValue<Option<String>> for Brands {
 }
 
 impl Icon for Brands {}
+
 #[derive(Clone, Copy, derive_more::Display)]
 pub enum Regular {
     #[display(fmt = "fa-regular fa-address-book")]

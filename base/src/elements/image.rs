@@ -17,16 +17,16 @@ pub struct Props {
     pub src: Option<String>,
 
     #[prop_or_default]
-    pub style: Option<String>,
+    pub style: Option<AttrValue>,
 }
 
 /// [https://bulma.io/documentation/elements/image/](https://bulma.io/documentation/elements/image/)
 #[function_component(Image)]
 pub fn image(props: &Props) -> Html {
-    let classes = classes!("image", props.class.clone(), props.size);
+    let class = classes!("image", props.class.clone(), props.size);
 
     html! {
-        <figure style={props.style.clone()} class={classes}>
+        <figure style={props.style.clone()} {class}>
             <img class={ classes!(props.rounded) } src={ props.src.clone() } />
         </figure>
     }

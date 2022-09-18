@@ -1,5 +1,6 @@
-use crate::props::Active;
 use yew::prelude::*;
+
+use crate::props::Active;
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {
@@ -16,7 +17,7 @@ pub struct Props {
     pub active: Active,
 
     #[prop_or_default]
-    pub style: Option<String>,
+    pub style: Option<AttrValue>,
 }
 
 /// [// https://bulma.io/documentation/components/dropdown/](// https://bulma.io/documentation/components/dropdown/)
@@ -25,14 +26,14 @@ pub fn dropdown_item(props: &Props) -> Html {
     let Props {
         class,
         children,
-        click: onclick,
+        click,
         active,
         style,
     } = &props;
-    let classes = classes!("dropdown-item", *active, class.clone());
+    let class = classes!("dropdown-item", *active, class.clone());
 
     html! {
-        <a style={style.clone()} class={classes} onclick={onclick.reform(|_|())}>
+        <a style={style.clone()} {class} onclick={click.reform(|_|())}>
             { for children.iter() }
         </a>
     }

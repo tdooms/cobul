@@ -13,7 +13,7 @@ pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static> {
     pub alignment: Alignment,
 
     #[prop_or_default]
-    pub size: Size,
+    pub size: Option<Size>,
 
     pub color: Color,
 

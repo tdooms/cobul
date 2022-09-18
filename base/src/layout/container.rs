@@ -14,16 +14,16 @@ pub struct Props {
     pub size: Option<ContainerSize>,
 
     #[prop_or_default]
-    pub style: Option<String>,
+    pub style: Option<AttrValue>,
 }
 
 /// [https://bulma.io/documentation/layout/container/](https://bulma.io/documentation/layout/container/)
 #[function_component(Container)]
 pub fn container(props: &Props) -> Html {
-    let classes = classes!("container", props.class.clone(), props.size);
+    let class = classes!("container", props.class.clone(), props.size);
 
     html! {
-        <div style={props.style.clone()} class={classes}>
+        <div style={props.style.clone()} {class}>
             { for props.children.iter() }
         </div>
     }

@@ -1,5 +1,6 @@
-use base::props::Color;
 use yew::prelude::*;
+
+use base::props::Color;
 
 #[derive(Clone, Copy, Debug, PartialEq, Default, derive_more::Display)]
 pub enum Direction {
@@ -20,7 +21,7 @@ pub struct Props {
     pub class: Classes,
 
     #[prop_or_default]
-    pub style: Option<String>,
+    pub style: Option<AttrValue>,
 
     #[prop_or_default]
     pub direction: Direction,
@@ -32,12 +33,12 @@ pub struct Props {
 /// [https://wikiki.github.io/elements/pageloader/](https://wikiki.github.io/elements/pageloader/)
 #[function_component(Loader)]
 pub fn loader(props: &Props) -> Html {
-    let classes = classes!(
+    let class = classes!(
         "pageloader",
         "is-active",
         props.class.clone(),
         props.direction.to_string(),
         props.color
     );
-    html! { <div style={props.style.clone()} class={classes}></div> }
+    html! { <div style={props.style.clone()} {class}></div> }
 }

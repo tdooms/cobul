@@ -1,6 +1,7 @@
-use convert_case::{Case, Casing};
 use std::collections::HashMap;
 use std::io::{Error, Write};
+
+use convert_case::{Case, Casing};
 
 #[derive(Clone, Debug, serde::Deserialize)]
 struct Icon {

@@ -9,14 +9,14 @@ pub struct Props {
     pub class: Classes,
 
     #[prop_or_default]
-    pub style: Option<String>,
+    pub style: Option<AttrValue>,
 }
 
 /// [// https://bulma.io/documentation/components/card/](// https://bulma.io/documentation/components/card/)
-#[function_component(CardFooterItem)]
+#[function_component(CardHeaderTitle)]
 pub fn card(props: &Props) -> Html {
     html! {
-        <nav style={props.style.clone()} class={classes!("card-footer-item", props.class.clone())} >
+        <nav style={props.style.clone()} class={classes!("card-header-title", props.class.clone())} >
             { for props.children.iter() }
         </nav>
     }

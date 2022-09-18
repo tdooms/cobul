@@ -1,6 +1,7 @@
-use base::props::{Color, Size};
 use rand::Rng;
 use yew::*;
+
+use base::props::{Color, Size};
 
 #[derive(Properties, Debug, PartialEq, Clone)]
 pub struct Props {

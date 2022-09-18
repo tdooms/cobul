@@ -4,13 +4,17 @@ version = "0.1.0"
 edition = "2021"
 
 [workspace]
-members = ["base", "fa", "test", "scraper", "simple", "extensions", "derive"]
+members = ["base", "fa", "test", "scraper", "simple", "extensions", "derive", "expand"]
+
+[features]
+default = ["base"]
 
 [dependencies]
-base = { path = "base" }
+base = { path = "base", optional = true }
 extensions = { path = "extensions", optional = true }
 simple = { path = "simple", optional = true }
 fa = { path = "fa", optional = true }
+derive = { path = "derive", optional = true }
 
 
 

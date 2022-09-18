@@ -6,7 +6,7 @@ pub struct Props {
     pub class: Classes,
 
     #[prop_or_default]
-    pub style: Option<String>,
+    pub style: Option<AttrValue>,
 
     #[prop_or_default]
     pub vertical: bool,
@@ -23,6 +23,6 @@ pub fn loader(props: &Props) -> Html {
     } else {
         "is-divider"
     };
-    let classes = classes!(direction, props.class.clone());
-    html! { <div style={props.style.clone()} data-content={props.text.clone()} class={classes}></div> }
+    let class = classes!(direction, props.class.clone());
+    html! { <div style={props.style.clone()} data-content={props.text.clone()} {class}></div> }
 }

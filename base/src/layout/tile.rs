@@ -23,13 +23,13 @@ pub struct Props {
     pub size: Option<TileSize>,
 
     #[prop_or_default]
-    pub style: Option<String>,
+    pub style: Option<AttrValue>,
 }
 
 /// [https://bulma.io/documentation/layout/tiles/](https://bulma.io/documentation/layout/tiles/)
 #[function_component(Tile)]
 pub fn tile(props: &Props) -> Html {
-    let classes = classes!(
+    let class = classes!(
         "tile",
         props.class.clone(),
         props.ctx,
@@ -38,7 +38,7 @@ pub fn tile(props: &Props) -> Html {
     );
 
     html! {
-        <@{ props.tag.clone() } style={props.style.clone()} class={classes}>
+        <@{ props.tag.clone() } style={props.style.clone()} {class}>
             { for props.children.iter() }
         </@>
     }

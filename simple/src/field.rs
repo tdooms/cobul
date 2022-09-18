@@ -51,17 +51,16 @@ pub fn field(props: &Props) -> Html {
         None => html! {},
     };
 
-    let control_classes = classes!(
+    let class = classes!(
         "control",
         props.icon_right.as_ref().map(|_| "has-icons-right"),
         props.icon_left.as_ref().map(|_| "has-icons-left")
     );
 
-
     html! {
         <div class={classes!("field", props.class.clone())}>
             { label }
-            <div class={control_classes}>
+            <div {class}>
                 { right }
                 { left }
                 { for props.children.iter() }

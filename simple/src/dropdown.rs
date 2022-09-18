@@ -1,10 +1,10 @@
 use strum::IntoEnumIterator;
 use yew::prelude::*;
+use ywt::callback;
 
 use base::components;
 use base::elements;
 use base::props::Size;
-use ywt::callback;
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static> {
@@ -16,13 +16,13 @@ pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static> {
     pub input: Callback<T>,
 
     #[prop_or_default]
-    pub size: Size,
+    pub size: Option<Size>,
 
     #[prop_or_default]
     pub fullwidth: bool,
 
     #[prop_or_default]
-    pub style: Option<String>,
+    pub style: Option<AttrValue>,
 }
 
 #[function_component(Dropdown)]

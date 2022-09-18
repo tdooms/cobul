@@ -19,19 +19,19 @@ pub struct Props {
     pub disabled: bool,
 
     #[prop_or_default]
-    pub style: Option<String>,
+    pub style: Option<AttrValue>,
 }
 
 /// [https://bulma.io/documentation/form/checkbox/](https://bulma.io/documentation/form/checkbox/)
 #[function_component(Checkbox)]
 pub fn checkbox(props: &Props) -> Html {
-    let classes = classes!("checkbox", props.class.clone());
+    let class = classes!("checkbox", props.class.clone());
 
     let checked = props.value;
     let input = props.input.reform(move |_| !checked);
 
     html! {
-        <label style={props.style.clone()} class={classes}>
+        <label style={props.style.clone()} {class}>
             <input
                 type="checkbox"
                 checked={props.value}

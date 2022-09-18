@@ -1,7 +1,8 @@
-use num::{FromPrimitive, ToPrimitive};
-use rand::Rng;
 use std::fmt::{Debug, Display};
 use std::ops::Range;
+
+use num::{FromPrimitive, ToPrimitive};
+use rand::Rng;
 use web_sys::{HtmlDivElement, HtmlInputElement, HtmlOutputElement};
 use yew::prelude::*;
 
@@ -31,7 +32,7 @@ pub struct Props<T: PartialEq> {
     pub fullwidth: bool,
 
     #[prop_or_default]
-    pub size: Size,
+    pub size: Option<Size>,
 
     #[prop_or_default]
     pub color: Option<Color>,

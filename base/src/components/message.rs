@@ -11,34 +11,35 @@ pub struct Props {
     pub header: Option<Html>,
 
     #[prop_or_default]
-    pub delete: Option<Callback<()>>,
+    pub delete: Callback<()>,
 
     #[prop_or_default]
     pub color: Option<Color>,
 
     #[prop_or_default]
-    pub size: Size,
+    pub size: Option<Size>,
 
     #[prop_or_default]
-    pub style: Option<String>,
+    pub style: Option<AttrValue>,
 }
 
 /// [https://bulma.io/documentation/components/message/](https://bulma.io/documentation/components/message/)
 #[function_component(Message)]
 pub fn message(props: &Props) -> Html {
-    let header = match (props.header.clone(), props.delete.clone()) {
-        (Some(html), Some(ondelete)) => html! {
-            <div class="message-header"> {html}
-                <button class="delete" aria-label="delete" onclick={ondelete.reform(|_| ())}></button>
-            </div>
-        },
-        (None, Some(ondelete)) => html! {
+    let header = match (props.header.clone(), props.delete == Callback::noop()) {
+        (Some(html), true) => html! {
             <div class="message-header">
-                <button class="delete" aria-label="delete" onclick={ondelete.reform(|_| ())}></button>
+                {html}
+                <button class="delete" aria-label="delete" onclick={props.delete.reform(|_| ())}></button>
             </div>
         },
-        (Some(html), None) => html! {<div class="message-header"> {html} </div> },
-        (None, None) => html! {},
+        (None, true) => html! {
+            <div class="message-header">
+                <button class="delete" aria-label="delete" onclick={props.delete.reform(|_| ())}></button>
+            </div>
+        },
+        (Some(html), false) => html! { <div class="message-header"> {html} </div> },
+        (None, false) => html! {},
     };
 
     html! {

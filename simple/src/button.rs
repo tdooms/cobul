@@ -1,11 +1,12 @@
+use yew::prelude::*;
+
 use base::elements;
 use base::props::{Color, Size};
-use yew::prelude::*;
 
 #[derive(Properties, Clone, PartialEq)]
 pub struct Props {
     #[prop_or_default]
-    pub size: Size,
+    pub size: Option<Size>,
 
     #[prop_or_default]
     pub hidden: bool,
@@ -56,7 +57,7 @@ pub struct Props {
     pub class: Classes,
 
     #[prop_or_default]
-    pub style: Option<String>,
+    pub style: Option<AttrValue>,
 
     #[prop_or_default]
     pub click: Callback<()>,

@@ -1,3 +1,0 @@
-#[derive(Classable)]
-
-fn main() {}

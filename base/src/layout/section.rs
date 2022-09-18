@@ -14,16 +14,16 @@ pub struct Props {
     pub size: Option<SectionSize>,
 
     #[prop_or_default]
-    pub style: Option<String>,
+    pub style: Option<AttrValue>,
 }
 
 /// [https://bulma.io/documentation/layout/section/](https://bulma.io/documentation/layout/section/)
 #[function_component(Section)]
 pub fn section(props: &Props) -> Html {
-    let classes = classes!("section", props.class.clone(), props.size);
+    let class = classes!("section", props.class.clone(), props.size);
 
     html! {
-        <section style={props.style.clone()} class={classes}>
+        <section style={props.style.clone()} {class}>
             { for props.children.iter() }
         </section>
     }

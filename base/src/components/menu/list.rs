@@ -9,15 +9,15 @@ pub struct Props {
     pub class: Classes,
 
     #[prop_or_default]
-    pub style: Option<String>,
+    pub style: Option<AttrValue>,
 }
 
 /// [https://bulma.io/documentation/components/menu/](https://bulma.io/documentation/components/menu/)
 #[function_component(MenuList)]
 pub fn menu_list(props: &Props) -> Html {
-    let classes = classes!("menu-list", props.class.clone());
+    let class = classes!("menu-list", props.class.clone());
     html! {
-        <p style={props.style.clone()} class={classes}>
+        <p style={props.style.clone()} {class}>
             { for props.children.iter() }
         </p>
     }

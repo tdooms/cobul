@@ -4,8 +4,13 @@ use crate::props::{Dropdown, Hoverable};
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {
+    #[prop_or_default]
     children: Children,
+
+    #[prop_or_default]
     dropdown: Dropdown,
+
+    #[prop_or_default]
     hoverable: Hoverable,
 }
 
@@ -13,10 +18,10 @@ pub struct Props {
 #[function_component(NavbarItem)]
 pub fn navbar_item(props: &Props) -> Html {
     let tag = if props.dropdown.0 { "a" } else { "div" };
-    let classes = classes!("navbar-item", props.dropdown, props.hoverable);
+    let class = classes!("navbar-item", props.dropdown, props.hoverable);
 
     html! {
-        <@{tag} class={classes}>
+        <@{tag} {class}>
             { for props.children.iter() }
         </@>
     }

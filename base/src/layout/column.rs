@@ -17,16 +17,16 @@ pub struct Props {
     pub offset: Option<ColumnOffset>,
 
     #[prop_or_default]
-    pub style: Option<String>,
+    pub style: Option<AttrValue>,
 }
 
 /// [https://bulma.io/documentation/columns/](https://bulma.io/documentation/columns/)
 #[function_component(Column)]
 pub fn column(props: &Props) -> Html {
-    let classes = classes!("column", props.class.clone(), props.size, props.offset);
+    let class = classes!("column", props.class.clone(), props.size, props.offset);
 
     html! {
-        <div style={props.style.clone()} class={classes}>
+        <div style={props.style.clone()} {class}>
             { for props.children.iter() }
         </div>
     }

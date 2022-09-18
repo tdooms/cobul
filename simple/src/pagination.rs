@@ -1,12 +1,13 @@
+use yew::*;
+
 use base::components;
 use base::components::{PaginationEllipsis, PaginationLink};
 use base::props::{Alignment, Size};
-use yew::*;
 
 #[derive(Properties, PartialEq, Clone)]
 pub struct Props {
     #[prop_or_default]
-    pub size: Size,
+    pub size: Option<Size>,
 
     #[prop_or_default]
     pub class: Classes,
