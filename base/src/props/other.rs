@@ -60,32 +60,6 @@ pub enum Breakpoint {
     FullHD,
 }
 
-/// The 4 allowed types for an input component.
-/// https://bulma.io/documentation/form/input/
-#[derive(Clone, Debug, Display, PartialEq, Copy)]
-pub enum InputType {
-    #[display(fmt = "text")]
-    Text,
-    #[display(fmt = "password")]
-    Password,
-    #[display(fmt = "email")]
-    Email,
-    #[display(fmt = "tel")]
-    Tel,
-}
-
-impl Default for InputType {
-    fn default() -> Self {
-        InputType::Text
-    }
-}
-
-impl Into<Classes> for InputType {
-    fn into(self) -> Classes {
-        Classes::from(self.to_string())
-    }
-}
-
 /// Tile context modifiers.
 /// https://bulma.io/documentation/layout/tiles/#modifiers
 #[derive(Clone, Debug, Display, PartialEq, Copy)]

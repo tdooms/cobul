@@ -2,12 +2,17 @@ use yew::prelude::*;
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {
-    pub label: String,
+    #[prop_or_default]
+    pub input: Callback<bool>,
 
+    #[prop_or_default]
     pub value: bool,
 
     #[prop_or_default]
-    pub input: Callback<bool>,
+    pub model: Option<Model<String>>,
+
+    #[prop_or_default]
+    pub style: Option<AttrValue>,
 
     #[prop_or_default]
     pub children: Children,
@@ -16,10 +21,10 @@ pub struct Props {
     pub class: Classes,
 
     #[prop_or_default]
-    pub disabled: bool,
+    pub disabled: Disabled,
 
     #[prop_or_default]
-    pub style: Option<AttrValue>,
+    pub label: String,
 }
 
 /// [https://bulma.io/documentation/form/checkbox/](https://bulma.io/documentation/form/checkbox/)
@@ -28,17 +33,16 @@ pub fn checkbox(props: &Props) -> Html {
     let class = classes!("checkbox", props.class.clone());
 
     let checked = props.value;
-    let input = props.input.reform(move |_| !checked);
+    let onclick = props.input.reform(move |_| !checked);
+
+    let (onclick, checked) = match props.model {
+        Some(Model { input, value }) => (ipnut, value),
+        None => (props.input, props.value),
+    };
 
     html! {
         <label style={props.style.clone()} {class}>
-            <input
-                type="checkbox"
-                checked={props.value}
-                label={props.label.clone()}
-                onclick={input}
-                disabled={props.disabled}
-                />
+            <input type="checkbox" {checked} {onclick} label={&props.label} disabled={props.disabled.0} />
             { for props.children.iter() }
         </label>
     }

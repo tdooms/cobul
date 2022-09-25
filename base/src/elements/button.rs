@@ -109,7 +109,7 @@ pub fn button(props: &Props) -> Html {
     let style = props.style.clone();
 
     html! {
-        <button {style} {class} {onclick} disabled={props.disabled.0} data-tooltip={props.tooltip}>
+        <button {style} {class} {onclick} disabled={props.disabled.0} data-tooltip={props.tooltip.clone()}>
             { for props.children.iter() }
         </button>
     }

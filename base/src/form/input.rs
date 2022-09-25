@@ -1,12 +1,18 @@
+use crate::model::Model;
+use crate::props::{Color, Disabled, Loading, Readonly, Rounded, Size, Static};
 use web_sys::HtmlInputElement;
 use yew::prelude::*;
-
-use crate::props::{Color, Disabled, InputType, Loading, Readonly, Rounded, Size, Static};
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {
     #[prop_or_default]
     pub input: Callback<String>,
+
+    #[prop_or_default]
+    pub value: Option<String>,
+
+    #[prop_or_default]
+    pub model: Option<Model<String>>,
 
     #[prop_or_default]
     pub style: Option<AttrValue>,
@@ -16,9 +22,6 @@ pub struct Props {
 
     #[prop_or_default]
     pub name: Option<String>,
-
-    #[prop_or_default]
-    pub value: Option<String>,
 
     #[prop_or_default]
     pub kind: String,
@@ -68,16 +71,19 @@ pub fn input(props: &Props) -> Html {
     );
 
     let reform = |e: InputEvent| e.target_unchecked_into::<HtmlInputElement>().value();
-    let oninput = props.input.reform(reform);
+    let (oninput, value) = match &props.model {
+        Some(Model { input, value }) => (input.reform(reform), Some(value.clone())),
+        None => (props.input.reform(reform), props.value.clone()),
+    };
 
     html! {
         <input
-            name={props.name.clone()}
-            value={props.value.clone()}
-            style={props.style.clone()}
+            {value}
             {oninput}
             {class}
+            name={props.name.clone()}
             type={props.kind.clone()}
+            style={props.style.clone()}
             placeholder={props.placeholder.clone()}
             disabled={props.disabled.0}
             readonly={props.readonly.0}

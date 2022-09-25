@@ -1,12 +1,11 @@
+use crate::model::Model;
+use web_sys::HtmlInputElement;
 use yew::prelude::*;
 
-use crate::props::{Color, FixedSize, Loading, Size, Static};
+use crate::props::{Color, Disabled, FixedSize, Loading, Readonly, Size, Static};
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {
-    #[prop_or_default]
-    pub name: Option<String>,
-
     #[prop_or_default]
     pub value: Option<String>,
 
@@ -14,10 +13,19 @@ pub struct Props {
     pub input: Callback<String>,
 
     #[prop_or_default]
+    pub model: Option<Model<String>>,
+
+    #[prop_or_default]
+    pub style: Option<AttrValue>,
+
+    #[prop_or_default]
     pub class: Classes,
 
     #[prop_or_default]
     pub placeholder: String,
+
+    #[prop_or_default]
+    pub name: Option<String>,
 
     #[prop_or_default]
     pub rows: Option<u32>,
@@ -29,22 +37,19 @@ pub struct Props {
     pub color: Option<Color>,
 
     #[prop_or_default]
-    pub fixed: FixedSize,
+    pub fixed_size: FixedSize,
 
     #[prop_or_default]
     pub loading: Loading,
 
     #[prop_or_default]
-    pub disabled: bool,
+    pub disabled: Disabled,
 
     #[prop_or_default]
-    pub readonly: bool,
+    pub readonly: Readonly,
 
     #[prop_or_default]
-    pub r#static: Static,
-
-    #[prop_or_default]
-    pub style: Option<AttrValue>,
+    pub fixed: Static,
 }
 
 /// [https://bulma.io/documentation/form/textarea/](https://bulma.io/documentation/form/textarea/)
@@ -56,25 +61,29 @@ pub fn textarea(props: &Props) -> Html {
         props.color,
         props.size,
         props.loading,
-        props.r#static,
-        props.fixed
+        props.fixed,
+        props.fixed_size
     );
-    let input = props.input.reform(|e: InputEvent| {
-        e.target_unchecked_into::<web_sys::HtmlInputElement>()
-            .value()
-    });
+
+    let reform = |e: InputEvent| e.target_unchecked_into::<HtmlInputElement>().value();
+
+    let (oninput, value) = match &props.model {
+        Some(Model { input, value }) => (input.reform(reform), Some(value.clone())),
+        None => (props.input.reform(reform), props.value.clone()),
+    };
 
     html! {
         <textarea
-            name={props.name.clone()}
-            value={props.value.clone()}
-            oninput={input}
-            style={props.style.clone()}
+
+            {value}
+            {oninput}
             {class}
+            name={props.name.clone()}
+            style={props.style.clone()}
             rows={props.rows.as_ref().map(ToString::to_string)}
             placeholder={props.placeholder.clone()}
-            disabled={props.disabled}
-            readonly={props.readonly}
+            disabled={props.disabled.0}
+            readonly={props.readonly.0}
             />
     }
 }
