@@ -22,7 +22,7 @@ pub struct Props {
     pub class: Classes,
 
     #[prop_or_default]
-    pub placeholder: String,
+    pub placeholder: Option<AttrValue>,
 
     #[prop_or_default]
     pub name: Option<String>,

@@ -1,4 +1,4 @@
-pub use base::{components::*, elements::*, form::*, layout::*, props::*};
+pub use base::{components::*, elements::*, form::*, layout::*, model::Model, props::*};
 
 #[cfg(feature = "extensions")]
 pub use extensions::*;

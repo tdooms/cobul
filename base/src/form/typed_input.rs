@@ -21,7 +21,7 @@ pub struct Props<T: FromStr + ToString + PartialEq + 'static> {
     pub r#type: InputType,
 
     #[prop_or_default]
-    pub placeholder: String,
+    pub placeholder: AttrValue,
 
     #[prop_or_default]
     pub size: Option<Size>,

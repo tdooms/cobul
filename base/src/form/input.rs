@@ -27,7 +27,7 @@ pub struct Props {
     pub kind: String,
 
     #[prop_or_default]
-    pub placeholder: String,
+    pub placeholder: Option<AttrValue>,
 
     #[prop_or_default]
     pub size: Option<Size>,
