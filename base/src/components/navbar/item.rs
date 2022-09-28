@@ -1,6 +1,6 @@
 use yew::prelude::*;
 
-use crate::props::{Dropdown, Hoverable};
+use crate::props::{HasDropdown, Hoverable};
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {
@@ -8,7 +8,7 @@ pub struct Props {
     children: Children,
 
     #[prop_or_default]
-    dropdown: Dropdown,
+    dropdown: HasDropdown,
 
     #[prop_or_default]
     hoverable: Hoverable,

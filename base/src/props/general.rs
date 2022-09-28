@@ -41,7 +41,7 @@ bool_prop!(Checked, "is-checked");
 bool_prop!(Current, "is-current");
 bool_prop!(Delete, "is-delete");
 bool_prop!(Disabled, "is-disabled");
-bool_prop!(Dropdown, "has-dropdown");
+bool_prop!(HasDropdown, "has-dropdown");
 bool_prop!(Expanded, "is-expanded");
 bool_prop!(FixedSize, "has-fixed-size");
 bool_prop!(Focused, "is-focused");
