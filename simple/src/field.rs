@@ -13,7 +13,7 @@ pub struct Props {
     pub class: Classes,
 
     #[prop_or_default]
-    pub label: Option<String>,
+    pub label: Option<AttrValue>,
 
     #[prop_or_default]
     pub optional: bool,
@@ -22,13 +22,13 @@ pub struct Props {
     pub success: bool,
 
     #[prop_or_default]
-    pub help: Option<String>,
+    pub help: Option<AttrValue>,
 
     #[prop_or_default]
-    pub icon_right: Option<String>,
+    pub icon_right: Option<AttrValue>,
 
     #[prop_or_default]
-    pub icon_left: Option<String>,
+    pub icon_left: Option<AttrValue>,
 }
 
 #[function_component(Field)]
