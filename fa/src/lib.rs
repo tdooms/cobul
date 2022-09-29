@@ -1,7 +1,3 @@
-use yew::AttrValue;
-
-pub trait Icon: yew::html::IntoPropValue<AttrValue> {}
-
 #[derive(Clone, Copy, derive_more::Display)]
 pub enum Solid {
     #[display(fmt = "fa-solid fa-a")]
@@ -2756,14 +2752,6 @@ pub enum Solid {
     Z,
 }
 
-impl yew::html::IntoPropValue<AttrValue> for Solid {
-    fn into_prop_value(self) -> AttrValue {
-        AttrValue::from(self.to_string())
-    }
-}
-
-impl Icon for Solid {}
-
 #[derive(Clone, Copy, derive_more::Display)]
 pub enum Brands {
     #[display(fmt = "fa-brands fa-accessible-icon")]
@@ -3688,14 +3676,6 @@ pub enum Brands {
     Zhihu,
 }
 
-impl yew::html::IntoPropValue<AttrValue> for Brands {
-    fn into_prop_value(self) -> AttrValue {
-        AttrValue::from(self.to_string())
-    }
-}
-
-impl Icon for Brands {}
-
 #[derive(Clone, Copy, derive_more::Display)]
 pub enum Regular {
     #[display(fmt = "fa-regular fa-address-book")]
@@ -4024,9 +4004,45 @@ pub enum Regular {
     WindowRestore,
 }
 
-impl yew::html::IntoPropValue<AttrValue> for Regular {
-    fn into_prop_value(self) -> AttrValue {
-        AttrValue::from(self.to_string())
+pub trait Icon: yew::html::IntoPropValue<yew::AttrValue> {}
+
+impl yew::html::IntoPropValue<yew::AttrValue> for Solid {
+    fn into_prop_value(self) -> yew::AttrValue {
+        yew::AttrValue::from(self.to_string())
+    }
+}
+
+impl yew::html::IntoPropValue<Option<yew::AttrValue>> for Solid {
+    fn into_prop_value(self) -> Option<yew::AttrValue> {
+        Some(yew::AttrValue::from(self.to_string()))
+    }
+}
+
+impl Icon for Solid {}
+
+impl yew::html::IntoPropValue<yew::AttrValue> for Brands {
+    fn into_prop_value(self) -> yew::AttrValue {
+        yew::AttrValue::from(self.to_string())
+    }
+}
+
+impl yew::html::IntoPropValue<Option<yew::AttrValue>> for Brands {
+    fn into_prop_value(self) -> Option<yew::AttrValue> {
+        Some(yew::AttrValue::from(self.to_string()))
+    }
+}
+
+impl Icon for Brands {}
+
+impl yew::html::IntoPropValue<yew::AttrValue> for Regular {
+    fn into_prop_value(self) -> yew::AttrValue {
+        yew::AttrValue::from(self.to_string())
+    }
+}
+
+impl yew::html::IntoPropValue<Option<yew::AttrValue>> for Regular {
+    fn into_prop_value(self) -> Option<yew::AttrValue> {
+        Some(yew::AttrValue::from(self.to_string()))
     }
 }
 
