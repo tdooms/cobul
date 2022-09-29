@@ -4,16 +4,23 @@ use ywt::callback;
 
 use base::components;
 use base::elements;
+use base::model::Model;
 use base::props::Size;
+use base::utils::combine_model;
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static> {
     #[prop_or_default]
-    pub class: Classes,
+    pub value: Option<T>,
 
-    pub value: T,
-
+    #[prop_or_default]
     pub input: Callback<T>,
+
+    #[prop_or_default]
+    pub model: Option<Model<T>>,
+
+    #[prop_or_default]
+    pub class: Classes,
 
     #[prop_or_default]
     pub size: Option<Size>,
@@ -32,16 +39,15 @@ where
 {
     let active = use_state_eq(|| false);
 
-    let input = props.input.clone();
     let handle = active.clone();
+    let (input, value) = combine_model(&props.input, &props.value, &props.model);
 
     let view_option = move |variant: T| {
-        let active = &variant == &props.value;
+        let active = &Some(variant) == &value;
 
         let click = callback!(handle, input; move |_| {
             handle.set(false);
             input.emit(variant);
-            log::info!("here");
         });
 
         html! {
@@ -57,7 +63,7 @@ where
     let class = "is-flex is-justify-content-space-between";
     let trigger = html! {
         <elements::Button size={props.size} fullwidth=true {class} {click}>
-            <span> {props.value.to_string()} </span>
+            <span> {value.unwrap().to_string()} </span>
             <elements::Icon icon="fa-solid fa-angle-down"/>
         </elements::Button>
     };

@@ -1,29 +1,35 @@
 use std::fmt::{Debug, Display};
 use std::ops::Range;
 
+use base::model::Model;
 use num::{FromPrimitive, ToPrimitive};
 use rand::Rng;
 use web_sys::{HtmlDivElement, HtmlInputElement, HtmlOutputElement};
 use yew::prelude::*;
 
 use base::props::{Color, Size};
+use base::utils::combine_model;
 
 #[derive(Clone, Debug, Properties, PartialEq)]
-pub struct Props<T: PartialEq> {
-    pub step: T,
-
-    pub range: Range<T>,
-
-    pub value: T,
-
-    #[prop_or("{}")]
-    pub fmt: &'static str,
-
+pub struct Props<T: PartialEq + Clone> {
     #[prop_or_default]
     pub change: Callback<T>, // Onchange is triggered when the slider is released (deferred)
 
     #[prop_or_default]
-    pub input: Callback<T>, // Oninput is triggered when the slider is moved (instantly)
+    pub input: Callback<T>, // Oninput is triggered when the slider is moved (instant)
+
+    #[prop_or_default]
+    pub model: Option<Model<T>>, // model uses the oninput property (instant)
+
+    #[prop_or_default]
+    pub value: Option<T>,
+
+    pub step: T,
+
+    pub range: Range<T>,
+
+    #[prop_or("{}")]
+    pub fmt: &'static str,
 
     #[prop_or_default]
     pub class: Classes,
@@ -53,7 +59,7 @@ pub struct Props<T: PartialEq> {
     pub label: bool,
 
     #[prop_or(3.0)]
-    pub labelwidth: f64,
+    pub label_width: f64,
 }
 
 /// [https://wikiki.github.io/form/slider/](https://wikiki.github.io/form/slider/)
@@ -97,39 +103,43 @@ where
         props.label.then(|| "has-output"),
     );
 
-    let change = props.change.reform(|e: Event| {
+    let (input, value) = combine_model(&props.change, &props.value, &props.model);
+
+    let onchange = props.change.reform(|e: Event| {
         let elem = e.target_unchecked_into::<HtmlInputElement>();
         T::from_f64(elem.value_as_number()).unwrap()
     });
-    let input = props.input.reform(|e: InputEvent| {
+    let oninput = input.reform(|e: InputEvent| {
         let elem = e.target_unchecked_into::<HtmlInputElement>();
         T::from_f64(elem.value_as_number()).unwrap()
     });
 
-    let formatted = props.fmt.replace("{}", &props.value.to_string());
+    let formatted = props.fmt.replace("{}", &value.clone().unwrap().to_string());
 
     let (start, end, value) = (
         props.range.start.to_f64().unwrap(),
         props.range.end.to_f64().unwrap(),
-        props.value.to_f64().unwrap(),
+        value.clone().unwrap().to_f64().unwrap(),
     );
 
     let offset = *width as f64 * ((value - start) / (end - start)).clamp(0.0, 1.0);
 
     let output_style = match props.tooltip {
-        true => format!("z-index:-100;left:{offset}px;width:{}rem", props.labelwidth),
-        false => format!("z-index:-100;width:{}rem", props.labelwidth),
+        true => format!("left:{offset}px;width:{}rem", props.label_width),
+        false => format!("width:{}rem", props.label_width),
     };
 
     let input_style = match props.tooltip {
-        false => format!("width:calc(100% - ({}rem))", props.labelwidth + 1.2),
+        false => format!("width:calc(100% - ({}rem))", props.label_width + 1.2),
         true => "width:100%".to_owned(),
     };
 
+    let (min, max) = (props.range.start.to_string(), props.range.end.to_string());
+
     html! {
         <div style="position:relative" ref={container} class="pt-2">
-        <input style={input_style} id={(*id).clone()} {class} step={props.step.to_string()} min={props.range.start.to_string()} max={props.range.end.to_string()}
-                disabled={props.disabled} orient={props.vertical.then(|| "vertical")} onchange={change} oninput={input} type="range" value={props.value.to_string()}/>
+        <input style={input_style} id={(*id).clone()} {class} step={props.step.to_string()} {min} {max}
+                disabled={props.disabled} orient={props.vertical.then(|| "vertical")} {onchange} {oninput} type="range" value={value.to_string()}/>
         <output style={output_style} for={(*id).clone()} ref={label}> {formatted} </output>
         </div>
     }

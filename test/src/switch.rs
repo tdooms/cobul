@@ -1,20 +1,17 @@
 use yew::*;
 
-use cobul::{Box, Field, Switch};
+use cobul::{use_model, Box, Field, Switch};
 
 #[function_component(SwitchTester)]
 pub fn switch_tester() -> Html {
-    let state = use_state(|| false);
-
-    let cloned = state.clone();
-    let input = Callback::from(move |x| cloned.set(x));
+    let model = use_model(|| false);
 
     html! {
         <Box>
         <Field>
-        <Switch label="test switch" {input} value={*state}/>
+        <Switch label="test switch" model={model.clone()} />
         </Field>
-        <p> {state.to_string()} </p>
+        <p> {model.value.to_string()} </p>
         </Box>
     }
 }

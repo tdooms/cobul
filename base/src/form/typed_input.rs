@@ -9,7 +9,7 @@ pub struct Props<T: FromStr + ToString + PartialEq + 'static> {
     pub input: Callback<Result<T, String>>,
 
     #[prop_or_default]
-    pub name: Option<String>,
+    pub name: Option<AttrValue>,
 
     #[prop_or_default]
     pub value: Option<T>,

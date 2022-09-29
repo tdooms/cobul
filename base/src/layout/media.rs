@@ -1,6 +1,5 @@
+use crate::utils::enclose_tag;
 use yew::prelude::*;
-
-use crate::utils::enclose_with_tag;
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {
@@ -16,11 +15,11 @@ pub struct Props {
     #[prop_or_default]
     pub left: Option<Html>,
 
-    #[prop_or("div".to_owned())]
-    pub right_tag: String,
+    #[prop_or_else(|| "div".into())]
+    pub right_tag: AttrValue,
 
-    #[prop_or("div".to_owned())]
-    pub left_tag: String,
+    #[prop_or_else(|| "div".into())]
+    pub left_tag: AttrValue,
 
     #[prop_or_default]
     pub style: Option<AttrValue>,
@@ -32,9 +31,9 @@ pub fn media(props: &Props) -> Html {
     let class = classes!("media", props.class.clone());
     html! {
         <div style={props.style.clone()} {class}>
-            { enclose_with_tag(props.left_tag.clone(), "media-left", props.left.clone()) }
+            { enclose_tag(props.left_tag.to_string(), "media-left", props.left.clone()) }
             <div class="media-content"> { for props.children.iter() } </div>
-            { enclose_with_tag(props.right_tag.clone(), "media-right", props.right.clone()) }
+            { enclose_tag(props.right_tag.to_string(), "media-right", props.right.clone()) }
         </div>
     }
 }

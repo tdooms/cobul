@@ -4,7 +4,8 @@ use crate::props::Active;
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {
-    pub title: String,
+    #[prop_or_else(|| "Title".into())]
+    pub title: AttrValue,
 
     #[prop_or_default]
     pub children: Children,

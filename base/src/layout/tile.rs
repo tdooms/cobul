@@ -11,7 +11,7 @@ pub struct Props {
     pub class: Classes,
 
     #[prop_or_else(|| "div".into())]
-    pub tag: String,
+    pub tag: AttrValue,
 
     #[prop_or_default]
     pub ctx: Option<TileCtx>,
@@ -38,7 +38,7 @@ pub fn tile(props: &Props) -> Html {
     );
 
     html! {
-        <@{ props.tag.clone() } style={props.style.clone()} {class}>
+        <@{ props.tag.to_string() } style={props.style.clone()} {class}>
             { for props.children.iter() }
         </@>
     }

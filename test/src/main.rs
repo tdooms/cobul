@@ -124,7 +124,7 @@ fn app() -> Html {
         </Buttons>
 
         <Buttons>
-        <Button r#static=true> {"Static"} </Button>
+        <Button statik=true> {"Static"} </Button>
         </Buttons>
 
         <Buttons>

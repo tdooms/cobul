@@ -14,7 +14,7 @@ pub struct Props {
     pub rounded: Rounded,
 
     #[prop_or_default]
-    pub src: Option<String>,
+    pub src: Option<AttrValue>,
 
     #[prop_or_default]
     pub style: Option<AttrValue>,

@@ -26,7 +26,7 @@ pub struct Props {
     pub color: Option<Color>,
 
     #[prop_or_default]
-    pub tooltip: Option<String>,
+    pub tooltip: Option<AttrValue>,
 
     #[prop_or_default]
     pub hidden: Hidden,
@@ -65,7 +65,7 @@ pub struct Props {
     pub active: Active,
 
     #[prop_or_default]
-    pub r#static: Static,
+    pub statik: Static,
 }
 
 /// [https://bulma.io/documentation/elements/button/](https://bulma.io/documentation/elements/button/)
@@ -84,7 +84,7 @@ pub fn button(props: &Props) -> Html {
     let hovered = use_context::<Hovered>();
     let focussed = use_context::<Focused>();
     let active = use_context::<Active>();
-    let r#static = use_context::<Static>();
+    let statik = use_context::<Static>();
 
     let class = classes!(
         "button",
@@ -101,7 +101,7 @@ pub fn button(props: &Props) -> Html {
         props.hovered.or(hovered),
         props.focussed.or(focussed),
         props.active.or(active),
-        props.r#static.or(r#static),
+        props.statik.or(statik),
         props.class.clone()
     );
 

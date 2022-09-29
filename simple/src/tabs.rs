@@ -2,10 +2,21 @@ use strum::IntoEnumIterator;
 use yew::prelude::*;
 
 use base::components;
-use base::props::{Alignment, Size};
+use base::model::Model;
+use base::props::{Alignment, Boxed, Fullwidth, Size, Toggle, ToggleRounded};
+use base::utils::combine_model;
 
 #[derive(Clone, Properties, PartialEq)]
 pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static> {
+    #[prop_or_default]
+    pub value: Option<T>,
+
+    #[prop_or_default]
+    pub input: Callback<T>,
+
+    #[prop_or_default]
+    pub model: Option<Model<T>>,
+
     #[prop_or_default]
     pub class: Classes,
 
@@ -16,23 +27,19 @@ pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static> {
     pub size: Option<Size>,
 
     #[prop_or_default]
-    pub boxed: bool,
+    pub boxed: Boxed,
 
     #[prop_or_default]
-    pub toggle: bool,
+    pub toggle: Toggle,
 
     #[prop_or_default]
-    pub rounded: bool,
+    pub rounded: ToggleRounded,
 
     #[prop_or_default]
-    pub fullwidth: bool,
+    pub fullwidth: Fullwidth,
 
     #[prop_or_default]
     pub style: Option<AttrValue>,
-
-    pub value: T,
-
-    pub click: Callback<T>,
 }
 
 #[function_component(Tabs)]
@@ -40,17 +47,6 @@ pub fn tabs<T>(props: &Props<T>) -> Html
 where
     T: IntoEnumIterator + ToString + Copy + PartialEq + 'static,
 {
-    let tab_map = |variant: T| {
-        let class = (&props.value == &variant).then(|| "is-active");
-        let onclick = props.click.reform(move |_| variant);
-
-        html! {
-            <li {onclick} {class}>
-                <a> { variant.to_string() } </a>
-            </li>
-        }
-    };
-
     let Props {
         class,
         alignment,
@@ -62,6 +58,15 @@ where
         style,
         ..
     } = props.clone();
+
+    let (input, value) = combine_model(&props.input, &props.value, &props.model);
+
+    let tab_map = |variant: T| {
+        let class = (&value == &Some(variant)).then(|| "is-active");
+        let onclick = input.reform(move |_| variant);
+
+        html! { <li {onclick} {class}> <a> { variant.to_string() } </a> </li> }
+    };
 
     html! {
         <components::Tabs {class} {alignment} {size} {boxed} {toggle} {rounded} {fullwidth} {style}>

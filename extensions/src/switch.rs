@@ -1,18 +1,23 @@
+use base::model::Model;
 use rand::Rng;
 use yew::*;
 
-use base::props::{Color, Size};
+use base::props::{Color, Disabled, Outlined, Rounded, Rtl, Size, Thin};
+use base::utils::combine_model;
 
 #[derive(Properties, Debug, PartialEq, Clone)]
 pub struct Props {
-    pub value: bool,
+    #[prop_or_default]
+    pub value: Option<bool>,
 
-    pub label: String,
-
+    #[prop_or_default]
     pub input: Callback<bool>,
 
     #[prop_or_default]
-    pub label_left: bool,
+    pub model: Option<Model<bool>>,
+
+    #[prop_or_else(|| "Label".into())]
+    pub label: AttrValue,
 
     #[prop_or_default]
     pub color: Option<Color>,
@@ -21,16 +26,19 @@ pub struct Props {
     pub size: Option<Size>,
 
     #[prop_or_default]
-    pub thin: bool,
+    pub rtl: Rtl,
 
     #[prop_or_default]
-    pub rounded: bool,
+    pub thin: Thin,
 
     #[prop_or_default]
-    pub outlined: bool,
+    pub rounded: Rounded,
 
     #[prop_or_default]
-    pub disabled: bool,
+    pub outlined: Outlined,
+
+    #[prop_or_default]
+    pub disabled: Disabled,
 
     #[prop_or_default]
     pub class: Classes,
@@ -43,20 +51,21 @@ pub fn switch(props: &Props) -> Html {
     let class = classes!(
         "switch",
         props.class.clone(),
-        props.label_left.then(|| "is-rtl"),
+        props.rtl,
         props.color,
         props.size,
-        props.thin.then(|| "is-thin"),
-        props.rounded.then(|| "is-rounded"),
-        props.outlined.then(|| "is-outlined"),
+        props.thin,
+        props.rounded,
+        props.outlined,
     );
 
-    let checked = props.value;
-    let input = props.input.reform(move |_| !checked);
+    let (input, value) = combine_model(&props.input, &props.value, &props.model);
+    let checked = value.unwrap_or_default();
+    let onchange = input.reform(move |_| !checked);
 
     html! {
         <>
-        <input id={(*id).clone()} {class} type="checkbox" {checked} disabled={props.disabled} onchange={input}/>
+        <input id={(*id).clone()} {class} type="checkbox" {checked} disabled={props.disabled.0} {onchange} />
         <label for={(*id).clone()}> {props.label.clone()} </label>
         </>
     }

@@ -1,5 +1,6 @@
 use crate::model::Model;
 use crate::props::{Color, Disabled, Loading, Readonly, Rounded, Size, Static};
+use crate::utils::combine_model;
 use web_sys::HtmlInputElement;
 use yew::prelude::*;
 
@@ -21,10 +22,10 @@ pub struct Props {
     pub class: Classes,
 
     #[prop_or_default]
-    pub name: Option<String>,
+    pub name: Option<AttrValue>,
 
     #[prop_or_default]
-    pub kind: String,
+    pub kind: Option<AttrValue>,
 
     #[prop_or_default]
     pub placeholder: Option<AttrValue>,
@@ -48,7 +49,7 @@ pub struct Props {
     pub readonly: Readonly,
 
     #[prop_or_default]
-    pub fixed: Static,
+    pub statik: Static,
 }
 
 /// [https://bulma.io/documentation/form/input/](https://bulma.io/documentation/form/input/)
@@ -58,7 +59,7 @@ pub fn input(props: &Props) -> Html {
     let color = use_context::<Color>();
     let rounded = use_context::<Rounded>();
     let loading = use_context::<Loading>();
-    let fixed = use_context::<Static>();
+    let statik = use_context::<Static>();
 
     let class = classes!(
         "input",
@@ -67,14 +68,12 @@ pub fn input(props: &Props) -> Html {
         props.color.or(color),
         props.rounded.or(rounded),
         props.loading.or(loading),
-        props.fixed.or(fixed),
+        props.statik.or(statik),
     );
 
+    let (input, value) = combine_model(&props.input, &props.value, &props.model);
     let reform = |e: InputEvent| e.target_unchecked_into::<HtmlInputElement>().value();
-    let (oninput, value) = match &props.model {
-        Some(Model { input, value }) => (input.reform(reform), Some(value.clone())),
-        None => (props.input.reform(reform), props.value.clone()),
-    };
+    let oninput = input.reform(reform);
 
     html! {
         <input

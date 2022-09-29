@@ -56,7 +56,7 @@ pub fn dropdown(props: &Props) -> Html {
     let onblur = props.focus.reform(|_| false);
     let onmousedown = Callback::from(|e: MouseEvent| e.prevent_default());
 
-    let style = props.fullwidth.then(|| "width:100%");
+    let style = props.fullwidth.then(|| "z-index:100;width:100%");
 
     html! {
         <div style={props.style.clone()} {class} {onblur}>

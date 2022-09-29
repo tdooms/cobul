@@ -6,8 +6,8 @@ pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static> {
     #[prop_or_default]
     pub class: Classes,
 
-    #[prop_or_default]
-    pub name: String,
+    #[prop_or_else(|| "Label".into())]
+    pub label: Option<AttrValue>,
 
     #[prop_or_default]
     pub checked: Option<T>,

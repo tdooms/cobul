@@ -23,8 +23,8 @@ pub struct Props {
     #[prop_or_default]
     pub disabled: Disabled,
 
-    #[prop_or_default]
-    pub label: String,
+    #[prop_or_else(|| "Label".into())]
+    pub label: Option<AttrValue>,
 }
 
 /// [https://bulma.io/documentation/form/checkbox/](https://bulma.io/documentation/form/checkbox/)

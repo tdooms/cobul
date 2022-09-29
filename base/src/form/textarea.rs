@@ -3,6 +3,7 @@ use web_sys::HtmlInputElement;
 use yew::prelude::*;
 
 use crate::props::{Color, Disabled, FixedSize, Loading, Readonly, Size, Static};
+use crate::utils::combine_model;
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {
@@ -25,7 +26,7 @@ pub struct Props {
     pub placeholder: Option<AttrValue>,
 
     #[prop_or_default]
-    pub name: Option<String>,
+    pub name: Option<AttrValue>,
 
     #[prop_or_default]
     pub rows: Option<u32>,
@@ -37,7 +38,7 @@ pub struct Props {
     pub color: Option<Color>,
 
     #[prop_or_default]
-    pub fixed_size: FixedSize,
+    pub fixed: FixedSize,
 
     #[prop_or_default]
     pub loading: Loading,
@@ -49,32 +50,35 @@ pub struct Props {
     pub readonly: Readonly,
 
     #[prop_or_default]
-    pub fixed: Static,
+    pub statik: Static,
 }
 
 /// [https://bulma.io/documentation/form/textarea/](https://bulma.io/documentation/form/textarea/)
 #[function_component(Textarea)]
 pub fn textarea(props: &Props) -> Html {
+    let size = use_context::<Size>();
+    let color = use_context::<Color>();
+    let loading = use_context::<Loading>();
+    let statik = use_context::<Static>();
+    let fixed = use_context::<FixedSize>();
+
     let class = classes!(
         "textarea",
         props.class.clone(),
-        props.color,
-        props.size,
-        props.loading,
-        props.fixed,
-        props.fixed_size
+        props.color.or(color),
+        props.size.or(size),
+        props.loading.or(loading),
+        props.statik.or(statik),
+        props.fixed.or(fixed)
     );
 
-    let reform = |e: InputEvent| e.target_unchecked_into::<HtmlInputElement>().value();
+    let (input, value) = combine_model(&props.input, &props.value, &props.model);
 
-    let (oninput, value) = match &props.model {
-        Some(Model { input, value }) => (input.reform(reform), Some(value.clone())),
-        None => (props.input.reform(reform), props.value.clone()),
-    };
+    let reform = |e: InputEvent| e.target_unchecked_into::<HtmlInputElement>().value();
+    let oninput = input.reform(reform);
 
     html! {
         <textarea
-
             {value}
             {oninput}
             {class}

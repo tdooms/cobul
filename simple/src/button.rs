@@ -1,7 +1,10 @@
 use yew::prelude::*;
 
 use base::elements;
-use base::props::{Color, Size};
+use base::props::{
+    Active, Color, Disabled, Focused, Fullwidth, Hidden, Hovered, Inverted, Light, Loading,
+    Outlined, Rounded, Selected, Size, Static,
+};
 
 #[derive(Properties, Clone, PartialEq)]
 pub struct Props {
@@ -9,49 +12,49 @@ pub struct Props {
     pub size: Option<Size>,
 
     #[prop_or_default]
-    pub hidden: bool,
+    pub hidden: Hidden,
 
     #[prop_or_default]
-    pub outlined: bool,
+    pub outlined: Outlined,
 
     #[prop_or_default]
-    pub inverted: bool,
+    pub inverted: Inverted,
 
     #[prop_or_default]
-    pub rounded: bool,
+    pub rounded: Rounded,
 
     #[prop_or_default]
-    pub light: bool,
+    pub light: Light,
 
     #[prop_or_default]
-    pub loading: bool,
+    pub loading: Loading,
 
     #[prop_or_default]
-    pub disabled: bool,
+    pub disabled: Disabled,
 
     #[prop_or_default]
-    pub fullwidth: bool,
+    pub fullwidth: Fullwidth,
 
     #[prop_or_default]
-    pub selected: bool,
+    pub selected: Selected,
 
     #[prop_or_default]
     pub color: Option<Color>,
 
     #[prop_or_default]
-    pub hovered: bool,
+    pub hovered: Hovered,
 
     #[prop_or_default]
-    pub focussed: bool,
+    pub focussed: Focused,
 
     #[prop_or_default]
-    pub active: bool,
+    pub active: Active,
 
     #[prop_or_default]
-    pub r#static: bool,
+    pub statik: Static,
 
     #[prop_or_default]
-    pub tooltip: Option<String>,
+    pub tooltip: Option<AttrValue>,
 
     #[prop_or_default]
     pub class: Classes,
@@ -63,26 +66,28 @@ pub struct Props {
     pub click: Callback<()>,
 
     #[prop_or_default]
-    pub icon: Option<String>,
+    pub icon: Option<AttrValue>,
 
     #[prop_or_default]
-    pub text: String,
+    pub text: Option<AttrValue>,
 }
 
 /// [https://bulma.io/documentation/elements/button/](https://bulma.io/documentation/elements/button/)
 #[function_component(Button)]
 pub fn button(props: &Props) -> Html {
-    let inner = match props.icon.clone() {
-        None => html! {props.text.clone()},
-        Some(icon) => html! {<> <elements::Icon {icon} /> <span> {props.text.clone()} </span> </>},
+    let inner = match (props.icon.clone(), props.text.clone()) {
+        (None, None) => html! {},
+        (None, Some(text)) => html! {text},
+        (Some(icon), None) => html! { <elements::Icon {icon} /> },
+        (Some(icon), Some(text)) => html! {<> <elements::Icon {icon} /> <span> {text} </span> </>},
     };
 
     html! {
         <elements::Button style={props.style.clone()} class={props.class.clone()} click={props.click.clone()}
-        disabled={props.disabled} tooltip={props.tooltip.clone()} hidden={props.hidden} outlined={props.outlined}
+        disabled={props.disabled} tooltip={props.tooltip.as_ref().map(ToString::to_string)} hidden={props.hidden} outlined={props.outlined}
         light={props.light} inverted={props.inverted} rounded={props.rounded} loading={props.loading}
         fullwidth={props.fullwidth} selected={props.selected} color={props.color} size={props.size}
-        hovered={props.hovered} focussed={props.focussed} active={props.active} r#static={props.r#static}>
+        hovered={props.hovered} focussed={props.focussed} active={props.active} statik={props.statik}>
             {inner}
         </elements::Button>
     }

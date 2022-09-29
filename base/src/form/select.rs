@@ -3,13 +3,15 @@ use strum::IntoEnumIterator;
 use yew::prelude::*;
 
 use crate::props::{Color, Focused, Hovered, Loading, Rounded, Size};
+use crate::utils::combine_model;
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static> {
     #[prop_or_default]
     pub input: Callback<T>,
 
-    pub value: T,
+    #[prop_or_default]
+    pub value: Option<T>,
 
     #[prop_or_default]
     pub model: Option<Model<T>>,
@@ -54,13 +56,10 @@ where
         props.loading
     );
 
-    let (input, value) = match props.model.clone() {
-        Some(Model { input, value }) => (input, value),
-        _ => (props.input.clone(), props.value.clone()),
-    };
+    let (input, value) = combine_model(&props.input, &props.value, &props.model);
 
     let option = move |variant: T| {
-        let selected = std::mem::discriminant(&variant) == std::mem::discriminant(&value);
+        let selected = std::mem::discriminant(&variant) == std::mem::discriminant(&value.unwrap());
         let onclick = (!selected).then(|| input.reform(move |_| variant));
         html! { <option {selected} {onclick}> {variant} </option> }
     };

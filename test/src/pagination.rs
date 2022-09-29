@@ -1,16 +1,15 @@
 use yew::*;
 
 use cobul::simple::Pagination;
-use cobul::Box;
+use cobul::{use_model, Box};
 
 #[function_component(PaginationTester)]
 pub fn pagination_tester() -> Html {
-    let state = use_state(|| 1);
-    let input = ywt::callback!(state; move |idx| state.set(idx));
+    let model = use_model(|| 1);
 
     html! {
         <Box>
-        <Pagination page={*state} total={10} {input}/>
+        <Pagination {model} total={10} />
         </Box>
     }
 }

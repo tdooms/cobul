@@ -11,16 +11,16 @@ pub struct Props {
     pub class: Classes,
 
     #[prop_or_else(|| "div".into())]
-    pub tag: String,
+    pub tag: AttrValue,
 
     #[prop_or_default]
     pub expanded: Expanded,
 
     #[prop_or_default]
-    pub right: Option<String>,
+    pub right: Option<AttrValue>,
 
     #[prop_or_default]
-    pub left: Option<String>,
+    pub left: Option<AttrValue>,
 
     #[prop_or_default]
     pub style: Option<AttrValue>,
@@ -37,21 +37,21 @@ pub fn control(props: &Props) -> Html {
         props.left.as_ref().map(|_| "has-icons-left")
     );
 
-    let map_icon = |icon: Option<&String>, right: bool| {
+    let view_icon = |icon: Option<&AttrValue>, right: bool| {
         let alignment = if right { "is-right" } else { "is-left" };
         let class = classes!("icon", "is-small", alignment);
 
         match icon {
             None => html! {},
-            Some(name) => html! {<span {class}><i class={name}> </i></span>},
+            Some(name) => html! {<span {class}><i class={name.to_string()}> </i></span>},
         }
     };
 
     html! {
-        <@{ props.tag.clone() } style={props.style.clone()} {class}>
+        <@{ props.tag.to_string() } style={props.style.clone()} {class}>
             { for props.children.iter() }
-            { map_icon(props.right.as_ref(), true) }
-            { map_icon(props.left.as_ref(), false) }
+            { view_icon(props.right.as_ref(), true) }
+            { view_icon(props.left.as_ref(), false) }
         </@>
     }
 }

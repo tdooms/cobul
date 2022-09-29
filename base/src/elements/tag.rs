@@ -22,7 +22,7 @@ pub struct Props {
     pub delete: Delete,
 
     #[prop_or_else(|| "span".into())]
-    pub tag: String,
+    pub tag: AttrValue,
 
     #[prop_or_default]
     pub click: Callback<()>,
@@ -52,7 +52,7 @@ pub fn tag(props: &Props) -> Html {
 
     let onclick = props.click.reform(|_| ());
     html! {
-        <@{ props.tag.clone() } style={props.style.clone()} {class} {onclick}>
+        <@{ props.tag.to_string() } style={props.style.clone()} {class} {onclick}>
             { for props.children.iter() }
         </@>
     }

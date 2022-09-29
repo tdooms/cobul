@@ -2,10 +2,21 @@ use yew::*;
 
 use base::components;
 use base::components::{PaginationEllipsis, PaginationLink};
+use base::model::Model;
 use base::props::{Alignment, Size};
+use base::utils::combine_model;
 
 #[derive(Properties, PartialEq, Clone)]
 pub struct Props {
+    #[prop_or_default]
+    pub input: Callback<u64>,
+
+    #[prop_or_default]
+    pub value: Option<u64>,
+
+    #[prop_or_default]
+    pub model: Option<Model<u64>>,
+
     #[prop_or_default]
     pub size: Option<Size>,
 
@@ -18,11 +29,6 @@ pub struct Props {
     #[prop_or_default]
     pub rounded: bool,
 
-    #[prop_or_default]
-    pub input: Callback<u64>,
-
-    pub page: u64,
-
     pub total: u64,
 }
 
@@ -33,10 +39,12 @@ pub fn pagination(props: &Props) -> Html {
         class,
         alignment,
         rounded,
-        page,
         total,
-        input,
+        ..
     } = props.clone();
+
+    let (input, value) = combine_model(&props.input, &props.value, &props.model);
+    let page = value.unwrap();
 
     let ellipsis = html! {<PaginationEllipsis> {"\u{2026}"} </PaginationEllipsis>};
 

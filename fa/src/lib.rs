@@ -1,4 +1,6 @@
-pub trait Icon: yew::html::IntoPropValue<String> {}
+use yew::AttrValue;
+
+pub trait Icon: yew::html::IntoPropValue<AttrValue> {}
 
 #[derive(Clone, Copy, derive_more::Display)]
 pub enum Solid {
@@ -2754,15 +2756,9 @@ pub enum Solid {
     Z,
 }
 
-impl yew::html::IntoPropValue<String> for Solid {
-    fn into_prop_value(self) -> String {
-        self.to_string()
-    }
-}
-
-impl yew::html::IntoPropValue<Option<String>> for Solid {
-    fn into_prop_value(self) -> Option<String> {
-        Some(self.to_string())
+impl yew::html::IntoPropValue<AttrValue> for Solid {
+    fn into_prop_value(self) -> AttrValue {
+        AttrValue::from(self.to_string())
     }
 }
 
@@ -3692,15 +3688,9 @@ pub enum Brands {
     Zhihu,
 }
 
-impl yew::html::IntoPropValue<String> for Brands {
-    fn into_prop_value(self) -> String {
-        self.to_string()
-    }
-}
-
-impl yew::html::IntoPropValue<Option<String>> for Brands {
-    fn into_prop_value(self) -> Option<String> {
-        Some(self.to_string())
+impl yew::html::IntoPropValue<AttrValue> for Brands {
+    fn into_prop_value(self) -> AttrValue {
+        AttrValue::from(self.to_string())
     }
 }
 
@@ -4034,15 +4024,9 @@ pub enum Regular {
     WindowRestore,
 }
 
-impl yew::html::IntoPropValue<String> for Regular {
-    fn into_prop_value(self) -> String {
-        self.to_string()
-    }
-}
-
-impl yew::html::IntoPropValue<Option<String>> for Regular {
-    fn into_prop_value(self) -> Option<String> {
-        Some(self.to_string())
+impl yew::html::IntoPropValue<AttrValue> for Regular {
+    fn into_prop_value(self) -> AttrValue {
+        AttrValue::from(self.to_string())
     }
 }
 

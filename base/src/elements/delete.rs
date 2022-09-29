@@ -14,7 +14,7 @@ pub struct Props {
     pub size: Option<Size>,
 
     #[prop_or_else(|| "button".into())]
-    pub tag: String,
+    pub tag: AttrValue,
 
     pub click: Callback<()>,
 
@@ -29,7 +29,7 @@ pub fn delete(props: &Props) -> Html {
     let onclick = props.click.reform(|_| ());
 
     html! {
-        <@{props.tag.clone()} style={props.style.clone()} {class} {onclick}>
+        <@{props.tag.to_string()} style={props.style.clone()} {class} {onclick}>
             { for props.children.iter() }
         </@>
     }

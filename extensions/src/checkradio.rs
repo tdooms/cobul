@@ -1,11 +1,23 @@
+use base::model::Model;
 use rand::Rng;
 use yew::prelude::*;
 
 use base::props::{Color, Size};
+use base::utils::combine_model;
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {
-    pub label: String,
+    #[prop_or_default]
+    pub value: Option<bool>,
+
+    #[prop_or_default]
+    pub input: Callback<bool>,
+
+    #[prop_or_default]
+    pub model: Option<Model<bool>>,
+
+    #[prop_or_else(|| "Label".into())]
+    pub label: AttrValue,
 
     #[prop_or_default]
     pub class: Classes,
@@ -22,6 +34,9 @@ pub struct Props {
     #[prop_or_default]
     pub circle: bool,
 
+    #[prop_or_default]
+    pub block: bool,
+
     #[prop_or(true)]
     pub border: bool,
 
@@ -33,15 +48,6 @@ pub struct Props {
 
     #[prop_or_default]
     pub rtl: bool,
-
-    #[prop_or_default]
-    pub block: Option<bool>,
-
-    #[prop_or_default]
-    pub checked: bool,
-
-    #[prop_or_default]
-    pub input: Callback<bool>,
 }
 
 #[derive(derive_more::Display)]
@@ -59,17 +65,19 @@ fn render(props: &Props, kind: Kind, id: String) -> Html {
         props.color.clone(),
         props.size.clone(),
         props.circle.then(|| "is-circle"),
+        props.block.then(|| "is-block"),
         (!props.border).then(|| "has-no-border"),
         props.background.then(|| "has-background-color"),
         props.rtl.then(|| "is-rtl"),
     );
 
-    let checked = props.checked;
-    let input = props.input.reform(move |_| !checked);
+    let (input, value) = combine_model(&props.input, &props.value, &props.model);
+    let onchange = input.reform(move |_| !value.unwrap());
+    let checked = value.unwrap_or_default();
 
     html! {
         <>
-        <input id={id.clone()} {class} type={kind.to_string()} onchange={input} {checked}/>
+        <input id={id.clone()} {class} type={kind.to_string()} {onchange} {checked} disabled={props.disabled} />
         <label for={id}> {props.label.clone()} </label>
         </>
     }

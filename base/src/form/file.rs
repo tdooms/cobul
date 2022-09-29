@@ -18,10 +18,10 @@ pub struct Props {
     pub fullwidth: Fullwidth,
 
     #[prop_or_default]
-    pub filename: Option<String>,
+    pub filename: Option<AttrValue>,
 
     #[prop_or_default]
-    pub accept: Option<String>,
+    pub accept: Option<AttrValue>,
 
     #[prop_or_default]
     pub size: Option<Size>,

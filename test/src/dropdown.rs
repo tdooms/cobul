@@ -15,17 +15,14 @@ pub enum TestEnum {
 
 #[function_component(DropdownTester)]
 pub fn dropdown_tester() -> Html {
-    let state = use_state(|| TestEnum::Option1);
-    let value = *state;
-
-    let input = Callback::from(move |x| state.set(x));
+    let model = use_model(|| TestEnum::Option1);
 
     html! {
         <Box>
-        <simple::Dropdown<TestEnum> value={value.clone()} input={input.clone()}/>
+        <simple::Dropdown<TestEnum> model={model.clone()} />
 
         <Columns>
-        <Column><simple::Dropdown<TestEnum> {value} {input} fullwidth=true/></Column>
+        <Column> <simple::Dropdown<TestEnum> model={model.clone()} fullwidth=true /> </Column>
         <Column size={ColumnSize::Is7} />
         </Columns>
         </Box>

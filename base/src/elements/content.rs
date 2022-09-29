@@ -9,7 +9,7 @@ pub struct Props {
     pub class: Classes,
 
     #[prop_or_else(|| "div".into())]
-    pub tag: String,
+    pub tag: AttrValue,
 
     #[prop_or_default]
     pub style: Option<AttrValue>,
@@ -20,7 +20,7 @@ pub struct Props {
 pub fn content(props: &Props) -> Html {
     let class = classes!("content", props.class.clone());
     html! {
-        <@{props.tag.clone()} style={props.style.clone()} {class}>
+        <@{props.tag.to_string()} style={props.style.clone()} {class}>
             { for props.children.iter() }
         </@>
     }

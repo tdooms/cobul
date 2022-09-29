@@ -12,7 +12,7 @@ pub struct Props {
     pub vertical: bool,
 
     #[prop_or_default]
-    pub text: Option<String>,
+    pub text: Option<AttrValue>,
 }
 
 /// [https://wikiki.github.io/elements/pageloader/](https://wikiki.github.io/elements/pageloader/)

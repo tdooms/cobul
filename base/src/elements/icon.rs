@@ -4,7 +4,7 @@ use crate::props::{Size, TextColor};
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {
-    pub icon: String,
+    pub icon: AttrValue,
 
     #[prop_or_default]
     pub class: Classes,

@@ -1,13 +1,10 @@
-pub use base::{components::*, elements::*, form::*, layout::*, model::Model, props::*};
+pub use base::{components::*, elements::*, form::*, layout::*, model::*, props::*};
 
 #[cfg(feature = "extensions")]
 pub use extensions::*;
 
 #[cfg(feature = "derive")]
 pub use derive::Classable;
-
-#[cfg(feature = "forms")]
-pub use forms::{use_form, Actions, UseFormHandle};
 
 #[cfg(feature = "simple")]
 pub mod simple {
