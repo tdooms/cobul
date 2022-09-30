@@ -60,13 +60,15 @@ pub fn field(props: &Props) -> Html {
         props.icon_left.as_ref().map(|_| "has-icons-left")
     );
 
-    let enclose = |inner: Html, context: Color| html! { <ContextProvider<Color> {context}> {inner} </ContextProvider<Color>> };
+    // let enclose = |inner: Html, context: Color| html! { <ContextProvider<Color> {context}> {inner} </ContextProvider<Color>> };
+    //
+    // let body = match (&props.help, props.success) {
+    //     (Some(_), _) => enclose(html! { for props.children.iter() }, Color::Danger),
+    //     (_, true) => enclose(html! { for props.children.iter() }, Color::Success),
+    //     (None, _) => html! { for props.children.iter() },
+    // };
 
-    let body = match (&props.help, props.success) {
-        (Some(_), _) => enclose(html! { for props.children.iter() }, Color::Danger),
-        (_, true) => enclose(html! { for props.children.iter() }, Color::Success),
-        (None, _) => html! { for props.children.iter() },
-    };
+    let body = html! { for props.children.iter() };
 
     html! {
         <div class={classes!("field", props.class.clone())}>
