@@ -10,6 +10,9 @@ pub struct Props {
     pub children: Children,
 
     #[prop_or_default]
+    pub enter: Callback<()>,
+
+    #[prop_or_default]
     pub class: Classes,
 
     #[prop_or_default]
@@ -60,6 +63,12 @@ pub fn field(props: &Props) -> Html {
         props.icon_left.as_ref().map(|_| "has-icons-left")
     );
 
+    let onkeypress = props.enter.reform(|e: KeyboardEvent| {
+        if e.key() == "Enter" {
+            e.prevent_default()
+        }
+    });
+
     // let enclose = |inner: Html, context: Color| html! { <ContextProvider<Color> {context}> {inner} </ContextProvider<Color>> };
     //
     // let body = match (&props.help, props.success) {
@@ -71,7 +80,7 @@ pub fn field(props: &Props) -> Html {
     let body = html! { for props.children.iter() };
 
     html! {
-        <div class={classes!("field", props.class.clone())}>
+        <div class={classes!("field", props.class.clone())} {onkeypress}>
             { label }
             <div {class}>
                 { right }

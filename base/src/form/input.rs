@@ -3,7 +3,6 @@ use crate::props::{Color, Disabled, Loading, Readonly, Rounded, Size, Static};
 use crate::utils::combine_model;
 use web_sys::HtmlInputElement;
 use yew::prelude::*;
-use yew::virtual_dom::Key;
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {
