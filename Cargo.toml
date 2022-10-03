@@ -1,5 +1,6 @@
 [package]
 name = "cobul"
+license = "MIT"
 version = "0.1.0"
 edition = "2021"
 
@@ -7,10 +8,10 @@ edition = "2021"
 members = ["base", "fa", "test", "scraper", "simple", "extensions"]
 
 [dependencies]
-base = { path = "base" }
-extensions = { path = "extensions", optional = true }
-simple = { path = "simple", optional = true }
-fa = { path = "fa", optional = true }
+base = { path = "base", version = "0.1.0" }
+extensions = { path = "extensions", optional = true, version = "0.1.0" }
+simple = { path = "simple", optional = true, version = "0.1.0" }
+fa = { path = "fa", optional = true, version = "0.1.0" }
 
 
 
