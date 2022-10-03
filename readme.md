@@ -20,7 +20,7 @@ Is written like this in Cobul:
 <Button color={Color::Primary} size={Size::Large} light=true disabled=true> {"White"} </Button>
 ```
 
-As you can see, there are only a few changes to make the library feel 'rusty' and easy to use within yew:
+There are only a few changes to make the library feel 'rusty' and easy to use within yew:
 - Attributes which are enum-like, like colors and sizes are defined as rust enums.
 - Attributes which are boolean, are defined as bools without the **is-** or **are-** prefixes.
 - Certain constructions are slightly simplified, like the Icon component, shown in the example below.
@@ -56,8 +56,21 @@ or simplified using the simple components feature:
 Callbacks are defined as follows:
 
 ```rust
-<Textarea input={modify_stuff} />
-<Button click={submit_stuff} />
+let modify_stuff = Callback::from(|string| log::info!("Modyfing stuff {string}"));
+html! { <Textarea input={modify_stuff} /> }
+
 ```
 
-## Base
+```rust
+let submit_stuff = Callback::from(|string| log::info!("Submitting stuff {string}"));
+html! { <Button click={submit_stuff} /> }
+```
+
+And form components can be used like this with the model attribute:
+
+```rust
+let model = use_model(|| "".to_string());
+html! { <Textarea {model} /> }
+```
+
+*Input* and *Value* get priority over *model*.
