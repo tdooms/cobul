@@ -1,5 +1,4 @@
 use yew::*;
-use ywt::callback;
 
 use cobul::{Box, Button, Color, Direction, Loader};
 
@@ -9,7 +8,10 @@ pub fn loader_tester() -> Html {
     let timer = use_state(|| None);
 
     let click = |dir: Direction| {
-        callback!(state, timer; move |_| {
+        let state = state.clone();
+        let timer = timer.clone();
+
+        Callback::from(move |_| {
             state.set(Some(dir));
             let cloned = state.clone();
             let timeout = gloo_timers::callback::Timeout::new(3_000, move || cloned.set(None));

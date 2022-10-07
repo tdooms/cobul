@@ -1,6 +1,5 @@
 use strum::IntoEnumIterator;
 use yew::prelude::*;
-use ywt::callback;
 
 use cobul_base::components;
 use cobul_base::elements;
@@ -44,8 +43,9 @@ where
 
     let view_option = move |variant: T| {
         let active = &Some(variant) == &value;
+        let (handle, input) = (handle.clone(), input.clone());
 
-        let click = callback!(handle, input; move |_| {
+        let click = Callback::from(move |_| {
             handle.set(false);
             input.emit(variant);
         });
@@ -57,8 +57,14 @@ where
         }
     };
 
-    let focus = callback!(active; move |focussed| active.set(focussed));
-    let click = callback!(active; move |_| active.set(!*active));
+    let focus = {
+        let cloned = active.clone();
+        Callback::from(move |focussed| cloned.set(focussed))
+    };
+    let click = {
+        let cloned = active.clone();
+        Callback::from(move |_| cloned.set(!*cloned))
+    };
 
     let class = "is-flex is-justify-content-space-between";
     let trigger = html! {
