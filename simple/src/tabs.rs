@@ -1,10 +1,10 @@
 use strum::IntoEnumIterator;
 use yew::prelude::*;
 
-use base::components;
-use base::model::Model;
-use base::props::{Alignment, Boxed, Fullwidth, Size, Toggle, ToggleRounded};
-use base::utils::combine_model;
+use cobul_base::components;
+use cobul_base::model::Model;
+use cobul_base::props::{Alignment, Boxed, Fullwidth, Size, Toggle, ToggleRounded};
+use cobul_base::utils::combine_model;
 
 #[derive(Clone, Properties, PartialEq)]
 pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static> {

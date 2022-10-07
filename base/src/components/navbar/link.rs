@@ -1,9 +1,9 @@
 use yew::prelude::*;
-use yew_router::{prelude::Link, Routable};
 
 #[derive(Clone, Debug, Properties, PartialEq)]
-pub struct Props<T: Routable + PartialEq + 'static> {
-    route: T,
+pub struct Props {
+    #[prop_or_default]
+    click: Callback<()>,
 
     #[prop_or_default]
     children: Children,
@@ -11,13 +11,10 @@ pub struct Props<T: Routable + PartialEq + 'static> {
 
 /// [https://bulma.io/documentation/components/navbar/](https://bulma.io/documentation/components/navbar/)
 #[function_component(NavbarLink)]
-pub fn navbar_link<T>(props: &Props<T>) -> Html
-where
-    T: Routable + PartialEq + 'static,
-{
+pub fn navbar_link<T>(props: &Props) -> Html {
     html! {
-        <Link<T> classes={classes!("navbar-link")} to={props.route.clone()}>
+        <a classes={classes!("navbar-link")} onclick={props.click.reform(|_| ())}>
             { for props.children.iter() }
-        </Link<T>>
+        </a>
     }
 }

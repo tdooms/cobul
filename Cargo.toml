@@ -7,11 +7,18 @@ edition = "2021"
 [workspace]
 members = ["base", "fa", "test", "scraper", "simple", "extensions"]
 
+[features]
+default = ["base"]
+base = ["cobul_base"]
+extensions = ["cobul_extensions"]
+simple = ["cobul_simple"]
+fa = ["cobul_fa"]
+
 [dependencies]
-base = { path = "base", version = "0.1.0" }
-extensions = { path = "extensions", optional = true, version = "0.1.0" }
-simple = { path = "simple", optional = true, version = "0.1.0" }
-fa = { path = "fa", optional = true, version = "0.1.0" }
+cobul_base = { path = "base", optional = true }
+cobul_extensions = { path = "extensions", optional = true }
+cobul_simple = { path = "simple", optional = true}
+cobul_fa = { path = "fa", optional = true }
 
 
 

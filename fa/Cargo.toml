@@ -1,8 +1,8 @@
 [package]
-name = "fa"
+name = "cobul_fa"
 version = "0.1.0"
 edition = "2021"
 
 [dependencies]
 derive_more = "*"
-yew = { git = "https://github.com/yewstack/yew.git", rev = "421b4e1f608e6d648dcf571157b081fcbd886996" }
+yew = { git = "https://github.com/yewstack/yew.git", rev = "32b3150cb3711c4e03105eec9659a72aa8ce7a8c" }

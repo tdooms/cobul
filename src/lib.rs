@@ -1,17 +1,15 @@
-pub use base::{components::*, elements::*, form::*, layout::*, model::*, props::*};
+#[cfg(feature = "base")]
+pub use cobul_base::{components::*, elements::*, form::*, layout::*, model::*, props::*};
 
 #[cfg(feature = "extensions")]
-pub use extensions::*;
-
-#[cfg(feature = "derive")]
-pub use derive::Classable;
+pub use cobul_extensions::*;
 
 #[cfg(feature = "simple")]
 pub mod simple {
-    pub use simple::*;
+    pub use cobul_simple::*;
 }
 
 #[cfg(feature = "fa")]
 pub mod fa {
-    pub use fa::{Brands, Icon, Regular, Solid};
+    pub use cobul_fa::{Brands, Icon, Regular, Solid};
 }

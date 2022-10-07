@@ -1,6 +1,6 @@
 use yew::prelude::*;
 
-use base::props::Color;
+use cobul_base::props::Color;
 
 #[derive(Clone, Copy, Debug, PartialEq, Default, derive_more::Display)]
 pub enum Direction {

@@ -1,9 +1,9 @@
-use base::model::Model;
+use cobul_base::model::Model;
 use rand::Rng;
 use yew::prelude::*;
 
-use base::props::{Color, Size};
-use base::utils::combine_model;
+use cobul_base::props::{Color, Size};
+use cobul_base::utils::combine_model;
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {

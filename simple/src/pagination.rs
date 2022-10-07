@@ -1,10 +1,10 @@
 use yew::*;
 
-use base::components;
-use base::components::{PaginationEllipsis, PaginationLink};
-use base::model::Model;
-use base::props::{Alignment, Size};
-use base::utils::combine_model;
+use cobul_base::components;
+use cobul_base::components::{PaginationEllipsis, PaginationLink};
+use cobul_base::model::Model;
+use cobul_base::props::{Alignment, Size};
+use cobul_base::utils::combine_model;
 
 #[derive(Properties, PartialEq, Clone)]
 pub struct Props {

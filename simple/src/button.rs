@@ -1,7 +1,7 @@
 use yew::prelude::*;
 
-use base::elements;
-use base::props::{
+use cobul_base::elements;
+use cobul_base::props::{
     Active, Color, Disabled, Focused, Fullwidth, Hidden, Hovered, Inverted, Light, Loading,
     Outlined, Rounded, Selected, Size, Static,
 };

@@ -1,17 +1,17 @@
 [package]
-name = "extensions"
+name = "cobul_extensions"
 version = "0.1.0"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-base = { path = "../base" }
-yew = { git = "https://github.com/yewstack/yew.git", rev = "421b4e1f608e6d648dcf571157b081fcbd886996" }
+cobul_base = { path = "../base" }
+yew = { git = "https://github.com/yewstack/yew.git", rev = "32b3150cb3711c4e03105eec9659a72aa8ce7a8c" }
 derive_more = "0.99"
 num = "0.4"
 
 rand = { version = "0.8" }
 getrandom = { version = "0.2", features = ["js"] }
 
-web-sys = { version = "0.3", features = ["HtmlInputElement", "HtmlOutputElement", "HtmlDivElement"] }
+web-sys = { version = "^0.3.59", features = ["HtmlInputElement", "HtmlOutputElement", "HtmlDivElement"] }
