@@ -9,7 +9,6 @@ pub struct Props {
     pub style: Option<AttrValue>,
 }
 
-/// [// https://bulma.io/documentation/components/dropdown/](// https://bulma.io/documentation/components/dropdown/)
 #[function_component(DropdownDivider)]
 pub fn dropdown_divider(props: &Props) -> Html {
     let class = classes!("dropdown-divider", props.class.clone());

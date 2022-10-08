@@ -41,7 +41,7 @@ pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static> {
     pub loading: Loading,
 }
 
-/// [https://bulma.io/documentation/form/select/](https://bulma.io/documentation/form/select/)
+/// The browser built-in select dropdown, styled accordingly - [reference](https://bulma.io/documentation/form/select/)
 #[function_component(Select)]
 pub fn select<T>(props: &Props<T>) -> Html
 where

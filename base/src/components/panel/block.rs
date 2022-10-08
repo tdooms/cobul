@@ -18,7 +18,6 @@ pub struct Props {
     pub style: Option<AttrValue>,
 }
 
-/// [https://bulma.io/documentation/components/panel/](https://bulma.io/documentation/components/panel/)
 #[function_component(PanelBlock)]
 pub fn panel_block(props: &Props) -> Html {
     let class = classes!("panel-block", props.class.clone(), props.active);

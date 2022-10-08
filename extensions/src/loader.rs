@@ -30,7 +30,7 @@ pub struct Props {
     pub color: Option<Color>,
 }
 
-/// [https://wikiki.github.io/elements/pageloader/](https://wikiki.github.io/elements/pageloader/)
+/// Display a page-loader to inform users that content is loading, in different colors - [reference](https://wikiki.github.io/elements/pageloader/)
 #[function_component(Loader)]
 pub fn loader(props: &Props) -> Html {
     let class = classes!(

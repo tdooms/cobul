@@ -25,6 +25,7 @@ impl Into<Classes> for Alignment {
     }
 }
 
+/// Separator classes for breadcrumbs - [reference](https://bulma.io/documentation/components/breadcrumb/#alternative-separators)
 #[derive(Clone, Debug, Display, PartialEq, Copy)]
 #[display(fmt = "has-{}-separator")]
 pub enum Separator {
@@ -44,7 +45,7 @@ impl Into<Classes> for Separator {
     }
 }
 
-// TODO: this can be three-quarters-mobile for example
+/// Handle different column layouts for each breakpoint - [reference](https://bulma.io/documentation/columns/responsiveness/)
 #[derive(Clone, Debug, Display, PartialEq, Copy)]
 #[display(fmt = "is-{}")]
 pub enum Breakpoint {
@@ -60,8 +61,7 @@ pub enum Breakpoint {
     FullHD,
 }
 
-/// Tile context modifiers.
-/// https://bulma.io/documentation/layout/tiles/#modifiers
+/// Tile context modifiers - [reference](https://bulma.io/documentation/layout/tiles/#modifiers)
 #[derive(Clone, Debug, Display, PartialEq, Copy)]
 #[display(fmt = "is-{}")]
 pub enum TileCtx {

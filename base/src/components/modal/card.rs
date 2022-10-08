@@ -26,7 +26,7 @@ pub struct Props {
     pub close: Callback<()>,
 }
 
-/// [https://bulma.io/documentation/components/modal/](https://bulma.io/documentation/components/modal/)
+/// A classic modal overlay, in which you can include any content you want - [reference](https://bulma.io/documentation/components/modal/)
 #[function_component(ModalCard)]
 pub fn modal_card(props: &Props) -> Html {
     let class = classes!("modal", props.class.clone(), props.active);

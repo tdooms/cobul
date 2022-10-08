@@ -24,7 +24,7 @@ pub struct Props {
     pub style: Option<AttrValue>,
 }
 
-/// [https://bulma.io/documentation/components/panel/](https://bulma.io/documentation/components/panel/)
+/// A composable panel, for compact controls - [reference](https://bulma.io/documentation/components/panel/)
 #[function_component(Panel)]
 pub fn panel(props: &Props) -> Html {
     let class = classes!("panel", props.class.clone(), props.color);

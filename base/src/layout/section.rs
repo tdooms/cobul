@@ -17,7 +17,7 @@ pub struct Props {
     pub style: Option<AttrValue>,
 }
 
-/// [https://bulma.io/documentation/layout/section/](https://bulma.io/documentation/layout/section/)
+/// A simple container to divide your page into sections, like the one you’re currently reading [reference](https://bulma.io/documentation/layout/section/)
 #[function_component(Section)]
 pub fn section(props: &Props) -> Html {
     let class = classes!("section", props.class.clone(), props.size);

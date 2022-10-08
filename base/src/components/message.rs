@@ -23,7 +23,7 @@ pub struct Props {
     pub style: Option<AttrValue>,
 }
 
-/// [https://bulma.io/documentation/components/message/](https://bulma.io/documentation/components/message/)
+/// Colored message blocks, to emphasize part of your page - [reference](https://bulma.io/documentation/components/message/)
 #[function_component(Message)]
 pub fn message(props: &Props) -> Html {
     let header = match (props.header.clone(), props.delete == Callback::noop()) {

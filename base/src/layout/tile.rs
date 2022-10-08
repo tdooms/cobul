@@ -26,7 +26,7 @@ pub struct Props {
     pub style: Option<AttrValue>,
 }
 
-/// [https://bulma.io/documentation/layout/tiles/](https://bulma.io/documentation/layout/tiles/)
+/// A single tile element to build 2-dimensional Metro-like, Pinterest-like, or whatever-you-like grids - [reference](https://bulma.io/documentation/layout/tiles/)
 #[function_component(Tile)]
 pub fn tile(props: &Props) -> Html {
     let class = classes!(

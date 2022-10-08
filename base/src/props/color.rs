@@ -1,7 +1,7 @@
 use derive_more::Display;
 use yew::Classes;
 
-/// Common color classes.
+/// Common color classes
 #[derive(Clone, Debug, Display, PartialEq, Copy)]
 #[display(fmt = "is-{}")]
 pub enum Color {
@@ -37,9 +37,7 @@ impl Into<Classes> for Color {
     }
 }
 
-/// https://bulma.io/documentation/helpers/color-helpers/
-/// Text color classes.
-/// TODO: this is the same as background colors with 'has-background-{}'
+/// Text color classes
 #[derive(Clone, Debug, Display, PartialEq, Copy)]
 #[display(fmt = "has-text-{}")]
 pub enum TextColor {

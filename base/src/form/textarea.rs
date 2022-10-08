@@ -53,7 +53,7 @@ pub struct Props {
     pub statik: Static,
 }
 
-/// [https://bulma.io/documentation/form/textarea/](https://bulma.io/documentation/form/textarea/)
+/// The multiline textarea and its variations - [reference](https://bulma.io/documentation/form/textarea/)
 #[function_component(Textarea)]
 pub fn textarea(props: &Props) -> Html {
     let size = use_context::<Size>();

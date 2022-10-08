@@ -24,12 +24,12 @@ pub struct Props {
 
     #[prop_or_default]
     pub breakpoint: Option<Breakpoint>,
-    // TODO: experimental https://bulma.io/documentation/columns/gap/#breakpoint-based-column-gaps
+
     #[prop_or_default]
     pub style: Option<AttrValue>,
 }
 
-/// [https://bulma.io/documentation/columns/](https://bulma.io/documentation/columns/)
+/// The power of Flexbox in a simple interface - [reference](https://bulma.io/documentation/columns/)
 #[function_component(Columns)]
 pub fn columns(props: &Props) -> Html {
     let class = classes!(

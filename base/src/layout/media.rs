@@ -25,7 +25,7 @@ pub struct Props {
     pub style: Option<AttrValue>,
 }
 
-/// [https://bulma.io/documentation/layout/media-object/](https://bulma.io/documentation/layout/media-object/)
+/// The famous media object prevalent in social media interfaces, but useful in any context - [reference](https://bulma.io/documentation/layout/media-object/)
 #[function_component(Media)]
 pub fn media(props: &Props) -> Html {
     let class = classes!("media", props.class.clone());

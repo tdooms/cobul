@@ -36,7 +36,7 @@ pub struct Props {
     pub alignment: Option<Alignment>,
 }
 
-/// [https://bulma.io/documentation/form/file/](https://bulma.io/documentation/form/file/)
+/// A custom file upload input, without JavaScript - [reference](https://bulma.io/documentation/form/file/)
 #[function_component(File)]
 pub fn file(props: &Props) -> Html {
     let boxed = use_context::<Boxed>();

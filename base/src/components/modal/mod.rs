@@ -24,7 +24,7 @@ pub struct Props {
     pub style: Option<AttrValue>,
 }
 
-/// [https://bulma.io/documentation/components/modal/](https://bulma.io/documentation/components/modal/)
+/// A classic modal overlay, in which you can include any content you want - [reference](https://bulma.io/documentation/components/modal/)
 #[function_component(Modal)]
 pub fn modal(props: &Props) -> Html {
     let class = classes!("modal", props.class.clone(), props.active);

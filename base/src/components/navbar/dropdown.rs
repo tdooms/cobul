@@ -6,7 +6,6 @@ pub struct Props {
     children: Children,
 }
 
-/// [https://bulma.io/documentation/components/navbar/](https://bulma.io/documentation/components/navbar/)
 #[function_component(NavbarDropdown)]
 pub fn navbar_dropdown(props: &Props) -> Html {
     html! {

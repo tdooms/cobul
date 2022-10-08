@@ -23,6 +23,5 @@ mod file;
 mod help;
 mod input;
 mod label;
-mod multiple_select;
 mod select;
 mod textarea;

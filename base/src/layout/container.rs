@@ -17,7 +17,7 @@ pub struct Props {
     pub style: Option<AttrValue>,
 }
 
-/// [https://bulma.io/documentation/layout/container/](https://bulma.io/documentation/layout/container/)
+/// A simple container to center your content horizontally - [reference](https://bulma.io/documentation/layout/container/)
 #[function_component(Container)]
 pub fn container(props: &Props) -> Html {
     let class = classes!("container", props.class.clone(), props.size);

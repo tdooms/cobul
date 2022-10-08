@@ -20,7 +20,7 @@ pub struct Props {
     pub style: Option<AttrValue>,
 }
 
-/// [https://bulma.io/documentation/columns/](https://bulma.io/documentation/columns/)
+/// The power of Flexbox in a simple interface - [reference](https://bulma.io/documentation/columns/)
 #[function_component(Column)]
 pub fn column(props: &Props) -> Html {
     let class = classes!("column", props.class.clone(), props.size, props.offset);

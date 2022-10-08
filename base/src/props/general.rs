@@ -7,6 +7,7 @@ macro_rules! bool_prop {
             std::default::Default,
             std::marker::Copy,
         )]
+        #[doc(hidden)]
         pub struct $x(pub bool);
 
         impl $x {

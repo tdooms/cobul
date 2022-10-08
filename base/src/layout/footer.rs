@@ -10,7 +10,7 @@ pub struct Props {
     pub style: Option<AttrValue>,
 }
 
-/// [https://bulma.io/documentation/layout/footer/](https://bulma.io/documentation/layout/footer/)
+/// A simple responsive footer which can include anything: lists, headings, columns, icons, buttons, etc. -[reference](https://bulma.io/documentation/layout/footer/)
 #[function_component(Footer)]
 pub fn footer(props: &Props) -> Html {
     let class = classes!("footer", props.class.clone());

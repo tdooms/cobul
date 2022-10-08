@@ -27,7 +27,7 @@ pub struct Props {
     pub style: Option<AttrValue>,
 }
 
-/// [https://bulma.io/documentation/layout/hero/](https://bulma.io/documentation/layout/hero/)
+/// An imposing hero banner to showcase something - [reference](https://bulma.io/documentation/layout/hero/)
 #[function_component(Hero)]
 pub fn hero(props: &Props) -> Html {
     let class = classes!("hero", props.size, props.color, props.class.clone());

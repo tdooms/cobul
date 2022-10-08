@@ -9,7 +9,6 @@ pub struct Props {
     children: Children,
 }
 
-/// [https://bulma.io/documentation/components/navbar/](https://bulma.io/documentation/components/navbar/)
 #[function_component(NavbarLink)]
 pub fn navbar_link<T>(props: &Props) -> Html {
     html! {

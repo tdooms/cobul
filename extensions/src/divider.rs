@@ -15,7 +15,7 @@ pub struct Props {
     pub text: Option<AttrValue>,
 }
 
-/// [https://wikiki.github.io/elements/pageloader/](https://wikiki.github.io/elements/pageloader/)
+/// Display a vertical or horizontal divider to segment your design - [reference](https://wikiki.github.io/layout/divider/)
 #[function_component(Loader)]
 pub fn loader(props: &Props) -> Html {
     let direction = if props.vertical {

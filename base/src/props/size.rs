@@ -1,7 +1,7 @@
 use derive_more::Display;
 use yew::Classes;
 
-/// Common size classes.
+/// Common size classes
 #[derive(Clone, Debug, Display, PartialEq, Copy)]
 #[display(fmt = "is-{}")]
 pub enum Size {
@@ -21,8 +21,7 @@ impl Into<Classes> for Size {
     }
 }
 
-/// Available placeholder sizes for figures.
-/// https://bulma.io/documentation/elements/image/
+/// Placeholder sizes for figures - [reference](https://bulma.io/documentation/elements/image/)
 #[derive(Clone, Debug, Display, PartialEq, Copy)]
 #[display(fmt = "is-{}")]
 pub enum ImageSize {
@@ -80,8 +79,7 @@ impl Into<Classes> for ImageSize {
     }
 }
 
-/// The six sizes available for titles & subtitles.
-/// https://bulma.io/documentation/elements/title/#sizes
+/// The six sizes available for titles & subtitles [reference](https://bulma.io/documentation/elements/title/#sizes)
 #[derive(Clone, Debug, Display, PartialEq, Copy)]
 #[display(fmt = "is-{}")]
 pub enum HeaderSize {
@@ -105,8 +103,7 @@ impl Into<Classes> for HeaderSize {
     }
 }
 
-/// The 2 sizes available for sections, which controls spacing.
-/// [https://bulma.io/documentation/layout/section/](https://bulma.io/documentation/layout/section/)
+/// The 2 sizes available for sections, which controls spacing - [reference](https://bulma.io/documentation/layout/section/)
 #[derive(Clone, Debug, Display, PartialEq, Copy)]
 #[display(fmt = "is-{}")]
 pub enum SectionSize {
@@ -122,8 +119,7 @@ impl Into<Classes> for SectionSize {
     }
 }
 
-/// Container sizes
-/// [https://bulma.io/documentation/layout/container/#widescreen-or-fullhd-only](https://bulma.io/documentation/layout/container/#widescreen-or-fullhd-only)
+/// Container sizes [reference](https://bulma.io/documentation/layout/container/#widescreen-or-fullhd-only)
 #[derive(Clone, Debug, Display, PartialEq, Copy)]
 #[display(fmt = "is-{}")]
 pub enum ContainerSize {
@@ -143,8 +139,7 @@ impl Into<Classes> for ContainerSize {
     }
 }
 
-// TODO: https://bulma.io/documentation/columns/sizes/#narrow-column
-// narrow breakpoint sizes
+/// Narrow breakpoint sizes - [reference](https://bulma.io/documentation/columns/sizes/)
 #[derive(Clone, Debug, Display, PartialEq, Copy)]
 #[display(fmt = "is-{}")]
 pub enum ColumnSize {
@@ -214,8 +209,7 @@ impl Into<Classes> for ColumnSize {
     }
 }
 
-/// Tile size modifiers.
-/// https://bulma.io/documentation/layout/tiles/#modifiers
+/// Tile size modifiers - [reference](https://bulma.io/documentation/layout/tiles/#modifiers)
 #[derive(Clone, Debug, Display, PartialEq, Copy)]
 #[display(fmt = "is-{}")]
 pub enum TileSize {
@@ -251,9 +245,7 @@ impl Into<Classes> for TileSize {
     }
 }
 
-/// The 6 sizes available for heros.
-/// [https://bulma.io/documentation/layout/hero/#sizes](https://bulma.io/documentation/layout/hero/#sizes)
-/// [https://bulma.io/documentation/layout/hero/#fullheight-with-navbar](https://bulma.io/documentation/layout/hero/#fullheight-with-navbar)
+/// The 6 sizes available for heros - [reference](https://bulma.io/documentation/layout/hero/#sizes)
 #[derive(Clone, Debug, Display, PartialEq, Copy)]
 #[display(fmt = "is-{}")]
 pub enum HeroSize {

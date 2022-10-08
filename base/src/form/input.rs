@@ -52,7 +52,7 @@ pub struct Props {
     pub statik: Static,
 }
 
-/// [https://bulma.io/documentation/form/input/](https://bulma.io/documentation/form/input/)
+/// The text input and its variations - [reference](https://bulma.io/documentation/form/input/)
 #[function_component(Input)]
 pub fn input(props: &Props) -> Html {
     let size = use_context::<Size>();

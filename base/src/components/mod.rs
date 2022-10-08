@@ -4,8 +4,8 @@ pub use dropdown::*;
 pub use menu::*;
 pub use message::Message;
 pub use modal::*;
-pub use navbar::*;
-pub use pagination::*;
+pub use navbar::Navbar;
+pub use pagination::{Pagination, PaginationEllipsis, PaginationLink, PaginationList};
 pub use panel::*;
 pub use tabs::Tabs;
 

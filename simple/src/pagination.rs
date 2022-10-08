@@ -32,6 +32,7 @@ pub struct Props {
     pub total: u64,
 }
 
+/// A responsive, usable, and flexible pagination - [reference](https://bulma.io/documentation/components/pagination/)
 #[function_component(Pagination)]
 pub fn pagination(props: &Props) -> Html {
     let Props {

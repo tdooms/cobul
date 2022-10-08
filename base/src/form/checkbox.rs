@@ -27,7 +27,7 @@ pub struct Props {
     pub label: Option<AttrValue>,
 }
 
-/// [https://bulma.io/documentation/form/checkbox/](https://bulma.io/documentation/form/checkbox/)
+/// The 2-state checkbox in its native format - [reference](https://bulma.io/documentation/form/checkbox/)
 #[function_component(Checkbox)]
 pub fn checkbox(props: &Props) -> Html {
     let class = classes!("checkbox", props.class.clone());

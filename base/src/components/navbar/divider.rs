@@ -6,7 +6,6 @@ pub struct Props {
     children: Children,
 }
 
-/// [https://bulma.io/documentation/components/navbar/](https://bulma.io/documentation/components/navbar/)
 #[function_component(NavbarDivider)]
 pub fn navbar_divider(props: &Props) -> Html {
     html! {

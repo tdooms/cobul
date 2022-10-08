@@ -40,7 +40,7 @@ pub struct Props {
     pub style: Option<AttrValue>,
 }
 
-/// [// https://bulma.io/documentation/components/dropdown/](// https://bulma.io/documentation/components/dropdown/)
+/// An interactive dropdown menu for discoverable content - [reference](https://bulma.io/documentation/components/dropdown/)
 #[function_component(Dropdown)]
 pub fn dropdown(props: &Props) -> Html {
     let class = classes!(

@@ -23,7 +23,7 @@ pub struct Props {
     pub style: Option<AttrValue>,
 }
 
-/// [https://bulma.io/documentation/components/breadcrumb/](https://bulma.io/documentation/components/breadcrumb/)
+/// A simple breadcrumb component to improve your navigation experience - [reference](https://bulma.io/documentation/components/breadcrumb/)
 #[function_component(Breadcrumb)]
 pub fn breadcrumb(props: &Props) -> Html {
     let class = classes!(

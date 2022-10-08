@@ -44,6 +44,7 @@ pub struct Props {
     pub class: Classes,
 }
 
+/// Display the classic checkbox as a switch button with different colors, sizes, and states - [reference](https://wikiki.github.io/form/switch/)
 #[function_component(Switch)]
 pub fn switch(props: &Props) -> Html {
     let id = use_state(|| rand::thread_rng().gen::<u64>().to_string());

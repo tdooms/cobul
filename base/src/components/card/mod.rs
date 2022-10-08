@@ -34,7 +34,7 @@ pub struct Props {
     pub style: Option<AttrValue>,
 }
 
-/// [// https://bulma.io/documentation/components/card/](// https://bulma.io/documentation/components/card/)
+/// An all-around flexible and composable component - [reference](https://bulma.io/documentation/components/card/)
 #[function_component(Card)]
 pub fn card(props: &Props) -> Html {
     let css = "height:100%;display:flex;flex-direction:column";

@@ -13,10 +13,10 @@ use cobul_base::utils::combine_model;
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props<T: PartialEq + Clone> {
     #[prop_or_default]
-    pub change: Callback<T>, // Onchange is triggered when the slider is released (deferred)
+    pub change: Callback<T>, // change is triggered when the slider is released (deferred)
 
     #[prop_or_default]
-    pub input: Callback<T>, // Oninput is triggered when the slider is moved (instant)
+    pub input: Callback<T>, // input is triggered when the slider is moved (instant)
 
     #[prop_or_default]
     pub model: Option<Model<T>>, // model uses the oninput property (instant)
@@ -62,7 +62,7 @@ pub struct Props<T: PartialEq + Clone> {
     pub label_width: f64,
 }
 
-/// [https://wikiki.github.io/form/slider/](https://wikiki.github.io/form/slider/)
+/// Display a classic slider with different colors, sizes, and states - [reference](https://wikiki.github.io/form/slider/)
 #[function_component(Slider)]
 pub fn slider<T>(props: &Props<T>) -> Html
 where

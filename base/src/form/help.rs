@@ -17,7 +17,7 @@ pub struct Props {
     pub style: Option<AttrValue>,
 }
 
-/// [https://bulma.io/documentation/form/general/](https://bulma.io/documentation/form/general/)
+/// All generic form controls, designed for consistency - [reference](https://bulma.io/documentation/form/general/)
 #[function_component(Help)]
 pub fn help(props: &Props) -> Html {
     let class = classes!("help", props.class.clone(), props.color);

@@ -15,7 +15,6 @@ pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static> {
     pub style: Option<AttrValue>,
 }
 
-/// [https://bulma.io/documentation/components/panel/](https://bulma.io/documentation/components/panel/)
 #[function_component(PanelTabs)]
 pub fn panel_tabs<T>(props: &Props<T>) -> Html
 where

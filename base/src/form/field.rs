@@ -29,7 +29,7 @@ pub struct Props {
     pub alignment: Option<Alignment>,
 }
 
-/// [https://bulma.io/documentation/form/general/](https://bulma.io/documentation/form/general/)
+/// All generic form controls, designed for consistency - [reference](https://bulma.io/documentation/form/general/)
 #[function_component(Field)]
 pub fn field(props: &Props) -> Html {
     let alignment = match props.alignment {

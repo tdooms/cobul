@@ -18,7 +18,7 @@ pub struct Props {
     pub style: Option<AttrValue>,
 }
 
-/// [https://bulma.io/documentation/components/menu/](https://bulma.io/documentation/components/menu/)
+/// A simple menu, for any type of vertical navigation - [reference](https://bulma.io/documentation/components/menu/)
 #[function_component(Menu)]
 pub fn menu(props: &Props) -> Html {
     let class = classes!("menu", props.class.clone());

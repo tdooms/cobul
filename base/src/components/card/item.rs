@@ -12,7 +12,6 @@ pub struct Props {
     pub style: Option<AttrValue>,
 }
 
-/// [// https://bulma.io/documentation/components/card/](// https://bulma.io/documentation/components/card/)
 #[function_component(CardFooterItem)]
 pub fn card(props: &Props) -> Html {
     html! {

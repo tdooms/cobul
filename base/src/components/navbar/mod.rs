@@ -36,7 +36,7 @@ pub struct Props {
     pub style: Option<AttrValue>,
 }
 
-/// [https://bulma.io/documentation/components/navbar/](https://bulma.io/documentation/components/navbar/)
+/// A responsive horizontal navbar that can support images, links, buttons, and dropdowns - [reference](https://bulma.io/documentation/components/navbar/)
 #[function_component(Navbar)]
 pub fn navbar(props: &Props) -> Html {
     let class = classes!("navbar-burger", props.active);

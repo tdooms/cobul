@@ -32,7 +32,7 @@ pub struct Props {
     pub style: Option<AttrValue>,
 }
 
-/// [https://bulma.io/documentation/components/tabs/](https://bulma.io/documentation/components/tabs/)
+/// Simple responsive horizontal navigation tabs, with different styles - [reference](https://bulma.io/documentation/components/tabs/)
 #[function_component(Tabs)]
 pub fn tabs(props: &Props) -> Html {
     let class = classes!(
@@ -48,9 +48,7 @@ pub fn tabs(props: &Props) -> Html {
 
     html! {
         <div style={props.style.clone()} {class}>
-            <ul>
-                { for props.children.iter() }
-            </ul>
+            <ul> { for props.children.iter() } </ul>
         </div>
     }
 }
