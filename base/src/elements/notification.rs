@@ -23,7 +23,7 @@ pub struct Props {
     pub style: Option<AttrValue>,
 }
 
-/// [https://bulma.io/documentation/elements/notification/](https://bulma.io/documentation/elements/notification/)
+/// Bold notification blocks, to alert your users of something - [reference](https://bulma.io/documentation/elements/notification/)
 #[function_component(Notification)]
 pub fn notification(props: &Props) -> Html {
     let class = classes!(

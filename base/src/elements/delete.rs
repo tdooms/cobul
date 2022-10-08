@@ -22,7 +22,7 @@ pub struct Props {
     pub style: Option<AttrValue>,
 }
 
-/// [https://bulma.io/documentation/elements/delete/](https://bulma.io/documentation/elements/delete/)
+/// A versatile delete cross - [reference](https://bulma.io/documentation/elements/delete/)
 #[function_component(Delete)]
 pub fn delete(props: &Props) -> Html {
     let class = classes!("delete", props.class.clone(), props.size);

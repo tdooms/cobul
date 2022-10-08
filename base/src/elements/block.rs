@@ -12,7 +12,7 @@ pub struct Props {
     pub style: Option<AttrValue>,
 }
 
-/// [https://bulma.io/documentation/elements/block/](https://bulma.io/documentation/elements/block/)
+/// Bulma’s most basic spacer block - [reference](https://bulma.io/documentation/elements/block/)
 #[function_component(Block)]
 pub fn block(props: &Props) -> Html {
     let class = classes!("block", props.class.clone());

@@ -1,12 +1,12 @@
 use yew::prelude::*;
 
 use crate::props::{
-    Active, Color, Disabled, Focused, Fullwidth, Hidden, Hovered, Inverted, Light, Loading,
-    Outlined, Rounded, Selected, Size, Static,
+    Active, Addons, Alignment, Color, Disabled, Focused, Fullwidth, Hidden, Hovered, Inverted,
+    Light, Loading, Outlined, Rounded, Selected, Size, Static,
 };
 
 #[derive(Properties, Clone, PartialEq)]
-pub struct Props {
+pub struct ButtonProps {
     #[prop_or_default]
     pub click: Callback<()>,
 
@@ -68,9 +68,9 @@ pub struct Props {
     pub statik: Static,
 }
 
-/// [https://bulma.io/documentation/elements/button/](https://bulma.io/documentation/elements/button/)
+/// The classic button, in different colors, sizes, and states - [reference](https://bulma.io/documentation/elements/button/)
 #[function_component(Button)]
-pub fn button(props: &Props) -> Html {
+pub fn button(props: &ButtonProps) -> Html {
     let hidden = use_context::<Hidden>();
     let outlined = use_context::<Outlined>();
     let light = use_context::<Light>();
@@ -112,5 +112,43 @@ pub fn button(props: &Props) -> Html {
         <button {style} {class} {onclick} disabled={props.disabled.0} data-tooltip={props.tooltip.clone()}>
             { for props.children.iter() }
         </button>
+    }
+}
+
+#[derive(Clone, Debug, Properties, PartialEq)]
+pub struct ButtonsProps {
+    #[prop_or_default]
+    pub children: Children,
+
+    #[prop_or_default]
+    pub class: Classes,
+
+    #[prop_or_default]
+    pub alignment: Alignment,
+
+    #[prop_or_default]
+    pub addons: Addons,
+
+    #[prop_or_default]
+    pub size: Option<Size>,
+
+    #[prop_or_default]
+    pub style: Option<AttrValue>,
+}
+
+/// A list of buttons - [reference](https://bulma.io/documentation/elements/button/#list-of-buttons)
+#[function_component(Buttons)]
+pub fn buttons(props: &ButtonsProps) -> Html {
+    let class = classes!(
+        "buttons",
+        props.class.clone(),
+        props.alignment,
+        props.addons
+    );
+
+    html! {
+        <div style={props.style.clone()} {class}>
+            { for props.children.iter() }
+        </div>
     }
 }

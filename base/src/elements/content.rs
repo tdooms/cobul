@@ -15,7 +15,7 @@ pub struct Props {
     pub style: Option<AttrValue>,
 }
 
-/// [https://bulma.io/documentation/elements/content/](https://bulma.io/documentation/elements/content/)
+/// A single class to handle WYSIWYG generated content, where only HTML tags are available - [reference](https://bulma.io/documentation/elements/content/)
 #[function_component(Content)]
 pub fn content(props: &Props) -> Html {
     let class = classes!("content", props.class.clone());

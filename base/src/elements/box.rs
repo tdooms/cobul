@@ -9,8 +9,7 @@ pub struct Props {
     #[prop_or_default]
     pub style: Option<AttrValue>,
 }
-
-/// [https://bulma.io/documentation/elements/box/](https://bulma.io/documentation/elements/box/)
+/// A white box to contain other elements - [reference](https://bulma.io/documentation/elements/box/)
 #[function_component(Box)]
 pub fn r#box(props: &Props) -> Html {
     let class = classes!("box", props.class.clone());

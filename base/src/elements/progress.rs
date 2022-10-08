@@ -23,7 +23,7 @@ pub struct Props {
     pub style: Option<AttrValue>,
 }
 
-/// [https://bulma.io/documentation/elements/progress/](https://bulma.io/documentation/elements/progress/)
+/// Native HTML progress bars - [reference](https://bulma.io/documentation/elements/progress/)
 #[function_component(Progress)]
 pub fn progress(props: &Props) -> Html {
     let class = classes!("progress", props.class.clone(), props.size, props.color);

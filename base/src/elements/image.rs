@@ -20,7 +20,7 @@ pub struct Props {
     pub style: Option<AttrValue>,
 }
 
-/// [https://bulma.io/documentation/elements/image/](https://bulma.io/documentation/elements/image/)
+/// A container for responsive images - [reference](https://bulma.io/documentation/elements/image/)
 #[function_component(Image)]
 pub fn image(props: &Props) -> Html {
     let class = classes!("image", props.class.clone(), props.size);
