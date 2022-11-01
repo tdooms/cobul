@@ -17,6 +17,9 @@ pub struct Props {
     pub src: Option<AttrValue>,
 
     #[prop_or_default]
+    pub placeholder: Option<AttrValue>,
+
+    #[prop_or_default]
     pub style: Option<AttrValue>,
 }
 
@@ -24,10 +27,17 @@ pub struct Props {
 #[function_component(Image)]
 pub fn image(props: &Props) -> Html {
     let class = classes!("image", props.class.clone(), props.size);
+    let has_placeholder = props.placeholder.is_some();
+
+    let loaded = use_state(|| false);
+    let onload = callback!(loaded; move |_| loaded.set(true));
+
+    let display = ["none", ""];
 
     html! {
         <figure style={props.style.clone()} {class}>
-            <img class={ classes!(props.rounded) } src={ props.src.clone() } />
+            <img class={ classes!(props.rounded) } src={ props.src.clone() } {onload} display={display[loaded as usize]}/>
+            <img class={ classes!(props.rounded) } src={ props.placeholder.clone() } display={display[!loaded as usize]} />
         </figure>
     }
 }
