@@ -35,12 +35,12 @@ pub fn image(props: &Props) -> Html {
         Callback::from(move |_| cloned.set(true))
     };
 
-    let display = ["none", ""];
+    let display = ["display:none", ""];
 
     html! {
         <figure style={props.style.clone()} {class}>
-            <img class={ classes!(props.rounded) } src={ props.src.clone() } {onload} display={display[*loaded as usize]}/>
-            <img class={ classes!(props.rounded) } src={ props.placeholder.clone() } display={display[!*loaded as usize]} />
+            <img class={ classes!(props.rounded) } src={ props.src.clone() } {onload} style={display[*loaded as usize]}/>
+            <img class={ classes!(props.rounded) } src={ props.placeholder.clone() } style={display[!*loaded as usize]} />
         </figure>
     }
 }
