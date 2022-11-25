@@ -8,7 +8,7 @@ repository = "https://github.com/tdooms/cobul"
 license = "GNU GPLv3"
 
 [dependencies]
-yew = { git = "https://github.com/yewstack/yew.git", rev = "32b3150cb3711c4e03105eec9659a72aa8ce7a8c" }
+yew = "0.20"
 
 log = "0.4"
 web-sys = "^0.3.59"

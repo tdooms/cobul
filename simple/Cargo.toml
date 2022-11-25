@@ -11,4 +11,4 @@ cobul_fa = { path = "../fa" }
 
 log = "0.4"
 strum = { version = "0.24", features = ["derive"] }
-yew = { git = "https://github.com/yewstack/yew.git", rev = "32b3150cb3711c4e03105eec9659a72aa8ce7a8c" }
+yew = "0.20"

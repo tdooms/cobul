@@ -4,7 +4,7 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-yew = { git = "https://github.com/yewstack/yew.git", rev = "32b3150cb3711c4e03105eec9659a72aa8ce7a8c", features = ["csr"] }
+yew = { version = "0.20", features = ["csr"] }
 cobul = { path = "..", features = ["fa", "simple", "extensions"] }
 gloo-timers = "0.2"
 

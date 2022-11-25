@@ -5,7 +5,7 @@ edition = "2021"
 
 [dependencies]
 cobul_base = { path = "../base" }
-yew = { git = "https://github.com/yewstack/yew.git", rev = "32b3150cb3711c4e03105eec9659a72aa8ce7a8c" }
+yew = "0.20"
 derive_more = "0.99"
 num = "0.4"
 rand = { version = "0.8" }
