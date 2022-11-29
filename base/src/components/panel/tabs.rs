@@ -15,6 +15,11 @@ pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static> {
     pub style: Option<AttrValue>,
 }
 
+/// A simple component for rendering a navbar link.
+///
+/// Properties:
+/// - `value: T` &npbs; The value of the tab.
+/// - `click: Callback<T>` &npbs; A callback that is invoked when the tab is clicked.
 #[function_component(PanelTabs)]
 pub fn panel_tabs<T>(props: &Props<T>) -> Html
 where

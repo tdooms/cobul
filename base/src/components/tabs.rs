@@ -5,12 +5,6 @@ use crate::props::{Alignment, Boxed, Fullwidth, Size, Toggle, ToggleRounded};
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {
     #[prop_or_default]
-    pub children: Children,
-
-    #[prop_or_default]
-    pub class: Classes,
-
-    #[prop_or_default]
     pub alignment: Option<Alignment>,
 
     #[prop_or_default]
@@ -30,9 +24,23 @@ pub struct Props {
 
     #[prop_or_default]
     pub style: Option<AttrValue>,
+
+    #[prop_or_default]
+    pub children: Children,
+
+    #[prop_or_default]
+    pub class: Classes,
 }
 
 /// Simple responsive horizontal navigation tabs, with different styles - [reference](https://bulma.io/documentation/components/tabs/)
+///
+/// Properties:
+/// - `alignment: Option<Alignment>`
+/// - `size: Option<Size>`
+/// - `boxed: Boxed`
+/// - `toggle: Toggle`
+/// - `rounded: ToggleRounded`
+/// - `fullwidth: Fullwidth`
 #[function_component(Tabs)]
 pub fn tabs(props: &Props) -> Html {
     let class = classes!(

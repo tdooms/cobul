@@ -13,6 +13,8 @@ pub struct Props {
 }
 
 /// All generic form controls, designed for consistency - [reference](https://bulma.io/documentation/form/general/)
+///
+/// Properties:
 #[function_component(Label)]
 pub fn label(props: &Props) -> Html {
     let class = classes!("label", props.class.clone());

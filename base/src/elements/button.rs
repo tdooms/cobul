@@ -11,15 +11,6 @@ pub struct ButtonProps {
     pub click: Callback<()>,
 
     #[prop_or_default]
-    pub children: Children,
-
-    #[prop_or_default]
-    pub class: Classes,
-
-    #[prop_or_default]
-    pub style: Option<AttrValue>,
-
-    #[prop_or_default]
     pub size: Option<Size>,
 
     #[prop_or_default]
@@ -66,9 +57,37 @@ pub struct ButtonProps {
 
     #[prop_or_default]
     pub statik: Static,
+
+    #[prop_or_default]
+    pub children: Children,
+
+    #[prop_or_default]
+    pub class: Classes,
+
+    #[prop_or_default]
+    pub style: Option<AttrValue>,
 }
 
 /// The classic button, in different colors, sizes, and states - [reference](https://bulma.io/documentation/elements/button/)
+///
+/// Properties:
+/// - `click: Callback<()>` &nbsp; Callback for button click
+/// - `size: Option<Size>`
+/// - `color: Option<Color>`
+/// - `tooltip: Option<AttrValue>` &nbsp; The text tooltip on hover
+/// - `hidden: Hidden`
+/// - `outlined: Outlined`
+/// - `inverted: Inverted`
+/// - `rounded: Rounded`
+/// - `light: Light`
+/// - `loading: Loading`
+/// - `disabled: Disabled`
+/// - `fullwidth: Fullwidth`
+/// - `selected: Selected`
+/// - `hovered: Hovered`
+/// - `focussed: Focused`
+/// - `active: Active`
+/// - `statik: Static`
 #[function_component(Button)]
 pub fn button(props: &ButtonProps) -> Html {
     let hidden = use_context::<Hidden>();
@@ -124,6 +143,9 @@ pub struct ButtonsProps {
     pub class: Classes,
 
     #[prop_or_default]
+    pub style: Option<AttrValue>,
+
+    #[prop_or_default]
     pub alignment: Alignment,
 
     #[prop_or_default]
@@ -131,12 +153,17 @@ pub struct ButtonsProps {
 
     #[prop_or_default]
     pub size: Option<Size>,
-
-    #[prop_or_default]
-    pub style: Option<AttrValue>,
 }
 
 /// A list of buttons - [reference](https://bulma.io/documentation/elements/button/#list-of-buttons)
+///
+/// Properties:
+/// - `children: Children`
+/// - `class: Classes`
+/// - `style: Option<AttrValue>`
+/// - `alignment: Alignment`
+/// - `addons: Addons`
+/// - `size: Option<Size>`
 #[function_component(Buttons)]
 pub fn buttons(props: &ButtonsProps) -> Html {
     let class = classes!(

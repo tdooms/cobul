@@ -8,22 +8,27 @@ pub struct Props {
     pub delete: Callback<()>,
 
     #[prop_or_default]
-    pub children: Children,
-
-    #[prop_or_default]
-    pub class: Classes,
-
-    #[prop_or_default]
     pub color: Option<Color>,
 
     #[prop_or_default]
     pub light: Light,
 
     #[prop_or_default]
+    pub children: Children,
+
+    #[prop_or_default]
+    pub class: Classes,
+
+    #[prop_or_default]
     pub style: Option<AttrValue>,
 }
 
 /// Bold notification blocks, to alert your users of something - [reference](https://bulma.io/documentation/elements/notification/)
+///
+/// Properties:
+/// - `delete: Callback<()>` Callback for when the delete button is clicked
+/// - `color: Option<Color>`
+/// - `light: Light`
 #[function_component(Notification)]
 pub fn notification(props: &Props) -> Html {
     let class = classes!(

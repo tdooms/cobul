@@ -24,6 +24,11 @@ pub struct Props {
 }
 
 /// A responsive, usable, and flexible pagination - [reference](https://bulma.io/documentation/components/pagination/)
+///
+/// Properties:
+/// - `rounded: Rounded` &npbs; Whether the pagination is rounded or not
+/// - `alignment: Alignment` &npbs; The alignment of the pagination
+/// - `size: Option<Size>` &npbs; The size of the pagination
 #[function_component(Pagination)]
 pub fn pagination(props: &Props) -> Html {
     let class = classes!(

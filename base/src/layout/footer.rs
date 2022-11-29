@@ -4,13 +4,17 @@ use yew::prelude::*;
 pub struct Props {
     #[prop_or_default]
     pub children: Children,
+
     #[prop_or_default]
     pub class: Classes,
+
     #[prop_or_default]
     pub style: Option<AttrValue>,
 }
 
 /// A simple responsive footer which can include anything: lists, headings, columns, icons, buttons, etc. -[reference](https://bulma.io/documentation/layout/footer/)
+///
+/// Properties:
 #[function_component(Footer)]
 pub fn footer(props: &Props) -> Html {
     let class = classes!("footer", props.class.clone());

@@ -15,6 +15,9 @@ mod link;
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {
     #[prop_or_default]
+    pub click: Callback<()>,
+
+    #[prop_or_default]
     pub brand: Option<Html>,
 
     #[prop_or_default]
@@ -30,13 +33,21 @@ pub struct Props {
     pub burger: bool,
 
     #[prop_or_default]
-    pub click: Callback<()>,
+    pub style: Option<AttrValue>,
 
     #[prop_or_default]
-    pub style: Option<AttrValue>,
+    pub class: Classes,
 }
 
 /// A responsive horizontal navbar that can support images, links, buttons, and dropdowns - [reference](https://bulma.io/documentation/components/navbar/)
+///
+/// Properties:
+/// - `click: Callback<()>` &npbs; A callback  when the navbar is clicked
+/// - `brand: Option<Html>`
+/// - `start: Option<Html>`
+/// - `end: Option<Html>`
+/// - `active: Active`
+/// - `burger: bool` &npbs; default: true
 #[function_component(Navbar)]
 pub fn navbar(props: &Props) -> Html {
     let class = classes!("navbar-burger", props.active);
@@ -53,8 +64,10 @@ pub fn navbar(props: &Props) -> Html {
         false => html! {},
     };
 
+    let class = classes!("navbar", props.class.clone());
+
     html! {
-        <nav style={props.style.clone()} class="navbar" role="navigation" aria-label="main navigation">
+        <nav style={props.style.clone()} {class} role="navigation" aria-label="main navigation">
             <div class="navbar-brand">
                 { props.brand.clone().unwrap_or_default() }
                 { burger }

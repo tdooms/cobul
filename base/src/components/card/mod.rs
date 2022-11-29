@@ -19,9 +19,6 @@ pub struct Props {
     pub image: Option<Html>,
 
     #[prop_or_default]
-    pub children: Children,
-
-    #[prop_or_default]
     pub footer: Option<Html>,
 
     #[prop_or_default]
@@ -32,9 +29,18 @@ pub struct Props {
 
     #[prop_or_default]
     pub style: Option<AttrValue>,
+
+    #[prop_or_default]
+    pub children: Children,
 }
 
 /// An all-around flexible and composable component - [reference](https://bulma.io/documentation/components/card/)
+///
+/// Properties:
+/// - `header: Option<Html>` &npbs; The header of the card
+/// - `image: Option<Html>` &npbs; The image of the card
+/// - `footer: Option<Html> &npbs;: The footer of the card
+/// - `fullheight: bool` &npbs; CUSTOM Whether the card should take up the full height of its parent
 #[function_component(Card)]
 pub fn card(props: &Props) -> Html {
     let css = "height:100%;display:flex;flex-direction:column";

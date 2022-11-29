@@ -5,12 +5,6 @@ use crate::props::{Breakpoint, Centered, Gapless, Multiline, VCentered};
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {
     #[prop_or_default]
-    pub children: Children,
-
-    #[prop_or_default]
-    pub class: Classes,
-
-    #[prop_or_default]
     pub vcentered: VCentered,
 
     #[prop_or_default]
@@ -26,10 +20,23 @@ pub struct Props {
     pub breakpoint: Option<Breakpoint>,
 
     #[prop_or_default]
+    pub children: Children,
+
+    #[prop_or_default]
+    pub class: Classes,
+
+    #[prop_or_default]
     pub style: Option<AttrValue>,
 }
 
 /// The power of Flexbox in a simple interface - [reference](https://bulma.io/documentation/columns/)
+///     
+/// Properties:
+/// - `vcentered: VCentered`
+/// - `multiline: Multiline`
+/// - `centered: Centered`
+/// - `gapless: Gapless`
+/// - `breakpoint: Option<Breakpoint>`
 #[function_component(Columns)]
 pub fn columns(props: &Props) -> Html {
     let class = classes!(

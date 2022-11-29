@@ -13,6 +13,8 @@ pub struct Props {
 }
 
 /// Bulma’s most basic spacer block - [reference](https://bulma.io/documentation/elements/block/)
+///
+/// Properties:
 #[function_component(Block)]
 pub fn block(props: &Props) -> Html {
     let class = classes!("block", props.class.clone());

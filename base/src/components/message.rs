@@ -5,9 +5,6 @@ use crate::props::{Color, Size};
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {
     #[prop_or_default]
-    pub children: Children,
-
-    #[prop_or_default]
     pub header: Option<Html>,
 
     #[prop_or_default]
@@ -21,6 +18,12 @@ pub struct Props {
 
     #[prop_or_default]
     pub style: Option<AttrValue>,
+
+    #[prop_or_default]
+    pub class: Classes,
+
+    #[prop_or_default]
+    pub children: Children,
 }
 
 /// Colored message blocks, to emphasize part of your page - [reference](https://bulma.io/documentation/components/message/)
@@ -42,8 +45,10 @@ pub fn message(props: &Props) -> Html {
         (None, false) => html! {},
     };
 
+    let class = classes!("message", props.color, props.size, props.class.clone());
+
     html! {
-        <article style={props.style.clone()} class={classes!("message", props.color, props.size)}>
+        <article style={props.style.clone()} {class}>
             { header }
             <div class="message-body">
                 { for props.children.iter() }

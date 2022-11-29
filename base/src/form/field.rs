@@ -5,16 +5,7 @@ use crate::props::{Addons, Alignment, Grouped, GroupedMultiline};
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {
     #[prop_or_default]
-    pub children: Children,
-
-    #[prop_or_default]
-    pub style: Option<AttrValue>,
-
-    #[prop_or_default]
     pub focus: Callback<bool>,
-
-    #[prop_or_default]
-    pub class: Classes,
 
     #[prop_or_default]
     pub grouped: Grouped,
@@ -27,9 +18,25 @@ pub struct Props {
 
     #[prop_or_default]
     pub alignment: Option<Alignment>,
+
+    #[prop_or_default]
+    pub class: Classes,
+
+    #[prop_or_default]
+    pub children: Children,
+
+    #[prop_or_default]
+    pub style: Option<AttrValue>,
 }
 
 /// All generic form controls, designed for consistency - [reference](https://bulma.io/documentation/form/general/)
+///
+/// Properties:
+/// - `focus: Callback<bool>` callback true for onfocus, false for onblur
+/// - `grouped: Grouped`
+/// - `multiline: GroupedMultiline`
+/// - `addons: Addons`
+/// - `alignment: Option<Alignment>`
 #[function_component(Field)]
 pub fn field(props: &Props) -> Html {
     let alignment = match props.alignment {

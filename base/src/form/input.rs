@@ -16,12 +16,6 @@ pub struct Props {
     pub model: Option<Model<String>>,
 
     #[prop_or_default]
-    pub style: Option<AttrValue>,
-
-    #[prop_or_default]
-    pub class: Classes,
-
-    #[prop_or_default]
     pub name: Option<AttrValue>,
 
     #[prop_or_default]
@@ -50,9 +44,30 @@ pub struct Props {
 
     #[prop_or_default]
     pub statik: Static,
+
+    #[prop_or_default]
+    pub style: Option<AttrValue>,
+
+    #[prop_or_default]
+    pub class: Classes,
 }
 
 /// The text input and its variations - [reference](https://bulma.io/documentation/form/input/)
+///     
+/// Properties:
+/// - `input: Callback<String>` Callback for when the input is changed
+/// - `value: Option<String>`
+/// - `model: Option<Model<String>>`
+/// - `name: Option<AttrValue>`
+/// - `kind: Option<AttrValue>`
+/// - `placeholder: Option<AttrValue>`
+/// - `size: Option<Size>`
+/// - `color: Option<Color>`
+/// - `rounded: Rounded`
+/// - `loading: Loading`
+/// - `disabled: Disabled`
+/// - `readonly: Readonly`
+/// - `statik: Static`
 #[function_component(Input)]
 pub fn input(props: &Props) -> Html {
     let size = use_context::<Size>();

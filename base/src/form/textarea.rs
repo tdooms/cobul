@@ -17,12 +17,6 @@ pub struct Props {
     pub model: Option<Model<String>>,
 
     #[prop_or_default]
-    pub style: Option<AttrValue>,
-
-    #[prop_or_default]
-    pub class: Classes,
-
-    #[prop_or_default]
     pub placeholder: Option<AttrValue>,
 
     #[prop_or_default]
@@ -51,9 +45,30 @@ pub struct Props {
 
     #[prop_or_default]
     pub statik: Static,
+
+    #[prop_or_default]
+    pub style: Option<AttrValue>,
+
+    #[prop_or_default]
+    pub class: Classes,
 }
 
 /// The multiline textarea and its variations - [reference](https://bulma.io/documentation/form/textarea/)
+///
+/// Properties:
+/// - `input: Callback<String>` Callback for when the input is changed
+/// - `value: Option<String>`
+/// - `model: Option<Model<String>>`
+/// - `placeholder: Option<AttrValue>`
+/// - `name: Option<AttrValue>`
+/// - `rows: Option<u32>`
+/// - `size: Option<Size>`
+/// - `color: Option<Color>`
+/// - `fixed: FixedSize`
+/// - `loading: Loading`
+/// - `disabled: Disabled`
+/// - `readonly: Readonly`
+/// - `statik: Static`
 #[function_component(Textarea)]
 pub fn textarea(props: &Props) -> Html {
     let size = use_context::<Size>();

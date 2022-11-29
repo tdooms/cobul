@@ -4,13 +4,10 @@ use crate::props::{Size, TextColor};
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct IconProps {
-    pub icon: AttrValue,
-
-    #[prop_or_default]
-    pub class: Classes,
-
     #[prop_or_default]
     pub click: Callback<()>,
+
+    pub icon: AttrValue,
 
     #[prop_or_default]
     pub size: Option<Size>,
@@ -19,10 +16,17 @@ pub struct IconProps {
     pub color: Option<TextColor>,
 
     #[prop_or_default]
+    pub class: Classes,
+
+    #[prop_or_default]
     pub style: Option<AttrValue>,
 }
 
 /// Bulma is compatible with all icon font libraries - [reference](https://bulma.io/documentation/elements/icon/)
+///
+/// - `click: Callback<()>` &npbs; Callback fro icon click
+/// - `size: Option<Size>`
+/// - `color: Option<Color>`
 #[function_component(Icon)]
 pub fn icon(props: &IconProps) -> Html {
     let class = classes!("icon", props.class.clone(), props.size, props.color);
@@ -46,10 +50,10 @@ pub fn icon(props: &IconProps) -> Html {
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct IconTextProps {
     #[prop_or_default]
-    pub class: Classes,
+    pub color: Option<TextColor>,
 
     #[prop_or_default]
-    pub color: Option<TextColor>,
+    pub class: Classes,
 
     #[prop_or_default]
     pub children: Children,
@@ -59,8 +63,11 @@ pub struct IconTextProps {
 }
 
 /// You can combine an icon with text - [reference](https://bulma.io/documentation/elements/icon/#icon-text)
+///
+/// Properties:
+/// - `color: Option<TextColor>`
 #[function_component(IconText)]
 pub fn icon_text(props: &IconTextProps) -> Html {
     let class = classes!("icon-text", props.class.clone(), props.color);
-    html! {<span style={props.style.clone()} {class}> { for props.children.iter() } </span>}
+    html! { <span style={props.style.clone()} {class}> { for props.children.iter() } </span> }
 }

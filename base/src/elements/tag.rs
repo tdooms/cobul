@@ -8,10 +8,7 @@ use crate::props::{Addons, Color, Delete, Light, Rounded, Size};
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct TagProps {
     #[prop_or_default]
-    pub children: Children,
-
-    #[prop_or_default]
-    pub class: Classes,
+    pub click: Callback<()>,
 
     #[prop_or_default]
     pub light: Light,
@@ -26,19 +23,31 @@ pub struct TagProps {
     pub tag: AttrValue,
 
     #[prop_or_default]
-    pub click: Callback<()>,
-
-    #[prop_or_default]
     pub rounded: Rounded,
 
     #[prop_or_default]
     pub size: Option<Size>,
 
     #[prop_or_default]
+    pub children: Children,
+
+    #[prop_or_default]
+    pub class: Classes,
+
+    #[prop_or_default]
     pub style: Option<AttrValue>,
 }
 
 /// Small tag labels to insert anywhere - [reference](https://bulma.io/documentation/elements/tag/)
+///
+/// Properties:
+/// - `click: Callback<()>` &npbs; Callback for when the tag is clicked
+/// - `light: Light`
+/// - `color: Option<Color>`
+/// - `delete: Delete`
+/// - `tag: AttrValue` the tag of the element - default: span
+/// - `rounded: Rounded`
+/// - `size: Option<Size>`
 #[function_component(Tag)]
 pub fn tag(props: &TagProps) -> Html {
     let class = classes!(

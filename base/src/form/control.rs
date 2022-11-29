@@ -4,12 +4,6 @@ use crate::props::Expanded;
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {
-    #[prop_or_default]
-    pub children: Children,
-
-    #[prop_or_default]
-    pub class: Classes,
-
     #[prop_or_else(|| "div".into())]
     pub tag: AttrValue,
 
@@ -24,9 +18,21 @@ pub struct Props {
 
     #[prop_or_default]
     pub style: Option<AttrValue>,
+
+    #[prop_or_default]
+    pub children: Children,
+
+    #[prop_or_default]
+    pub class: Classes,
 }
 
 /// All generic form controls, designed for consistency - [reference](https://bulma.io/documentation/form/general/)
+///
+/// Properties:
+/// - `tag: AttrValue` the tag of the element - default: div
+/// - `expanded: Expanded`
+/// - `right: Option<AttrValue>` the icon to the right of the control
+/// - `left: Option<AttrValue>` the icon to the left of the control
 #[function_component(Control)]
 pub fn control(props: &Props) -> Html {
     let class = classes!(

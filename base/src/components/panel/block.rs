@@ -6,18 +6,22 @@ use crate::props::Active;
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {
     #[prop_or_default]
-    pub children: Children,
-
-    #[prop_or_default]
-    pub class: Classes,
-
-    #[prop_or_default]
     pub active: Active,
 
     #[prop_or_default]
     pub style: Option<AttrValue>,
+
+    #[prop_or_default]
+    pub children: Children,
+
+    #[prop_or_default]
+    pub class: Classes,
 }
 
+/// A simple component for rendering a panel block.
+///
+/// Properties:
+/// - `active: Active` &npbs; Whether the block is active.
 #[function_component(PanelBlock)]
 pub fn panel_block(props: &Props) -> Html {
     let class = classes!("panel-block", props.class.clone(), props.active);

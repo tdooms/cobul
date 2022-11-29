@@ -9,12 +9,6 @@ pub struct Props {
     pub input: Callback<Vec<web_sys::File>>,
 
     #[prop_or_default]
-    pub class: Classes,
-
-    #[prop_or_default]
-    pub style: Option<AttrValue>,
-
-    #[prop_or_default]
     pub fullwidth: Fullwidth,
 
     #[prop_or_default]
@@ -34,9 +28,24 @@ pub struct Props {
 
     #[prop_or_default]
     pub alignment: Option<Alignment>,
+
+    #[prop_or_default]
+    pub class: Classes,
+
+    #[prop_or_default]
+    pub style: Option<AttrValue>,
 }
 
 /// A custom file upload input, without JavaScript - [reference](https://bulma.io/documentation/form/file/)
+///
+/// Properties:
+/// - `input: Callback<Vec<web_sys::File>>` Callback for when file or files are selected
+/// - `fullwidth: Fullwidth`
+/// - `filename: Option<AttrValue>`
+/// - `accept: Option<AttrValue>`
+/// - `size: Option<Size>`
+/// - `color: Option<Color>`
+/// - `boxed: Boxed`
 #[function_component(File)]
 pub fn file(props: &Props) -> Html {
     let boxed = use_context::<Boxed>();

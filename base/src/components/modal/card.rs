@@ -4,17 +4,14 @@ use crate::props::Active;
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {
-    #[prop_or_else(|| "Title".into())]
-    pub title: AttrValue,
+    #[prop_or_default]
+    pub close: Callback<()>,
 
     #[prop_or_default]
-    pub children: Children,
+    pub title: Option<AttrValue>,
 
     #[prop_or_default]
     pub footer: Option<Html>,
-
-    #[prop_or_default]
-    pub class: Classes,
 
     #[prop_or_default]
     pub active: Active,
@@ -23,10 +20,19 @@ pub struct Props {
     pub style: Option<AttrValue>,
 
     #[prop_or_default]
-    pub close: Callback<()>,
+    pub children: Children,
+
+    #[prop_or_default]
+    pub class: Classes,
 }
 
 /// A classic modal overlay, in which you can include any content you want - [reference](https://bulma.io/documentation/components/modal/)
+///
+/// Properties:
+/// - `close: Callback<()>`: Callback when the modal is closed
+/// - `title: Option<AttrValue>`: The title of the modal
+/// - `footer: Option<Html>`: The footer of the modal
+/// - `active: Active`: Whether the modal is active or not
 #[function_component(ModalCard)]
 pub fn modal_card(props: &Props) -> Html {
     let class = classes!("modal", props.class.clone(), props.active);

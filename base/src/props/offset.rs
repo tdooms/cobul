@@ -1,7 +1,7 @@
 use derive_more::Display;
 use yew::Classes;
 
-/// Column offsets
+/// Column offsets - [reference](https://bulma.io/documentation/columns/sizes/)
 #[derive(Clone, Debug, Display, PartialEq, Copy)]
 #[display(fmt = "is-offset-{}")]
 pub enum ColumnOffset {

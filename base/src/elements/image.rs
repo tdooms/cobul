@@ -5,9 +5,6 @@ use crate::props::{ImageSize, Rounded};
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {
     #[prop_or_default]
-    pub class: Classes,
-
-    #[prop_or_default]
     pub size: Option<ImageSize>,
 
     #[prop_or_default]
@@ -21,9 +18,18 @@ pub struct Props {
 
     #[prop_or_default]
     pub style: Option<AttrValue>,
+
+    #[prop_or_default]
+    pub class: Classes,
 }
 
 /// A container for responsive images - [reference](https://bulma.io/documentation/elements/image/)
+///
+/// Properties:
+/// - `size: Option<ImageSize>`
+/// - `rounded: Rounded`
+/// - `src: Option<AttrValue>`
+/// - `placeholder: Option<AttrValue>` &npbs; image to show while the src image is loading
 #[function_component(Image)]
 pub fn image(props: &Props) -> Html {
     let class = classes!("image", props.class.clone(), props.size);

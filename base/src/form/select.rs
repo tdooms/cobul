@@ -17,12 +17,6 @@ pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static> {
     pub model: Option<Model<T>>,
 
     #[prop_or_default]
-    pub style: Option<AttrValue>,
-
-    #[prop_or_default]
-    pub class: Classes,
-
-    #[prop_or_default]
     pub color: Option<Color>,
 
     #[prop_or_default]
@@ -39,9 +33,26 @@ pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static> {
 
     #[prop_or_default]
     pub loading: Loading,
+
+    #[prop_or_default]
+    pub style: Option<AttrValue>,
+
+    #[prop_or_default]
+    pub class: Classes,
 }
 
 /// The browser built-in select dropdown, styled accordingly - [reference](https://bulma.io/documentation/form/select/)
+///
+/// Properties:
+/// - `input: Callback<T>` Callback for when the input is changed
+/// - `value: Option<T>`
+/// - `model: Option<Model<T>>`
+/// - `color: Option<Color>`
+/// - `size: Option<Size>`
+/// - `rounded: Rounded`
+/// - `hovered: Hovered`
+/// - `focussed: Focused`
+/// - `loading: Loading`
 #[function_component(Select)]
 pub fn select<T>(props: &Props<T>) -> Html
 where

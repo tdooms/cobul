@@ -5,10 +5,7 @@ use crate::props::Size;
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {
     #[prop_or_default]
-    pub children: Children,
-
-    #[prop_or_default]
-    pub class: Classes,
+    pub click: Callback<()>,
 
     #[prop_or_default]
     pub size: Option<Size>,
@@ -16,13 +13,22 @@ pub struct Props {
     #[prop_or_else(|| "button".into())]
     pub tag: AttrValue,
 
-    pub click: Callback<()>,
+    #[prop_or_default]
+    pub children: Children,
+
+    #[prop_or_default]
+    pub class: Classes,
 
     #[prop_or_default]
     pub style: Option<AttrValue>,
 }
 
 /// A versatile delete cross - [reference](https://bulma.io/documentation/elements/delete/)
+///
+/// Properties:
+/// - `click: Callback<()>` &npbs; default: None
+/// - `size: Option<Size>`
+/// - `tag: AttrValue` the tag of the element - default: button
 #[function_component(Delete)]
 pub fn delete(props: &Props) -> Html {
     let class = classes!("delete", props.class.clone(), props.size);

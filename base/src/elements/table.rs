@@ -5,12 +5,6 @@ use crate::props::{Bordered, Fullwidth, Hoverable, Narrow, Striped};
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {
     #[prop_or_default]
-    pub children: Children,
-
-    #[prop_or_default]
-    pub class: Classes,
-
-    #[prop_or_default]
     pub bordered: Bordered,
 
     #[prop_or_default]
@@ -30,9 +24,23 @@ pub struct Props {
 
     #[prop_or_default]
     pub style: Option<AttrValue>,
+
+    #[prop_or_default]
+    pub children: Children,
+
+    #[prop_or_default]
+    pub class: Classes,
 }
 
 /// The inevitable HTML table, with special case cells - [reference](https://bulma.io/documentation/elements/table/)
+///
+/// Properties:
+/// - `bordered: Bordered`
+/// - `striped: Striped`
+/// - `narrow: Narrow`
+/// - `hoverable: Hoverable`
+/// - `fullwidth: Fullwidth`
+/// - `scrollable: bool`
 #[function_component(Table)]
 pub fn table(props: &Props) -> Html {
     let class = classes!(

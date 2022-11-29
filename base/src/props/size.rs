@@ -119,7 +119,7 @@ impl Into<Classes> for SectionSize {
     }
 }
 
-/// Container sizes [reference](https://bulma.io/documentation/layout/container/#widescreen-or-fullhd-only)
+/// Container sizes - [reference](https://bulma.io/documentation/layout/container/#widescreen-or-fullhd-only)
 #[derive(Clone, Debug, Display, PartialEq, Copy)]
 #[display(fmt = "is-{}")]
 pub enum ContainerSize {

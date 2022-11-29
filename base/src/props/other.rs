@@ -1,7 +1,7 @@
 use derive_more::Display;
 use yew::Classes;
 
-/// Common alignment classes.
+/// Common alignment classes for multiple elements
 #[derive(Clone, Debug, Display, PartialEq, Copy)]
 #[display(fmt = "is-{}")]
 pub enum Alignment {

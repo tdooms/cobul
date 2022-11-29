@@ -6,9 +6,6 @@ use crate::utils::enclose;
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {
     #[prop_or_default]
-    pub class: Classes,
-
-    #[prop_or_default]
     pub color: Option<Color>,
 
     #[prop_or_default]
@@ -18,16 +15,25 @@ pub struct Props {
     pub header: Option<Html>,
 
     #[prop_or_default]
-    pub children: Children,
-
-    #[prop_or_default]
     pub footer: Option<Html>,
 
     #[prop_or_default]
     pub style: Option<AttrValue>,
+
+    #[prop_or_default]
+    pub class: Classes,
+
+    #[prop_or_default]
+    pub children: Children,
 }
 
 /// An imposing hero banner to showcase something - [reference](https://bulma.io/documentation/layout/hero/)
+///
+/// Properties:
+/// - `color: Option<Color>`
+/// - `size: Option<HeroSize>`
+/// - `header: Option<Html>`
+/// - `footer: Option<Html>`
 #[function_component(Hero)]
 pub fn hero(props: &Props) -> Html {
     let class = classes!("hero", props.size, props.color, props.class.clone());

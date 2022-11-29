@@ -5,12 +5,6 @@ use crate::props::{HeaderSize, Spaced};
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct TitleProps {
     #[prop_or_default]
-    pub children: Children,
-
-    #[prop_or_default]
-    pub class: Classes,
-
-    #[prop_or_default]
     pub spaced: Spaced,
 
     #[prop_or_default]
@@ -18,9 +12,19 @@ pub struct TitleProps {
 
     #[prop_or_default]
     pub style: Option<AttrValue>,
+
+    #[prop_or_default]
+    pub children: Children,
+
+    #[prop_or_default]
+    pub class: Classes,
 }
 
 /// Simple headings to add depth to your page - [reference](https://bulma.io/documentation/elements/title/)
+///
+/// Properties:
+/// - `spaced: Spaced`
+/// - `size: Option<HeaderSize>`
 #[function_component(Title)]
 pub fn title(props: &TitleProps) -> Html {
     let size = props.size.unwrap_or(HeaderSize::Is3);
@@ -36,19 +40,22 @@ pub fn title(props: &TitleProps) -> Html {
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct SubtitleProps {
     #[prop_or_default]
-    pub children: Children,
-
-    #[prop_or_default]
-    pub class: Classes,
-
-    #[prop_or_default]
     pub size: Option<HeaderSize>,
 
     #[prop_or_default]
     pub style: Option<AttrValue>,
+
+    #[prop_or_default]
+    pub children: Children,
+
+    #[prop_or_default]
+    pub class: Classes,
 }
 
 /// Simple headings to add depth to your page - [reference](https://bulma.io/documentation/elements/title/)
+///
+/// Properties:
+/// - `size: Option<HeaderSize>`
 #[function_component(Subtitle)]
 pub fn subtitle(props: &SubtitleProps) -> Html {
     let size = props.size.unwrap_or(HeaderSize::Is5);
