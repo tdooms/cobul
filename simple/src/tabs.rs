@@ -1,13 +1,17 @@
 use strum::IntoEnumIterator;
 use yew::prelude::*;
 
-use cobul_base::components;
+use cobul_base::{components, elements};
 use cobul_base::model::Model;
 use cobul_base::props::{Alignment, Boxed, Fullwidth, Size, Toggle, ToggleRounded};
 use cobul_base::utils::combine_model;
 
+pub trait HasIcon {
+    fn icon(&self) -> Option<String>;
+}
+
 #[derive(Clone, Properties, PartialEq)]
-pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static> {
+pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + HasIcon + 'static> {
     #[prop_or_default]
     pub value: Option<T>,
 
@@ -45,7 +49,7 @@ pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static> {
 #[function_component(Tabs)]
 pub fn tabs<T>(props: &Props<T>) -> Html
 where
-    T: IntoEnumIterator + ToString + Copy + PartialEq + 'static,
+    T: IntoEnumIterator + ToString + Copy + PartialEq + HasIcon + 'static,
 {
     let Props {
         class,
@@ -64,8 +68,9 @@ where
     let tab_map = |variant: T| {
         let class = (&value == &Some(variant)).then(|| "is-active");
         let onclick = input.reform(move |_| variant);
+        let icon = variant.icon().map(|icon| html! {<elements::Icon {icon} class="m-0"/>});
 
-        html! { <li {onclick} {class}> <a> { variant.to_string() } </a> </li> }
+        html! { <li {onclick} {class}> <a> {icon} <span> { variant.to_string() } </span> </a> </li> }
     };
 
     html! {
