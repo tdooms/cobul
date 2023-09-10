@@ -1,0 +1,15 @@
+[package]
+name = "cobul_extra"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+cobul_raw = { path = "../raw" }
+cobul_props = { path = "../props" }
+
+yew = "0.20"
+derive_more = "0.99"
+num = "0.4"
+rand = { version = "0.8" }
+getrandom = { version = "0.2", features = ["js"] }
+web-sys = { version = "^0.3.59", features = ["HtmlInputElement", "HtmlOutputElement", "HtmlDivElement"] }

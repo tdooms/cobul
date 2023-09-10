@@ -1,0 +1,10 @@
+[package]
+name = "cobul_props"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+yew = "0.20"
+
+strum = { version = "0.25", features = ["derive"] }
+derive_more = "*"

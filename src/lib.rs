@@ -1,22 +1,23 @@
-#![warn(missing_docs)]
-#![warn(missing_doc_code_examples)]
+// #![warn(missing_docs)]
+// #![warn(missing_doc_code_examples)]
 
-//! Test
-//!
-//!
-
-#[cfg(feature = "base")]
-pub use cobul_base::{components::*, elements::*, form::*, layout::*, model::*, props::*};
-
-#[cfg(feature = "extensions")]
-pub use cobul_extensions::*;
-
-#[cfg(feature = "simple")]
-pub mod simple {
-    pub use cobul_simple::*;
+#[cfg(feature = "raw")]
+pub mod raw {
+    pub use cobul_raw::{components::*, elements::*, form::*, layout::*};
 }
 
-#[cfg(feature = "fa")]
-pub mod fa {
-    pub use cobul_fa::{Brands, Icon, Regular, Solid};
+#[cfg(feature = "props")]
+pub use cobul_props::*;
+
+#[cfg(feature = "core")]
+pub use cobul_core::*;
+
+#[cfg(feature = "extra")]
+pub use cobul_extra::*;
+
+#[cfg(feature = "icons")]
+pub mod icons {
+    pub use cobul_icons::{Brands, Icon, Regular, Solid};
 }
+
+

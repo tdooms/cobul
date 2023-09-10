@@ -12,6 +12,7 @@ use slider::SliderTester;
 use switch::SwitchTester;
 use tabs::TabsTester;
 use tooltip::TooltipTester;
+use cobul::icons::Solid;
 
 mod checkradio;
 mod dropdown;
@@ -89,50 +90,50 @@ fn app() -> Html {
 
         <Box> {"I'm in a box."} </Box>
 
-        <Buttons>
-        { for TONE_COLORS.iter().map(|(c, n)| html!{ <Button color={c.clone()}> {n} </Button> })}
-        </Buttons>
-        <Buttons>
-        { for COLORS.iter().map(|(c, n)| html!{ <Button color={c.clone()}> {n} </Button> })}
-        </Buttons>
-        <Buttons>
-        { for COLORS.iter().map(|(c, n)| html!{ <Button light=true color={c.clone()}> {n} </Button> })}
-        </Buttons>
-        <Buttons>
-        { for SIZES.iter().map(|(s, n)| html!{ <Button size={s.clone()}> {n} </Button> })}
-        </Buttons>
-        <Buttons>
-        { for SIZES.iter().map(|(s, n)| html!{ <Button fullwidth=true size={s.clone()}> {n} </Button> })}
-        </Buttons>
-        <Buttons>
-        { for COLORS.iter().map(|(c, n)| html!{ <Button outlined=true color={c.clone()}> {n} </Button> })}
-        </Buttons>
-        <Buttons>
-        { for COLORS.iter().map(|(c, n)| html!{ <Button inverted=true color={c.clone()}> {n} </Button> })}
-        </Buttons>
-        <Buttons>
-        { for COLORS.iter().map(|(c, n)| html!{ <Button rounded=true color={c.clone()}> {n} </Button> })}
-        </Buttons>
-        <Buttons>
-        { for COLORS.iter().map(|(c, n)| html!{ <Button hovered=true color={c.clone()}> {n} </Button> })}
-        </Buttons>
-        <Buttons>
-        { for COLORS.iter().map(|(c, n)| html!{ <Button focussed=true color={c.clone()}> {n} </Button> })}
-        </Buttons>
-        <Buttons>
-        { for COLORS.iter().map(|(c, n)| html!{ <Button active=true color={c.clone()}> {n} </Button> })}
-        </Buttons>
-        <Buttons>
-        { for COLORS.iter().map(|(c, n)| html!{ <Button loading=true color={c.clone()}> {n} </Button> })}
-        </Buttons>
+        <raw::Buttons>
+        { for TONE_COLORS.iter().cloned().map(|(color, text)| html!{ <Button {color} {text} /> })}
+        </raw::Buttons>
+        <raw::Buttons>
+        { for COLORS.iter().cloned().map(|(color, text)| html!{ <Button {color} {text} /> })}
+        </raw::Buttons>
+        <raw::Buttons>
+        { for COLORS.iter().cloned().map(|(color, text)| html!{ <Button light=true {color} {text} /> })}
+        </raw::Buttons>
+        <raw::Buttons>
+        { for SIZES.iter().cloned().map(|(size, text)| html!{ <Button {size} {text} /> })}
+        </raw::Buttons>
+        <raw::Buttons>
+        { for SIZES.iter().cloned().map(|(size, text)| html!{ <Button fullwidth=true {size} {text} /> })}
+        </raw::Buttons>
+        <raw::Buttons>
+        { for COLORS.iter().cloned().map(|(color, text)| html!{ <Button outlined=true {color} {text} /> })}
+        </raw::Buttons>
+        <raw::Buttons>
+        { for COLORS.iter().cloned().map(|(color, text)| html!{ <Button inverted=true {color} {text} /> })}
+        </raw::Buttons>
+        <raw::Buttons>
+        { for COLORS.iter().cloned().map(|(color, text)| html!{ <Button rounded=true {color} {text} /> })}
+        </raw::Buttons>
+        <raw::Buttons>
+        { for COLORS.iter().cloned().map(|(color, text)| html!{ <Button hovered=true {color} {text} /> })}
+        </raw::Buttons>
+        <raw::Buttons>
+        { for COLORS.iter().cloned().map(|(color, text)| html!{ <Button focussed=true {color} {text} /> })}
+        </raw::Buttons>
+        <raw::Buttons>
+        { for COLORS.iter().cloned().map(|(color, text)| html!{ <Button active=true {color} {text} /> })}
+        </raw::Buttons>
+        <raw::Buttons>
+        { for COLORS.iter().cloned().map(|(color, text)| html!{ <Button loading=true {color} {text} /> })}
+        </raw::Buttons>
 
-        <Buttons>
-        <Button statik=true> {"Static"} </Button>
-        </Buttons>
+        <raw::Buttons>
+        <Button statik=true text="Static" />
+        </raw::Buttons>
 
-        <Buttons>
-        { for COLORS.iter().map(|(c, n)| html!{ <Button disabled=true color={c.clone()}> {n} </Button> })}
-        </Buttons>
+        <raw::Buttons>
+        { for COLORS.iter().cloned().map(|(color, text)| html!{ <Button disabled=true {color} {text} /> })}
+        </raw::Buttons>
 
         <Content>
             <h1>{"Hello World"}</h1>
@@ -153,7 +154,7 @@ fn app() -> Html {
         </Block>
 
         <Block>
-        <Icon icon={fa::Solid::Plus}/>
+        <Icon icon={Solid::Plus}/>
         </Block>
 
         <Block>
@@ -191,51 +192,51 @@ fn app() -> Html {
 
         // TODO: continue from image
 
-        <Field>
-            <Label> {"Name"} </Label>
-            <Control>
-                <Input placeholder="Text input" input={Callback::noop()}/>
-            </Control>
-        </Field>
+        <raw::Field>
+            <raw::Label> {"Name"} </raw::Label>
+            <raw::Control>
+                <raw::Input placeholder="Text input" input={Callback::noop()}/>
+            </raw::Control>
+        </raw::Field>
 
-        <Field>
-            <Label> {"Username"} </Label>
-            <Control right="fas fa-user" left="fas fa-check">
-                <Input color={Color::Success} placeholder="Text input" value="bulma" input={Callback::noop()}/>
-                <Help color={Color::Success}> {"This username is available"} </Help>
-            </Control>
-        </Field>
+        <raw::Field>
+            <raw::Label> {"Username"} </raw::Label>
+            <raw::Control right="fas fa-user" left="fas fa-check">
+                <raw::Input color={Color::Success} placeholder="Text input" value="bulma" input={Callback::noop()}/>
+                <raw::Help color={Color::Success}> {"This username is available"} </raw::Help>
+            </raw::Control>
+        </raw::Field>
 
-        <Field>
-            <Label> {"Email"} </Label>
-            <Control right="fas fa-envelope" left="fas fa-exclamation-triangle">
-                <Input color={Color::Danger} placeholder="Text input" value="bulma" input={Callback::noop()}/>
-                <Help color={Color::Danger}> {"This email is invalid"} </Help>
-            </Control>
-        </Field>
+        <raw::Field>
+            <raw::Label> {"Email"} </raw::Label>
+            <raw::Control right="fas fa-envelope" left="fas fa-exclamation-triangle">
+                <raw::Input color={Color::Danger} placeholder="Text input" value="bulma" input={Callback::noop()}/>
+                <raw::Help color={Color::Danger}> {"This email is invalid"} </raw::Help>
+            </raw::Control>
+        </raw::Field>
 
-        <Field>
-            <Label> {"Subject"} </Label>
-            <Control>
+        <raw::Field>
+            <raw::Label> {"Subject"} </raw::Label>
+            <raw::Control>
                 <Select<SelectEnum> value={SelectEnum::SelectDropdown} input={Callback::noop()}/>
-            </Control>
-        </Field>
+            </raw::Control>
+        </raw::Field>
 
-        <Field>
-            <Label> {"Message"} </Label>
-            <Control>
+        <raw::Field>
+            <raw::Label> {"Message"} </raw::Label>
+            <raw::Control>
                 <Textarea placeholder="Textarea" input={Callback::noop()}/>
-            </Control>
-        </Field>
+            </raw::Control>
+        </raw::Field>
 
-        <Field grouped=true>
-            <Control>
-                <Button color={Color::Link}> {"Submit"} </Button>
-            </Control>
-            <Control>
-                <Button color={Color::Link} light=true> {"Cancel"} </Button>
-            </Control>
-        </Field>
+        <raw::Field grouped=true>
+            <raw::Control>
+                <Button color={Color::Link} text="Submit" />
+            </raw::Control>
+            <raw::Control>
+                <Button color={Color::Link} light=true text="Cancel" />
+            </raw::Control>
+        </raw::Field>
 
         </Column>
         </Columns>

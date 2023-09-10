@@ -1,8 +1,7 @@
 use yew::*;
 
 use cobul::*;
-use cobul::fa::Brands;
-use cobul::simple::HasIcon;
+use cobul::icons::Brands;
 
 #[derive(derive_more::Display, strum::EnumIter, PartialEq, Clone, Copy)]
 enum Tab {
@@ -30,9 +29,9 @@ pub fn switch_tester() -> Html {
 
     html! {
         <Box>
-        <simple::Tabs<Tab> model={model.clone()} />
-        <simple::Tabs<Tab> model={model.clone()} rounded=true />
-        <simple::Tabs<Tab> model={model.clone()} fullwidth=true toggle=true rounded=true />
+        <Tabs<Tab> model={model.clone()} />
+        <Tabs<Tab> model={model.clone()} rounded=true />
+        <Tabs<Tab> model={model.clone()} fullwidth=true toggle=true rounded=true />
         <p> {model.value.to_string()} </p>
         </Box>
     }

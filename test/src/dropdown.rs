@@ -19,10 +19,10 @@ pub fn dropdown_tester() -> Html {
 
     html! {
         <Box>
-        <simple::Dropdown<TestEnum> model={model.clone()} />
+        <Dropdown<TestEnum> model={model.clone()} />
 
         <Columns>
-        <Column> <simple::Dropdown<TestEnum> model={model.clone()} fullwidth=true /> </Column>
+        <Column> <Dropdown<TestEnum> model={model.clone()} fullwidth=true /> </Column>
         <Column size={ColumnSize::Is7} />
         </Columns>
         </Box>

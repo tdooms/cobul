@@ -1,6 +1,6 @@
 use yew::*;
 
-use cobul::simple::Pagination;
+use cobul::Pagination;
 use cobul::{use_model, Box};
 
 #[function_component(PaginationTester)]

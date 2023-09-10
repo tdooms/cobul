@@ -26,7 +26,7 @@ pub fn loader_tester() -> Html {
 
     html! {
         <Box>
-        <Button click={click(Direction::BottomToTop)}> {"Loading screen"} </Button>
+        <Button click={click(Direction::BottomToTop)} text={"Loading screen"}> </Button>
         {loader}
         </Box>
     }
