@@ -1,7 +1,8 @@
 use web_sys::HtmlInputElement;
 use yew::prelude::*;
 
-use cobul_props::{Alignment, Boxed, Color, Fullwidth, Size};
+use cobul_props::general::{Boxed, Fullwidth};
+use cobul_props::{Alignment, Color, Size};
 
 #[derive(Properties, Clone, PartialEq)]
 pub struct Props {

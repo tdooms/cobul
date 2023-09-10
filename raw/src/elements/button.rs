@@ -1,9 +1,10 @@
 use yew::prelude::*;
 
-use cobul_props::{
-    Active, Addons, Alignment, Color, Disabled, Focused, Fullwidth, Hidden, Hovered, Inverted,
-    Light, Loading, Outlined, Rounded, Selected, Size, Static,
+use cobul_props::general::{
+    Active, Addons, Disabled, Focused, Fullwidth, Hidden, Hovered, Inverted,
+    Light, Loading, Outlined, Rounded, Selected, Static,
 };
+use cobul_props::{Alignment,Color, Size};
 
 #[derive(Properties, Clone, PartialEq)]
 pub struct ButtonProps {

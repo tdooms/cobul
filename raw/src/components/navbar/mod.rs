@@ -5,7 +5,7 @@ pub use dropdown::NavbarDropdown;
 pub use item::NavbarItem;
 pub use link::NavbarLink;
 
-use cobul_props::Active;
+use cobul_props::general::Active;
 
 mod divider;
 mod dropdown;

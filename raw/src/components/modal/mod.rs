@@ -2,7 +2,7 @@ use yew::prelude::*;
 
 pub use card::ModalCard;
 
-use cobul_props::Active;
+use cobul_props::general::Active;
 
 mod card;
 

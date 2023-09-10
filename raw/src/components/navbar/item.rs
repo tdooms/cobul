@@ -1,6 +1,6 @@
 use yew::prelude::*;
 
-use cobul_props::{HasDropdown, Hoverable};
+use cobul_props::general::{HasDropdown, Hoverable};
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {

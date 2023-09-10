@@ -1,6 +1,6 @@
 use yew::prelude::*;
 
-use cobul_props::{Mobile, TextCentered};
+use cobul_props::general::{Mobile, TextCentered};
 use crate::util::enclose;
 
 #[derive(Clone, Debug, Properties, PartialEq)]

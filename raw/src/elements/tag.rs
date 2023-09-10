@@ -1,6 +1,7 @@
 use yew::prelude::*;
 
-use cobul_props::{Addons, Color, Delete, Light, Rounded, Size};
+use cobul_props::general::{Addons, Delete, Light, Rounded};
+use cobul_props::{Color, Size};
 
 // The turn into delete button is intentionally skipped,
 // use the delete element for that functionality

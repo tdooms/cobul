@@ -1,10 +1,11 @@
 use yew::prelude::*;
 
 use cobul_raw::elements;
-use cobul_props::{
-    Active, Color, Disabled, Focused, Fullwidth, Hidden, Hovered, Inverted, Light, Loading,
-    Outlined, Rounded, Selected, Size, Static,
+use cobul_props::general::{
+    Active, Disabled, Focused, Fullwidth, Hidden, Hovered, Inverted, Light, Loading,
+    Outlined, Rounded, Selected, Static,
 };
+use cobul_props::{Color, Size};
 
 #[derive(Properties, Clone, PartialEq)]
 pub struct Props {

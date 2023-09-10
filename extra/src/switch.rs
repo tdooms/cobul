@@ -1,7 +1,8 @@
 use rand::Rng;
 use yew::*;
 
-use cobul_props::{Color, Disabled, Outlined, Rounded, Rtl, Size, Thin, Model};
+use cobul_props::{Color, Size, Model};
+use cobul_props::general::{Disabled, Outlined, Rounded, Rtl, Thin};
 
 #[derive(Properties, Debug, PartialEq, Clone)]
 pub struct Props {

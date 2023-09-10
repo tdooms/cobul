@@ -1,5 +1,6 @@
 use yew::prelude::*;
-use cobul_props::{Model, Rounded, Size};
+use cobul_props::{Model, Size};
+use cobul_props::general::Rounded;
 use cobul_raw::form;
 use crate::FormData;
 

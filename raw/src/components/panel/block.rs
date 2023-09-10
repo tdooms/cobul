@@ -1,6 +1,6 @@
 use yew::prelude::*;
 
-use cobul_props::Active;
+use cobul_props::general::Active;
 
 // TODO: this can only be: control, input, button, panel-icon
 #[derive(Clone, Debug, Properties, PartialEq)]

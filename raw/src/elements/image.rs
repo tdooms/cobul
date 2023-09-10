@@ -1,6 +1,7 @@
 use yew::prelude::*;
 
-use cobul_props::{ImageSize, Rounded};
+use cobul_props::general::{Rounded};
+use cobul_props::ImageSize;
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {

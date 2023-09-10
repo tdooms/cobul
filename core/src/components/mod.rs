@@ -5,10 +5,16 @@ mod card;
 mod menu;
 mod panel;
 mod message;
-mod breadcrumbs;
+mod breadcrumb;
 mod modal;
 mod navbar;
 
 pub use dropdown::Dropdown;
 pub use pagination::Pagination;
 pub use tabs::{Tabs, HasIcon};
+pub use card::{Card, CardFooterItem, CardHeaderIcon, CardHeaderTitle};
+pub use menu::{Menu, MenuLabel, MenuList};
+pub use panel::{Panel, PanelBlock, PanelTabs};
+pub use message::Message;
+pub use breadcrumb::Breadcrumb;
+pub use modal::{Modal, ModalCard};

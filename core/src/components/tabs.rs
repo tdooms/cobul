@@ -2,7 +2,8 @@ use strum::IntoEnumIterator;
 use yew::prelude::*;
 
 use cobul_raw::{components, elements};
-use cobul_props::{Alignment, Boxed, Fullwidth, Size, Toggle, ToggleRounded, Model};
+use cobul_props::{Alignment, Size, Model};
+use cobul_props::general::{Boxed, Fullwidth, Toggle, ToggleRounded};
 
 pub trait HasIcon {
     fn icon(&self) -> Option<String>;

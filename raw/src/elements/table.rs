@@ -1,6 +1,6 @@
 use yew::prelude::*;
 
-use cobul_props::{Bordered, Fullwidth, Hoverable, Narrow, Striped};
+use cobul_props::general::{Bordered, Fullwidth, Hoverable, Narrow, Striped};
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {

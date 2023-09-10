@@ -3,7 +3,7 @@ use yew::prelude::*;
 pub use divider::DropdownDivider;
 pub use item::DropdownItem;
 
-use cobul_props::{Active, Hoverable, Right, Up};
+use cobul_props::general::{Active, Hoverable, Right, Up};
 
 mod divider;
 mod item;
