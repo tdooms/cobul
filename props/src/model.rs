@@ -1,3 +1,4 @@
+use std::ops::Deref;
 use yew::{hook, use_state, Callback};
 
 #[derive(Clone, Debug, PartialEq)]
@@ -17,6 +18,14 @@ impl<T: Clone> Model<T> {
             (None, value) => value,
         };
         (input, value)
+    }
+}
+
+impl<T> Deref for Model<T> {
+    type Target = T;
+
+    fn deref(&self) -> &Self::Target {
+        &self.value
     }
 }
 
