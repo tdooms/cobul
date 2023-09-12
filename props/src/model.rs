@@ -21,7 +21,7 @@ impl<T: Clone> Model<T> {
     }
 }
 
-impl<T> Deref for Model<T> {
+impl<T: Clone> Deref for Model<T> {
     type Target = T;
 
     fn deref(&self) -> &Self::Target {
