@@ -12,5 +12,5 @@ cobul_icons = { path = "../icons" }
 
 log = "0.4"
 strum = { version = "0.25", features = ["derive"] }
-yew = "0.20"
+yew = "0.21"
 validator = "0.16"

@@ -77,7 +77,7 @@ where
     let label = use_node_ref();
 
     let cloned = width.clone();
-    use_effect_with_deps(
+    use_effect_with((container.clone(), label.clone()),
         move |(container, label)| {
             if let (Some(container), Some(label)) = (
                 container.cast::<HtmlDivElement>(),
@@ -85,9 +85,7 @@ where
             ) {
                 cloned.set(container.offset_width() - label.offset_width())
             }
-            || ()
         },
-        (container.clone(), label.clone()),
     );
 
     let class = classes!(

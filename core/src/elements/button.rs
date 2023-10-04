@@ -13,6 +13,9 @@ pub struct Props {
     pub size: Option<Size>,
 
     #[prop_or_default]
+    pub bold: bool,
+
+    #[prop_or_default]
     pub hidden: Hidden,
 
     #[prop_or_default]
@@ -76,11 +79,13 @@ pub struct Props {
 /// [https://bulma.io/documentation/elements/button/](https://bulma.io/documentation/elements/button/)
 #[function_component(Button)]
 pub fn button(props: &Props) -> Html {
-    let inner = match (props.icon.clone(), props.text.clone()) {
-        (None, None) => html! {},
-        (None, Some(text)) => html! {text},
-        (Some(icon), None) => html! { <elements::Icon {icon} /> },
-        (Some(icon), Some(text)) => html! {<> <elements::Icon {icon} /> <span> {text} </span> </>},
+    let inner = match (props.icon.clone(), props.text.clone(), props.bold) {
+        (None, None, _) => html! {},
+        (None, Some(text), false) => html! {text},
+        (None, Some(text), true) => html! { <b> {text} </b> },
+        (Some(icon), None, _) => html! { <elements::Icon {icon} /> },
+        (Some(icon), Some(text), false) => html! {<> <elements::Icon {icon} /> <span> {text} </span> </>},
+        (Some(icon), Some(text), true) => html! {<> <elements::Icon {icon} /> <span> <b>{text}</b> </span> </>},
     };
 
     html! {

@@ -71,7 +71,7 @@ where
     let option = move |variant: T| {
         let selected = std::mem::discriminant(&variant) == std::mem::discriminant(&value.unwrap());
         let onclick = (!selected).then(|| input.reform(move |_| variant));
-        html! { <option {selected} {onclick}> {variant} </option> }
+        html! { <option {selected} {onclick}> {variant.to_string()} </option> }
     };
 
     html! {

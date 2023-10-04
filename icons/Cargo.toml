@@ -5,4 +5,4 @@ edition = "2021"
 
 [dependencies]
 derive_more = "*"
-yew = "0.20"
+yew = "0.21"

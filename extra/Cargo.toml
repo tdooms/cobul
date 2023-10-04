@@ -7,7 +7,7 @@ edition = "2021"
 cobul_raw = { path = "../raw" }
 cobul_props = { path = "../props" }
 
-yew = "0.20"
+yew = "0.21"
 derive_more = "0.99"
 num = "0.4"
 rand = { version = "0.8" }
