@@ -1,9 +1,8 @@
 use yew::*;
-
 use cobul::*;
 
-#[function_component(FormTester)]
-pub fn form_tester() -> Html {
+#[function_component(FormHelp)]
+pub fn form_help() -> Html {
     let model = use_model(|| String::new());
     let help = model.value.is_empty().then_some("Rekwajer".to_string());
 

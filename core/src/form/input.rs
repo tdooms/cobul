@@ -25,9 +25,6 @@ pub struct Props {
     pub placeholder: Option<AttrValue>,
 
     #[prop_or_default]
-    pub size: Option<Size>,
-
-    #[prop_or_default]
     pub rounded: Rounded,
 
     #[prop_or_default]
@@ -40,6 +37,7 @@ pub struct Props {
 #[function_component(Input)]
 pub fn input(props: &Props) -> Html {
     let _form = use_context::<FormData>();
+    let size = use_context::<Size>();
 
     html! {
         <form::Input
@@ -47,7 +45,7 @@ pub fn input(props: &Props) -> Html {
             input={props.input.clone()}
             model={props.model.clone()}
             class={props.class.clone()}
-            size={props.size.clone()}
+            size={size}
             rounded={props.rounded.clone()}
             name={props.name.clone()}
             kind={props.kind.clone()}

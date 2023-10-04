@@ -5,7 +5,7 @@ use yew::prelude::*;
 use checkradio::CheckradioTester;
 use cobul::*;
 use dropdown::DropdownTester;
-use form::FormTester;
+use form::{FormSize, FormHelp};
 use loader::LoaderTester;
 use pagination::PaginationTester;
 use slider::SliderTester;
@@ -70,7 +70,9 @@ fn app() -> Html {
         <CheckradioTester/>
         <DropdownTester/>
         <PaginationTester/>
-        <FormTester/>
+
+        <FormHelp/>
+        <FormSize/>
 
         <Block>
             {"This text is within a "} <strong>{"block"}</strong>{"."}

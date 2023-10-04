@@ -34,7 +34,6 @@ pub fn icon(props: &IconProps) -> Html {
 
     let size = match props.size {
         Some(Size::Small) => "fa-xs",
-        Some(Size::Large) => "fa-2xl",
         _ => "",
     };
 

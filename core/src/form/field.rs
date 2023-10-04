@@ -2,7 +2,7 @@ use yew::prelude::*;
 
 use cobul_raw::elements::Icon;
 use cobul_raw::form::{Help, Label};
-use cobul_props::Color;
+use cobul_props::{Color, Size};
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {
@@ -16,8 +16,10 @@ pub struct Props {
     pub class: Classes,
 
     #[prop_or_default]
-    pub label: Option<AttrValue>,
+    pub size: Option<Size>,
 
+    #[prop_or_default]
+    pub label: Option<AttrValue>,
 
     #[prop_or_default]
     pub help: Option<AttrValue>,
@@ -42,12 +44,12 @@ pub fn field(props: &Props) -> Html {
     };
 
     let right = match &props.right {
-        Some(right) => html! {<Icon icon={right.clone()} class="is-right"/>},
+        Some(right) => html! {<Icon icon={right.clone()} size={props.size} class="is-right"/>},
         None => html! {},
     };
 
     let left = match &props.left {
-        Some(left) => html! {<Icon icon={left.clone()} class="is-left"/>},
+        Some(left) => html! {<Icon icon={left.clone()} size={props.size} class="is-left"/>},
         None => html! {},
     };
 
@@ -63,13 +65,18 @@ pub fn field(props: &Props) -> Html {
         }
     });
 
+    let inner = match props.size {
+        Some(context) => html! { <ContextProvider<Size> {context}> { for props.children.iter() } </ContextProvider<Size>>},
+        None => html! { for props.children.iter() },
+    };
+
     html! {
         <div class={classes!("field", props.class.clone())} {onkeypress}>
             { label }
             <div {class}>
+                { inner }
                 { right }
                 { left }
-                { for props.children.iter() }
             </div>
             { help }
         </div>
