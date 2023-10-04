@@ -43,7 +43,7 @@ pub struct Props {
 /// - `fullheight: bool` &npbs; CUSTOM Whether the card should take up the full height of its parent
 #[function_component(Card)]
 pub fn card(props: &Props) -> Html {
-    let css = "height:100%;display:helpers;helpers-direction:column";
+    let css = "height:100%;display:flex;flex-direction:column";
 
     let style = match (props.fullheight, &props.style) {
         (true, Some(style)) => format!("{};{}", css, style),
