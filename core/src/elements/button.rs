@@ -5,7 +5,7 @@ use cobul_props::general::{
     Active, Disabled, Focused, Fullwidth, Hidden, Hovered, Inverted, Light, Loading,
     Outlined, Rounded, Selected, Static,
 };
-use cobul_props::{Color, Size};
+use cobul_props::{Color, Model, Size};
 
 #[derive(Properties, Clone, PartialEq)]
 pub struct Props {
@@ -70,6 +70,9 @@ pub struct Props {
     pub click: Callback<()>,
 
     #[prop_or_default]
+    pub model: Option<Model<bool>>,
+
+    #[prop_or_default]
     pub icon: Option<AttrValue>,
 
     #[prop_or_default]
@@ -79,6 +82,11 @@ pub struct Props {
 /// [https://bulma.io/documentation/elements/button/](https://bulma.io/documentation/elements/button/)
 #[function_component(Button)]
 pub fn button(props: &Props) -> Html {
+    let click = match props.model.clone() {
+        None => props.click.clone(),
+        Some(model) => model.input.reform(move |()| !model.value)
+    };
+
     let inner = match (props.icon.clone(), props.text.clone(), props.bold) {
         (None, None, _) => html! {},
         (None, Some(text), false) => html! {text},
@@ -89,7 +97,7 @@ pub fn button(props: &Props) -> Html {
     };
 
     html! {
-        <elements::Button style={props.style.clone()} class={props.class.clone()} click={props.click.clone()}
+        <elements::Button {click} style={props.style.clone()} class={props.class.clone()}
         disabled={props.disabled} tooltip={props.tooltip.clone()} hidden={props.hidden} outlined={props.outlined}
         light={props.light} inverted={props.inverted} rounded={props.rounded} loading={props.loading}
         fullwidth={props.fullwidth} selected={props.selected} color={props.color} size={props.size}

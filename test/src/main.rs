@@ -6,6 +6,7 @@ use checkradio::CheckradioTester;
 use cobul::*;
 use dropdown::DropdownTester;
 use form::{FormSize, FormHelp};
+use elements::ButtonModelTest;
 use loader::LoaderTester;
 use pagination::PaginationTester;
 use slider::SliderTester;
@@ -14,6 +15,7 @@ use tabs::TabsTester;
 use tooltip::TooltipTester;
 use cobul::icons::Solid;
 
+mod elements;
 mod checkradio;
 mod dropdown;
 mod form;
@@ -73,6 +75,7 @@ fn app() -> Html {
 
         <FormHelp/>
         <FormSize/>
+        <ButtonModelTest/>
 
         <Block>
             {"This text is within a "} <strong>{"block"}</strong>{"."}
