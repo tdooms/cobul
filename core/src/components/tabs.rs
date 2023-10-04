@@ -2,7 +2,7 @@ use strum::IntoEnumIterator;
 use yew::prelude::*;
 
 use cobul_raw::{components, elements};
-use cobul_props::{Alignment, Size, Model};
+use cobul_props::{Align, Size, Model};
 use cobul_props::general::{Boxed, Fullwidth, Toggle, ToggleRounded};
 
 pub trait HasIcon {
@@ -24,7 +24,7 @@ pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + HasIcon + '
     pub class: Classes,
 
     #[prop_or_default]
-    pub alignment: Option<Alignment>,
+    pub align: Option<Align>,
 
     #[prop_or_default]
     pub size: Option<Size>,
@@ -52,7 +52,7 @@ where
 {
     let Props {
         class,
-        alignment,
+        align,
         size,
         boxed,
         toggle,
@@ -73,7 +73,7 @@ where
     };
 
     html! {
-        <components::Tabs {class} {alignment} {size} {boxed} {toggle} {rounded} {fullwidth} {style}>
+        <components::Tabs {class} {align} {size} {boxed} {toggle} {rounded} {fullwidth} {style}>
            <ul> { for T::iter().map(tab_map) } </ul>
         </components::Tabs>
     }

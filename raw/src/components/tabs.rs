@@ -1,12 +1,12 @@
 use yew::prelude::*;
 
 use cobul_props::general::{Boxed, Fullwidth, Toggle, ToggleRounded};
-use cobul_props::{Alignment, Size};
+use cobul_props::{Align, Size};
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {
     #[prop_or_default]
-    pub alignment: Option<Alignment>,
+    pub align: Option<Align>,
 
     #[prop_or_default]
     pub size: Option<Size>,
@@ -36,7 +36,7 @@ pub struct Props {
 /// Simple responsive horizontal navigation tabs, with different styles - [reference](https://bulma.io/documentation/components/tabs/)
 ///
 /// Properties:
-/// - `alignment: Option<Alignment>`
+/// - `align: Option<Align>`
 /// - `size: Option<Size>`
 /// - `boxed: Boxed`
 /// - `toggle: Toggle`
@@ -52,7 +52,7 @@ pub fn tabs(props: &Props) -> Html {
         props.toggle,
         props.rounded,
         props.fullwidth,
-        props.alignment
+        props.align
     );
 
     html! {

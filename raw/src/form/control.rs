@@ -43,8 +43,8 @@ pub fn control(props: &Props) -> Html {
     );
 
     let view_icon = |icon: Option<&AttrValue>, right: bool| {
-        let alignment = if right { "is-right" } else { "is-left" };
-        let class = classes!("icon", "is-small", alignment);
+        let align = if right { "is-right" } else { "is-left" };
+        let class = classes!("icon", "is-small", align);
 
         match icon {
             None => html! {},

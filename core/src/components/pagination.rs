@@ -2,7 +2,7 @@ use yew::*;
 
 use cobul_raw::components;
 use cobul_raw::components::{PaginationEllipsis, PaginationLink};
-use cobul_props::{Alignment, Size, Model};
+use cobul_props::{Align, Size, Model};
 
 #[derive(Properties, PartialEq, Clone)]
 pub struct Props {
@@ -22,7 +22,7 @@ pub struct Props {
     pub class: Classes,
 
     #[prop_or_default]
-    pub alignment: Alignment,
+    pub align: Align,
 
     #[prop_or_default]
     pub rounded: bool,
@@ -36,7 +36,7 @@ pub fn pagination(props: &Props) -> Html {
     let Props {
         size,
         class,
-        alignment,
+        align,
         rounded,
         total,
         ..
@@ -62,7 +62,7 @@ pub fn pagination(props: &Props) -> Html {
     let center = (page.max(3) - 1)..(page + 2).min(total);
 
     html! {
-        <components::Pagination {size} {class} {alignment} {rounded}>
+        <components::Pagination {size} {class} {align} {rounded}>
             <components::PaginationList>
                 { first }
                 { left_ellipsis }

@@ -1,7 +1,7 @@
 use yew::*;
 
 use cobul_props::general::{Current, Disabled, Rounded};
-use cobul_props::{Alignment, Size};
+use cobul_props::{Align, Size};
 
 #[derive(Properties, PartialEq)]
 pub struct Props {
@@ -9,7 +9,7 @@ pub struct Props {
     pub rounded: Rounded,
 
     #[prop_or_default]
-    pub alignment: Alignment,
+    pub align: Align,
 
     #[prop_or_default]
     pub size: Option<Size>,
@@ -28,13 +28,13 @@ pub struct Props {
 ///
 /// Properties:
 /// - `rounded: Rounded` &npbs; Whether the pagination is rounded or not
-/// - `alignment: Alignment` &npbs; The alignment of the pagination
+/// - `align: Align` &npbs; The align of the pagination
 /// - `size: Option<Size>` &npbs; The size of the pagination
 #[function_component(Pagination)]
 pub fn pagination(props: &Props) -> Html {
     let class = classes!(
         props.rounded,
-        props.alignment,
+        props.align,
         props.size,
         "pagination",
         props.class.clone()

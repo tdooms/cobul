@@ -1,6 +1,6 @@
 use yew::prelude::*;
 
-use cobul_props::{Alignment, Separator, Size};
+use cobul_props::{Align, Separator, Size};
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {
@@ -8,7 +8,7 @@ pub struct Props {
     pub size: Option<Size>,
 
     #[prop_or_default]
-    pub alignment: Option<Alignment>,
+    pub align: Option<Align>,
 
     #[prop_or_default]
     pub separator: Option<Separator>,
@@ -27,14 +27,14 @@ pub struct Props {
 ///
 /// Properties:
 /// - `size: Option<Size>` &npbs; The size of the breadcrumb
-/// - `alignment: Option<Alignment>` &npbs; The alignment of the breadcrumb
+/// - `align: Option<Align>` &npbs; The align of the breadcrumb
 /// - `separator: Option<Separator>` &npbs; The separator of the breadcrumb
 #[function_component(Breadcrumb)]
 pub fn breadcrumb(props: &Props) -> Html {
     let class = classes!(
         "breadcrumb",
         props.size,
-        props.alignment,
+        props.align,
         props.separator,
         props.class.clone()
     );

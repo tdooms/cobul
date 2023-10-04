@@ -2,7 +2,7 @@ use web_sys::HtmlInputElement;
 use yew::prelude::*;
 
 use cobul_props::general::{Boxed, Fullwidth};
-use cobul_props::{Alignment, Color, Size};
+use cobul_props::{Align, Color, Size};
 
 #[derive(Properties, Clone, PartialEq)]
 pub struct Props {
@@ -28,7 +28,7 @@ pub struct Props {
     pub boxed: Boxed,
 
     #[prop_or_default]
-    pub alignment: Option<Alignment>,
+    pub align: Option<Align>,
 
     #[prop_or_default]
     pub class: Classes,
@@ -51,14 +51,14 @@ pub struct Props {
 pub fn file(props: &Props) -> Html {
     let boxed = use_context::<Boxed>();
     let fullwidth = use_context::<Fullwidth>();
-    let alignment = use_context::<Alignment>();
+    let align = use_context::<Align>();
 
     let class = classes!(
         "file",
         props.filename.as_ref().map(|_| "has-name"),
         props.boxed.or(boxed),
         props.fullwidth.or(fullwidth),
-        props.alignment.or(alignment),
+        props.align.or(align),
         props.class.clone()
     );
 

@@ -2,7 +2,7 @@ use strum::IntoEnumIterator;
 use yew::prelude::*;
 
 use cobul_raw::elements;
-use cobul_props::{Alignment, Color, Size};
+use cobul_props::{Align, Color, Size};
 
 #[derive(Clone, Properties, PartialEq)]
 pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static> {
@@ -10,7 +10,7 @@ pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static> {
     pub class: Classes,
 
     #[prop_or_default]
-    pub alignment: Alignment,
+    pub align: Align,
 
     #[prop_or_default]
     pub size: Option<Size>,
@@ -29,7 +29,7 @@ pub fn buttons<T>(props: &Props<T>) -> Html
 {
     let Props {
         class,
-        alignment,
+        align,
         size,
         color,
         value,
@@ -48,7 +48,7 @@ pub fn buttons<T>(props: &Props<T>) -> Html
     };
 
     html! {
-        <elements::Buttons addons=true alignment={*alignment} class={class.clone()}>
+        <elements::Buttons addons=true align={*align} class={class.clone()}>
             { for T::iter().map(button_map) }
         </elements::Buttons>
     }

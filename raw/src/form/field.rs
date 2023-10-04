@@ -1,7 +1,7 @@
 use yew::prelude::*;
 
 use cobul_props::general::{Addons, Grouped, GroupedMultiline};
-use cobul_props::Alignment;
+use cobul_props::Align;
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {
@@ -18,7 +18,7 @@ pub struct Props {
     pub addons: Addons,
 
     #[prop_or_default]
-    pub alignment: Option<Alignment>,
+    pub align: Option<Align>,
 
     #[prop_or_default]
     pub class: Classes,
@@ -37,13 +37,13 @@ pub struct Props {
 /// - `grouped: Grouped`
 /// - `multiline: GroupedMultiline`
 /// - `addons: Addons`
-/// - `alignment: Option<Alignment>`
+/// - `align: Option<Align>`
 #[function_component(Field)]
 pub fn field(props: &Props) -> Html {
-    let alignment = match props.alignment {
-        Some(Alignment::Centered) => "has-addons-centered",
-        Some(Alignment::Right) => "has-addons-right",
-        Some(Alignment::Left) => "has-addons-left",
+    let align = match props.align {
+        Some(Align::Centered) => "has-addons-centered",
+        Some(Align::Right) => "has-addons-right",
+        Some(Align::Left) => "has-addons-left",
         None => "",
     };
 
@@ -53,7 +53,7 @@ pub fn field(props: &Props) -> Html {
         props.multiline,
         props.addons,
         props.grouped,
-        alignment
+        align
     );
 
     let onfocus = props.focus.reform(|_| true);

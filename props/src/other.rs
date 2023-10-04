@@ -1,10 +1,10 @@
 use derive_more::Display;
 use yew::Classes;
 
-/// Common alignment classes for multiple elements
+/// Common align classes for multiple elements
 #[derive(Clone, Debug, Display, PartialEq, Copy)]
 #[display(fmt = "is-{}")]
-pub enum Alignment {
+pub enum Align {
     #[display(fmt = "left")]
     Left,
     #[display(fmt = "centered")]
@@ -13,13 +13,13 @@ pub enum Alignment {
     Right,
 }
 
-impl Default for Alignment {
+impl Default for Align {
     fn default() -> Self {
-        Alignment::Left
+        Align::Left
     }
 }
 
-impl Into<Classes> for Alignment {
+impl Into<Classes> for Align {
     fn into(self) -> Classes {
         Classes::from(self.to_string())
     }

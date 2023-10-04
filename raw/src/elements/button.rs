@@ -4,7 +4,7 @@ use cobul_props::general::{
     Active, Addons, Disabled, Focused, Fullwidth, Hidden, Hovered, Inverted,
     Light, Loading, Outlined, Rounded, Selected, Static,
 };
-use cobul_props::{Alignment,Color, Size};
+use cobul_props::{Align,Color, Size};
 
 #[derive(Properties, Clone, PartialEq)]
 pub struct ButtonProps {
@@ -147,7 +147,7 @@ pub struct ButtonsProps {
     pub style: Option<AttrValue>,
 
     #[prop_or_default]
-    pub alignment: Alignment,
+    pub align: Align,
 
     #[prop_or_default]
     pub addons: Addons,
@@ -162,7 +162,7 @@ pub struct ButtonsProps {
 /// - `children: Children`
 /// - `class: Classes`
 /// - `style: Option<AttrValue>`
-/// - `alignment: Alignment`
+/// - `align: Align`
 /// - `addons: Addons`
 /// - `size: Option<Size>`
 #[function_component(Buttons)]
@@ -170,7 +170,7 @@ pub fn buttons(props: &ButtonsProps) -> Html {
     let class = classes!(
         "buttons",
         props.class.clone(),
-        props.alignment,
+        props.align,
         props.addons
     );
 
