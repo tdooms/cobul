@@ -6,7 +6,7 @@ use cobul_props::general::Light;
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {
     #[prop_or_default]
-    pub delete: Callback<()>,
+    pub delete: Option<Callback<()>>,
 
     #[prop_or_default]
     pub color: Option<Color>,
@@ -39,9 +39,9 @@ pub fn notification(props: &Props) -> Html {
         props.light
     );
 
-    let button = match props.delete == Callback::noop() {
-        false => html! {<button class="delete" onclick={props.delete.reform(|_| ())}></button>},
-        true => html! {},
+    let button = match props.delete.clone() {
+        Some(cb) => html! {<button class="delete" onclick={cb.reform(|_| ())}></button>},
+        None => html! {},
     };
 
     html! {
