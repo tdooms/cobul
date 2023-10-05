@@ -2,7 +2,7 @@ use web_sys::HtmlInputElement;
 use yew::prelude::*;
 
 use cobul_props::general::{Disabled, FixedSize, Loading, Readonly, Static};
-use cobul_props::{Color, Size, Model};
+use cobul_props::{Color, Model, Size};
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {

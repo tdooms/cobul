@@ -1,6 +1,6 @@
 use yew::*;
 
-use cobul::{use_model, Box, Field, Switch};
+use cobul::{use_model, Box, Field, extra::Switch};
 
 #[function_component(SwitchTester)]
 pub fn switch_tester() -> Html {

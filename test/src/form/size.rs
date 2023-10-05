@@ -1,6 +1,6 @@
-use yew::*;
-use cobul::*;
 use cobul::icons::Solid::MagnifyingGlass;
+use cobul::*;
+use yew::*;
 
 #[function_component(FormSize)]
 pub fn form_size() -> Html {

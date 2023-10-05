@@ -1,9 +1,10 @@
 use derive_more::Display;
+use yew::html::IntoPropValue;
 use yew::Classes;
 
 #[derive(Clone, Debug, Display, PartialEq, Copy)]
-#[display(fmt = "is-{}")]
-pub enum FlexDirection {
+#[display(fmt = "is-flex-direction-{}")]
+pub enum Direction {
     #[display(fmt = "row")]
     Row,
     #[display(fmt = "row-reverse")]
@@ -14,32 +15,32 @@ pub enum FlexDirection {
     ColumnReverse,
 }
 
-impl Into<Classes> for FlexDirection {
+impl Into<Classes> for Direction {
     fn into(self) -> Classes {
         Classes::from(self.to_string())
     }
 }
 
 #[derive(Clone, Debug, Display, PartialEq, Copy)]
-#[display(fmt = "is-{}")]
-pub enum FlexWrap {
+#[display(fmt = "is-flex-{}")]
+pub enum Wrap {
+    #[display(fmt = "nowrap")]
+    NoWrap,
     #[display(fmt = "wrap")]
     Wrap,
     #[display(fmt = "wrap-reverse")]
     WrapReverse,
-    #[display(fmt = "nowrap")]
-    NoWrap,
 }
 
-impl Into<Classes> for FlexWrap {
+impl Into<Classes> for Wrap {
     fn into(self) -> Classes {
         Classes::from(self.to_string())
     }
 }
 
 #[derive(Clone, Debug, Display, PartialEq, Copy)]
-#[display(fmt = "is-{}")]
-pub enum FlexJustify {
+#[display(fmt = "is-justify-content-{}")]
+pub enum Justify {
     #[display(fmt = "flex-start")]
     FlexStart,
     #[display(fmt = "flex-end")]
@@ -47,11 +48,11 @@ pub enum FlexJustify {
     #[display(fmt = "center")]
     Center,
     #[display(fmt = "space-between")]
-    Between,
+    SpaceBetween,
     #[display(fmt = "space-around")]
-    Around,
+    SpaceAround,
     #[display(fmt = "space-evenly")]
-    Evenly,
+    SpaceEvenly,
     #[display(fmt = "start")]
     Start,
     #[display(fmt = "end")]
@@ -62,15 +63,15 @@ pub enum FlexJustify {
     Right,
 }
 
-impl Into<Classes> for FlexJustify {
+impl Into<Classes> for Justify {
     fn into(self) -> Classes {
         Classes::from(self.to_string())
     }
 }
 
 #[derive(Clone, Debug, Display, PartialEq, Copy)]
-#[display(fmt = "is-{}")]
-pub enum FlexAlignContent {
+#[display(fmt = "is-align-content-{}")]
+pub enum AlignContent {
     #[display(fmt = "flex-start")]
     FlexStart,
     #[display(fmt = "flex-end")]
@@ -93,15 +94,15 @@ pub enum FlexAlignContent {
     Baseline,
 }
 
-impl Into<Classes> for FlexAlignContent {
+impl Into<Classes> for AlignContent {
     fn into(self) -> Classes {
         Classes::from(self.to_string())
     }
 }
 
 #[derive(Clone, Debug, Display, PartialEq, Copy)]
-#[display(fmt = "is-{}")]
-pub enum FlexAlignItems {
+#[display(fmt = "is-align-items-{}")]
+pub enum AlignItems {
     #[display(fmt = "stretch")]
     Stretch,
     #[display(fmt = "flex-start")]
@@ -122,15 +123,15 @@ pub enum FlexAlignItems {
     SelfEnd,
 }
 
-impl Into<Classes> for FlexAlignItems {
+impl Into<Classes> for AlignItems {
     fn into(self) -> Classes {
         Classes::from(self.to_string())
     }
 }
 
 #[derive(Clone, Debug, Display, PartialEq, Copy)]
-#[display(fmt = "is-{}")]
-pub enum FlexAlignSelf {
+#[display(fmt = "is-align-self-{}")]
+pub enum AlignSelf {
     #[display(fmt = "auto")]
     Auto,
     #[display(fmt = "flex-start")]
@@ -145,45 +146,44 @@ pub enum FlexAlignSelf {
     Stretch,
 }
 
-impl Into<Classes> for FlexAlignSelf {
+impl Into<Classes> for AlignSelf {
     fn into(self) -> Classes {
         Classes::from(self.to_string())
     }
 }
 
-#[derive(Clone, Debug, Display, PartialEq, Copy)]
-#[display(fmt = "is-{}")]
-pub enum FlexSize {
-    #[display(fmt = "flex-grow-0")]
-    Grow0,
-    #[display(fmt = "flex-grow-1")]
-    Grow1,
-    #[display(fmt = "flex-grow-2")]
-    Grow2,
-    #[display(fmt = "flex-grow-3")]
-    Grow3,
-    #[display(fmt = "flex-grow-4")]
-    Grow4,
-    #[display(fmt = "flex-grow-5")]
-    Grow5,
+#[derive(Clone, Debug, PartialEq, Default, Copy)]
+pub struct Grow(pub Option<u32>);
 
-    #[display(fmt = "flex-shrink-0")]
-    Shrink0,
-    #[display(fmt = "flex-shrink-1")]
-    Shrink1,
-    #[display(fmt = "flex-shrink-2")]
-    Shrink2,
-    #[display(fmt = "flex-shrink-3")]
-    Shrink3,
-    #[display(fmt = "flex-shrink-4")]
-    Shrink4,
-    #[display(fmt = "flex-shrink-5")]
-    Shrink5,
-}
-
-impl Into<Classes> for FlexSize {
+impl Into<Classes> for Grow {
     fn into(self) -> Classes {
-        Classes::from(self.to_string())
+        match self.0 {
+            Some(value) => Classes::from(format!("is-flex-grow-{}", value)),
+            None => Classes::new(),
+        }
     }
 }
 
+impl IntoPropValue<Grow> for u32 {
+    fn into_prop_value(self) -> Grow {
+        Grow(Some(self))
+    }
+}
+
+#[derive(Clone, Debug, PartialEq, Default, Copy)]
+pub struct Shrink(pub Option<u32>);
+
+impl Into<Classes> for Shrink {
+    fn into(self) -> Classes {
+        match self.0 {
+            Some(value) => Classes::from(format!("is-flex-grow-{}", value)),
+            None => Classes::new(),
+        }
+    }
+}
+
+impl IntoPropValue<Shrink> for u32 {
+    fn into_prop_value(self) -> Shrink {
+        Shrink(Some(self))
+    }
+}

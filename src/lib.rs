@@ -13,11 +13,11 @@ pub use cobul_props::*;
 pub use cobul_core::*;
 
 #[cfg(feature = "extra")]
-pub use cobul_extra::*;
+pub mod extra {
+    pub use cobul_extra::*;
+}
 
 #[cfg(feature = "icons")]
 pub mod icons {
     pub use cobul_icons::{Brands, Icon, Regular, Solid};
 }
-
-

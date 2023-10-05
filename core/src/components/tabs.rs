@@ -1,9 +1,9 @@
 use strum::IntoEnumIterator;
 use yew::prelude::*;
 
-use cobul_raw::{components, elements};
-use cobul_props::{Align, Size, Model};
 use cobul_props::general::{Boxed, Fullwidth, Toggle, ToggleRounded};
+use cobul_props::{Align, Model, Size};
+use cobul_raw::{components, elements};
 
 pub trait HasIcon {
     fn icon(&self) -> Option<String>;
@@ -67,7 +67,9 @@ where
     let tab_map = |variant: T| {
         let class = (&value == &Some(variant)).then(|| "is-active");
         let onclick = input.reform(move |_| variant);
-        let icon = variant.icon().map(|icon| html! {<elements::Icon {icon} class="m-0"/>});
+        let icon = variant
+            .icon()
+            .map(|icon| html! {<elements::Icon {icon} class="m-0"/>});
 
         html! { <li {onclick} {class}> <a> {icon} <span> { variant.to_string() } </span> </a> </li> }
     };

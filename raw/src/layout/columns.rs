@@ -1,7 +1,7 @@
 use yew::prelude::*;
 
-use cobul_props::{Breakpoint};
 use cobul_props::general::{Centered, Gapless, Multiline, VCentered};
+use cobul_props::Breakpoint;
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {

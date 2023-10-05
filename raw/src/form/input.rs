@@ -1,5 +1,5 @@
-use cobul_props::{Color, Size, Model};
 use cobul_props::general::{Disabled, Loading, Readonly, Rounded, Static};
+use cobul_props::{Color, Model, Size};
 use web_sys::HtmlInputElement;
 use yew::prelude::*;
 

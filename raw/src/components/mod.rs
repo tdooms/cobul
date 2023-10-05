@@ -4,7 +4,7 @@ pub use dropdown::{Dropdown, DropdownDivider, DropdownItem};
 pub use menu::{Menu, MenuLabel, MenuList};
 pub use message::Message;
 pub use modal::{Modal, ModalCard};
-pub use navbar::{Navbar, NavbarDivider, NavbarItem, NavbarLink, NavbarDropdown};
+pub use navbar::{Navbar, NavbarDivider, NavbarDropdown, NavbarItem, NavbarLink};
 pub use pagination::{Pagination, PaginationEllipsis, PaginationLink, PaginationList};
 pub use panel::{Panel, PanelBlock, PanelTabs};
 pub use tabs::Tabs;

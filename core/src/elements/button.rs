@@ -1,11 +1,11 @@
 use yew::prelude::*;
 
-use cobul_raw::elements;
 use cobul_props::general::{
-    Active, Disabled, Focused, Fullwidth, Hidden, Hovered, Inverted, Light, Loading,
-    Outlined, Rounded, Selected, Static,
+    Active, Disabled, Focused, Fullwidth, Hidden, Hovered, Inverted, Light, Loading, Outlined,
+    Rounded, Selected, Static,
 };
 use cobul_props::{Color, Model, Size};
+use cobul_raw::elements;
 
 #[derive(Properties, Clone, PartialEq)]
 pub struct Props {
@@ -84,7 +84,7 @@ pub struct Props {
 pub fn button(props: &Props) -> Html {
     let click = match props.model.clone() {
         None => props.click.clone(),
-        Some(model) => model.input.reform(move |()| !model.value)
+        Some(model) => model.input.reform(move |()| !model.value),
     };
 
     let inner = match (props.icon.clone(), props.text.clone(), props.bold) {
@@ -92,8 +92,12 @@ pub fn button(props: &Props) -> Html {
         (None, Some(text), false) => html! {text},
         (None, Some(text), true) => html! { <b> {text} </b> },
         (Some(icon), None, _) => html! { <elements::Icon {icon} /> },
-        (Some(icon), Some(text), false) => html! {<> <elements::Icon {icon} /> <span> {text} </span> </>},
-        (Some(icon), Some(text), true) => html! {<> <elements::Icon {icon} /> <span> <b>{text}</b> </span> </>},
+        (Some(icon), Some(text), false) => {
+            html! {<> <elements::Icon {icon} /> <span> {text} </span> </>}
+        }
+        (Some(icon), Some(text), true) => {
+            html! {<> <elements::Icon {icon} /> <span> <b>{text}</b> </span> </>}
+        }
     };
 
     html! {
@@ -106,5 +110,3 @@ pub fn button(props: &Props) -> Html {
         </elements::Button>
     }
 }
-
-

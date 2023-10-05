@@ -1,6 +1,6 @@
 use yew::*;
 
-use cobul::{Box, Button, Color, raw};
+use cobul::{raw, Box, Button, Color};
 
 #[function_component(TooltipTester)]
 pub fn tooltip_tester() -> Html {

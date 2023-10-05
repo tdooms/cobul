@@ -1,8 +1,8 @@
 use yew::prelude::*;
 
+use cobul_props::{Color, Size};
 use cobul_raw::elements::Icon;
 use cobul_raw::form::{Help, Label};
-use cobul_props::{Color, Size};
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {
@@ -66,7 +66,9 @@ pub fn field(props: &Props) -> Html {
     });
 
     let inner = match props.size {
-        Some(context) => html! { <ContextProvider<Size> {context}> { for props.children.iter() } </ContextProvider<Size>>},
+        Some(context) => {
+            html! { <ContextProvider<Size> {context}> { for props.children.iter() } </ContextProvider<Size>>}
+        }
         None => html! { for props.children.iter() },
     };
 

@@ -6,7 +6,7 @@ use rand::Rng;
 use web_sys::{HtmlDivElement, HtmlInputElement, HtmlOutputElement};
 use yew::prelude::*;
 
-use cobul_props::{Color, Size, Model};
+use cobul_props::{Color, Model, Size};
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props<T: PartialEq + Clone> {
@@ -77,7 +77,8 @@ where
     let label = use_node_ref();
 
     let cloned = width.clone();
-    use_effect_with((container.clone(), label.clone()),
+    use_effect_with(
+        (container.clone(), label.clone()),
         move |(container, label)| {
             if let (Some(container), Some(label)) = (
                 container.cast::<HtmlDivElement>(),

@@ -1,8 +1,8 @@
 use strum::IntoEnumIterator;
 use yew::prelude::*;
 
-use cobul_props::{Color, Size, Model};
 use cobul_props::general::{Focused, Hovered, Loading, Rounded};
+use cobul_props::{Color, Model, Size};
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static> {

@@ -1,7 +1,7 @@
 use yew::prelude::*;
 
-use cobul_props::{Color, HeroSize};
 use crate::util::enclose;
+use cobul_props::{Color, HeroSize};
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {

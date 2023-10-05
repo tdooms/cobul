@@ -3,21 +3,21 @@ use strum::EnumIter;
 use yew::prelude::*;
 
 use checkradio::CheckradioTester;
+use cobul::icons::Solid;
 use cobul::*;
 use dropdown::DropdownTester;
-use form::{FormSize, FormHelp};
 use elements::{ButtonModelTest, NotificationTest};
+use form::{FormHelp, FormSize};
 use loader::LoaderTester;
 use pagination::PaginationTester;
 use slider::SliderTester;
 use switch::SwitchTester;
 use tabs::TabsTester;
 use tooltip::TooltipTester;
-use cobul::icons::Solid;
 
-mod elements;
 mod checkradio;
 mod dropdown;
+mod elements;
 mod form;
 mod loader;
 mod pagination;

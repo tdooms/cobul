@@ -1,8 +1,8 @@
-use yew::prelude::*;
-use cobul_props::{Model, Size};
-use cobul_props::general::Rounded;
-use cobul_raw::form;
 use crate::FormData;
+use cobul_props::general::Rounded;
+use cobul_props::{Model, Size};
+use cobul_raw::form;
+use yew::prelude::*;
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {

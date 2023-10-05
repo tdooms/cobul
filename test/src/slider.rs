@@ -1,7 +1,7 @@
 use yew::*;
 
 use crate::use_model;
-use cobul::{Box, Slider};
+use cobul::{Box, extra::Slider};
 
 #[function_component(SliderTester)]
 pub fn slider_tester() -> Html {

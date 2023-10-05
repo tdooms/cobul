@@ -1,7 +1,7 @@
 use yew::prelude::*;
 
-use cobul_props::{Color};
 use cobul_props::general::Light;
+use cobul_props::Color;
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {

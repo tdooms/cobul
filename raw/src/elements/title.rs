@@ -1,6 +1,6 @@
 use yew::prelude::*;
 
-use cobul_props::general::{Spaced};
+use cobul_props::general::Spaced;
 use cobul_props::HeaderSize;
 
 #[derive(Clone, Debug, Properties, PartialEq)]

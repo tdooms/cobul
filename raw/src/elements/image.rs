@@ -1,6 +1,6 @@
 use yew::prelude::*;
 
-use cobul_props::general::{Rounded};
+use cobul_props::general::Rounded;
 use cobul_props::ImageSize;
 
 #[derive(Clone, Debug, Properties, PartialEq)]
@@ -43,8 +43,16 @@ pub fn image(props: &Props) -> Html {
     };
 
     let display = ["display:none", ""];
-    let style1 = format!("{};{}", display[*loaded as usize], props.style.clone().unwrap_or_default());
-    let style2 = format!("{};{}", display[!*loaded as usize], props.style.clone().unwrap_or_default());
+    let style1 = format!(
+        "{};{}",
+        display[*loaded as usize],
+        props.style.clone().unwrap_or_default()
+    );
+    let style2 = format!(
+        "{};{}",
+        display[!*loaded as usize],
+        props.style.clone().unwrap_or_default()
+    );
 
     html! {
         <figure style={props.style.clone()} {class}>

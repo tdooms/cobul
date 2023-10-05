@@ -1,8 +1,8 @@
 use yew::*;
 
+use cobul_props::{Align, Model, Size};
 use cobul_raw::components;
 use cobul_raw::components::{PaginationEllipsis, PaginationLink};
-use cobul_props::{Align, Size, Model};
 
 #[derive(Properties, PartialEq, Clone)]
 pub struct Props {

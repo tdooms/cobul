@@ -8,7 +8,11 @@ pub struct Model<T: Clone> {
 }
 
 impl<T: Clone> Model<T> {
-    pub fn combine(input: &Callback<T>, value: &Option<T>, model: &Option<Model<T>>) -> (Callback<T>, Option<T>) {
+    pub fn combine(
+        input: &Callback<T>,
+        value: &Option<T>,
+        model: &Option<Model<T>>,
+    ) -> (Callback<T>, Option<T>) {
         let input = match (input.clone(), model.as_ref().map(|x| x.input.clone())) {
             (x, Some(input)) if x != Callback::noop() => input,
             (input, _) => input,

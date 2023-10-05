@@ -1,8 +1,8 @@
 use strum::IntoEnumIterator;
 use yew::prelude::*;
 
-use cobul_raw::elements;
 use cobul_props::{Align, Color, Size};
+use cobul_raw::elements;
 
 #[derive(Clone, Properties, PartialEq)]
 pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static> {
@@ -24,8 +24,8 @@ pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static> {
 
 #[function_component(Buttons)]
 pub fn buttons<T>(props: &Props<T>) -> Html
-    where
-        T: IntoEnumIterator + ToString + Copy + PartialEq + 'static,
+where
+    T: IntoEnumIterator + ToString + Copy + PartialEq + 'static,
 {
     let Props {
         class,

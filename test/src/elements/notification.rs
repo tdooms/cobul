@@ -1,5 +1,5 @@
+use cobul::{use_model, Box, Notification};
 use yew::*;
-use cobul::{use_model, Notification, Box};
 
 #[function_component(NotificationTest)]
 pub fn notification() -> Html {

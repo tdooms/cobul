@@ -1,6 +1,5 @@
 use yew::prelude::*;
 
-
 #[derive(Clone, PartialEq, Properties)]
 pub struct HCenterProps {
     #[prop_or_default]

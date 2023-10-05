@@ -22,7 +22,7 @@ pub struct FieldData {
 
 #[derive(Clone, PartialEq)]
 pub struct FormData {
-    inner: HashMap<String, FieldData>
+    inner: HashMap<String, FieldData>,
 }
 
 #[function_component(Form)]

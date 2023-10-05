@@ -1,10 +1,10 @@
 use yew::prelude::*;
 
 use cobul_props::general::{
-    Active, Addons, Disabled, Focused, Fullwidth, Hidden, Hovered, Inverted,
-    Light, Loading, Outlined, Rounded, Selected, Static,
+    Active, Addons, Disabled, Focused, Fullwidth, Hidden, Hovered, Inverted, Light, Loading,
+    Outlined, Rounded, Selected, Static,
 };
-use cobul_props::{Align,Color, Size};
+use cobul_props::{Align, Color, Size};
 
 #[derive(Properties, Clone, PartialEq)]
 pub struct ButtonProps {
@@ -167,12 +167,7 @@ pub struct ButtonsProps {
 /// - `size: Option<Size>`
 #[function_component(Buttons)]
 pub fn buttons(props: &ButtonsProps) -> Html {
-    let class = classes!(
-        "buttons",
-        props.class.clone(),
-        props.align,
-        props.addons
-    );
+    let class = classes!("buttons", props.class.clone(), props.align, props.addons);
 
     html! {
         <div style={props.style.clone()} {class}>

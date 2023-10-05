@@ -1,7 +1,7 @@
 use yew::*;
 
-use cobul::*;
 use cobul::icons::Brands;
+use cobul::*;
 
 #[derive(derive_more::Display, strum::EnumIter, PartialEq, Clone, Copy)]
 enum Tab {

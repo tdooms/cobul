@@ -1,7 +1,7 @@
 use yew::prelude::*;
 
-use cobul_props::Color;
 use crate::util::enclose_tag;
+use cobul_props::Color;
 
 mod block;
 mod tabs;

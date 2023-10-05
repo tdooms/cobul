@@ -1,1 +1,1 @@
-pub use cobul_raw::elements::{Title, Subtitle};
+pub use cobul_raw::elements::{Subtitle, Title};

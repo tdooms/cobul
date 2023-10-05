@@ -1,5 +1,5 @@
-use yew::*;
 use cobul::{use_model, Button};
+use yew::*;
 
 #[function_component(ButtonModelTest)]
 pub fn button_model() -> Html {

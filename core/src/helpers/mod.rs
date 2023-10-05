@@ -1,5 +1,5 @@
-mod flex;
 mod center;
+mod flex;
 
 pub use flex::*;
 

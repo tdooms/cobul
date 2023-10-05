@@ -3,7 +3,7 @@
 // #[cfg(not(feature = "extensions"))]
 // pub use radio::*;
 
-pub use control::{Control};
+pub use control::Control;
 pub use field::Field;
 pub use file::File;
 pub use help::Help;

@@ -1,9 +1,9 @@
 use strum::IntoEnumIterator;
 use yew::prelude::*;
 
+use cobul_props::{Model, Size};
 use cobul_raw::components;
 use cobul_raw::elements;
-use cobul_props::{Size, Model};
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static> {
