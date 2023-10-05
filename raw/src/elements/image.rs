@@ -43,11 +43,13 @@ pub fn image(props: &Props) -> Html {
     };
 
     let display = ["display:none", ""];
+    let style1 = format!("{};{}", display[*loaded as usize], props.style.clone().unwrap_or_default());
+    let style2 = format!("{};{}", display[!*loaded as usize], props.style.clone().unwrap_or_default());
 
     html! {
         <figure style={props.style.clone()} {class}>
-            <img class={ classes!(props.rounded) } src={ props.src.clone() } {onload} style={display[*loaded as usize]}/>
-            <img class={ classes!(props.rounded) } src={ props.placeholder.clone() } style={display[!*loaded as usize]} />
+            <img class={ classes!(props.rounded) } src={ props.src.clone() } {onload} style={style1}/>
+            <img class={ classes!(props.rounded) } src={ props.placeholder.clone() } style={style2} />
         </figure>
     }
 }
