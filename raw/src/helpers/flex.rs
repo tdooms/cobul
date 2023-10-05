@@ -38,7 +38,7 @@ pub struct Props {
 
 #[function_component(Flex)]
 pub fn flex(props: &Props) -> Html {
-    let class = classes!("block", props.class.clone(), props.direction, props.wrap, props.justify, props.align_content, props.align_items, props.align_self, props.size);
+    let class = classes!("is-flex", props.class.clone(), props.direction, props.wrap, props.justify, props.align_content, props.align_items, props.align_self, props.size);
 
     html! {
         <div style={props.style.clone()} {class}>
