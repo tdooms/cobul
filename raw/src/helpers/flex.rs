@@ -5,25 +5,25 @@ use cobul_props::{FlexAlignContent, FlexAlignItems, FlexAlignSelf, FlexDirection
 #[derive(Properties, Clone, PartialEq)]
 pub struct Props {
     #[prop_or_default]
-    direction: Option<FlexDirection>,
+    pub direction: Option<FlexDirection>,
 
     #[prop_or_default]
-    wrap: Option<FlexWrap>,
+    pub wrap: Option<FlexWrap>,
 
     #[prop_or_default]
-    justify: Option<FlexJustify>,
+    pub justify: Option<FlexJustify>,
 
     #[prop_or_default]
-    align_content: Option<FlexAlignContent>,
+    pub align_content: Option<FlexAlignContent>,
 
     #[prop_or_default]
-    align_items: Option<FlexAlignItems>,
+    pub align_items: Option<FlexAlignItems>,
 
     #[prop_or_default]
-    align_self: Option<FlexAlignSelf>,
+    pub align_self: Option<FlexAlignSelf>,
 
     #[prop_or_default]
-    size: Option<FlexSize>,
+    pub size: Option<FlexSize>,
 
     #[prop_or_default]
     pub children: Children,
