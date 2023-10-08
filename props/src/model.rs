@@ -1,13 +1,19 @@
 use std::ops::Deref;
 use yew::{hook, use_state, Callback};
 
-#[derive(Clone, Debug, PartialEq)]
-pub struct Model<T: Clone> {
+#[derive(Clone, Debug)]
+pub struct Model<T: Clone + PartialEq> {
     pub input: Callback<T>,
     pub value: T,
 }
 
-impl<T: Clone> Model<T> {
+impl<T: PartialEq + Clone> PartialEq for Model<T> {
+    fn eq(&self, other: &Self) -> bool {
+        self.value == other.value
+    }
+}
+
+impl<T: Clone + PartialEq> Model<T> {
     pub fn combine(
         input: &Callback<T>,
         value: &Option<T>,
@@ -25,7 +31,7 @@ impl<T: Clone> Model<T> {
     }
 }
 
-impl<T: Clone> Deref for Model<T> {
+impl<T: Clone + PartialEq> Deref for Model<T> {
     type Target = T;
 
     fn deref(&self) -> &Self::Target {
@@ -34,7 +40,7 @@ impl<T: Clone> Deref for Model<T> {
 }
 
 #[hook]
-pub fn use_model<T: Clone + 'static, F: FnOnce() -> T>(f: F) -> Model<T> {
+pub fn use_model<T: Clone + PartialEq + 'static, F: FnOnce() -> T>(f: F) -> Model<T> {
     let state = use_state(f);
     let cloned = state.clone();
 
