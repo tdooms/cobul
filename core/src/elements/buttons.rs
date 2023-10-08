@@ -10,7 +10,7 @@ pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static> {
     pub class: Classes,
 
     #[prop_or_default]
-    pub alignment: Option<Align>,
+    pub align: Option<Align>,
 
     #[prop_or_default]
     pub size: Option<Size>,

@@ -1,5 +1,6 @@
 pub use block::Block;
-pub use button::{Button, Buttons};
+pub use button::{Button};
+pub use buttons::Buttons;
 pub use content::Content;
 pub use delete::Delete;
 pub use icon::{Icon, IconText};
@@ -23,3 +24,4 @@ mod progress;
 mod table;
 mod tag;
 mod title;
+mod buttons;

@@ -1,10 +1,10 @@
 use yew::prelude::*;
 
 use cobul_props::general::{
-    Active, Addons, Disabled, Focused, Fullwidth, Hidden, Hovered, Inverted, Light, Loading,
+    Active, Disabled, Focused, Fullwidth, Hidden, Hovered, Inverted, Light, Loading,
     Outlined, Rounded, Selected, Static,
 };
-use cobul_props::{Align, Color, Size};
+use cobul_props::{Color, Size};
 
 #[derive(Properties, Clone, PartialEq)]
 pub struct ButtonProps {
@@ -132,46 +132,5 @@ pub fn button(props: &ButtonProps) -> Html {
         <button {style} {class} {onclick} disabled={props.disabled.0} data-tooltip={props.tooltip.clone()}>
             { for props.children.iter() }
         </button>
-    }
-}
-
-#[derive(Clone, Debug, Properties, PartialEq)]
-pub struct ButtonsProps {
-    #[prop_or_default]
-    pub children: Children,
-
-    #[prop_or_default]
-    pub class: Classes,
-
-    #[prop_or_default]
-    pub style: Option<AttrValue>,
-
-    #[prop_or_default]
-    pub align: Align,
-
-    #[prop_or_default]
-    pub addons: Addons,
-
-    #[prop_or_default]
-    pub size: Option<Size>,
-}
-
-/// A list of buttons - [reference](https://bulma.io/documentation/elements/button/#list-of-buttons)
-///
-/// Properties:
-/// - `children: Children`
-/// - `class: Classes`
-/// - `style: Option<AttrValue>`
-/// - `align: Align`
-/// - `addons: Addons`
-/// - `size: Option<Size>`
-#[function_component(Buttons)]
-pub fn buttons(props: &ButtonsProps) -> Html {
-    let class = classes!("buttons", props.class.clone(), props.align, props.addons);
-
-    html! {
-        <div style={props.style.clone()} {class}>
-            { for props.children.iter() }
-        </div>
     }
 }

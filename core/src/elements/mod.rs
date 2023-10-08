@@ -13,8 +13,8 @@ mod tag;
 mod title;
 
 pub use block::*;
-pub use button::*;
-pub use buttons::*;
+pub use button::{Button};
+pub use buttons::{Buttons};
 pub use content::*;
 pub use delete::*;
 pub use icon::*;
