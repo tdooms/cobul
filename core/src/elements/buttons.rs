@@ -1,7 +1,7 @@
 use strum::IntoEnumIterator;
 use yew::prelude::*;
 
-use cobul_props::{Align, Color, Size};
+use cobul_props::{Align, Color, Size, Model};
 use cobul_raw::elements;
 
 #[derive(Clone, Properties, PartialEq)]
@@ -10,16 +10,22 @@ pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static> {
     pub class: Classes,
 
     #[prop_or_default]
-    pub align: Align,
+    pub alignment: Option<Align>,
 
     #[prop_or_default]
     pub size: Option<Size>,
 
-    pub color: Color,
+    #[prop_or_default]
+    pub color: Option<Color>,
 
-    pub value: T,
+    #[prop_or_default]
+    pub value: Option<T>,
 
-    pub click: Callback<T>,
+    #[prop_or_default]
+    pub input: Callback<T>,
+
+    #[prop_or_default]
+    pub model: Option<Model<T>>,
 }
 
 #[function_component(Buttons)]
@@ -33,15 +39,19 @@ where
         size,
         color,
         value,
-        click,
+        input,
+        model
     } = &props;
+
+    let (input, value) = Model::combine(input, value, model);
+
     let button_map = |variant: T| {
-        let selected = value == &variant;
-        let color = selected.then(|| color);
-        let click = click.reform(move |_| variant);
+        let selected = &value.unwrap() == &variant;
+        let color = selected.then(|| color).cloned().flatten();
+        let click = input.reform(move |_| variant);
 
         html! {
-            <elements::Button color={color.cloned()} {click} {selected} size={*size}>
+            <elements::Button {color} {click} {selected} size={*size}>
                 { variant.to_string() }
             </elements::Button>
         }

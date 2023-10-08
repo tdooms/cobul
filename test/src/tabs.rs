@@ -1,6 +1,5 @@
 use yew::*;
 
-use cobul::icons::Brands;
 use cobul::*;
 
 #[derive(derive_more::Display, strum::EnumIter, PartialEq, Clone, Copy)]
@@ -11,16 +10,6 @@ enum Tab {
     Tab2,
     #[display(fmt = "tab 3")]
     Tab3,
-}
-
-impl HasIcon for Tab {
-    fn icon(&self) -> Option<String> {
-        match self {
-            Tab::Tab1 => Some(Brands::Medium.to_string()),
-            Tab::Tab2 => Some(Brands::Github.to_string()),
-            Tab::Tab3 => Some(Brands::Amazon.to_string()),
-        }
-    }
 }
 
 #[function_component(TabsTester)]

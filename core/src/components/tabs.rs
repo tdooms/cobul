@@ -1,16 +1,12 @@
 use strum::IntoEnumIterator;
 use yew::prelude::*;
 
+use cobul_raw::{components};
+use cobul_props::{Alignment, Size, Model};
 use cobul_props::general::{Boxed, Fullwidth, Toggle, ToggleRounded};
-use cobul_props::{Align, Model, Size};
-use cobul_raw::{components, elements};
-
-pub trait HasIcon {
-    fn icon(&self) -> Option<String>;
-}
 
 #[derive(Clone, Properties, PartialEq)]
-pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + HasIcon + 'static> {
+pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static> {
     #[prop_or_default]
     pub value: Option<T>,
 
@@ -24,7 +20,7 @@ pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + HasIcon + '
     pub class: Classes,
 
     #[prop_or_default]
-    pub align: Option<Align>,
+    pub alignment: Option<Alignment>,
 
     #[prop_or_default]
     pub size: Option<Size>,
@@ -48,11 +44,11 @@ pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + HasIcon + '
 #[function_component(Tabs)]
 pub fn tabs<T>(props: &Props<T>) -> Html
 where
-    T: IntoEnumIterator + ToString + Copy + PartialEq + HasIcon + 'static,
+    T: IntoEnumIterator + ToString + Copy + PartialEq + 'static,
 {
     let Props {
         class,
-        align,
+        alignment,
         size,
         boxed,
         toggle,
@@ -67,15 +63,12 @@ where
     let tab_map = |variant: T| {
         let class = (&value == &Some(variant)).then(|| "is-active");
         let onclick = input.reform(move |_| variant);
-        let icon = variant
-            .icon()
-            .map(|icon| html! {<elements::Icon {icon} class="m-0"/>});
 
-        html! { <li {onclick} {class}> <a> {icon} <span> { variant.to_string() } </span> </a> </li> }
+        html! { <li {onclick} {class}> <a> <span> { variant.to_string() } </span> </a> </li> }
     };
 
     html! {
-        <components::Tabs {class} {align} {size} {boxed} {toggle} {rounded} {fullwidth} {style}>
+        <components::Tabs {class} {alignment} {size} {boxed} {toggle} {rounded} {fullwidth} {style}>
            <ul> { for T::iter().map(tab_map) } </ul>
         </components::Tabs>
     }

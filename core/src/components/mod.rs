@@ -17,4 +17,4 @@ pub use message::Message;
 pub use modal::{Modal, ModalCard};
 pub use pagination::Pagination;
 pub use panel::{Panel, PanelBlock, PanelTabs};
-pub use tabs::{HasIcon, Tabs};
+pub use tabs::{Tabs};
