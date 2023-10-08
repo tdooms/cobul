@@ -98,6 +98,7 @@ where
         props.circle.then(|| "is-circle"),
         props.tooltip.then(|| "has-output-tooltip"),
         props.label.then(|| "has-output"),
+        props.label.then(|| "my-0")
     );
 
     let (input, value) = Model::combine(&props.change, &props.value, &props.model);
@@ -123,7 +124,7 @@ where
 
     let output_style = match props.tooltip {
         true => format!("left:{offset}px;width:{}rem", props.label_width),
-        false => format!("width:{}rem", props.label_width),
+        false => format!("width:{}rem;top:0px ! important", props.label_width),
     };
 
     let input_style = match props.tooltip {
