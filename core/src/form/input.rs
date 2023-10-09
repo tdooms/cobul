@@ -28,6 +28,9 @@ pub struct Props {
     pub rounded: Rounded,
 
     #[prop_or_default]
+    pub size: Option<Size>,
+
+    #[prop_or_default]
     pub style: Option<AttrValue>,
 
     #[prop_or_default]
@@ -37,7 +40,7 @@ pub struct Props {
 #[function_component(Input)]
 pub fn input(props: &Props) -> Html {
     let _form = use_context::<FormData>();
-    let size = use_context::<Size>();
+    let size = props.size.or(use_context::<Size>());
 
     html! {
         <form::Input
