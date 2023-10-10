@@ -1,10 +1,10 @@
 use yew::prelude::*;
 
+use cobul_props::{Color, Model, Size};
 use cobul_props::general::{
     Active, Disabled, Focused, Fullwidth, Hidden, Hovered, Inverted, Light, Loading,
     Outlined, Rounded, Selected, Static,
 };
-use cobul_props::{Color, Model, Size};
 
 #[derive(Properties, Clone, PartialEq)]
 pub struct ButtonProps {
@@ -153,7 +153,7 @@ pub fn button(props: &ButtonProps) -> Html {
     let inner = match (props.text.clone(), props.bold, props.icon.as_ref()) {
         (Some(text), true, Some(_)) => html! { <> {icon} <span> <b> {text} </b> </span> </>},
         (Some(text), true, None) => html! { <b> {text} </b> },
-        (Some(text), false, Some(_)) => html!{ <> {icon} <span> {text} </span> </> },
+        (Some(text), false, Some(_)) => html! { <> {icon} <span> {text} </span> </> },
         (Some(text), false, None) => html! { text },
         (None, _, Some(_)) => html! { icon },
         (None, _, None) => html! {},

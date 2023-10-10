@@ -10,21 +10,14 @@ use cobul_props::{Color, Model, Size};
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props<T: PartialEq + Clone> {
-    #[prop_or_default]
-    pub change: Callback<T>, // change is triggered when the slider is released (deferred)
-
-    #[prop_or_default]
-    pub input: Callback<T>, // input is triggered when the slider is moved (instant)
-
-    #[prop_or_default]
-    pub model: Option<Model<T>>, // model uses the oninput property (instant)
-
-    #[prop_or_default]
-    pub value: Option<T>,
+    pub model: Model<T>,
 
     pub step: T,
 
     pub range: Range<T>,
+
+    #[prop_or_default]
+    pub defer: bool, // change is triggered when the slider is released instead of always
 
     #[prop_or("{}")]
     pub fmt: &'static str,
@@ -63,8 +56,8 @@ pub struct Props<T: PartialEq + Clone> {
 /// Display a classic slider with different colors, sizes, and states - [reference](https://wikiki.github.io/form/slider/)
 #[function_component(Slider)]
 pub fn slider<T>(props: &Props<T>) -> Html
-where
-    T: PartialEq + Clone + Display + FromPrimitive + ToPrimitive + 'static,
+    where
+        T: PartialEq + Clone + Display + FromPrimitive + ToPrimitive + 'static,
 {
     let id = use_state(|| rand::thread_rng().gen::<u32>().to_string());
 
@@ -101,23 +94,25 @@ where
         props.label.then(|| "my-0")
     );
 
-    let (value, input) = Model::split(&props.model);
+    let Model { value, input } = props.model.clone();
 
-    let onchange = props.change.reform(|e: Event| {
-        let elem = e.target_unchecked_into::<HtmlInputElement>();
-        T::from_f64(elem.value_as_number()).unwrap()
-    });
-    let oninput = input.reform(|e: InputEvent| {
-        let elem = e.target_unchecked_into::<HtmlInputElement>();
-        T::from_f64(elem.value_as_number()).unwrap()
-    });
+    let (onchange, oninput) = match props.defer {
+        true => (input.reform(|e: Event| {
+            let elem = e.target_unchecked_into::<HtmlInputElement>();
+            T::from_f64(elem.value_as_number()).unwrap()
+        }), Callback::noop()),
+        false => (Callback::noop(), input.reform(|e: InputEvent| {
+            let elem = e.target_unchecked_into::<HtmlInputElement>();
+            T::from_f64(elem.value_as_number()).unwrap()
+        })),
+    };
 
-    let formatted = props.fmt.replace("{}", &value.clone().unwrap().to_string());
+    let formatted = props.fmt.replace("{}", &value.clone().to_string());
 
     let (start, end, value) = (
         props.range.start.to_f64().unwrap(),
         props.range.end.to_f64().unwrap(),
-        value.clone().unwrap().to_f64().unwrap(),
+        value.clone().to_f64().unwrap(),
     );
 
     let offset = *width as f64 * ((value - start) / (end - start)).clamp(0.0, 1.0);

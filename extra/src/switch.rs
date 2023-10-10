@@ -1,19 +1,12 @@
 use rand::Rng;
 use yew::*;
 
-use cobul_props::general::{Disabled, Outlined, Rounded, Rtl, Thin};
 use cobul_props::{Color, Model, Size};
+use cobul_props::general::{Disabled, Outlined, Rounded, Rtl, Thin};
 
 #[derive(Properties, Debug, PartialEq, Clone)]
 pub struct Props {
-    #[prop_or_default]
-    pub value: Option<bool>,
-
-    #[prop_or_default]
-    pub input: Callback<bool>,
-
-    #[prop_or_default]
-    pub model: Option<Model<bool>>,
+    pub model: Model<bool>,
 
     #[prop_or_else(|| "Label".into())]
     pub label: AttrValue,
@@ -59,8 +52,7 @@ pub fn switch(props: &Props) -> Html {
         props.outlined,
     );
 
-    let (value, input) = Model::split(&props.model);
-    let checked = value.unwrap_or_default();
+    let Model { value: checked, input } = props.model.clone();
     let onchange = input.reform(move |_| !checked);
 
     html! {

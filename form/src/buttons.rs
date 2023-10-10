@@ -1,10 +1,13 @@
 use strum::IntoEnumIterator;
 use yew::prelude::*;
-use cobul_props::{Align, Color, Size, Model};
+
+use cobul_props::{Align, Color, Model, Size};
 use cobul_core as core;
 
 #[derive(Clone, Properties, PartialEq)]
 pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static> {
+    pub model: Model<T>,
+
     #[prop_or_default]
     pub class: Classes,
 
@@ -16,22 +19,18 @@ pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static> {
 
     #[prop_or_default]
     pub color: Option<Color>,
-
-    #[prop_or_default]
-    pub model: Option<Model<T>>,
 }
 
 #[function_component(Buttons)]
 pub fn buttons<T>(props: &Props<T>) -> Html
-where
-    T: IntoEnumIterator + ToString + Copy + PartialEq + 'static,
+    where
+        T: IntoEnumIterator + ToString + Copy + PartialEq + 'static,
 {
     let Props { class, align, size, color, model } = &props;
-
-    let (value, input) = Model::split(&model);
+    let Model { value, input } = model.clone();
 
     let button_map = |variant: T| {
-        let selected = &value == &Some(variant);
+        let selected = &value == &variant;
         let color = selected.then(|| color).cloned().flatten();
         let click = input.reform(move |_| variant);
 

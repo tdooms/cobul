@@ -1,5 +1,6 @@
-use cobul::{use_model, Button, Notification, Color, Buttons, icons::Solid};
 use yew::*;
+
+use cobul::{Button, Buttons, Color, icons::Solid, Notification, use_model};
 
 #[function_component(ButtonModelTest)]
 pub fn button_model() -> Html {

@@ -1,4 +1,5 @@
 use yew::*;
+
 use cobul::Content;
 
 #[function_component(ContentTest)]

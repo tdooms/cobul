@@ -1,13 +1,13 @@
+pub use checkbox::Checkbox;
 pub use control::Control;
 pub use field::Field;
 pub use file::File;
 pub use help::Help;
 pub use input::Input;
 pub use label::Label;
+pub use radio::Radio;
 pub use select::Select;
 pub use textarea::Textarea;
-pub use radio::Radio;
-pub use checkbox::Checkbox;
 
 mod control;
 mod field;

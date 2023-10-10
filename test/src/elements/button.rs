@@ -1,5 +1,6 @@
-use cobul::{Button, Buttons, Color, Size};
 use yew::*;
+
+use cobul::{Button, Buttons, Color, Size};
 
 #[function_component(ButtonTest)]
 pub fn button() -> Html {

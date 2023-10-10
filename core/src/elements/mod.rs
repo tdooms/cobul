@@ -1,5 +1,5 @@
 pub use block::Block;
-pub use button::{Button};
+pub use button::Button;
 pub use buttons::Buttons;
 pub use content::Content;
 pub use delete::Delete;

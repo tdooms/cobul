@@ -5,8 +5,7 @@ use cobul_core as core;
 
 #[derive(Properties, PartialEq, Clone)]
 pub struct Props {
-    #[prop_or_default]
-    pub model: Option<Model<u32>>,
+    pub model: Model<u32>,
 
     #[prop_or_default]
     pub size: Option<Size>,
@@ -35,8 +34,7 @@ pub fn pagination(props: &Props) -> Html {
         ..
     } = props.clone();
 
-    let (value, input) = Model::split(&props.model);
-    let page = value.unwrap_or_default();
+    let Model { value: page, input } = props.model.clone();
 
     let ellipsis = html! {<core::PaginationEllipsis> {"\u{2026}"} </core::PaginationEllipsis>};
 

@@ -1,9 +1,9 @@
-use std::collections::{BTreeMap};
+use std::collections::BTreeMap;
 use std::rc::Rc;
 
 use yew::prelude::*;
 
-use cobul_props::{Model, general::Active};
+use cobul_props::{general::Active, Model};
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 struct MenuItemProps {

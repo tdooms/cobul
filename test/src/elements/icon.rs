@@ -1,5 +1,6 @@
 use yew::*;
-use cobul::{Block, IconText, TextColor, Icon, icons::Solid};
+
+use cobul::{Block, Icon, icons::Solid, IconText, TextColor};
 
 #[function_component(IconTest)]
 pub fn icon() -> Html {

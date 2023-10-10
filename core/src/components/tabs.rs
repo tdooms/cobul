@@ -1,7 +1,7 @@
 use yew::prelude::*;
 
-use cobul_props::general::{Boxed, Fullwidth, Toggle, ToggleRounded};
 use cobul_props::{Align, Size};
+use cobul_props::general::{Boxed, Fullwidth, Toggle, ToggleRounded};
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {

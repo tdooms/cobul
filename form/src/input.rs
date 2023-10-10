@@ -1,11 +1,11 @@
-use cobul_props::{Color, Model, Size, general::Rounded};
-use cobul_core as core;
 use yew::prelude::*;
+
+use cobul_core as core;
+use cobul_props::{Color, general::Rounded, Model, Size};
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {
-    #[prop_or_default]
-    pub model: Option<Model<String>>,
+    pub model: Model<String>,
 
     #[prop_or_default]
     pub name: Option<AttrValue>,

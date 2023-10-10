@@ -1,4 +1,5 @@
 use yew::*;
+
 use cobul::Box;
 
 #[function_component(BoxTest)]

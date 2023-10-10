@@ -1,5 +1,6 @@
 use yew::*;
-use cobul::{Box, Modal, use_model, Button, Buttons, Color};
+
+use cobul::{Box, Button, Buttons, Color, Modal, use_model};
 
 #[function_component(ModalTest)]
 pub fn modal() -> Html {

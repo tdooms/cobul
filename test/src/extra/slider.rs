@@ -1,7 +1,8 @@
 use yew::*;
 
-use crate::use_model;
 use cobul::{Box, extra::Slider, Notification};
+
+use crate::use_model;
 
 #[function_component(SliderTest)]
 pub fn slider() -> Html {
@@ -25,10 +26,21 @@ pub fn slider() -> Html {
         </>
     };
 
+    let model = use_model(|| 50);
+
+    let defer = html! {
+        <>
+        <Slider<u32> model={model.clone()} range={0..100} step=1 fullwidth=true label=true defer=true />
+        <Slider<u32> model={model.clone()} range={0..100} step=1 fullwidth=true label=true defer=true />
+        <Notification> {model.value.to_string()} </Notification>
+        </>
+    };
+
     html! {
         <Box>
         {floats}
         {integers}
+        {defer}
         </Box>
     }
 }

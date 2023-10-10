@@ -1,8 +1,6 @@
-use yew::prelude::*;
-
 pub use card::ModalCard;
-
 use cobul_props::general::Active;
+use yew::prelude::*;
 
 mod card;
 

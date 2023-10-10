@@ -1,9 +1,9 @@
 use derive_more::Display;
 use strum::EnumIter;
 use yew::*;
+
 use cobul::*;
 use cobul::{Button, Select};
-
 
 #[derive(Display, Clone, Copy, EnumIter, PartialEq)]
 pub enum SelectEnum {

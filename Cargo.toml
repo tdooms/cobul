@@ -19,7 +19,7 @@ icons = ["cobul_icons"]
 [dependencies]
 cobul_form = { path = "form", optional = true }
 cobul_props = { path = "props", optional = true }
-cobul_core = { path = "core", optional = true}
+cobul_core = { path = "core", optional = true }
 cobul_extra = { path = "extra", optional = true }
 cobul_icons = { path = "icons", optional = true }
 

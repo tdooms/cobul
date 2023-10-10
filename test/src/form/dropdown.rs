@@ -1,5 +1,6 @@
 use yew::*;
-use cobul::{Box, Column, ColumnSize, Columns, use_model};
+
+use cobul::{Box, Column, Columns, ColumnSize, use_model};
 use cobul::form::Dropdown;
 
 #[derive(Debug, Clone, PartialEq, Copy, Default, strum::EnumIter, derive_more::Display)]

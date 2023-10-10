@@ -1,7 +1,7 @@
 use yew::prelude::*;
 
+use cobul_core::{Help, Icon, Label};
 use cobul_props::{Color, Size};
-use cobul_core::{Icon, Help, Label};
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {

@@ -1,5 +1,6 @@
-use cobul::{use_model, Notification, Color};
 use yew::*;
+
+use cobul::{Color, Notification, use_model};
 
 #[function_component(NotificationTest)]
 pub fn notification() -> Html {

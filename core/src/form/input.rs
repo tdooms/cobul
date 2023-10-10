@@ -6,8 +6,7 @@ use cobul_props::general::{Disabled, Loading, Readonly, Rounded, Static};
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {
-    #[prop_or_default]
-    pub model: Option<Model<String>>,
+    pub model: Model<String>,
 
     #[prop_or_default]
     pub name: Option<AttrValue>,
@@ -74,7 +73,7 @@ pub fn input(props: &Props) -> Html {
         props.statik,
     );
 
-    let (value, input) = Model::split(&props.model);
+    let Model { value, input } = props.model.clone();
     let reform = |e: InputEvent| e.target_unchecked_into::<HtmlInputElement>().value();
 
     html! {

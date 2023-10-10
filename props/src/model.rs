@@ -8,38 +8,14 @@ pub struct Model<T: Clone> {
     pub value: T,
 }
 
-// impl<T: PartialEq + Clone> PartialEq for Model<T> {
-//     fn eq(&self, other: &Self) -> bool {
-//         self.value == other.value
-//     }
-// }
-
 impl<T: Clone> Model<T> {
-    pub fn split(option: &Option<Self>) -> (Option<T>, Callback<T>) {
-        match option.clone() {
-            Some(Self { value, input }) => (Some(value), input),
-            None => (None, Callback::noop())
-        }
-    }
-}
-
-impl Model<bool> {
-    pub fn toggle(&self) -> Callback<()> {
-        let Model { input, value } = self.clone();
-        Callback::from(move |_| input.emit(!value))
-    }
-}
-
-impl Model<u32> {
-    pub fn increment(&self) -> Callback<()> {
-        let Model { input, value } = self.clone();
-        Callback::from(move |_| input.emit(value + 1))
+    pub fn constant(value: T) -> Model<T> {
+        Model { input: Callback::noop(), value }
     }
 }
 
 impl<T: Clone> Deref for Model<T> {
     type Target = T;
-
     fn deref(&self) -> &Self::Target {
         &self.value
     }

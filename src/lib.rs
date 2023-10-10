@@ -4,7 +4,6 @@
 
 #[cfg(feature = "core")]
 pub use cobul_core::*;
-
 #[cfg(feature = "props")]
 pub use cobul_props::*;
 

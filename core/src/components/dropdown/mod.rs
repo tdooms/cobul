@@ -1,9 +1,8 @@
 use yew::prelude::*;
 
+use cobul_props::general::{Active, Hoverable, Right, Up};
 pub use divider::DropdownDivider;
 pub use item::DropdownItem;
-
-use cobul_props::general::{Active, Hoverable, Right, Up};
 
 mod divider;
 mod item;

@@ -1,6 +1,6 @@
 use yew::*;
 
-use cobul::{use_model, Field, extra::Switch, Notification};
+use cobul::{extra::Switch, Field, Notification, use_model};
 
 #[function_component(SwitchTest)]
 pub fn switch() -> Html {

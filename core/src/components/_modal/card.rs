@@ -1,6 +1,5 @@
-use yew::prelude::*;
-
 use cobul_props::general::Active;
+use yew::prelude::*;
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {

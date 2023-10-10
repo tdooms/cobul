@@ -5,17 +5,10 @@ use cobul_props::{Color, Model, Size};
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {
-    #[prop_or_default]
-    pub value: Option<bool>,
+    pub model: Model<bool>,
 
     #[prop_or_default]
-    pub input: Callback<bool>,
-
-    #[prop_or_default]
-    pub model: Option<Model<bool>>,
-
-    #[prop_or_else(|| "Label".into())]
-    pub label: AttrValue,
+    pub label: Option<AttrValue>,
 
     #[prop_or_default]
     pub class: Classes,
@@ -69,9 +62,8 @@ fn render(props: &Props, kind: Kind, id: String) -> Html {
         props.rtl.then(|| "is-rtl"),
     );
 
-    let (value, input) = Model::split(&props.model);
-    let onchange = input.reform(move |_| !value.unwrap());
-    let checked = value.unwrap_or_default();
+    let Model { value: checked, input } = props.model.clone();
+    let onchange = input.reform(move |_| !checked);
 
     html! {
         <>

@@ -1,13 +1,12 @@
 use strum::IntoEnumIterator;
 use yew::prelude::*;
 
-use cobul_props::general::{Focused, Hovered, Loading, Rounded};
 use cobul_props::{Color, Model, Size};
+use cobul_props::general::{Focused, Hovered, Loading, Rounded};
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static> {
-    #[prop_or_default]
-    pub model: Option<Model<T>>,
+    pub model: Model<T>,
 
     #[prop_or_default]
     pub color: Option<Color>,
@@ -48,8 +47,8 @@ pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static> {
 /// - `loading: Loading`
 #[function_component(Select)]
 pub fn select<T>(props: &Props<T>) -> Html
-where
-    T: IntoEnumIterator + ToString + Copy + PartialEq + 'static,
+    where
+        T: IntoEnumIterator + ToString + Copy + PartialEq + 'static,
 {
     let class = classes!(
         "select",
@@ -60,10 +59,10 @@ where
         props.loading
     );
 
-    let (value, input) = Model::split(&props.model);
+    let Model { value, input } = props.model.clone();
 
     let option = move |variant: T| {
-        let selected = std::mem::discriminant(&variant) == std::mem::discriminant(&value.unwrap());
+        let selected = std::mem::discriminant(&variant) == std::mem::discriminant(&value);
         let onclick = (!selected).then(|| input.reform(move |_| variant));
         html! { <option {selected} {onclick}> {variant.to_string()} </option> }
     };

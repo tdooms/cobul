@@ -1,10 +1,10 @@
 use yew::prelude::*;
-use cobul_props::{Model, general::Disabled};
+
+use cobul_props::{general::Disabled, Model};
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {
-    #[prop_or_default]
-    pub model: Option<Model<bool>>,
+    pub model: Model<bool>,
 
     #[prop_or_default]
     pub style: Option<AttrValue>,
@@ -26,9 +26,7 @@ pub struct Props {
 #[function_component(Checkbox)]
 pub fn checkbox(props: &Props) -> Html {
     let class = classes!("checkbox", props.class.clone());
-    let (value, input) = Model::split(&props.model);
-
-    let checked = value.unwrap_or_default();
+    let Model { value: checked, input } = props.model.clone();
     let onclick = input.reform(move |_| !checked);
 
     html! {

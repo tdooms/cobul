@@ -1,7 +1,8 @@
-use cobul::icons::Solid::MagnifyingGlass;
+use yew::*;
+
 use cobul::{Size, use_model};
 use cobul::form::{Field, Input};
-use yew::*;
+use cobul::icons::Solid::MagnifyingGlass;
 
 #[function_component(FieldSizeTest)]
 pub fn field_size() -> Html {

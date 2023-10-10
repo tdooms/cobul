@@ -1,4 +1,5 @@
 use yew::prelude::*;
+
 use cobul_props::general::Active;
 use cobul_props::Model;
 

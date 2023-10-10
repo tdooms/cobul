@@ -1,6 +1,6 @@
 use yew::*;
 
-use cobul::{use_model, Box, Color, Field};
+use cobul::{Box, Color, Field, use_model};
 use cobul::extra::{Checkbox, Radio};
 
 #[function_component(CheckradioTest)]

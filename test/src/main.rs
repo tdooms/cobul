@@ -1,14 +1,15 @@
-use std::collections::{BTreeMap};
+use std::collections::BTreeMap;
 use std::rc::Rc;
+
 use yew::prelude::*;
-use cobul::{Columns, Menu, use_model, Column, ColumnSize, Box, Container, Model};
+
+use cobul::{Box, Column, Columns, ColumnSize, Container, Menu, Model, use_model};
 
 use crate::components::*;
 use crate::elements::*;
+use crate::extra::*;
 use crate::form::*;
 use crate::functionality::*;
-use crate::extra::*;
-
 
 mod elements;
 mod form;

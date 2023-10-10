@@ -1,7 +1,7 @@
 use yew::prelude::*;
 
-use cobul_props::general::{Addons, Grouped, GroupedMultiline};
 use cobul_props::Align;
+use cobul_props::general::{Addons, Grouped, GroupedMultiline};
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {

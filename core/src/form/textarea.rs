@@ -1,19 +1,12 @@
 use web_sys::HtmlInputElement;
 use yew::prelude::*;
 
-use cobul_props::general::{Disabled, FixedSize, Loading, Readonly, Static};
 use cobul_props::{Color, Model, Size};
+use cobul_props::general::{Disabled, FixedSize, Loading, Readonly, Static};
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {
-    #[prop_or_default]
-    pub value: Option<String>,
-
-    #[prop_or_default]
-    pub input: Callback<String>,
-
-    #[prop_or_default]
-    pub model: Option<Model<String>>,
+    pub model: Model<String>,
 
     #[prop_or_default]
     pub placeholder: Option<AttrValue>,
@@ -55,9 +48,7 @@ pub struct Props {
 /// The multiline textarea and its variations - [reference](https://bulma.io/documentation/form/textarea/)
 ///
 /// Properties:
-/// - `input: Callback<String>` Callback for when the input is changed
-/// - `value: Option<String>`
-/// - `model: Option<Model<String>>`
+/// - `model: Model<String>`
 /// - `placeholder: Option<AttrValue>`
 /// - `name: Option<AttrValue>`
 /// - `rows: Option<u32>`
@@ -86,7 +77,7 @@ pub fn textarea(props: &Props) -> Html {
         props.fixed.or(fixed)
     );
 
-    let (value, input) = Model::split(&props.model);
+    let Model { value, input } = props.model.clone();
 
     let reform = |e: InputEvent| e.target_unchecked_into::<HtmlInputElement>().value();
     let oninput = input.reform(reform);

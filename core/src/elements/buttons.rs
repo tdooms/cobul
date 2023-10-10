@@ -1,5 +1,6 @@
 use yew::*;
-use cobul_props::{Align, Size, general::Addons};
+
+use cobul_props::{Align, general::Addons, Size};
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {

@@ -1,7 +1,7 @@
 use yew::*;
 
-use cobul_props::general::{Current, Disabled, Rounded};
 use cobul_props::{Align, Size};
+use cobul_props::general::{Current, Disabled, Rounded};
 
 #[derive(Properties, PartialEq)]
 pub struct Props {

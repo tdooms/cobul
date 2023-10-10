@@ -6,8 +6,7 @@ use cobul_core as core;
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static> {
-    #[prop_or_default]
-    pub model: Option<Model<T>>,
+    pub model: Model<T>,
 
     #[prop_or_default]
     pub class: Classes,
@@ -24,16 +23,15 @@ pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static> {
 
 #[function_component(Dropdown)]
 pub fn dropdown<T>(props: &Props<T>) -> Html
-where
-    T: IntoEnumIterator + ToString + Copy + PartialEq + 'static,
+    where
+        T: IntoEnumIterator + ToString + Copy + PartialEq + 'static,
 {
     let active = use_state_eq(|| false);
+    let Model { value, input } = props.model.clone();
 
     let handle = active.clone();
-    let (value, input) = Model::split(&props.model);
-
     let view_option = move |variant: T| {
-        let active = &Some(variant) == &value;
+        let active = &variant == &value;
         let (handle, input) = (handle.clone(), input.clone());
 
         let click = Callback::from(move |_| {
@@ -60,7 +58,7 @@ where
     let class = classes!("button", "is-flex", "is-justify-content-space-between", "is-fullwidth", props.size);
     let trigger = html! {
         <button {class} {onclick}>
-            <span> {value.unwrap().to_string()} </span>
+            <span> {value.to_string()} </span>
             <core::Icon icon="fa-solid fa-angle-down"/>
         </button>
     };

@@ -22,8 +22,8 @@ pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static> {
 /// - `click: Callback<T>` &npbs; A callback that is invoked when the tab is clicked.
 #[function_component(PanelTabs)]
 pub fn panel_tabs<T>(props: &Props<T>) -> Html
-where
-    T: IntoEnumIterator + ToString + Copy + PartialEq + 'static,
+    where
+        T: IntoEnumIterator + ToString + Copy + PartialEq + 'static,
 {
     let button_map = |variant: T| {
         let active = props.value == variant;

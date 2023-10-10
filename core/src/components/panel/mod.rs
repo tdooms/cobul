@@ -1,13 +1,13 @@
 use yew::prelude::*;
 
-use crate::util::enclose_tag;
+pub use block::PanelBlock;
 use cobul_props::Color;
+pub use tabs::PanelTabs;
+
+use crate::util::enclose_tag;
 
 mod block;
 mod tabs;
-
-pub use block::PanelBlock;
-pub use tabs::PanelTabs;
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {

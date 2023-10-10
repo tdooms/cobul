@@ -1,5 +1,6 @@
-use crate::util::enclose_tag;
 use yew::prelude::*;
+
+use crate::util::enclose_tag;
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {

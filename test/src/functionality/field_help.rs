@@ -1,6 +1,7 @@
-use cobul::{use_model};
-use cobul::form::{Field, Input};
 use yew::*;
+
+use cobul::use_model;
+use cobul::form::{Field, Input};
 
 #[function_component(FieldHelpTest)]
 pub fn field_help() -> Html {

@@ -1,5 +1,6 @@
-use cobul_props::{AlignContent, AlignItems, AlignSelf, Direction, Grow, Justify, Shrink, Wrap};
 use yew::*;
+
+use cobul_props::{AlignContent, AlignItems, AlignSelf, Direction, Grow, Justify, Shrink, Wrap};
 
 #[derive(Properties, Clone, PartialEq)]
 pub struct Props {

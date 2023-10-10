@@ -1,7 +1,8 @@
 use yew::prelude::*;
 
-use crate::util::enclose;
 use cobul_props::general::{Mobile, TextCentered};
+
+use crate::util::enclose;
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct LevelProps {

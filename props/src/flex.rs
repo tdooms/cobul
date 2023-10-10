@@ -1,6 +1,6 @@
 use derive_more::Display;
-use yew::html::IntoPropValue;
 use yew::Classes;
+use yew::html::IntoPropValue;
 
 #[derive(Clone, Debug, Display, PartialEq, Copy)]
 #[display(fmt = "is-flex-direction-{}")]

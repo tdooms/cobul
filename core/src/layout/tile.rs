@@ -1,7 +1,7 @@
 use yew::prelude::*;
 
-use cobul_props::general::Vertical;
 use cobul_props::{TileCtx, TileSize};
+use cobul_props::general::Vertical;
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {

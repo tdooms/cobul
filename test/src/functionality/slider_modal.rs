@@ -1,6 +1,6 @@
-use cobul::{Model, use_model, Modal, Button, Buttons, Box};
-use cobul::form::{Field, Input};
 use yew::*;
+
+use cobul::{Box, Button, Buttons, Modal, use_model};
 use cobul::extra::Slider;
 
 #[function_component(SliderModalTest)]
