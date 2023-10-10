@@ -1,6 +1,6 @@
 use yew::*;
 
-use cobul::{Box, Button, Color, extra::Direction, extra::Loader};
+use cobul::{Button, Color, extra::Direction, extra::Loader};
 
 #[function_component(LoaderTest)]
 pub fn loader() -> Html {

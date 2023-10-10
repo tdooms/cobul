@@ -1,4 +1,4 @@
-use cobul::{use_model, Box, Notification, Color};
+use cobul::{use_model, Notification, Color};
 use yew::*;
 
 #[function_component(NotificationTest)]

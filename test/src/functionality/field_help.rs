@@ -1,4 +1,4 @@
-use cobul::{use_model, Box};
+use cobul::{use_model};
 use cobul::form::{Field, Input};
 use yew::*;
 
