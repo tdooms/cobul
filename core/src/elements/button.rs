@@ -145,24 +145,23 @@ pub fn button(props: &ButtonProps) -> Html {
         (None, None) => Callback::noop()
     };
 
-    let text = match (props.text.clone(), props.bold) {
-        (Some(text), true) => html! { <b> {text} </b>},
-        (Some(text), false) => html!{ text },
-        (None, _) => html! { },
-    };
-    let text = match props.icon.as_ref() {
-        Some(_) => html! {<span> {text} </span>},
-        None => text,
-    };
-
     let icon = match props.icon.clone() {
         None => html! {},
         Some(icon) => html! { <span class="icon"> <i class={icon}> </i> </span> },
     };
 
+    let inner = match (props.text.clone(), props.bold, props.icon.as_ref()) {
+        (Some(text), true, Some(_)) => html! { <> {icon} <span> <b> {text} </b> </span> </>},
+        (Some(text), true, None) => html! { <b> {text} </b> },
+        (Some(text), false, Some(_)) => html!{ <> {icon} <span> {text} </span> </> },
+        (Some(text), false, None) => html! { text },
+        (None, _, Some(_)) => html! { icon },
+        (None, _, None) => html! {},
+    };
+
     html! {
         <button {style} {class} {onclick} disabled={props.disabled.0} data-tooltip={props.tooltip.clone()}>
-            {icon} {text}
+            {inner}
         </button>
     }
 }
