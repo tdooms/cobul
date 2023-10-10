@@ -2,19 +2,19 @@ use std::ops::Deref;
 
 use yew::{Callback, hook, use_state, use_state_eq};
 
-#[derive(Clone, Debug)]
-pub struct Model<T: Clone + PartialEq> {
+#[derive(Clone, Debug, PartialEq)]
+pub struct Model<T: Clone> {
     pub input: Callback<T>,
     pub value: T,
 }
 
-impl<T: PartialEq + Clone> PartialEq for Model<T> {
-    fn eq(&self, other: &Self) -> bool {
-        self.value == other.value
-    }
-}
+// impl<T: PartialEq + Clone> PartialEq for Model<T> {
+//     fn eq(&self, other: &Self) -> bool {
+//         self.value == other.value
+//     }
+// }
 
-impl<T: Clone + PartialEq> Model<T> {
+impl<T: Clone> Model<T> {
     pub fn split(option: &Option<Self>) -> (Option<T>, Callback<T>) {
         match option.clone() {
             Some(Self { value, input }) => (Some(value), input),
@@ -37,7 +37,7 @@ impl Model<u32> {
     }
 }
 
-impl<T: Clone + PartialEq> Deref for Model<T> {
+impl<T: Clone> Deref for Model<T> {
     type Target = T;
 
     fn deref(&self) -> &Self::Target {
@@ -46,7 +46,7 @@ impl<T: Clone + PartialEq> Deref for Model<T> {
 }
 
 #[hook]
-pub fn use_model<T: Clone + PartialEq + 'static, F: FnOnce() -> T>(f: F) -> Model<T> {
+pub fn use_model<T: Clone + 'static, F: FnOnce() -> T>(f: F) -> Model<T> {
     let state = use_state(f);
     let cloned = state.clone();
 

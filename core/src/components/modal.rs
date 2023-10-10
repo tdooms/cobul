@@ -51,7 +51,7 @@ pub fn modal(props: &Props) -> Html {
             </>
         },
         _ => html! {
-            <div class="modal-card">
+            <div class="modal-card" style={props.style.clone()}>
             <header class="modal-card-head">
                 <p class="modal-card-title">{ props.title.clone() }</p>
                 {close}
