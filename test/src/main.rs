@@ -24,7 +24,7 @@ fn app() -> Html {
     content.insert("Elements".into(), vec!["Block".into(), "Box".into(), "Button".into(), "Content".into(), "Icon".into(), "Notification".into()]);
     content.insert("Extra".into(), vec!["Checkradio".into(), "Loader".into(), "Slider".into(), "Switch".into(), "Tooltip".into()]);
     content.insert("Form".into(), vec!["General".into(), "Dropdown".into(), "Pagination".into(), "Tabs".into()]);
-    content.insert("Functionality".into(), vec!["Button Model".into(), "Field Help".into(), "Field Size".into()]);
+    content.insert("Functionality".into(), vec!["Button Model".into(), "Field Help".into(), "Field Size".into(), "Slider Modal".into()]);
 
     let content = Rc::new(content);
     let model: Model<(AttrValue, AttrValue)> = use_model(|| ("Components".into(), "Modal".into()));
@@ -49,6 +49,7 @@ fn app() -> Html {
         ("Functionality", "Button Model") => html! { <ButtonModelTest />},
         ("Functionality", "Field Help") => html! { <FieldHelpTest />},
         ("Functionality", "Field Size") => html! { <FieldSizeTest />},
+        ("Functionality", "Slider Modal") => html! { <SliderModalTest />},
         _ => html! {"not found"}
     };
 

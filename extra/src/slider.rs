@@ -123,8 +123,8 @@ where
     let offset = *width as f64 * ((value - start) / (end - start)).clamp(0.0, 1.0);
 
     let output_style = match props.tooltip {
-        true => format!("left:{offset}px;width:{}rem", props.label_width),
-        false => format!("width:{}rem;top:0px ! important", props.label_width),
+        true => format!("left:{offset}px;width:{}rem;z-index:0 !important", props.label_width),
+        false => format!("width:{}rem;top:0px !important;z-index:0 !important", props.label_width),
     };
 
     let input_style = match props.tooltip {

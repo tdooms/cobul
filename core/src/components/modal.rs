@@ -67,7 +67,7 @@ pub fn modal(props: &Props) -> Html {
     };
 
     html! {
-        <div style={props.style.clone()} {class}>
+        <div {class}>
             <div class="modal-background" />
             {inner}
         </div>
