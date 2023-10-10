@@ -1,16 +1,17 @@
 // #![warn(missing_docs)]
 // #![warn(missing_doc_code_examples)]
 
-#[cfg(feature = "raw")]
-pub mod raw {
-    pub use cobul_raw::{components::*, elements::*, form::*, layout::*};
-}
+
+#[cfg(feature = "core")]
+pub use cobul_core::*;
 
 #[cfg(feature = "props")]
 pub use cobul_props::*;
 
-#[cfg(feature = "core")]
-pub use cobul_core::*;
+#[cfg(feature = "form")]
+pub mod form {
+    pub use cobul_form::*;
+}
 
 #[cfg(feature = "extra")]
 pub mod extra {

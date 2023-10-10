@@ -1,16 +1,17 @@
 [package]
 name = "cobul_core"
 version = "0.1.0"
+authors = ["thomas <thomas@dooms.eu>"]
 edition = "2021"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+description = "Bulma components for Yew"
+repository = "https://github.com/tdooms/cobul"
+license = "GNU GPLv3"
 
 [dependencies]
-cobul_raw = { path = "../raw" }
 cobul_props = { path = "../props" }
-cobul_icons = { path = "../icons" }
+yew = "0.21"
 
 log = "0.4"
+web-sys = "^0.3.59"
 strum = { version = "0.25", features = ["derive"] }
-yew = "0.21"
-validator = "0.16"
+

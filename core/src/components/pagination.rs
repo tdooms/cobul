@@ -1,19 +1,15 @@
 use yew::*;
 
-use cobul_props::{Align, Model, Size};
-use cobul_raw::components;
-use cobul_raw::components::{PaginationEllipsis, PaginationLink};
+use cobul_props::general::{Current, Disabled, Rounded};
+use cobul_props::{Align, Size};
 
-#[derive(Properties, PartialEq, Clone)]
+#[derive(Properties, PartialEq)]
 pub struct Props {
     #[prop_or_default]
-    pub input: Callback<u64>,
+    pub rounded: Rounded,
 
     #[prop_or_default]
-    pub value: Option<u64>,
-
-    #[prop_or_default]
-    pub model: Option<Model<u64>>,
+    pub align: Align,
 
     #[prop_or_default]
     pub size: Option<Size>,
@@ -22,54 +18,86 @@ pub struct Props {
     pub class: Classes,
 
     #[prop_or_default]
-    pub align: Align,
+    pub style: Option<AttrValue>,
 
     #[prop_or_default]
-    pub rounded: bool,
-
-    pub total: u64,
+    pub children: Children,
 }
 
 /// A responsive, usable, and flexible pagination - [reference](https://bulma.io/documentation/components/pagination/)
+///
+/// Properties:
+/// - `rounded: Rounded` &npbs; Whether the pagination is rounded or not
+/// - `align: Align` &npbs; The align of the pagination
+/// - `size: Option<Size>` &npbs; The size of the pagination
 #[function_component(Pagination)]
 pub fn pagination(props: &Props) -> Html {
-    let Props {
-        size,
-        class,
-        align,
-        rounded,
-        total,
-        ..
-    } = props.clone();
-
-    let (input, value) = Model::combine(&props.input, &props.value, &props.model);
-    let page = value.unwrap();
-
-    let ellipsis = html! {<PaginationEllipsis> {"\u{2026}"} </PaginationEllipsis>};
-
-    let left_ellipsis = (page >= 4).then(|| ellipsis.clone()).unwrap_or_default();
-
-    let right_ellipsis = (total - page >= 3).then(|| ellipsis).unwrap_or_default();
-
-    let item = |idx| {
-        let click = input.reform(move |_| idx);
-        html! { <PaginationLink {click} current={ page == idx }> {idx} </PaginationLink> }
-    };
-
-    let first = item(1);
-    let last = (total != 1).then(|| item(total)).unwrap_or_default();
-
-    let center = (page.max(3) - 1)..(page + 2).min(total);
+    let class = classes!(
+        props.rounded,
+        props.align,
+        props.size,
+        "pagination",
+        props.class.clone()
+    );
 
     html! {
-        <components::Pagination {size} {class} {align} {rounded}>
-            <components::PaginationList>
-                { first }
-                { left_ellipsis }
-                { for center.map(item) }
-                { right_ellipsis }
-                { last }
-            </components::PaginationList>
-        </components::Pagination>
+        <nav {class} role="navigation" aria-label="pagination" style={props.style.clone()}>
+            { for props.children.iter() }
+        </nav>
     }
+}
+
+#[derive(Properties, PartialEq)]
+pub struct SubProps {
+    pub children: Children,
+}
+
+#[derive(Properties, PartialEq)]
+pub struct NavProps {
+    #[prop_or_default]
+    pub disabled: Disabled,
+
+    #[prop_or_default]
+    pub children: Children,
+
+    pub click: Callback<()>,
+}
+
+#[derive(Properties, PartialEq)]
+pub struct LinkProps {
+    pub click: Callback<()>,
+
+    #[prop_or_default]
+    pub current: Current,
+
+    #[prop_or_default]
+    pub children: Children,
+}
+
+#[function_component(PaginationNext)]
+pub fn pagination_next(props: &NavProps) -> Html {
+    let class = classes!("pagination-next", props.disabled);
+    html! {<a {class} onclick={props.click.reform(|_| ())}> { for props.children.iter() } </a>}
+}
+
+#[function_component(PaginationPrevious)]
+pub fn pagination_previous(props: &NavProps) -> Html {
+    let class = classes!("pagination-previous", props.disabled);
+    html! { <a {class} onclick={props.click.reform(|_| ())}> { for props.children.iter() } </a> }
+}
+
+#[function_component(PaginationList)]
+pub fn pagination_list(props: &SubProps) -> Html {
+    html! { <ul class="pagination-list"> { for props.children.iter() } </ul> }
+}
+
+#[function_component(PaginationLink)]
+pub fn pagination_link(props: &LinkProps) -> Html {
+    let class = classes!("pagination-link", props.current);
+    html! { <li><a {class} onclick={props.click.reform(|_| ())}> { for props.children.iter() } </a></li> }
+}
+
+#[function_component(PaginationEllipsis)]
+pub fn pagination_ellipsis(props: &SubProps) -> Html {
+    html! { <li><span class="pagination-ellipsis"> { for props.children.iter() } </span></li> }
 }

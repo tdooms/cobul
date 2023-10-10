@@ -5,19 +5,19 @@ version = "0.1.0"
 edition = "2021"
 
 [workspace]
-members = ["raw", "props", "core", "icons", "extra", "test"]
+members = ["form", "props", "core", "icons", "extra", "test"]
 
 [features]
-default = ["core", "icons", "raw", "props"]
+default = ["core", "props"]
 
-raw = ["cobul_raw"]
+form = ["cobul_form"]
 props = ["cobul_props"]
 core = ["cobul_core"]
 extra = ["cobul_extra"]
 icons = ["cobul_icons"]
 
 [dependencies]
-cobul_raw = { path = "raw", optional = true }
+cobul_form = { path = "form", optional = true }
 cobul_props = { path = "props", optional = true }
 cobul_core = { path = "core", optional = true}
 cobul_extra = { path = "extra", optional = true }

@@ -4,7 +4,7 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-cobul_raw = { path = "../raw" }
+cobul_core = { path = "../core" }
 cobul_props = { path = "../props" }
 
 yew = "0.21"

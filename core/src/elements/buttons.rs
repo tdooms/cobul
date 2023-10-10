@@ -1,65 +1,43 @@
-use strum::IntoEnumIterator;
-use yew::prelude::*;
+use yew::*;
+use cobul_props::{Align, Size, general::Addons};
 
-use cobul_props::{Align, Color, Size, Model};
-use cobul_raw::elements;
+#[derive(Clone, Debug, Properties, PartialEq)]
+pub struct Props {
+    #[prop_or_default]
+    pub children: Children,
 
-#[derive(Clone, Properties, PartialEq)]
-pub struct Props<T: IntoEnumIterator + ToString + Copy + PartialEq + 'static> {
     #[prop_or_default]
     pub class: Classes,
+
+    #[prop_or_default]
+    pub style: Option<AttrValue>,
 
     #[prop_or_default]
     pub align: Option<Align>,
 
     #[prop_or_default]
+    pub addons: Addons,
+
+    #[prop_or_default]
     pub size: Option<Size>,
-
-    #[prop_or_default]
-    pub color: Option<Color>,
-
-    #[prop_or_default]
-    pub value: Option<T>,
-
-    #[prop_or_default]
-    pub input: Callback<T>,
-
-    #[prop_or_default]
-    pub model: Option<Model<T>>,
 }
 
+/// A list of buttons - [reference](https://bulma.io/documentation/elements/button/#list-of-buttons)
+///
+/// Properties:
+/// - `children: Children`
+/// - `class: Classes`
+/// - `style: Option<AttrValue>`
+/// - `align: Option<Align>`
+/// - `addons: Addons`
+/// - `size: Option<Size>`
 #[function_component(Buttons)]
-pub fn buttons<T>(props: &Props<T>) -> Html
-where
-    T: IntoEnumIterator + ToString + Copy + PartialEq + 'static,
-{
-    let Props {
-        class,
-        align,
-        size,
-        color,
-        value,
-        input,
-        model
-    } = &props;
-
-    let (input, value) = Model::combine(input, value, model);
-
-    let button_map = |variant: T| {
-        let selected = &value.unwrap() == &variant;
-        let color = selected.then(|| color).cloned().flatten();
-        let click = input.reform(move |_| variant);
-
-        html! {
-            <elements::Button {color} {click} {selected} size={*size}>
-                { variant.to_string() }
-            </elements::Button>
-        }
-    };
+pub fn buttons(props: &Props) -> Html {
+    let class = classes!("buttons", props.class.clone(), props.align, props.addons);
 
     html! {
-        <elements::Buttons addons=true align={*align} class={class.clone()}>
-            { for T::iter().map(button_map) }
-        </elements::Buttons>
+        <div style={props.style.clone()} {class}>
+            { for props.children.iter() }
+        </div>
     }
 }

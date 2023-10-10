@@ -66,7 +66,7 @@ pub fn slider<T>(props: &Props<T>) -> Html
 where
     T: PartialEq + Clone + Display + FromPrimitive + ToPrimitive + 'static,
 {
-    let id = use_state(|| rand::thread_rng().gen::<u64>().to_string());
+    let id = use_state(|| rand::thread_rng().gen::<u32>().to_string());
 
     if props.label && props.tooltip {
         panic!("both right label and tooltip are not supported");
@@ -101,7 +101,7 @@ where
         props.label.then(|| "my-0")
     );
 
-    let (input, value) = Model::combine(&props.change, &props.value, &props.model);
+    let (value, input) = Model::split(&props.model);
 
     let onchange = props.change.reform(|e: Event| {
         let elem = e.target_unchecked_into::<HtmlInputElement>();

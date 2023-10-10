@@ -1,19 +1,27 @@
 use yew::prelude::*;
 
 use cobul_props::general::{
-    Active, Disabled, Focused, Fullwidth, Hidden, Hovered, Inverted, Light, Loading, Outlined,
-    Rounded, Selected, Static,
+    Active, Disabled, Focused, Fullwidth, Hidden, Hovered, Inverted, Light, Loading,
+    Outlined, Rounded, Selected, Static,
 };
 use cobul_props::{Color, Model, Size};
-use cobul_raw::elements;
 
 #[derive(Properties, Clone, PartialEq)]
-pub struct Props {
+pub struct ButtonProps {
+    #[prop_or_default]
+    pub model: Option<Model<bool>>,
+
+    #[prop_or_default]
+    pub click: Option<Callback<()>>,
+
     #[prop_or_default]
     pub size: Option<Size>,
 
     #[prop_or_default]
-    pub bold: bool,
+    pub color: Option<Color>,
+
+    #[prop_or_default]
+    pub tooltip: Option<AttrValue>,
 
     #[prop_or_default]
     pub hidden: Hidden,
@@ -43,9 +51,6 @@ pub struct Props {
     pub selected: Selected,
 
     #[prop_or_default]
-    pub color: Option<Color>,
-
-    #[prop_or_default]
     pub hovered: Hovered,
 
     #[prop_or_default]
@@ -58,7 +63,7 @@ pub struct Props {
     pub statik: Static,
 
     #[prop_or_default]
-    pub tooltip: Option<AttrValue>,
+    pub children: Children,
 
     #[prop_or_default]
     pub class: Classes,
@@ -67,10 +72,7 @@ pub struct Props {
     pub style: Option<AttrValue>,
 
     #[prop_or_default]
-    pub click: Callback<()>,
-
-    #[prop_or_default]
-    pub model: Option<Model<bool>>,
+    pub bold: bool,
 
     #[prop_or_default]
     pub icon: Option<AttrValue>,
@@ -79,34 +81,84 @@ pub struct Props {
     pub text: Option<AttrValue>,
 }
 
-/// [https://bulma.io/documentation/elements/button/](https://bulma.io/documentation/elements/button/)
+/// The classic button, in different colors, sizes, and states - [reference](https://bulma.io/documentation/elements/button/)
+///
+/// Properties:
+/// - `click: Callback<()>` &nbsp; Callback for button click
+/// - `size: Option<Size>`
+/// - `color: Option<Color>`
+/// - `tooltip: Option<AttrValue>` &nbsp; The text tooltip on hover
+/// - `hidden: Hidden`
+/// - `outlined: Outlined`
+/// - `inverted: Inverted`
+/// - `rounded: Rounded`
+/// - `light: Light`
+/// - `loading: Loading`
+/// - `disabled: Disabled`
+/// - `fullwidth: Fullwidth`
+/// - `selected: Selected`
+/// - `hovered: Hovered`
+/// - `focussed: Focused`
+/// - `active: Active`
+/// - `statik: Static`
 #[function_component(Button)]
-pub fn button(props: &Props) -> Html {
-    let click = match props.model.clone() {
-        None => props.click.clone(),
-        Some(model) => model.input.reform(move |()| !model.value),
+pub fn button(props: &ButtonProps) -> Html {
+    let hidden = use_context::<Hidden>();
+    let outlined = use_context::<Outlined>();
+    let light = use_context::<Light>();
+    let inverted = use_context::<Inverted>();
+    let rounded = use_context::<Rounded>();
+    let loading = use_context::<Loading>();
+    let fullwidth = use_context::<Fullwidth>();
+    let selected = use_context::<Selected>();
+    let color = use_context::<Color>();
+    let size = use_context::<Size>();
+    let hovered = use_context::<Hovered>();
+    let focussed = use_context::<Focused>();
+    let active = use_context::<Active>();
+    let statik = use_context::<Static>();
+
+    let class = classes!(
+        "button",
+        props.hidden.or(hidden),
+        props.outlined.or(outlined),
+        props.light.or(light),
+        props.inverted.or(inverted),
+        props.rounded.or(rounded),
+        props.loading.or(loading),
+        props.fullwidth.or(fullwidth),
+        props.selected.or(selected),
+        props.color.or(color),
+        props.size.or(size),
+        props.hovered.or(hovered),
+        props.focussed.or(focussed),
+        props.active.or(active),
+        props.statik.or(statik),
+        props.class.clone()
+    );
+
+    let style = props.style.clone();
+
+    let onclick = match (props.click.clone(), props.model.clone()) {
+        (Some(click), _) => click.reform(move |_| ()),
+        (None, Some(model)) => model.input.reform(move |_| !model.value),
+        (None, None) => Callback::noop()
     };
 
-    let inner = match (props.icon.clone(), props.text.clone(), props.bold) {
-        (None, None, _) => html! {},
-        (None, Some(text), false) => html! {text},
-        (None, Some(text), true) => html! { <b> {text} </b> },
-        (Some(icon), None, _) => html! { <elements::Icon {icon} /> },
-        (Some(icon), Some(text), false) => {
-            html! {<> <elements::Icon {icon} /> <span> {text} </span> </>}
-        }
-        (Some(icon), Some(text), true) => {
-            html! {<> <elements::Icon {icon} /> <span> <b>{text}</b> </span> </>}
-        }
+    let text = match (props.text.clone(), props.bold) {
+        (Some(text), true) => html! { <b> {text} </b>},
+        (Some(text), false) => html!{ text },
+        (None, _) => html! { },
+    };
+
+    let icon = match props.icon.clone() {
+        None => html! {},
+        Some(icon) => html! { <span class="icon"> <i class={icon}> </i> </span> },
     };
 
     html! {
-        <elements::Button {click} style={props.style.clone()} class={props.class.clone()}
-        disabled={props.disabled} tooltip={props.tooltip.clone()} hidden={props.hidden} outlined={props.outlined}
-        light={props.light} inverted={props.inverted} rounded={props.rounded} loading={props.loading}
-        fullwidth={props.fullwidth} selected={props.selected} color={props.color} size={props.size}
-        hovered={props.hovered} focussed={props.focussed} active={props.active} statik={props.statik}>
-            {inner}
-        </elements::Button>
+        <button {style} {class} {onclick} disabled={props.disabled.0} data-tooltip={props.tooltip.clone()}>
+            {icon} <span> {text} </span>
+        </button>
     }
 }

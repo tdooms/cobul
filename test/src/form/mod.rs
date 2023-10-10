@@ -1,5 +1,9 @@
-mod help;
-mod size;
+mod general;
+mod dropdown;
+mod pagination;
+mod tabs;
 
-pub use help::*;
-pub use size::*;
+pub use general::*;
+pub use dropdown::*;
+pub use pagination::*;
+pub use tabs::*;

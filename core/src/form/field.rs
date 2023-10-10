@@ -1,86 +1,67 @@
 use yew::prelude::*;
 
-use cobul_props::{Color, Size};
-use cobul_raw::elements::Icon;
-use cobul_raw::form::{Help, Label};
+use cobul_props::general::{Addons, Grouped, GroupedMultiline};
+use cobul_props::Align;
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {
     #[prop_or_default]
-    pub children: Children,
+    pub focus: Callback<bool>,
 
     #[prop_or_default]
-    pub enter: Callback<()>,
+    pub grouped: Grouped,
+
+    #[prop_or_default]
+    pub multiline: GroupedMultiline,
+
+    #[prop_or_default]
+    pub addons: Addons,
+
+    #[prop_or_default]
+    pub align: Option<Align>,
 
     #[prop_or_default]
     pub class: Classes,
 
     #[prop_or_default]
-    pub size: Option<Size>,
+    pub children: Children,
 
     #[prop_or_default]
-    pub label: Option<AttrValue>,
-
-    #[prop_or_default]
-    pub help: Option<AttrValue>,
-
-    #[prop_or_default]
-    pub right: Option<AttrValue>,
-
-    #[prop_or_default]
-    pub left: Option<AttrValue>,
+    pub style: Option<AttrValue>,
 }
 
+/// All generic form controls, designed for consistency - [reference](https://bulma.io/documentation/form/general/)
+///
+/// Properties:
+/// - `focus: Callback<bool>` callback true for onfocus, false for onblur
+/// - `grouped: Grouped`
+/// - `multiline: GroupedMultiline`
+/// - `addons: Addons`
+/// - `align: Option<Align>`
 #[function_component(Field)]
 pub fn field(props: &Props) -> Html {
-    let help = match &props.help {
-        Some(help) => html! { <Help color={Color::Danger}> {help.clone()} </Help> },
-        None => html! {},
-    };
-
-    let label = match &props.label {
-        Some(label) => html! { <Label> {label.clone()} </Label> },
-        None => html! {},
-    };
-
-    let right = match &props.right {
-        Some(right) => html! {<Icon icon={right.clone()} size={props.size} class="is-right"/>},
-        None => html! {},
-    };
-
-    let left = match &props.left {
-        Some(left) => html! {<Icon icon={left.clone()} size={props.size} class="is-left"/>},
-        None => html! {},
+    let align = match props.align {
+        Some(Align::Centered) => "has-addons-centered",
+        Some(Align::Right) => "has-addons-right",
+        Some(Align::Left) => "has-addons-left",
+        None => "",
     };
 
     let class = classes!(
-        "control",
-        props.right.as_ref().map(|_| "has-icons-right"),
-        props.left.as_ref().map(|_| "has-icons-left")
+        "field",
+        props.class.clone(),
+        props.multiline,
+        props.addons,
+        props.grouped,
+        align
     );
 
-    let onkeypress = props.enter.reform(|e: KeyboardEvent| {
-        if e.key() == "Enter" {
-            e.prevent_default()
-        }
-    });
-
-    let inner = match props.size {
-        Some(context) => {
-            html! { <ContextProvider<Size> {context}> { for props.children.iter() } </ContextProvider<Size>>}
-        }
-        None => html! { for props.children.iter() },
-    };
+    let onfocus = props.focus.reform(|_| true);
+    let onblur = props.focus.reform(|_| false);
 
     html! {
-        <div class={classes!("field", props.class.clone())} {onkeypress}>
-            { label }
-            <div {class}>
-                { inner }
-                { right }
-                { left }
-            </div>
-            { help }
+        <div style={props.style.clone()} {class} {onfocus} {onblur}>
+            { for props.children.iter() }
         </div>
     }
 }

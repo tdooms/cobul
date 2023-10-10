@@ -1,5 +1,6 @@
 use std::ops::Deref;
-use yew::{hook, use_state, Callback, use_state_eq};
+
+use yew::{Callback, hook, use_state, use_state_eq};
 
 #[derive(Clone, Debug)]
 pub struct Model<T: Clone + PartialEq> {
@@ -14,20 +15,25 @@ impl<T: PartialEq + Clone> PartialEq for Model<T> {
 }
 
 impl<T: Clone + PartialEq> Model<T> {
-    pub fn combine(
-        input: &Callback<T>,
-        value: &Option<T>,
-        model: &Option<Model<T>>,
-    ) -> (Callback<T>, Option<T>) {
-        let input = match (input.clone(), model.as_ref().map(|x| x.input.clone())) {
-            (x, Some(input)) if x != Callback::noop() => input,
-            (input, _) => input,
-        };
-        let value = match (value.clone(), model.as_ref().map(|x| x.value.clone())) {
-            (Some(value), _) => Some(value),
-            (None, value) => value,
-        };
-        (input, value)
+    pub fn split(option: &Option<Self>) -> (Option<T>, Callback<T>) {
+        match option.clone() {
+            Some(Self { value, input }) => (Some(value), input),
+            None => (None, Callback::noop())
+        }
+    }
+}
+
+impl Model<bool> {
+    pub fn toggle(&self) -> Callback<()> {
+        let Model { input, value } = self.clone();
+        Callback::from(move |_| input.emit(!value))
+    }
+}
+
+impl Model<u32> {
+    pub fn increment(&self) -> Callback<()> {
+        let Model { input, value } = self.clone();
+        Callback::from(move |_| input.emit(value + 1))
     }
 }
 

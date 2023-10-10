@@ -69,7 +69,7 @@ fn render(props: &Props, kind: Kind, id: String) -> Html {
         props.rtl.then(|| "is-rtl"),
     );
 
-    let (input, value) = Model::combine(&props.input, &props.value, &props.model);
+    let (value, input) = Model::split(&props.model);
     let onchange = input.reform(move |_| !value.unwrap());
     let checked = value.unwrap_or_default();
 
@@ -84,13 +84,13 @@ fn render(props: &Props, kind: Kind, id: String) -> Html {
 ///  Make classic checkbox and radio sexier with different colors, sizes, and states  - [reference](https://wikiki.github.io/form/checkradio/)
 #[function_component(Checkbox)]
 pub fn checkbox(props: &Props) -> Html {
-    let id = use_state(|| rand::thread_rng().gen::<u64>().to_string());
+    let id = use_state(|| rand::thread_rng().gen::<u32>().to_string());
     render(props, Kind::Checkbox, (*id).clone())
 }
 
 ///  Make classic checkbox and radio sexier with different colors, sizes, and states  - [reference](https://wikiki.github.io/form/checkradio/)
 #[function_component(Radio)]
 pub fn radio(props: &Props) -> Html {
-    let id = use_state(|| rand::thread_rng().gen::<u64>().to_string());
+    let id = use_state(|| rand::thread_rng().gen::<u32>().to_string());
     render(props, Kind::Radio, (*id).clone())
 }
