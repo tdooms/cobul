@@ -150,6 +150,10 @@ pub fn button(props: &ButtonProps) -> Html {
         (Some(text), false) => html!{ text },
         (None, _) => html! { },
     };
+    let text = match props.icon.as_ref() {
+        Some(_) => html! {<span> {text} </span>},
+        None => text,
+    };
 
     let icon = match props.icon.clone() {
         None => html! {},
@@ -158,7 +162,7 @@ pub fn button(props: &ButtonProps) -> Html {
 
     html! {
         <button {style} {class} {onclick} disabled={props.disabled.0} data-tooltip={props.tooltip.clone()}>
-            {icon} <span> {text} </span>
+            {icon} {text}
         </button>
     }
 }
