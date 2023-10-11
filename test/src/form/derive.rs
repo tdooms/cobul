@@ -13,7 +13,7 @@ pub enum Gender {
     Other
 }
 
-#[derive(Form, Debug, Clone, Default)]
+#[derive(Form, Debug, Clone, Default, PartialEq)]
 pub struct Person {
     first: AttrValue,
     last: AttrValue,

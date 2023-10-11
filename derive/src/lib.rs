@@ -29,6 +29,7 @@ impl ToTokens for FieldOpts {
 #[darling(supports(struct_any))]
 struct TraitOpts {
     ident: syn::Ident,
+    vis: syn::Visibility,
     data: ast::Data<(), FieldOpts>,
 }
 
@@ -39,11 +40,15 @@ impl ToTokens for TraitOpts {
             _ => unimplemented!(),
         };
         let ident = &self.ident;
+        let vis = &self.vis;
 
         let newtype = syn::Ident::new(&format!("{}Form", self.ident), self.ident.span());
 
         let new = quote! {
-            pub struct #newtype(cobul::State<#ident>);
+            #[derive(Clone, PartialEq)]
+            #vis struct #newtype(cobul::State<#ident>);
+
+            impl implicit_clone::ImplicitClone for #newtype {}
 
             impl std::ops::Deref for #newtype {
                 type Target = #ident;

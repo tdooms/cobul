@@ -9,9 +9,12 @@ pub trait Form: ImplicitClone {
     fn from(state: State<Self>) -> Self::Wrapper;
 }
 
+#[derive(Clone, PartialEq)]
 pub struct State<T: Form> {
     model: Model<T>,
 }
+
+impl<T: Clone + Form> ImplicitClone for State<T> {}
 
 impl<T: Form + 'static> State<T> {
     pub fn change<F>(&self, _key: &'static str, map: impl Fn(&mut T) -> &mut F + 'static) -> Callback<F> {
