@@ -59,7 +59,7 @@ impl ToTokens for TraitOpts {
                 #(#fields)*
             }
 
-            impl Form for #ident {
+            impl cobul::Form for #ident {
                 type Wrapper = #newtype;
                 fn from(data: cobul::State<#ident>) -> Self::Wrapper {
                     #newtype(data)
