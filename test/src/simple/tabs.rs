@@ -1,7 +1,7 @@
 use yew::*;
 
 use cobul::*;
-use cobul::form::Tabs;
+use cobul::simple::Tabs;
 
 #[derive(derive_more::Display, strum::EnumIter, PartialEq, Clone, Copy)]
 enum Tab {

@@ -9,13 +9,15 @@ use crate::components::*;
 use crate::elements::*;
 use crate::extra::*;
 use crate::form::*;
+use crate::simple::*;
 use crate::functionality::*;
 
 mod elements;
-mod form;
+mod simple;
 mod functionality;
 mod extra;
 mod components;
+mod form;
 
 
 #[function_component(App)]
@@ -24,8 +26,9 @@ fn app() -> Html {
     content.insert("Components".into(), vec!["Modal".into()]);
     content.insert("Elements".into(), vec!["Block".into(), "Box".into(), "Button".into(), "Content".into(), "Icon".into(), "Notification".into()]);
     content.insert("Extra".into(), vec!["Checkradio".into(), "Loader".into(), "Slider".into(), "Switch".into(), "Tooltip".into()]);
-    content.insert("Form".into(), vec!["General".into(), "Dropdown".into(), "Pagination".into(), "Tabs".into()]);
+    content.insert("Form".into(), vec!["General".into(), "Derive".into()]);
     content.insert("Functionality".into(), vec!["Button Model".into(), "Field Help".into(), "Field Size".into(), "Slider Modal".into()]);
+    content.insert("Simple".into(), vec!["Dropdown".into(), "Pagination".into(), "Tabs".into()]);
 
     let content = Rc::new(content);
     let model: Model<(AttrValue, AttrValue)> = use_model(|| ("Components".into(), "Modal".into()));
@@ -44,9 +47,10 @@ fn app() -> Html {
         ("Extra", "Switch") => html! { <SwitchTest />},
         ("Extra", "Tooltip") => html! { <TooltipTest />},
         ("Form", "General") => html! { <GeneralTest />},
-        ("Form", "Dropdown") => html! { <DropdownTest />},
-        ("Form", "Pagination") => html! { <PaginationTest />},
-        ("Form", "Tabs") => html! { <TabsTest />},
+        ("Form", "Derive") => html! { <DeriveTest />},
+        ("Simple", "Dropdown") => html! { <DropdownTest />},
+        ("Simple", "Pagination") => html! { <PaginationTest />},
+        ("Simple", "Tabs") => html! { <TabsTest />},
         ("Functionality", "Button Model") => html! { <ButtonModelTest />},
         ("Functionality", "Field Help") => html! { <FieldHelpTest />},
         ("Functionality", "Field Size") => html! { <FieldSizeTest />},

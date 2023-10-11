@@ -13,5 +13,6 @@ yew = "0.21"
 
 log = "0.4"
 web-sys = "^0.3.59"
+implicit-clone = "0.4"
 strum = { version = "0.25", features = ["derive"] }
 

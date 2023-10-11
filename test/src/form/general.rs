@@ -4,6 +4,7 @@ use yew::*;
 
 use cobul::*;
 use cobul::{Button, Select};
+use cobul::icons::Solid;
 
 #[derive(Display, Clone, Copy, EnumIter, PartialEq)]
 pub enum SelectEnum {
@@ -15,57 +16,36 @@ pub enum SelectEnum {
 
 #[function_component(GeneralTest)]
 pub fn general() -> Html {
-    let model0 = use_model(|| "".to_string());
-    let model1 = use_model(|| "bulma".to_string());
+    let model0 = use_model(AttrValue::default);
+    let model1 = use_model(|| "bulma".into());
     let model2 = use_model(|| SelectEnum::SelectDropdown);
-    let model3 = use_model(|| "".to_string());
+    let model3 = use_model(|| "".into());
 
     html! {
         <>
-        <Field>
-            <Label> {"Name (Linked to Email field)"} </Label>
-            <Control>
-                <Input placeholder="Text input" model={model0.clone()} />
-            </Control>
+        <Field label="Name (Linked to Email field)">
+            <Input placeholder="Text input" model={model0.clone()} />
         </Field>
 
-        <Field>
-            <Label> {"Username"} </Label>
-            <Control right="fas fa-user" left="fas fa-check">
-                <Input color={Color::Success} placeholder="Text input" model={model1} />
-                <Help color={Color::Success}> {"This username is available"} </Help>
-            </Control>
+        <Field label="Username" help="Username is valid" right={Solid::User} left={Solid::Check} color={Color::Success}>
+            <Input  placeholder="Text input" model={model1} />
         </Field>
 
-        <Field>
-            <Label> {"Email"} </Label>
-            <Control right="fas fa-envelope" left="fas fa-exclamation-triangle">
-                <Input color={Color::Danger} placeholder="Text input" model={model0} />
-                <Help color={Color::Danger}> {"This email is invalid"} </Help>
-            </Control>
+        <Field label="Email" help="This email is invalid" right={Solid::Envelope} left={Solid::TriangleExclamation} color={Color::Danger}>
+            <Input placeholder="Text input" model={model0} />
         </Field>
 
-        <Field>
-            <Label> {"Subject"} </Label>
-            <Control>
-                <Select<SelectEnum> model={model2} />
-            </Control>
+        <Field label="Subject">
+            <Select<SelectEnum> model={model2} />
         </Field>
 
-        <Field>
-            <Label> {"Message"} </Label>
-            <Control>
-                <Textarea placeholder="Textarea" model={model3} />
-            </Control>
+        <Field label="Message">
+            <Textarea placeholder="Textarea" model={model3} style="resize:none" />
         </Field>
 
         <Field grouped=true>
-            <Control>
-                <Button color={Color::Link} text="Submit" />
-            </Control>
-            <Control>
-                <Button color={Color::Link} light=true text="Cancel" />
-            </Control>
+            <Button color={Color::Link} text="Submit" />
+            <Button color={Color::Link} light=true text="Cancel" />
         </Field>
         </>
     }

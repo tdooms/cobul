@@ -42,3 +42,4 @@ pub fn use_model_eq<T: Clone + PartialEq + 'static, F: FnOnce() -> T>(f: F) -> M
         value: (*state).clone(),
     }
 }
+

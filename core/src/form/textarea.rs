@@ -6,7 +6,7 @@ use cobul_props::general::{Disabled, FixedSize, Loading, Readonly, Static};
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {
-    pub model: Model<String>,
+    pub model: Model<AttrValue>,
 
     #[prop_or_default]
     pub placeholder: Option<AttrValue>,
@@ -79,7 +79,7 @@ pub fn textarea(props: &Props) -> Html {
 
     let Model { value, input } = props.model.clone();
 
-    let reform = |e: InputEvent| e.target_unchecked_into::<HtmlInputElement>().value();
+    let reform = |e: InputEvent| e.target_unchecked_into::<HtmlInputElement>().value().into();
     let oninput = input.reform(reform);
 
     html! {

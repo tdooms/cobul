@@ -6,7 +6,7 @@ use cobul_props::general::{Disabled, Loading, Readonly, Rounded, Static};
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {
-    pub model: Model<String>,
+    pub model: Model<AttrValue>,
 
     #[prop_or_default]
     pub name: Option<AttrValue>,
@@ -63,18 +63,21 @@ pub struct Props {
 /// - `statik: Static`
 #[function_component(Input)]
 pub fn input(props: &Props) -> Html {
+    let size = props.size.or(use_context::<Size>());
+    let color = props.color.or(use_context::<Color>());
+    
     let class = classes!(
         "input",
         props.class.clone(),
-        props.size,
-        props.color,
         props.rounded,
         props.loading,
         props.statik,
+        size,
+        color,
     );
 
     let Model { value, input } = props.model.clone();
-    let reform = |e: InputEvent| e.target_unchecked_into::<HtmlInputElement>().value();
+    let reform = |e: InputEvent| e.target_unchecked_into::<HtmlInputElement>().value().into();
 
     html! {
         <input

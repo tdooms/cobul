@@ -1,12 +1,11 @@
 use yew::*;
 
-use cobul::{Size, use_model};
-use cobul::form::{Field, Input};
+use cobul::{Size, use_model, Field, Input};
 use cobul::icons::Solid::MagnifyingGlass;
 
 #[function_component(FieldSizeTest)]
 pub fn field_size() -> Html {
-    let model = use_model(|| String::new());
+    let model = use_model(AttrValue::default);
     html! {
         <>
         <Field size={Size::Small} left={MagnifyingGlass}>

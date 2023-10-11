@@ -1,7 +1,7 @@
 use yew::*;
 
 use cobul::{Box, Column, Columns, ColumnSize, use_model};
-use cobul::form::Dropdown;
+use cobul::simple::Dropdown;
 
 #[derive(Debug, Clone, PartialEq, Copy, Default, strum::EnumIter, derive_more::Display)]
 pub enum TestEnum {

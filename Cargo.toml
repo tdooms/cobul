@@ -5,23 +5,27 @@ version = "0.1.0"
 edition = "2021"
 
 [workspace]
-members = ["form", "props", "core", "icons", "extra", "test"]
+members = ["simple", "props", "core", "icons", "extra", "test", "derive", "form"]
 
 [features]
 default = ["core", "props"]
 
-form = ["cobul_form"]
+simple = ["cobul_simple"]
 props = ["cobul_props"]
 core = ["cobul_core"]
 extra = ["cobul_extra"]
 icons = ["cobul_icons"]
+form = ["cobul_form"]
+derive = ["cobul_derive", "cobul_form", "cobul_props"]
 
 [dependencies]
-cobul_form = { path = "form", optional = true }
+cobul_simple = { path = "simple", optional = true }
 cobul_props = { path = "props", optional = true }
 cobul_core = { path = "core", optional = true }
 cobul_extra = { path = "extra", optional = true }
 cobul_icons = { path = "icons", optional = true }
+cobul_derive = { path = "derive", optional = true }
+cobul_form = { path = "form", optional = true }
 
 
 
