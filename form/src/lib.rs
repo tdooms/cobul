@@ -30,14 +30,15 @@ pub struct State<T: Form> {
 }
 
 impl<T: Form> State<T> {
-    pub fn error(&self, key: &'static str) -> Option<AttrValue> {
-        self.errors.get(key).filter(|_| self.dirty.contains(&key))
+    pub fn error(&self, key: &'static str, filter_dirty: bool) -> Option<AttrValue> {
+        self.errors.get(key).filter(|_| !filter_dirty || self.dirty.contains(&key))
     }
     pub fn errors(&self, filter_dirty: bool) -> IMap<&'static str, AttrValue> {
-        match filter_dirty {
-            false => (*self.errors).clone(),
-            true => (*self.errors).clone().iter().filter(|(k, _)| self.dirty.contains(k)).collect(),
-        }
+        let errors = (*self.errors).clone();
+        errors.iter().filter(|(k, _)| !filter_dirty || self.dirty.contains(k)).collect()
+    }
+    pub fn valid(&self) -> bool {
+        self.errors(false).is_empty()
     }
 }
 
