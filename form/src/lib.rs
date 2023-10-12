@@ -7,7 +7,7 @@ use validator::Validate;
 
 use cobul_props::{Model, use_model, use_model_eq};
 
-fn validate(value: &impl Validate) -> IMap<&'static str, AttrValue> {
+pub fn validate(value: &impl Validate) -> IMap<&'static str, AttrValue> {
     value.validate()
         .err()
         .unwrap_or_default()

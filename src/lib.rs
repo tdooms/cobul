@@ -23,7 +23,7 @@ pub mod icons {
 }
 
 #[cfg(feature = "form")]
-pub use cobul_form::{Form, State, use_form, use_form_eq, use_form_with_model};
+pub use cobul_form::{Form, State, validate, use_form, use_form_eq, use_form_with_model};
 
 
 #[cfg(feature = "derive")]
