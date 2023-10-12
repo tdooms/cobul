@@ -8,4 +8,5 @@ edition = "2021"
 [dependencies]
 yew = "0.21"
 cobul_props = { path = "../props" }
-implicit-clone = "0.4"
+implicit-clone = { version = "0.4", features = ["serde"] }
+validator = { git = "https://github.com/tdooms/validator.git" }

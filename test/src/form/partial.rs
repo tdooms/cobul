@@ -1,9 +1,10 @@
 use implicit_clone::ImplicitClone;
+use validator::Validate;
 use yew::*;
 use cobul::*;
 
 
-#[derive(Form, Debug, Clone, Default, PartialEq)]
+#[derive(Form, Debug, Clone, Default, PartialEq, Validate)]
 struct Full {
     left: AttrValue,
     right: AttrValue,
@@ -36,7 +37,7 @@ pub fn partial() -> Html {
         <>
         <Right form={form.clone()} />
         <Left form={form.clone()} />
-        <Notification> {format!("{:?}", *form)} </Notification>
+        <Notification> {format!("{:?}", form.value())} </Notification>
         </>
     }
 }

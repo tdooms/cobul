@@ -15,4 +15,5 @@ log = "0.4"
 web-sys = "^0.3.59"
 implicit-clone = "0.4"
 strum = { version = "0.25", features = ["derive"] }
+rand = "0.8.5"
 

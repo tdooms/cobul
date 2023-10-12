@@ -63,8 +63,8 @@ pub struct Props {
 /// - `statik: Static`
 #[function_component(Input)]
 pub fn input(props: &Props) -> Html {
-    let size = props.size.or(use_context::<Size>());
-    let color = props.color.or(use_context::<Color>());
+    let size = props.size.or(use_context::<Option<Size>>().flatten());
+    let color = props.color.or(use_context::<Option<Color>>().flatten());
     
     let class = classes!(
         "input",

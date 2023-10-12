@@ -51,12 +51,16 @@ impl ToTokens for TraitOpts {
             impl implicit_clone::ImplicitClone for #newtype {}
 
             impl std::ops::Deref for #newtype {
-                type Target = #ident;
-                fn deref(&self) -> &Self::Target { &self.0.deref() }
+                type Target = cobul::State<#ident>;
+                fn deref(&self) -> &Self::Target { &self.0 }
             }
 
             impl #newtype {
                 #(#fields)*
+
+                #vis fn value(&self) -> #ident {
+                    std::ops::Deref::deref(&self.0).clone()
+                }
             }
 
             impl cobul::Form for #ident {

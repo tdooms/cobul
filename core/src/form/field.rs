@@ -1,8 +1,9 @@
 use yew::prelude::*;
 
-use crate::{Help, Icon, Label};
 use cobul_props::{Align, Color, Size};
 use cobul_props::general::{Addons, Grouped, GroupedMultiline};
+
+use crate::{Help, Icon, Label};
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {
@@ -44,13 +45,17 @@ pub struct Props {
 
     #[prop_or_default]
     pub left: Option<AttrValue>,
+
+    #[prop_or_default]
+    pub reserve: bool,
 }
 
 #[function_component(Field)]
 pub fn field(props: &Props) -> Html {
-    let help = match &props.help {
-        Some(help) => html! { <Help color={props.color.clone()}> {help.clone()} </Help> },
-        None => html! {},
+    let help = match (props.help.clone(), props.reserve) {
+        (Some(help), _) => html! { <Help color={props.color.clone()}> {help} </Help> },
+        (None, true) => html! { <Help style="visibility: hidden"> {"."} </Help> },
+        (None, false) => html! {},
     };
 
     let label = match &props.label {
@@ -82,16 +87,17 @@ pub fn field(props: &Props) -> Html {
     );
 
     let first = match props.children.iter().next() {
-        Some(first) => html! { <div {class}> {first} {right} {left} </div> },
+        Some(first) => first,
         None => return html! {},
     };
-    let first = match props.size {
-        Some(context) => html! { <ContextProvider<Size> {context}> { first } </ContextProvider<Size>>},
-        None => html! { first },
-    };
-    let first = match props.color {
-        Some(context) => html! { <ContextProvider<Color> {context}> { first } </ContextProvider<Color>>},
-        None => html! { first },
+    let color = if props.help.is_some() { props.color } else { None };
+
+    let first = html! {
+        <ContextProvider<Option<Size>> context={props.size}>
+        <ContextProvider<Option<Color>> context={color}>
+            <div {class}> {first} {right} {left} </div>
+        </ContextProvider<Option<Color>>>
+        </ContextProvider<Option<Size>>>
     };
 
     let rest = props.children.iter().skip(1).map(|child| html! {
