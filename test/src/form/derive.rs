@@ -36,11 +36,11 @@ pub fn derive_test() -> Html {
 
     html! {
         <>
-        <Field label="First name" help={form.error("first")} color={Color::Danger}>
+        <Field label="First name" help={form.error("first", false)} color={Color::Danger}>
             <Input model={form.first()} />
         </Field>
 
-        <Field label="Last name" help={form.error("last")} color={Color::Success}>
+        <Field label="Last name" help={form.error("last", false)} color={Color::Success}>
             <Input model={form.last()} />
         </Field>
 

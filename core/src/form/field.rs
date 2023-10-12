@@ -104,8 +104,12 @@ pub fn field(props: &Props) -> Html {
         <div> { child } </div>
     });
 
-    let onkeypress = props.enter.reform(|e: KeyboardEvent| {
-        if e.key() == "Enter" { e.prevent_default() }
+    let enter = props.enter.clone();
+    let onkeypress = Callback::from(move |e: KeyboardEvent| {
+        if e.key() == "Enter" {
+            e.prevent_default();
+            enter.emit(());
+        }
     });
 
     let class = classes!("field",
