@@ -12,6 +12,10 @@ impl<T: Clone> Model<T> {
     pub fn constant(value: T) -> Model<T> {
         Model { input: Callback::noop(), value }
     }
+
+    pub fn emit(&self, value: T) {
+        self.input.emit(value)
+    }
 }
 
 impl<T: Clone> Deref for Model<T> {

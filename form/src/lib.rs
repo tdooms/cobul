@@ -40,6 +40,18 @@ impl<T: Form> State<T> {
     pub fn valid(&self) -> bool {
         self.errors(false).is_empty()
     }
+
+    pub fn value(&self) -> T {
+        self.model.value.clone()
+    }
+
+    pub fn input(&self) -> Callback<T> {
+        self.model.input.clone()
+    }
+
+    pub fn emit(&self, value: T) {
+        self.model.emit(value)
+    }
 }
 
 impl<T: Clone + Form> ImplicitClone for State<T> {}

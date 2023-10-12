@@ -57,10 +57,6 @@ impl ToTokens for TraitOpts {
 
             impl #newtype {
                 #(#fields)*
-
-                #vis fn value(&self) -> #ident {
-                    std::ops::Deref::deref(&self.0).clone()
-                }
             }
 
             impl cobul::Form for #ident {
