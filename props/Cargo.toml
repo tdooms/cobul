@@ -8,3 +8,4 @@ yew = "0.21"
 
 strum = { version = "0.25", features = ["derive"] }
 derive_more = "*"
+implicit-clone = "0.4"

@@ -4,15 +4,26 @@ use quote::{quote, ToTokens};
 use syn::parse_macro_input;
 
 #[derive(FromField)]
+#[darling(attributes(form))]
 struct FieldOpts {
     ident: Option<syn::Ident>,
     ty: syn::Type,
+
+    #[darling(default)]
+    decompose: bool,
 }
 
 impl ToTokens for FieldOpts {
     fn to_tokens(&self, tokens: &mut TokenStream) {
         let ident = self.ident.as_ref().unwrap();
         let ty = &self.ty;
+
+        let new = quote! {
+            pub fn #ident(&self) -> cobul::Model<#ty> {
+                let input = self.0.change(stringify!(#ident), |x| &mut x.#ident);
+                cobul::Model{ input, value: self.#ident.clone() }
+            }
+        };
 
         let new = quote! {
             pub fn #ident(&self) -> cobul::Model<#ty> {

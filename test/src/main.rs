@@ -26,7 +26,7 @@ fn app() -> Html {
     content.insert("Components".into(), vec!["Modal".into()]);
     content.insert("Elements".into(), vec!["Block".into(), "Box".into(), "Button".into(), "Content".into(), "Icon".into(), "Notification".into()]);
     content.insert("Extra".into(), vec!["Checkradio".into(), "Loader".into(), "Slider".into(), "Switch".into(), "Tooltip".into()]);
-    content.insert("Form".into(), vec!["General".into(), "Derive".into(), "Partial".into()]);
+    content.insert("Form".into(), vec!["General".into(), "Derive".into(), "Partial".into(), "Lists".into()]);
     content.insert("Functionality".into(), vec!["Button Model".into(), "Field Help".into(), "Field Size".into(), "Slider Modal".into()]);
     content.insert("Simple".into(), vec!["Dropdown".into(), "Pagination".into(), "Tabs".into()]);
 
@@ -48,6 +48,7 @@ fn app() -> Html {
         ("Extra", "Tooltip") => html! { <TooltipTest />},
         ("Form", "General") => html! { <GeneralTest />},
         ("Form", "Derive") => html! { <DeriveTest />},
+        ("Form", "Lists") => html! { <ListsTest />},
         ("Form", "Partial") => html! { <PartialTest />},
         ("Simple", "Dropdown") => html! { <DropdownTest />},
         ("Simple", "Pagination") => html! { <PaginationTest />},
