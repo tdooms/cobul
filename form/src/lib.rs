@@ -48,10 +48,6 @@ impl<T: Form> State<T> {
     pub fn input(&self) -> Callback<T> {
         self.model.input.clone()
     }
-
-    pub fn emit(&self, value: T) {
-        self.model.emit(value)
-    }
 }
 
 impl<T: Clone + Form> ImplicitClone for State<T> {}
@@ -78,7 +74,7 @@ impl<T: Form + Validate + 'static> State<T> {
 
 impl<T: Form> Deref for State<T> {
     type Target = T;
-    fn deref(&self) -> &Self::Target { &self.model.value }
+    fn deref(&self) -> &Self::Target { &self.model }
 }
 
 #[hook]

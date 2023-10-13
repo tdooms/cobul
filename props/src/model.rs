@@ -1,8 +1,8 @@
 use std::ops::Deref;
 
+use implicit_clone::unsync::IArray;
 use yew::{Callback, hook, use_state, use_state_eq};
 use yew::html::ImplicitClone;
-use implicit_clone::unsync::IArray;
 
 #[derive(Clone, Debug, PartialEq)]
 pub struct Model<T: Clone> {
@@ -20,9 +20,15 @@ impl<T: Clone> Model<T> {
     pub fn emit(&self, value: T) {
         self.input.emit(value)
     }
+}
+impl<T: Clone + 'static> Model<T> {
+    pub fn modify<I>(&self, function: impl Fn(T, I) -> T + 'static) -> Callback<I> {
+        let Self { input, value } = self.clone();
+        input.reform(move |inner| function(value.clone(), inner))
+    }
 
-    pub fn reform(&self, function: impl Fn(T) -> T) {
-        self.input.emit(function(self.value.clone()))
+    pub fn reform<I>(&self, function: impl Fn(I) -> T + 'static) -> Callback<I> {
+        self.input.reform(function)
     }
 }
 
@@ -36,7 +42,7 @@ impl<I: ImplicitClone> Model<IArray<I>> {
             new.into()
         };
 
-        Model{ value: self.value[index].clone(), input: self.input.reform(reform) }
+        Model { value: self.value[index].clone(), input: self.input.reform(reform) }
     }
     pub fn decompose(self) -> IArray<Model<I>> {
         self.value.iter().enumerate().map(|(idx, _)| self.clone().mapper(idx)).collect()
