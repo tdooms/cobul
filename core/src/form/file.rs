@@ -59,7 +59,9 @@ pub fn file(props: &Props) -> Html {
         props.boxed.or(boxed),
         props.fullwidth.or(fullwidth),
         props.align.or(align),
-        props.class.clone()
+        props.class.clone(),
+        props.color.clone(),
+        props.size.clone(),
     );
 
     let onchange = props.input.reform(|e: Event| {
