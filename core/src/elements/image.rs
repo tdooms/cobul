@@ -37,6 +37,11 @@ pub fn image(props: &Props) -> Html {
 
     let loaded = use_state(|| false);
 
+    {
+        let cloned = loaded.clone();
+        use_effect_with(props.src.clone(), move |_| cloned.set(false));
+    }
+
     let onload = {
         let cloned = loaded.clone();
         Callback::from(move |_| cloned.set(true))
