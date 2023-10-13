@@ -73,7 +73,7 @@ impl<T: Form + Validate + 'static> State<T> {
 }
 
 impl<T: Form> Deref for State<T> {
-    type Target = T;
+    type Target = Model<T>;
     fn deref(&self) -> &Self::Target { &self.model }
 }
 
