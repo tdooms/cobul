@@ -1,7 +1,7 @@
 use std::ops::Deref;
 
 use implicit_clone::unsync::IArray;
-use yew::{Callback, hook, use_state, use_state_eq};
+use yew::{Callback, hook, use_effect_with, use_memo, use_state, use_state_eq, UseStateHandle};
 use yew::html::ImplicitClone;
 
 #[derive(Clone, Debug, PartialEq)]
@@ -21,6 +21,13 @@ impl<T: Clone> Model<T> {
         self.input.emit(value)
     }
 }
+
+impl<T: Clone + 'static> Model<Option<T>> {
+    pub fn transpose(self) -> Option<Model<T>> {
+        self.value.map(|value| Model { input: self.input.reform(Some), value })
+    }
+}
+
 impl<T: Clone + 'static> Model<T> {
     pub fn modify<I>(&self, function: impl Fn(T, I) -> T + 'static) -> Callback<I> {
         let Self { input, value } = self.clone();
@@ -29,6 +36,15 @@ impl<T: Clone + 'static> Model<T> {
 
     pub fn reform<I>(&self, function: impl Fn(I) -> T + 'static) -> Callback<I> {
         self.input.reform(function)
+    }
+}
+
+impl<T: Clone + 'static> From<UseStateHandle<T>> for Model<T> {
+    fn from(state: UseStateHandle<T>) -> Self {
+        let value = (*state).clone();
+        let input = Callback::from(move |new| state.set(new));
+
+        Model { input, value }
     }
 }
 
@@ -68,23 +84,24 @@ impl<T: Clone> Deref for Model<T> {
 
 #[hook]
 pub fn use_model<T: Clone + 'static, F: FnOnce() -> T>(f: F) -> Model<T> {
-    let state = use_state(f);
-    let cloned = state.clone();
-
-    Model {
-        input: Callback::from(move |new| cloned.set(new)),
-        value: (*state).clone(),
-    }
+    use_state(f).into()
 }
 
 #[hook]
 pub fn use_model_eq<T: Clone + PartialEq + 'static, F: FnOnce() -> T>(f: F) -> Model<T> {
-    let state = use_state_eq(f);
-    let cloned = state.clone();
+    use_state_eq(f).into()
+}
 
-    Model {
-        input: Callback::from(move |new| cloned.set(new)),
-        value: (*state).clone(),
-    }
+#[hook]
+pub fn use_model_with<D: PartialEq + Clone + 'static, T: Clone + 'static, F: Fn(&D) -> T + 'static>(deps: D, f: F) -> Model<T> {
+    let output = use_memo(deps.clone(), |deps| f(deps));
+    let state = use_state(|| (*output).clone());
+
+    let cloned = state.clone();
+    use_effect_with(deps, move |_| {
+        cloned.set((*output).clone());
+    });
+
+    state.into()
 }
 
