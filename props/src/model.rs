@@ -28,6 +28,12 @@ impl<T: Clone + 'static> Model<Option<T>> {
     }
 }
 
+impl<T: Clone + 'static, E: Clone + 'static> Model<Result<T, E>> {
+    pub fn transpose(self) -> Result<Model<T>, E> {
+        self.value.map(|value| Model { input: self.input.reform(Ok), value })
+    }
+}
+
 impl<T: Clone + 'static> Model<T> {
     pub fn modify<I>(&self, function: impl Fn(T, I) -> T + 'static) -> Callback<I> {
         let Self { input, value } = self.clone();

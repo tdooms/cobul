@@ -14,7 +14,7 @@ pub struct Party {
 impl ImplicitClone for Party {}
 
 #[function_component(ListsTest)]
-pub fn lists(props: &Props) -> Html {
+pub fn lists() -> Html {
     let form = use_form::<Party>();
     let click = form.members().push().reform(|_| IString::default());
 
