@@ -5,7 +5,7 @@ use implicit_clone::sync::{IArray, IMap};
 use yew::*;
 use validator::Validate;
 
-use cobul_props::{Model, use_model, use_model_eq};
+use cobul_model::{Model, use_model, use_model_eq};
 
 pub fn validate(value: &impl Validate) -> IMap<&'static str, AttrValue> {
     value.validate()

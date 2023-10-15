@@ -9,6 +9,7 @@ license = "GNU GPLv3"
 
 [dependencies]
 cobul_props = { path = "../props" }
+cobul_model = { path = "../model" }
 yew = "0.21"
 
 log = "0.4"

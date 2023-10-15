@@ -1,7 +1,8 @@
 use strum::IntoEnumIterator;
 use yew::prelude::*;
 
-use cobul_props::{Align, Color, Model, Size};
+use cobul_props::{Align, Color, Size};
+use cobul_model::Model;
 use cobul_core as core;
 
 #[derive(Clone, Properties, PartialEq)]

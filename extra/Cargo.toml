@@ -6,6 +6,7 @@ edition = "2021"
 [dependencies]
 cobul_core = { path = "../core" }
 cobul_props = { path = "../props" }
+cobul_model = { path = "../model" }
 
 yew = "0.21"
 derive_more = "0.99"

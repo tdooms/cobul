@@ -1,0 +1,8 @@
+[package]
+name = "cobul_model"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+yew = "0.21"
+implicit-clone = "0.4"

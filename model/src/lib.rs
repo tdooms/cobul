@@ -10,7 +10,7 @@ pub struct Model<T: Clone> {
     pub value: T,
 }
 
-impl<T: Clone> ImplicitClone for Model<T> {}
+impl<T: ImplicitClone> ImplicitClone for Model<T> {}
 
 impl<T: Clone> Model<T> {
     pub fn constant(value: T) -> Model<T> {
@@ -75,6 +75,15 @@ impl<I: ImplicitClone> Model<IArray<I>> {
         let reform = move |value| {
             let mut new = array.to_vec();
             new.push(value);
+            new.into()
+        };
+        input.reform(reform)
+    }
+    pub fn remove(&self) -> Callback<usize> {
+        let Model { input, value: array } = self.clone();
+        let reform = move |value| {
+            let mut new = array.to_vec();
+            new.remove(value);
             new.into()
         };
         input.reform(reform)

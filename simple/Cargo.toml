@@ -9,6 +9,7 @@ edition = "2021"
 cobul_core = { path = "../core" }
 cobul_props = { path = "../props" }
 cobul_icons = { path = "../icons" }
+cobul_model = { path = "../model" }
 
 log = "0.4"
 strum = { version = "0.25", features = ["derive"] }

@@ -1,7 +1,8 @@
 use strum::IntoEnumIterator;
 use yew::prelude::*;
 
-use cobul_props::{Align, Model, Size};
+use cobul_props::{Align, Size};
+use cobul_model::Model;
 use cobul_props::general::{Boxed, Fullwidth, Toggle, ToggleRounded};
 use cobul_core as core;
 

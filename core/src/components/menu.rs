@@ -3,7 +3,8 @@ use std::rc::Rc;
 
 use yew::prelude::*;
 
-use cobul_props::{general::Active, Model};
+use cobul_props::{general::Active};
+use cobul_model::Model;
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 struct MenuItemProps {

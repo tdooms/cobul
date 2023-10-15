@@ -1,7 +1,8 @@
 use rand::Rng;
 use yew::*;
 
-use cobul_props::{Color, Model, Size};
+use cobul_props::{Color, Size};
+use cobul_model::Model;
 use cobul_props::general::{Disabled, Outlined, Rounded, Rtl, Thin};
 
 #[derive(Properties, Debug, PartialEq, Clone)]

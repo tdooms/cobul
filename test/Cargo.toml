@@ -5,7 +5,7 @@ edition = "2021"
 
 [dependencies]
 yew = { version = "0.21", features = ["csr"] }
-cobul = { path = "..", features = ["extra", "simple", "icons", "form", "derive"] }
+cobul = { path = "..", features = ["extra", "simple", "icons", "form", "derive", "props", "model"] }
 gloo-timers = "0.3"
 implicit-clone = "0.4"
 

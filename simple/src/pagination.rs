@@ -1,6 +1,7 @@
 use yew::*;
 
-use cobul_props::{Align, Model, Size};
+use cobul_props::{Align, Size};
+use cobul_model::Model;
 use cobul_core as core;
 
 #[derive(Properties, PartialEq, Clone)]

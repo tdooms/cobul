@@ -22,6 +22,9 @@ pub mod icons {
     pub use cobul_icons::{Brands, Icon, Regular, Solid};
 }
 
+#[cfg(feature = "model")]
+pub use cobul_model::*;
+
 #[cfg(feature = "form")]
 pub use cobul_form::{Form, State, validate, use_form, use_form_eq, use_form_with_model};
 
