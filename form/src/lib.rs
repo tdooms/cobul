@@ -1,7 +1,7 @@
 use std::ops::Deref;
 
 use implicit_clone::ImplicitClone;
-use implicit_clone::sync::{IArray, IMap};
+use implicit_clone::unsync::{IArray, IMap};
 use yew::*;
 use validator::Validate;
 

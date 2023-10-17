@@ -3,8 +3,8 @@ use yew::*;
 use cobul::{Box, Color, Field, use_model};
 use cobul::extra::{Checkbox, Radio};
 
-#[function_component(CheckradioTest)]
-pub fn checkradio() -> Html {
+#[function_component(CheckRadioTest)]
+pub fn check_radio() -> Html {
     let model = use_model(|| false);
 
     // TODO: The radio doesn't untick for some reason.

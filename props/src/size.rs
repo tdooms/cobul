@@ -103,6 +103,31 @@ impl Into<Classes> for HeaderSize {
     }
 }
 
+#[derive(Clone, Debug, Display, PartialEq, Copy)]
+#[display(fmt = "is-{}")]
+pub enum TextSize {
+    #[display(fmt = "1")]
+    Is1,
+    #[display(fmt = "2")]
+    Is2,
+    #[display(fmt = "3")]
+    Is3,
+    #[display(fmt = "4")]
+    Is4,
+    #[display(fmt = "5")]
+    Is5,
+    #[display(fmt = "6")]
+    Is6,
+    #[display(fmt = "7")]
+    Is7,
+}
+
+impl Into<Classes> for TextSize {
+    fn into(self) -> Classes {
+        Classes::from(self.to_string())
+    }
+}
+
 /// The 2 sizes available for sections, which controls spacing - [reference](https://bulma.io/documentation/layout/section/)
 #[derive(Clone, Debug, Display, PartialEq, Copy)]
 #[display(fmt = "is-{}")]

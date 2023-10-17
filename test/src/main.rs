@@ -1,8 +1,5 @@
-use std::collections::BTreeMap;
-use std::rc::Rc;
-
+use implicit_clone::unsync::{IString, IMap, IArray};
 use yew::prelude::*;
-
 use cobul::{Box, Column, Columns, ColumnSize, Container, Menu, Model, use_model};
 
 use crate::components::*;
@@ -22,16 +19,24 @@ mod form;
 
 #[function_component(App)]
 fn app() -> Html {
-    let mut content = BTreeMap::new();
-    content.insert("Components".into(), vec!["Modal".into()]);
-    content.insert("Elements".into(), vec!["Block".into(), "Box".into(), "Button".into(), "Content".into(), "Icon".into(), "Notification".into()]);
-    content.insert("Extra".into(), vec!["Checkradio".into(), "Loader".into(), "Slider".into(), "Switch".into(), "Tooltip".into()]);
-    content.insert("Form".into(), vec!["General".into(), "Derive".into(), "Partial".into(), "Lists".into()]);
-    content.insert("Functionality".into(), vec!["Button Model".into(), "Field Help".into(), "Field Size".into(), "Slider Modal".into(), "Model With".into()]);
-    content.insert("Simple".into(), vec!["Dropdown".into(), "Pagination".into(), "Tabs".into()]);
-
-    let content = Rc::new(content);
     let model: Model<(AttrValue, AttrValue)> = use_model(|| ("Components".into(), "Modal".into()));
+
+    let components: IArray<_> = ["Modal"].into_iter().map(Into::into).collect();
+    let elements: IArray<_> = ["Block", "Box", "Button", "Content", "Icon", "Notification"].into_iter().map(Into::into).collect();
+    let extra: IArray<_> = ["Check & Radio", "Loader", "Slider", "Switch", "Tooltip"].into_iter().map(Into::into).collect();
+    let form: IArray<_> = ["General", "Derive", "Lists", "Partial"].into_iter().map(Into::into).collect();
+    let simple: IArray<_> = ["Dropdown", "Pagination", "Tabs"].into_iter().map(Into::into).collect();
+    let functionality: IArray<_> = ["Button Model", "Field Help", "Field Size", "Slider Modal", "Model With"].into_iter().map(Into::into).collect();
+
+    let content: IMap<_, _> = [
+        ("Components".into(), components),
+        ("Elements".into(), elements),
+        ("Extra".into(), extra),
+        ("Form".into(), form),
+        ("Simple".into(), simple),
+        ("Functionality".into(), functionality),
+    ].into_iter().collect();
+
 
     let inner = match (model.value.0.as_str(), model.value.1.as_str()) {
         ("Components", "Modal") => html! { <ModalTest />},
@@ -41,7 +46,7 @@ fn app() -> Html {
         ("Elements", "Content") => html! { <ContentTest />},
         ("Elements", "Icon") => html! { <IconTest />},
         ("Elements", "Notification") => html! { <NotificationTest />},
-        ("Extra", "Checkradio") => html! { <CheckradioTest />},
+        ("Extra", "Check & Radio") => html! { <CheckRadioTest />},
         ("Extra", "Loader") => html! { <LoaderTest />},
         ("Extra", "Slider") => html! { <SliderTest />},
         ("Extra", "Switch") => html! { <SwitchTest />},

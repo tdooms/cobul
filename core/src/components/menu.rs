@@ -1,10 +1,8 @@
-use std::collections::BTreeMap;
-use std::rc::Rc;
-
+use implicit_clone::unsync::{IArray, IMap};
 use yew::prelude::*;
 
-use cobul_props::{general::Active};
 use cobul_model::Model;
+use cobul_props::general::Active;
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 struct MenuItemProps {
@@ -14,41 +12,37 @@ struct MenuItemProps {
 
 #[function_component(MenuItem)]
 fn menu_item(props: &MenuItemProps) -> Html {
-    let onclick = props.model.input.reform(|_| true);
+    let onclick = props.model.reform(|_| true);
     let class = classes!(Active(props.model.value));
+
     html! { <li {onclick}> <a {class}> {props.text.clone()} </a> </li> }
 }
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 struct MenuListProps {
     pub label: AttrValue,
-    pub list: Vec<AttrValue>,
+    pub list: IArray<AttrValue>,
+
     pub model: Model<(AttrValue, AttrValue)>,
 }
 
 #[function_component(MenuList)]
 fn menu_list(props: &MenuListProps) -> Html {
+    let MenuListProps { label, list, model } = props.clone();
     let Model { value, input } = props.model.clone();
-    let k = props.label.clone();
 
-    let mapper = move |v: &AttrValue| {
-        let k_copy = k.clone();
-        let v_copy = v.clone();
-
-        let model = Model {
-            value: (&value.0, &value.1) == (&k, &v),
-            input: input.reform(move |_| (k_copy.clone(), v_copy.clone())),
-        };
-        (v.clone(), model)
+    let mapper = move |item: AttrValue| {
+        let value = (label.clone(), item.clone()) == value;
+        let (label, item) = (label.clone(), item.clone());
+        let input = input.reform(move |_| (label.clone(), item.clone()));
+        Model { value, input }
     };
-
-    let list = props.list.iter().map(mapper).collect::<Vec<_>>();
 
     html! {
         <>
         <p class="menu-label"> {props.label.clone()} </p>
         <ul class="menu-list">
-            {for list.into_iter().map(move |(text, model)| html! { <MenuItem {text} {model} /> })}
+            {for list.iter().map(move |text| html! { <MenuItem text={text.clone()} model={mapper(text)} /> })}
         </ul>
         </>
     }
@@ -56,7 +50,7 @@ fn menu_list(props: &MenuListProps) -> Html {
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {
-    pub content: Rc<BTreeMap<AttrValue, Vec<AttrValue>>>,
+    pub content: IMap<AttrValue, IArray<AttrValue>>,
     pub model: Model<(AttrValue, AttrValue)>,
 
     #[prop_or_default]

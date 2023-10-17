@@ -1,4 +1,5 @@
 use yew::prelude::*;
+use cobul_model::Model;
 
 use cobul_props::general::{Active, Hoverable, Right, Up};
 pub use divider::DropdownDivider;
@@ -9,10 +10,11 @@ mod item;
 
 #[derive(Clone, Debug, Properties, PartialEq)]
 pub struct Props {
+    pub model: Model<bool>,
+    pub trigger: Html,
+
     #[prop_or_default]
     pub children: Children,
-
-    pub trigger: Html,
 
     #[prop_or_default]
     pub class: Classes,
@@ -25,12 +27,6 @@ pub struct Props {
 
     #[prop_or_default]
     pub hoverable: Hoverable,
-
-    #[prop_or_default]
-    pub focus: Callback<bool>,
-
-    #[prop_or_default]
-    pub active: Active,
 
     #[prop_or_default]
     pub fullwidth: bool,
@@ -46,13 +42,13 @@ pub fn dropdown(props: &Props) -> Html {
         "dropdown",
         props.class.clone(),
         props.hoverable,
-        props.active,
+        Active(props.model.value),
         props.up,
         props.right,
         props.fullwidth.then(|| "is-flex"),
     );
 
-    let onblur = props.focus.reform(|_| false);
+    let onblur = props.model.reform(|_| false);
     let onmousedown = Callback::from(|e: MouseEvent| e.prevent_default());
 
     let style = props.fullwidth.then(|| "z-index:100;width:100%");
