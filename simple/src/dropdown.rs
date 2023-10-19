@@ -54,7 +54,7 @@ pub fn dropdown<T>(props: &Props<T>) -> Html
         T: IntoEnumIterator + ToString + Copy + PartialEq + 'static,
 {
     let active = use_model_eq(|| false);
-    let onclick = active.reform(|_| false);
+    let onclick = active.reform(move |_| !active.value);
 
     let class = classes!("button", "is-flex", "is-justify-content-space-between", "is-fullwidth", props.size);
     let trigger = html! {

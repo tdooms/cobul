@@ -51,14 +51,14 @@ pub fn dropdown(props: &Props) -> Html {
     let onblur = props.model.reform(|_| false);
     let onmousedown = Callback::from(|e: MouseEvent| e.prevent_default());
 
-    let style = props.fullwidth.then(|| "z-index:100;width:100%");
+    let style = props.fullwidth.then(|| "width:100%").unwrap_or_default();
 
     html! {
         <div style={props.style.clone()} {class} {onblur}>
             <div class="dropdown-trigger is-clickable" style={style.clone()}>
                 { props.trigger.clone() }
             </div>
-            <div class="dropdown-menu" role="menu" {style}>
+            <div class="dropdown-menu" role="menu" style={format!("z-index:100;{style}")}>
                 <div class="dropdown-content" {onmousedown}>
                     { for props.children.iter() }
                 </div>
