@@ -1,4 +1,4 @@
-use implicit_clone::unsync::{IString, IMap, IArray};
+use implicit_clone::unsync::{IMap, IArray};
 use yew::prelude::*;
 use cobul::{Box, Column, Columns, ColumnSize, Container, Menu, Model, use_model};
 
@@ -26,7 +26,7 @@ fn app() -> Html {
     let extra: IArray<_> = ["Check & Radio", "Loader", "Slider", "Switch", "Tooltip"].into_iter().map(Into::into).collect();
     let form: IArray<_> = ["General", "Derive", "Lists", "Partial"].into_iter().map(Into::into).collect();
     let simple: IArray<_> = ["Dropdown", "Pagination", "Tabs"].into_iter().map(Into::into).collect();
-    let functionality: IArray<_> = ["Button Model", "Field Help", "Field Size", "Slider Modal", "Model With"].into_iter().map(Into::into).collect();
+    let functionality: IArray<_> = ["Button Model", "Field Help", "Field Size", "Slider Modal", "Model With", "Model Const"].into_iter().map(Into::into).collect();
 
     let content: IMap<_, _> = [
         ("Components".into(), components),
@@ -38,7 +38,7 @@ fn app() -> Html {
     ].into_iter().collect();
 
 
-    let inner = match (model.value.0.as_str(), model.value.1.as_str()) {
+    let inner = match (model.value().0.as_str(), model.value().1.as_str()) {
         ("Components", "Modal") => html! { <ModalTest />},
         ("Elements", "Block") => html! { <BlockTest />},
         ("Elements", "Box") => html! { <BoxTest />},
@@ -63,6 +63,7 @@ fn app() -> Html {
         ("Functionality", "Field Size") => html! { <FieldSizeTest />},
         ("Functionality", "Slider Modal") => html! { <SliderModalTest />},
         ("Functionality", "Model With") => html! { <ModelWithTest />},
+        ("Functionality", "Model Const") => html! { <ModelConstantsTest />},
         _ => html! {"not found"}
     };
 

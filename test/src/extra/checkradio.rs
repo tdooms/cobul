@@ -18,7 +18,7 @@ pub fn check_radio() -> Html {
         <Radio label="check2" model={model.clone()} />
         <Radio label="check3" model={model.clone()} color={Color::Link} circle=true />
         </Field>
-        <p> {model.value.to_string()} </p>
+        <p> {model.value().to_string()} </p>
         </Box>
     }
 }

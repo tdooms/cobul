@@ -15,7 +15,7 @@ fn inner(props: &Props) -> Html {
         <>
         <Button color={Color::Light} fullwidth=true text="Increment inner" {click} />
         <Block />
-        <Notification color={Color::Info}  light=true> {"Inner value: "} <b>{model.value}</b> </Notification>
+        <Notification color={Color::Info}  light=true> {"Inner value: "} <b>{model.value()}</b> </Notification>
         </>
     }
 }
@@ -30,9 +30,9 @@ pub fn model_with() -> Html {
         <>
         <Button color={Color::Light} fullwidth=true text="Increment outer" {click} />
         <Block />
-        <Notification color={Color::Info} light=true> {"Outer value: "} <b>{model.value}</b> </Notification>
+        <Notification color={Color::Info} light=true> {"Outer value: "} <b>{model.value()}</b> </Notification>
         <hr />
-        <Inner value={model.value} />
+        <Inner value={model.value()} />
         </>
     }
 }

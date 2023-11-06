@@ -4,7 +4,7 @@ use cobul::*;
 #[function_component(FieldHelpTest)]
 pub fn field_help() -> Html {
     let model = use_model(AttrValue::default);
-    let help = model.value.is_empty().then_some("Rekwajered".to_string());
+    let help = model.value().is_empty().then_some("Rekwajered".to_string());
 
     html! {
         <>

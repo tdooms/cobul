@@ -95,25 +95,23 @@ pub fn slider<T>(props: &Props<T>) -> Html
         props.label.then(|| "my-0")
     );
 
-    let Model { value, input } = props.model.clone();
-
     let (onchange, oninput) = match props.defer {
-        true => (input.reform(|e: Event| {
+        true => (props.model.reform(|e: Event| {
             let elem = e.target_unchecked_into::<HtmlInputElement>();
             T::from_f64(elem.value_as_number()).unwrap()
         }), Callback::noop()),
-        false => (Callback::noop(), input.reform(|e: InputEvent| {
+        false => (Callback::noop(), props.model.reform(|e: InputEvent| {
             let elem = e.target_unchecked_into::<HtmlInputElement>();
             T::from_f64(elem.value_as_number()).unwrap()
         })),
     };
 
-    let formatted = props.fmt.replace("{}", &value.clone().to_string());
+    let formatted = props.fmt.replace("{}", &props.model.value().to_string());
 
     let (start, end, value) = (
         props.range.start.to_f64().unwrap(),
         props.range.end.to_f64().unwrap(),
-        value.clone().to_f64().unwrap(),
+        props.model.value().to_f64().unwrap(),
     );
 
     let offset = *width as f64 * ((value - start) / (end - start)).clamp(0.0, 1.0);

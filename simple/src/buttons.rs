@@ -27,19 +27,18 @@ pub fn buttons<T>(props: &Props<T>) -> Html
     where
         T: IntoEnumIterator + ToString + Copy + PartialEq + 'static,
 {
-    let Props { class, align, size, color, model } = &props;
-    let Model { value, input } = model.clone();
+    let Props { class, align, size, color, model } = props.clone();
 
     let button_map = |variant: T| {
-        let selected = &value == &variant;
-        let color = selected.then(|| color).cloned().flatten();
-        let click = input.reform(move |_| variant);
+        let selected = &*model == &variant;
+        let color = selected.then(|| color).flatten();
+        let click = model.reform(move |_| variant);
 
-        html! { <core::Button {color} {click} {selected} size={*size} text={variant.to_string()} /> }
+        html! { <core::Button {color} {click} {selected} {size} text={variant.to_string()} /> }
     };
 
     html! {
-        <core::Buttons addons=true align={*align} class={class.clone()}>
+        <core::Buttons addons=true {align} class={class.clone()}>
             { for T::iter().map(button_map) }
         </core::Buttons>
     }

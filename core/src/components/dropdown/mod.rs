@@ -42,7 +42,7 @@ pub fn dropdown(props: &Props) -> Html {
         "dropdown",
         props.class.clone(),
         props.hoverable,
-        Active(props.model.value),
+        Active(props.model.value()),
         props.up,
         props.right,
         props.fullwidth.then(|| "is-flex"),

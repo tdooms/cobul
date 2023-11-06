@@ -27,12 +27,14 @@ pub struct Props {
 #[function_component(Checkbox)]
 pub fn checkbox(props: &Props) -> Html {
     let class = classes!("checkbox", props.class.clone());
-    let Model { value: checked, input } = props.model.clone();
-    let onclick = input.reform(move |_| !checked);
+
+    let checked = props.model.value();
+    let onclick = props.model.toggle().reform(|_| ());
+    let disabled = props.disabled.0 || props.model.is_constant();
 
     html! {
         <label style={props.style.clone()} {class}>
-            <input type="checkbox" {checked} {onclick} label={&props.label} disabled={props.disabled.0} />
+            <input type="checkbox" {checked} {onclick} label={&props.label} {disabled} />
             { for props.children.iter() }
         </label>
     }

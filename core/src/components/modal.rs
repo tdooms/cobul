@@ -35,9 +35,9 @@ pub struct Props {
 /// - `active: Active`: Whether the modal is active or not
 #[function_component(Modal)]
 pub fn modal(props: &Props) -> Html {
-    let class = classes!("modal", props.class.clone(), Active(props.model.value));
+    let class = classes!("modal", props.class.clone(), Active(props.model.value()));
 
-    let onclick = props.model.input.reform(|_| false);
+    let onclick = props.model.reform(|_| false);
     let close = match (props.footer.is_some() || props.title.is_some(), props.close) {
         (true, true) => html! { <button class="delete" {onclick}></button> },
         (false, true) => html! { <button class="modal-close" {onclick}></button> },

@@ -6,8 +6,8 @@ use cobul::{Color, Notification, use_model};
 pub fn notification() -> Html {
     let model = use_model(|| false);
 
-    let value = model.value.clone();
-    let close = model.input.reform(move |_| true);
+    let value = model.value().clone();
+    let close = model.reform(move |_| true);
 
     html! {
         <>

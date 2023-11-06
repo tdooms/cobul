@@ -60,11 +60,11 @@ pub fn select<T>(props: &Props<T>) -> Html
         props.loading
     );
 
-    let Model { value, input } = props.model.clone();
+    let model = props.model.clone();
 
     let option = move |variant: T| {
-        let selected = std::mem::discriminant(&variant) == std::mem::discriminant(&value);
-        let onclick = (!selected).then(|| input.reform(move |_| variant));
+        let selected = std::mem::discriminant(&variant) == std::mem::discriminant(&model);
+        let onclick = (!selected).then(|| model.reform(move |_| variant));
         html! { <option {selected} {onclick}> {variant.to_string()} </option> }
     };
 

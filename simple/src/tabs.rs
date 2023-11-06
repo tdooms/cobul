@@ -51,11 +51,11 @@ pub fn tabs<T>(props: &Props<T>) -> Html
         style,
         ..
     } = props.clone();
-    let Model { value, input } = props.model.clone();
+    let model = props.model.clone();
 
     let tab_map = |variant: T| {
-        let class = (&value == &variant).then(|| "is-active");
-        let onclick = input.reform(move |_| variant);
+        let class = (&*model == &variant).then(|| "is-active");
+        let onclick = model.reform(move |_| variant);
 
         html! { <li {onclick} {class}> <a> <span> { variant.to_string() } </span> </a> </li> }
     };

@@ -42,11 +42,11 @@ impl<T: Form> State<T> {
     }
 
     pub fn value(&self) -> T {
-        self.model.value.clone()
+        self.model.value()
     }
 
     pub fn input(&self) -> Callback<T> {
-        self.model.input.clone()
+        self.model.input().unwrap_or_default()
     }
 }
 
@@ -54,12 +54,12 @@ impl<T: Clone + Form> ImplicitClone for State<T> {}
 
 impl<T: Form + Validate + 'static> State<T> {
     pub fn change<F>(&self, key: &'static str, map: impl Fn(&mut T) -> &mut F + 'static) -> Callback<F> {
-        let Model { input, value: state } = self.model.clone();
+        let state = self.model.value();
 
         let errors = self.errors.clone();
         let dirty = self.dirty.clone();
 
-        input.reform(move |value| {
+        self.model.reform(move |value| {
             let mut new = (*dirty).to_vec();
             if !new.contains(&key) { new.push(key) }
             dirty.set(new.into());
@@ -80,7 +80,7 @@ impl<T: Form> Deref for State<T> {
 #[hook]
 pub fn use_form_with_model<T: Form + Default + Validate + 'static>(model: Model<T>) -> T::Wrapper {
     let dirty = use_state(IArray::default);
-    let errors = use_state(|| validate(&model.value));
+    let errors = use_state(|| validate(&*model));
 
     Form::from(State { model, dirty, errors })
 }

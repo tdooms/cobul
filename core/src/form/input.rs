@@ -77,19 +77,20 @@ pub fn input(props: &Props) -> Html {
         color,
     );
 
-    let Model { value, input } = props.model.clone();
     let reform = |e: InputEvent| e.target_unchecked_into::<HtmlInputElement>().value().into();
+    let oninput = props.model.reform(reform);
+    let disabled = props.disabled.0 || props.model.is_constant();
 
     html! {
         <input
-            {value}
+            value={props.model.value()}
             {class}
-            oninput={input.reform(reform)}
+            {oninput}
             name={props.name.clone()}
             type={props.kind.clone()}
             style={props.style.clone()}
             placeholder={props.placeholder.clone()}
-            disabled={props.disabled.0}
+            {disabled}
             readonly={props.readonly.0}
             />
     }

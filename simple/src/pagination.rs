@@ -35,7 +35,8 @@ pub fn pagination(props: &Props) -> Html {
         ..
     } = props.clone();
 
-    let Model { value: page, input } = props.model.clone();
+    let model = props.model.clone();
+    let page = model.value();
 
     let ellipsis = html! {<core::PaginationEllipsis> {"\u{2026}"} </core::PaginationEllipsis>};
 
@@ -44,7 +45,7 @@ pub fn pagination(props: &Props) -> Html {
     let right_ellipsis = (total - page >= 3).then(|| ellipsis).unwrap_or_default();
 
     let item = |idx| {
-        let click = input.reform(move |_| idx);
+        let click = model.reform(move |_| idx);
         html! { <core::PaginationLink {click} current={ page == idx }> {idx} </core::PaginationLink> }
     };
 

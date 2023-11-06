@@ -18,7 +18,7 @@ impl ToTokens for FieldOpts {
         let new = quote! {
             pub fn #ident(&self) -> cobul::Model<#ty> {
                 let input = self.0.change(stringify!(#ident), |x| &mut x.#ident);
-                cobul::Model{ input, value: self.#ident.clone() }
+                cobul::Model::new(self.#ident.clone(), input)
             }
         };
 

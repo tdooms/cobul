@@ -5,7 +5,7 @@ use cobul::{Button, Buttons, Color, icons::Solid, Notification, use_model};
 #[function_component(ButtonModelTest)]
 pub fn button_model() -> Html {
     let model = use_model(|| true);
-    let value = model.value.clone();
+    let value = model.value();
 
     html! {
         <>

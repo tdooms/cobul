@@ -22,7 +22,7 @@ pub fn switch() -> Html {
         <Tabs<Tab> model={model.clone()} />
         <Tabs<Tab> model={model.clone()} rounded=true />
         <Tabs<Tab> model={model.clone()} fullwidth=true toggle=true rounded=true />
-        <Notification> {model.value.to_string()} </Notification>
+        <Notification> {model.value().to_string()} </Notification>
         </>
     }
 }

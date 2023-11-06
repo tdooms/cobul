@@ -78,14 +78,12 @@ pub fn textarea(props: &Props) -> Html {
         props.fixed.or(fixed)
     );
 
-    let Model { value, input } = props.model.clone();
-
     let reform = |e: InputEvent| e.target_unchecked_into::<HtmlInputElement>().value().into();
-    let oninput = input.reform(reform);
+    let oninput = props.model.reform(reform);
 
     html! {
         <textarea
-            {value}
+            value={props.model.value()}
             {oninput}
             {class}
             name={props.name.clone()}

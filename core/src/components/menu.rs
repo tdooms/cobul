@@ -13,7 +13,7 @@ struct MenuItemProps {
 #[function_component(MenuItem)]
 fn menu_item(props: &MenuItemProps) -> Html {
     let onclick = props.model.reform(|_| true);
-    let class = classes!(Active(props.model.value));
+    let class = classes!(Active(props.model.value()));
 
     html! { <li {onclick}> <a {class}> {props.text.clone()} </a> </li> }
 }
@@ -29,13 +29,13 @@ struct MenuListProps {
 #[function_component(MenuList)]
 fn menu_list(props: &MenuListProps) -> Html {
     let MenuListProps { label, list, model } = props.clone();
-    let Model { value, input } = props.model.clone();
+    let cloned = props.model.clone();
 
     let mapper = move |item: AttrValue| {
-        let value = (label.clone(), item.clone()) == value;
+        let value = (label.clone(), item.clone()) == *cloned;
         let (label, item) = (label.clone(), item.clone());
-        let input = input.reform(move |_| (label.clone(), item.clone()));
-        Model { value, input }
+        let input = cloned.reform(move |_| (label.clone(), item.clone()));
+        Model::new(value, input)
     };
 
     html! {

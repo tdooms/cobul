@@ -11,7 +11,7 @@ pub fn switch() -> Html {
         <Field>
         <Switch label="test switch" model={model.clone()} />
         </Field>
-        <Notification> {model.value.to_string()} </Notification>
+        <Notification> {model.value().to_string()} </Notification>
         </>
     }
 }

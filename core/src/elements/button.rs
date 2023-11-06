@@ -141,8 +141,8 @@ pub fn button(props: &ButtonProps) -> Html {
     let style = props.style.clone();
 
     let onclick = match (props.click.clone(), props.model.clone()) {
-        (Some(click), _) => click.reform(move |_| ()),
-        (None, Some(model)) => model.input.reform(move |_| !model.value),
+        (Some(click), _) => click.reform(|_| ()),
+        (None, Some(model)) => model.toggle().reform(|_| ()),
         (None, None) => Callback::noop()
     };
 

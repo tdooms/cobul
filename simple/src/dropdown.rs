@@ -22,7 +22,7 @@ fn item<T: ToString + Copy + PartialEq + 'static>(props: &ItemProps<T>) -> Html 
         model.emit(variant);
     });
 
-    let active = &props.variant == &props.model.value;
+    let active = &props.variant == &*props.model;
 
     html! {
         <core::DropdownItem class={classes!(props.size)} {click} {active}>
@@ -54,12 +54,12 @@ pub fn dropdown<T>(props: &Props<T>) -> Html
         T: IntoEnumIterator + ToString + Copy + PartialEq + 'static,
 {
     let active = use_model_eq(|| false);
-    let onclick = active.reform(move |_| !active.value);
+    let onclick = active.toggle().reform(|_| ());
 
     let class = classes!("button", "is-flex", "is-justify-content-space-between", "is-fullwidth", props.size);
     let trigger = html! {
         <button {class} {onclick}>
-            <span> {props.model.value.to_string()} </span>
+            <span> {props.model.value().to_string()} </span>
             <core::Icon icon="fa-solid fa-angle-down"/>
         </button>
     };

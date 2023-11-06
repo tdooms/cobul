@@ -63,12 +63,13 @@ fn render(props: &Props, kind: Kind, id: String) -> Html {
         props.rtl.then(|| "is-rtl"),
     );
 
-    let Model { value: checked, input } = props.model.clone();
-    let onchange = input.reform(move |_| !checked);
+    let checked = props.model.value();
+    let onchange = props.model.toggle().reform(|_| ());
+    let disabled = props.disabled || props.model.is_constant();
 
     html! {
         <>
-        <input id={id.clone()} {class} type={kind.to_string()} {onchange} {checked} disabled={props.disabled} />
+        <input id={id.clone()} {class} type={kind.to_string()} {onchange} {checked} {disabled} />
         <label for={id}> {props.label.clone()} </label>
         </>
     }

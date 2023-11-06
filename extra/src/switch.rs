@@ -53,12 +53,13 @@ pub fn switch(props: &Props) -> Html {
         props.outlined,
     );
 
-    let Model { value: checked, input } = props.model.clone();
-    let onchange = input.reform(move |_| !checked);
+    let checked = props.model.value();
+    let onchange = props.model.toggle().reform(|_| ());
+    let disabled = props.disabled.0 || props.model.is_constant();
 
     html! {
         <>
-        <input id={(*id).clone()} {class} type="checkbox" {checked} disabled={props.disabled.0} {onchange} />
+        <input id={(*id).clone()} {class} type="checkbox" {checked} {disabled} {onchange} />
         <label for={(*id).clone()}> {props.label.clone()} </label>
         </>
     }
