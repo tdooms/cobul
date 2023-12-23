@@ -54,14 +54,18 @@ pub fn card(props: &Props) -> Html {
 
     let class = classes!("card", props.class.clone());
 
+    let header = props.header.clone().map(|x| enclose("card-header", Some(x)));
+    let image = props.image.clone().map(|x| enclose("card-image", Some(x)));
+    let footer = props.footer.clone().map(|x| enclose("card-footer", Some(x)));
+
     html! {
         <div {class} {style}>
-            { enclose("card-header", props.header.clone()) }
-            { enclose("card-image", props.image.clone().map(Html::from)) }
+            { header }
+            { image }
             <div class="card-content" style={props.fullheight.then(|| "height:100%")}>
                 { for props.children.iter() }
             </div>
-            { enclose("card-footer", props.footer.clone()) }
+            { footer }
         </div>
     }
 }
