@@ -6,6 +6,6 @@ edition = "2021"
 [dependencies]
 yew = "0.21"
 
-strum = { version = "0.25", features = ["derive"] }
+strum = { version = "0.26", features = ["derive"] }
 derive_more = "*"
 implicit-clone = "0.4"

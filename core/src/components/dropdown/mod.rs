@@ -55,7 +55,7 @@ pub fn dropdown(props: &Props) -> Html {
 
     html! {
         <div style={props.style.clone()} {class} {onblur}>
-            <div class="dropdown-trigger is-clickable" style={style.clone()}>
+            <div class="dropdown-trigger is-clickable" {style}>
                 { props.trigger.clone() }
             </div>
             <div class="dropdown-menu" role="menu" style={format!("z-index:100;{style}")}>

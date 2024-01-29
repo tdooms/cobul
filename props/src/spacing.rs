@@ -1,4 +1,4 @@
-
+#[allow(dead_code)]
 
 pub enum Margin {
     Left(Option<u32>),
@@ -10,6 +10,7 @@ pub enum Margin {
     All(Option<u32>)
 }
 
+#[allow(dead_code)]
 impl Margin {
     pub fn left(value: u32) -> Self { Self::Left(Some(value)) }
 }

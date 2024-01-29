@@ -1,6 +1,6 @@
 use yew::*;
 use cobul::extra::Slider;
-use cobul::{Input, Model};
+use cobul::Input;
 
 #[function_component(ModelConstantsTest)]
 pub fn model_constants() -> Html {

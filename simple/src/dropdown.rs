@@ -1,7 +1,7 @@
 use strum::IntoEnumIterator;
 use yew::prelude::*;
 
-use cobul_props::{Size};
+use cobul_props::Size;
 use cobul_model::{Model, use_model_eq};
 use cobul_core as core;
 
@@ -25,7 +25,7 @@ fn item<T: ToString + Copy + PartialEq + 'static>(props: &ItemProps<T>) -> Html 
     let active = &props.variant == &*props.model;
 
     html! {
-        <core::DropdownItem class={classes!(props.size)} {click} {active}>
+        <core::DropdownItem class={classes!(size)} {click} {active}>
             {variant.to_string()}
         </core::DropdownItem>
     }

@@ -28,7 +28,7 @@ struct MenuListProps {
 
 #[function_component(MenuList)]
 fn menu_list(props: &MenuListProps) -> Html {
-    let MenuListProps { label, list, model } = props.clone();
+    let MenuListProps { label, list, .. } = props.clone();
     let cloned = props.model.clone();
 
     let mapper = move |item: AttrValue| {
